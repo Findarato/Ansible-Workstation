@@ -1,0 +1,21 @@
+  - name: Install SNMP and SNMPD
+    apt: state=present name={{ item }}
+    with_items:
+      - snmpd
+      - snmp
+
+  - name: Allow Access to SNMP
+    lineinfile:
+      dest: "/etc/snmp/snmpd.conf"
+      regexp: "^agentAddress udp:127.0.0.1:161"
+      line: "agentAddress 161"
+      state: present
+    notify: restart snmp
+
+  - name: Allow public to access
+    lineinfile:
+      dest: "/etc/snmp/snmpd.conf"
+      regexp: "^#rocommunity public localhost"
+      line: "rocommunity public "
+      state: present
+    notify: restart snmp

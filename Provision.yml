@@ -1,0 +1,20 @@
+---
+- hosts: all
+  become: true
+#  accelerate: true
+  pre_tasks:
+    - name: Update apt cache if needed.
+      apt: update_cache=yes cache_valid_time=3600
+    #- name: Update System
+      #apt: upgrade=dist autoremove=yes
+  roles:
+    - base
+    - { role: mjanser.powerline }
+    - developer
+    - arduino
+    - { role: cmprescott.chrome }
+  #    - reboot
+
+  vars_files:
+    - vars/firewall.yml
+    - vars/powerline.yml
