@@ -1,2 +1,8 @@
 ---
-  #- name: Setup System for Development
+- name: Create src directory
+  file: path=/opt/src state=directory mode=0755
+
+- name: Install Hack font v2.019
+  git: repo=https://github.com/chrissimpkins/Hack.git
+    dest=/opt/src
+    version=v2.019
