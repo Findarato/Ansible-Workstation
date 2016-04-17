@@ -12,7 +12,8 @@
     - { role: mjanser.powerline }
     - developer
     - arduino
-    - { role: cmprescott.chrome }
+    #- { role: cmprescott.chrome }
+    - { role: vcabourdin.chrome }
   #    - reboot
 
   vars_files:

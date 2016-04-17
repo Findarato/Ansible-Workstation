@@ -3,3 +3,4 @@ localhost
 
 [main:vars]
 ansible_connection=local
+become_ask_pass=True
