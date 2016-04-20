@@ -5,8 +5,17 @@
   pre_tasks:
     - name: Update apt cache if needed.
       apt: update_cache=yes cache_valid_time=3600
-    #- name: Update System
-      #apt: upgrade=dist autoremove=yes
+      when: ansible_os_family == "Debian"
+
+    - name: Update System
+      apt: upgrade=dist
+      when: ansible_os_family == "Debian"
+
+    # This is for Ansible 2.1
+    - name: Cleaning up System
+      apt: autoremove=true
+      when: (ansible_version.major == 2) and (ansible_version.minor >=1) and (ansible_os_family == "Debian")
+
   roles:
     - base
     - { role: mjanser.powerline }
@@ -14,6 +23,7 @@
     - arduino
     #- { role: cmprescott.chrome }
     - { role: vcabourdin.chrome }
+    - yubikey
   #    - reboot
 
   vars_files:

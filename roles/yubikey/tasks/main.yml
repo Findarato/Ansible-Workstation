@@ -1,0 +1,3 @@
+---
+ - name: Running distro specific Commands for {{ ansible_os_family }}
+   include: "{{ ansible_os_family }}.yml"
