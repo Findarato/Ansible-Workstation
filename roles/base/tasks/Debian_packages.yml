@@ -1,0 +1,35 @@
+---
+# Remove Files
+- name: Remove unneeded packages
+  apt: state=absent purge=yes name={{item}}
+  with_items:
+    - dell-super-key
+
+# Install Files
+- name: Install needed packages
+  apt: state=present name={{item}}
+  with_items:
+   # Screensavers
+    - xscreensaver-gl
+    - xscreensaver-gl-extra
+    - xscreensaver-screensaver-dizzy
+    - xscreensaver-screensaver-webcollage
+    - xscreensaver-data-extra
+    - rss-glx
+    # Core Desktop Tools
+    - python-software-properties
+    - htop
+    - wget
+    - curl
+    - nano
+    - python-pycurl
+    - phoronix-test-suite
+    - compizconfig-settings-manager
+    - firefox
+    - unity-tweak-tool
+    - python-pip
+    - qt4-dev-tools
+    - build-essential
+    - libx11-6
+    - libx11-dev
+    - libx11-guitest-perl

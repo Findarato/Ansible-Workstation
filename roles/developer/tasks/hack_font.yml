@@ -1,0 +1,42 @@
+---
+- name: install Hack - make temp dir
+  file:
+    path: "{{ ansible_env.HOME }}/setup/Hack"
+    state: directory
+
+- name: install Hack - download font
+  get_url:
+    url: https://github.com/chrissimpkins/Hack/releases/download/v2.019/Hack-v2_019-ttf.zip
+    dest: "{{ ansible_env.HOME }}/setup/Hack/Hack.zip"
+    mode: 0755
+
+- name: install Hack - unzip downloaded font
+  unarchive:
+    src: "{{ ansible_env.HOME }}/setup/Hack/Hack.zip"
+    dest: "{{ ansible_env.HOME }}/setup/Hack"
+
+- name: install Hack - make fonts directory
+  file:
+    path: "{{ ansible_env.HOME }}/.fonts"
+    state: directory
+
+- name: install Hack - copy fonts
+  copy:
+    src: "{{ ansible_env.HOME }}/setup/Hack/"
+    dest: "{{ ansible_env.HOME }}/.fonts"
+    mode: 0755
+  register: fonts_copied
+
+- name: install Hack - font cache
+  command: fc-cache -f -v
+  when: fonts_copied|changed
+
+- name: install Hack - set system font
+  gconftool-2:
+    key: /apps/gnome-terminal/profiles/Default/font
+    string: "Hack-Bold 12"
+
+- name: install Hack - dont use default system font in terminal
+  gconftool-2:
+    key: /apps/gnome-terminal/profiles/Default/use_system_font
+    bool: false

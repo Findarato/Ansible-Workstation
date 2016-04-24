@@ -1,0 +1,9 @@
+---
+description: Install "coffee-script" node.js package globally.
+- npm: name={{item}} global=yes
+  with_items:
+    - coffee-script
+    - typescript
+    - gulp
+    - gulp-sourcemaps
+    - gulp-typescript

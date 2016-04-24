@@ -1,7 +1,7 @@
 ---
 - hosts: all
   become: true
-#  accelerate: true
+  connection: local
   pre_tasks:
     - name: Update apt cache if needed.
       apt: update_cache=yes cache_valid_time=3600
@@ -18,14 +18,19 @@
 
   roles:
     - base
-    - { role: mjanser.powerline }
     - developer
     - arduino
-    #- { role: cmprescott.chrome }
     - { role: vcabourdin.chrome }
+    - { role: mglaman.atom }
+    - { role: mjanser.powerline }
     - yubikey
+
   #    - reboot
 
   vars_files:
     - vars/firewall.yml
     - vars/powerline.yml
+    - vars/atom.yml
+
+
+# Modules from https://github.com/JBKahn/provisioning-local.git
