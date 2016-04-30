@@ -8,3 +8,13 @@
     - gimp
     - gnome-boxes
     - filezilla
+    - build-essential
+    - libpam0g-dev
+    - libcurl4-openssl-dev
+
+#
+
+# Install gitkraken
+- name: Install GitKraken
+  # Install GitKraken from site
+  apt: deb=https://release.gitkraken.com/linux/gitkraken-amd64.deb

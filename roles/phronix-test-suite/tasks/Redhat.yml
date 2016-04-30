@@ -1,0 +1,13 @@
+---
+# Needs work
+
+# Run the equivalent of "apt-get update" as a separate step
+#- name: Install Phoronix Test Suite {{ ansible_os_family }} Repository
+#  apt_repository: repo='deb http://archive.canonical.com/ubuntu hardy partner' state=present update_cache=true
+
+#- name: Install Phoronix Test Suite {{ ansible_os_family }}
+#  apt: update_cache=yes name={{item}}
+#  with_items:
+#    - phoronix-test-suite
+
+#- include: permissions.yml

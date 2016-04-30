@@ -1,4 +1,0 @@
-# Install files from PIP
-- pip: state=present name={{item}}
-  with_items:
-  

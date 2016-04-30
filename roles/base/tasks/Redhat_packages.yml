@@ -1,15 +1,16 @@
 ---
 # Remove Files
 - name: Remove unneeded packages
-  apt: state=absent purge=yes name={{item}}
+  dnf: state=absent purge=yes name={{item}}
   with_items:
     - dell-super-key
     - thunderbird
 
 # Install Files
 - name: Install needed packages
-  apt: state=present name={{item}}
+  dnf: state=present name={{item}}
   with_items:
+
    # Screensavers
     - xscreensaver-gl
     - xscreensaver-gl-extra
@@ -19,23 +20,17 @@
     - rss-glx-xscreensaver
     - rss-glx
     # Core Desktop Tools
-    - python-software-properties
     - htop
     - wget
     - curl
     - nano
     - python-pycurl
-    - compizconfig-settings-manager
+    - phoronix-test-suite
     - firefox
-    - unity-tweak-tool
     - python-pip
     - qt4-dev-tools
     - build-essential
     - libx11-6
     - libx11-dev
     - libx11-guitest-perl
-    - synaptic
     - evolution
-    - variety
-    - caffeine
-    - ubuntu-restricted-extras
