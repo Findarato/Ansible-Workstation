@@ -26,10 +26,6 @@
     - { role: mjanser.powerline }
     - { role: dochang.docker }
 
-
-
-  #    - reboot
-
   vars_files:
     - vars/firewall.yml
     - vars/powerline.yml
