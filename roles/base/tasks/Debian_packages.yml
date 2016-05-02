@@ -16,7 +16,6 @@
     - xscreensaver-screensaver-dizzy
     - xscreensaver-screensaver-webcollage
     - xscreensaver-data-extra
-    - rss-glx-xscreensaver
     - rss-glx
     # Core Desktop Tools
     - python-software-properties
@@ -36,6 +35,4 @@
     - libx11-guitest-perl
     - synaptic
     - evolution
-    - variety
-    - caffeine
     - ubuntu-restricted-extras

@@ -24,11 +24,12 @@
     - { role: vcabourdin.chrome }
     - { role: mglaman.atom }
     - { role: mjanser.powerline }
-    - { role: dochang.docker }
+  #  - { role: dochang.docker }
 
   vars_files:
     - vars/firewall.yml
     - vars/powerline.yml
+    - vars/fonts.yml
     - vars/atom.yml
 
 

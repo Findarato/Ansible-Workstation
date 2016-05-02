@@ -34,6 +34,7 @@
     - vars/firewall.yml
     - vars/powerline.yml
     - vars/atom.yml
+    - vars/fonts.yml
 
 
 # Modules from https://github.com/JBKahn/provisioning-local.git

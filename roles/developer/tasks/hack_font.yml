@@ -1,29 +1,29 @@
 ---
 - name: install Hack - make temp dir
   file:
-    path: "{{ ansible_env.HOME }}/setup/Hack"
+    path: "{{ font_temp_path }}/setup/Hack"
     state: directory
 
 - name: install Hack - download font
   get_url:
     url: https://github.com/chrissimpkins/Hack/releases/download/v2.019/Hack-v2_019-ttf.zip
-    dest: "{{ ansible_env.HOME }}/setup/Hack/Hack.zip"
+    dest: "{{ font_temp_path }}/setup/Hack/Hack.zip"
     mode: 0755
 
 - name: install Hack - unzip downloaded font
   unarchive:
-    src: "{{ ansible_env.HOME }}/setup/Hack/Hack.zip"
-    dest: "{{ ansible_env.HOME }}/setup/Hack"
+    src: "{{ font_temp_path }}/setup/Hack/Hack.zip"
+    dest: "{{ font_temp_path }}/setup/Hack"
 
 - name: install Hack - make fonts directory
   file:
-    path: "{{ ansible_env.HOME }}/.fonts"
+    path: "{{ font_temp_path}}/.fonts"
     state: directory
 
 - name: install Hack - copy fonts
   copy:
-    src: "{{ ansible_env.HOME }}/setup/Hack/"
-    dest: "{{ ansible_env.HOME }}/.fonts"
+    src: "{{ font_temp_path }}/setup/Hack/"
+    dest: "{{ font_install_path }}/.fonts"
     mode: 0755
   register: fonts_copied
 
