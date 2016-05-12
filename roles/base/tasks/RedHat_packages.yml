@@ -34,3 +34,31 @@
     - libx11-dev
     - libx11-guitest-perl
     - evolution
+    - python-devel
+    - krb5-devel
+    - krb5-libs
+    - krb5-workstation
+    - yum-plugin-fastestmirror
+    - nano
+	  - levien-inconsolata-fonts
+    - adobe-source-code-pro-fonts
+	  - mozilla-fira-mono-fonts
+    - google-droid-sans-mono-fonts
+	  - openssh
+    - filezilla
+    - python
+    - xclip
+    - inotify-tools
+	  - npm
+    - which
+    - make
+    - vagrant
+    -  xbindkeys
+     - xautomation
+	    - solaar
+      - parallel
+      - vlc screenfetch
+      - fslint
+	    - wget
+      - p7zip
+      - expect

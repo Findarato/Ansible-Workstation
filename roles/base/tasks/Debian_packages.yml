@@ -5,6 +5,7 @@
   with_items:
     - dell-super-key
     - thunderbird
+    - apport
 
 # Install Files
 - name: Install needed packages
@@ -37,3 +38,5 @@
     - synaptic
     - evolution
     - ubuntu-restricted-extras
+    - python-dev
+    - libkrb5-dev
