@@ -1,16 +1,16 @@
 ---
 # Remove Files
 - name: Remove unneeded packages
-  dnf: state=absent purge=yes name={{item}}
+  dnf: state=absent  name={{item}}
   with_items:
     - dell-super-key
     - thunderbird
+  when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "23")
 
 # Install Files
 - name: Install needed packages
   dnf: state=present name={{item}}
   with_items:
-
    # Screensavers
     - xscreensaver-gl
     - xscreensaver-gl-extra
@@ -40,25 +40,26 @@
     - krb5-workstation
     - yum-plugin-fastestmirror
     - nano
-	  - levien-inconsolata-fonts
+    - levien-inconsolata-fonts
     - adobe-source-code-pro-fonts
-	  - mozilla-fira-mono-fonts
+    - mozilla-fira-mono-fonts
     - google-droid-sans-mono-fonts
-	  - openssh
+    - openssh
     - filezilla
     - python
     - xclip
     - inotify-tools
-	  - npm
+    - npm
     - which
     - make
     - vagrant
     -  xbindkeys
-     - xautomation
-	    - solaar
-      - parallel
-      - vlc screenfetch
-      - fslint
-	    - wget
-      - p7zip
-      - expect
+    - xautomation
+    - solaar
+    - parallel
+    - vlc screenfetch
+    - fslint
+    - wget
+    - p7zip
+    - expect
+  when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "23")

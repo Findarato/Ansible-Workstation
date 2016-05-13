@@ -10,5 +10,4 @@
 # Add the user to the groups listed above
 - name: Add users to correct Groups
   user: name={{item}} shell=/bin/bash groups=dialout,tty append=yes generate_ssh_key=yes ssh_key_file=.ssh/ansible
-  with_items:
-    - joe
+  with_items: {{arduino_users}}

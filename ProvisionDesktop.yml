@@ -7,9 +7,18 @@
       apt: update_cache=yes cache_valid_time=3600
       when: ansible_os_family == "Debian"
 
-    - name: Update System
+    - name: Update System {{ansible_os_family}} -> {{ansible_distribution}}
       apt: upgrade=dist
       when: ansible_os_family == "Debian"
+
+    - name: Update System {{ansible_os_family}} -> {{ansible_distribution}}
+      dnf: name=* state=latest
+      when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "23")
+
+    - name: Update System {{ansible_os_family}} -> {{ansible_distribution}}
+      yum: name=* state=latest
+      when: (ansible_distribution == "CentOS" and ansible_distribution_major_version > "6")
+
 
     # This is for Ansible 2.1
     - name: Cleaning up System
@@ -20,6 +29,7 @@
     - base
     - developer
     - arduino
+    - VirtualBox
     - yubikey
     - { role: vcabourdin.chrome }
     - { role: mglaman.atom }

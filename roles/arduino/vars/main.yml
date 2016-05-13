@@ -1,3 +1,4 @@
 ---
 arduino_users:
   - joe
+  - "{{myUser}}" # Set in the global vars folder

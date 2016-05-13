@@ -1,0 +1,16 @@
+---
+# Install Debian Specific files.
+- name: Install needed  {{ ansible_os_family }} Specific packages
+  apt: state=present name={{item}}
+  with_items:
+    - firefox
+    - redshift
+    - gimp
+    - gnome-boxes
+    - filezilla
+    - build-essential
+    - libpam0g-dev
+    - libcurl4-openssl-dev
+    - xclip
+
+#

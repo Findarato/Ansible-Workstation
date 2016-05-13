@@ -3,8 +3,9 @@
 - name: Running OS specific Configurations and Commands
   include: "{{item}}"
   with_items:
-  - "{{ ansible_os_family }}_packages.yml"
   - "{{ ansible_os_family }}_system.yml"
+  - "{{ ansible_os_family }}_packages.yml"
+
 
 - name: Running generic Configurations and Commands
   include: "{{item}}"

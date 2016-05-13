@@ -1,10 +1,4 @@
 ---
-
-atom_packages_packages:
-  - project-manager
-  - recent-files
-  - sync-settings
-
 atom_sync-settings:
   - gistId: 2e6cddcfc45df11aa555
   - pat: {patSecret}
@@ -13,12 +7,15 @@ atom_ver : '1.7.2'
 atom_mirror : 'https://github.com/atom/atom/releases/download'
 atom_deb_platform : 'amd64'
 atom_rpm_platform : 'x86_64'
-atom_packages_packages: 
+atom_packages_packages:
   - "sync-settings"
-  - "project-manager" 
+  - "project-manager"
   - "angularjs"
   - "atom-css-comb"
   - "meteor-api"
   - "emmet"
   - "file-icons"
   - "tag"
+  - project-manager
+  - recent-files
+  - sync-settings
