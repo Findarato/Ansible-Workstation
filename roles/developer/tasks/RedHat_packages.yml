@@ -1,15 +1,29 @@
 ---
+# Remove Files
+- name: Remove unneeded packages
+  dnf: state=absent  name={{item}}
+  with_items:
+    - nodejs
+    - nodejs-devel
+  when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "22")
+
 # Install Files
 - name: Install needed packages
   dnf: state=present name={{item}}
   with_items:
     - firefox
-    - redshift
     - gimp
     - gnome-boxes
     - filezilla
-    - build-essential
-    - libpam0g-dev
     - openssl-devel
     - xclip
-  when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "23")
+    - vagrant
+    - nodejs
+    - nodejs-devel
+    - which
+    - make
+    - PyQt4-devel
+    - qwt5-qt4-devel
+    - "@Development tools"
+    - gcc-c++
+  when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "22")

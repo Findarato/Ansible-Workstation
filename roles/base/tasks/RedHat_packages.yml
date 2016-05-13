@@ -5,34 +5,32 @@
   with_items:
     - dell-super-key
     - thunderbird
-  when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "23")
+  when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "22")
 
 # Install Files
 - name: Install needed packages
   dnf: state=present name={{item}}
   with_items:
    # Screensavers
-    - xscreensaver-gl
-    - xscreensaver-gl-extra
-    - xscreensaver-screensaver-dizzy
-    - xscreensaver-screensaver-webcollage
-    - xscreensaver-data-extra
+    - xscreensaver
+    - xscreensaver-base
+    - xscreensaver-extras
+    - xscreensaver-gl-base
+    - xscreensaver-gl-extras
+    - xscreensaver-gl-extras-gss
+    - xscreensaver-extras-gss
+    - xscreensaver-extras-base
     - rss-glx-xscreensaver
-    - rss-glx
     # Core Desktop Tools
     - htop
     - wget
     - curl
     - nano
     - python-pycurl
-    - phoronix-test-suite
+#    - phoronix-test-suite
     - firefox
+    - redshift
     - python-pip
-    - qt4-dev-tools
-    - build-essential
-    - libx11-6
-    - libx11-dev
-    - libx11-guitest-perl
     - evolution
     - python-devel
     - krb5-devel
@@ -47,19 +45,15 @@
     - openssh
     - filezilla
     - python
-    - xclip
     - inotify-tools
-    - npm
-    - which
-    - make
-    - vagrant
-    -  xbindkeys
+    - xbindkeys
     - xautomation
     - solaar
     - parallel
-    - vlc screenfetch
+    - vlc
+    - screenfetch
     - fslint
     - wget
     - p7zip
     - expect
-  when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "23")
+  when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "22")

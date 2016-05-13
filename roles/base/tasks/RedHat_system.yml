@@ -1,4 +1,8 @@
 ---
+- name: Clear up DNF cache
+  command: /usr/bin/dnf clean all
+  when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > 22)
+
 - name: Add multiple repositories into the same file 1
   yum_repository:
     name: epel
@@ -20,4 +24,4 @@
 
 - name: Add Purple Hangouts COPR Repo
   command: /usr/bin/dnf copr endable xvitaly/purple-hangouts creates=/etc/yum.repos.d/_copr_xvitaly-purple-hangouts.repo
-  when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "23")
+  when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "22")
