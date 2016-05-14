@@ -40,3 +40,9 @@
     - ubuntu-restricted-extras
     - python-dev
     - libkrb5-dev
+    - p7zip
+    - fonts-inconsolata
+    - tv-fonts
+    - ttf-unfonts-core
+    - ttf-unfonts-extra
+    - npm

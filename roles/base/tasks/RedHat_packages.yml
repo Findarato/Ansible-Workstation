@@ -46,6 +46,13 @@
     - filezilla
     - python
     - inotify-tools
+<<<<<<< Updated upstream
+=======
+    - npm
+    - which
+    - make
+    - vagrant
+>>>>>>> Stashed changes
     - xbindkeys
     - xautomation
     - solaar
@@ -56,4 +63,7 @@
     - wget
     - p7zip
     - expect
+<<<<<<< Updated upstream
   when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "22")
+=======
+>>>>>>> Stashed changes
