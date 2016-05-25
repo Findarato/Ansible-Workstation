@@ -1,29 +1,29 @@
 ---
-- hosts: all
-  become: true
-  connection: local
+- hosts:       all
+  become:      true
+  connection:  local
   pre_tasks:
-    - name: Update apt cache if needed.
-      apt: update_cache=yes cache_valid_time=3600
-      when: ansible_os_family == "Debian"
+    - name:    Update apt cache if needed.
+      apt:     update_cache=yes cache_valid_time=3600
+      when:    ansible_os_family == "Debian"
 
-    - name: Update System {{ansible_os_family}} -> {{ansible_distribution}}
-      apt: upgrade=dist
-      when: ansible_os_family == "Debian"
+    - name:    Update System {{ansible_os_family}} -> {{ansible_distribution}}
+      apt:     upgrade=dist
+      when:    ansible_os_family == "Debian"
 
-    - name: Update System {{ansible_os_family}} -> {{ansible_distribution}}
-      dnf: name=* state=latest
-      when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "23")
+    - name:    Update System {{ansible_os_family}} -> {{ansible_distribution}}
+      dnf:     name=* state=latest
+      when:    (ansible_distribution == "Fedora" and ansible_distribution_major_version > "23")
 
-    - name: Update System {{ansible_os_family}} -> {{ansible_distribution}}
-      yum: name=* state=latest
-      when: (ansible_distribution == "CentOS" and ansible_distribution_major_version > "6")
+    - name:    Update System {{ansible_os_family}} -> {{ansible_distribution}}
+      yum:     name=* state=latest
+      when:    (ansible_distribution == "CentOS" and ansible_distribution_major_version > "6")
 
 
     # This is for Ansible 2.1
-    - name: Cleaning up System
-      apt: autoremove=true
-      when: (ansible_version.major == 2) and (ansible_version.minor >=1) and (ansible_os_family == "Debian")
+    - name:    Cleaning up System
+      apt:     autoremove=true
+      when:    (ansible_version.major == 2) and (ansible_version.minor >=1) and (ansible_os_family == "Debian")
 
   roles:
     - base
@@ -31,10 +31,10 @@
     - arduino
     - VirtualBox
     - yubikey
-    - { role: vcabourdin.chrome }
-    - { role: mglaman.atom }
-    - { role: mjanser.powerline }
-    - { role: dochang.docker }
+    - { role:  vcabourdin.chrome }
+    - { role:  mglaman.atom }
+    - { role:  mjanser.powerline }
+    - { role:  dochang.docker }
 
 
 

@@ -1,7 +1,7 @@
 ---
 # Install Debian Specific files.
-- name: Install needed  {{ ansible_os_family }} Specific packages
-  apt: state=present name={{item}}
+- name:       Install needed  {{ ansible_os_family }} Specific packages
+  apt:        state=present name={{item}}
   with_items:
     - firefox
     - redshift
@@ -15,16 +15,16 @@
 
 #
 
-- name: Get GitKraken {{ ansible_os_family }}
+- name:       Get GitKraken {{ ansible_os_family }}
   file:
-    path: "{{ dev_temp_path }}"
-    state: directory
+    path:     "{{ dev_temp_path }}"
+    state:    directory
 
-- name: Get GitKraken {{ ansible_os_family }}
+- name:       Get GitKraken {{ ansible_os_family }}
   get_url:
-    url: https://release.gitkraken.com/linux/gitkraken-amd64.deb
-    dest: "{{ dev_temp_path }}/gitkraken-amd64.deb"
-    mode: 0755
+    url:      https://release.gitkraken.com/linux/gitkraken-amd64.deb
+    dest:     "{{ dev_temp_path }}/gitkraken-amd64.deb"
+    mode:     0755
 
-- name: Install GitKraken {{ ansible_os_family }}
-  apt: deb="{{ dev_temp_path }}/gitkraken-amd64.deb"
+- name:       Install GitKraken {{ ansible_os_family }}
+  apt:        deb="{{ dev_temp_path }}/gitkraken-amd64.deb"
