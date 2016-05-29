@@ -12,6 +12,8 @@
     - libpam0g-dev
     - libcurl4-openssl-dev
     - xclip
+    - nfs-common
+    - nfs-kernel-server
 
 #
 
