@@ -36,7 +36,6 @@
     - libx11-dev
     - libx11-guitest-perl
     - synaptic
-    - evolution
     - ubuntu-restricted-extras
     - python-dev
     - libkrb5-dev
@@ -46,3 +45,6 @@
     - ttf-unfonts-core
     - ttf-unfonts-extra
     - npm
+    # Email Applications
+    - geary
+    - evolution
