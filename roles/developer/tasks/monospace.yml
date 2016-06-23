@@ -1,0 +1,5 @@
+---
+  # Install all of the monospace fonts.
+  # These fonts need to be installed globally
+  # Also set one of the fonts to be the default
+  # for the system this will be defined in the vars file.

@@ -1,0 +1,15 @@
+---
+# Remove Files
+- name: Remove unneeded packages
+  dnf: state=absent  name={{item}}
+  with_items:
+    - dell-super-key
+  when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "22")
+
+# Install Files
+- name: Install needed packages
+  dnf: state=present name={{item}}
+  with_items:
+   # Screensavers
+    - wavemon
+  when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "22")
