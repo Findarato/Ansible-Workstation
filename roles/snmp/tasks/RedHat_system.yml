@@ -1,0 +1,3 @@
+---
+- name: add snmp-exception to firewalld
+  firewalld: port=161-162/udp permanent=true state=enabled

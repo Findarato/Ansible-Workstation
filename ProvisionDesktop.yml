@@ -1,13 +1,12 @@
 ---
 - hosts:       all
   become:      true
-  connection:  local
   pre_tasks:
-    - name:    Update apt cache if needed.
+    - name:    Update apt cache if needed. (Debian Only)
       apt:     update_cache=yes cache_valid_time=3600
       when:    ansible_os_family == "Debian"
 
-    - name:    Update System {{ansible_os_family}} -> {{ansible_distribution}}
+    - name:    Update System {{ansible_os_family}} -> {{ansible_distribution}} (Debian Only)
       apt:     upgrade=dist
       when:    ansible_os_family == "Debian"
 
@@ -35,10 +34,6 @@
     - { role:  mglaman.atom }
     - { role:  mjanser.powerline }
     - { role:  dochang.docker }
-
-
-
-  #    - reboot
 
   vars_files:
     - vars/firewall.yml

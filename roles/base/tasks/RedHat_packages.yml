@@ -60,12 +60,10 @@
     - wget
     - p7zip
     - expect
-<<<<<<< HEAD
     - sushi
     - seahorse-nautilus
     - gnome-terminal-nautilus
+  # Purple Hangouts
+    - purple-hangouts
+    - pidgin-hangouts
   when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "22")
-
-=======
-  when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "22")
->>>>>>> 145f164dfe9802bb5ee9d30ef4fef55480cb3ba6

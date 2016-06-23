@@ -26,4 +26,16 @@
     - qwt5-qt4-devel
     - "@Development tools"
     - gcc-c++
+    - levien-inconsolata-fonts
+    - adobe-source-code-pro-fonts
+    - mozilla-fira-mono-fonts
+    - google-droid-sans-mono-fonts
+    - python-devel
+    - filezilla
+    - python
+    - npm
+    - which
+    - make
+    - vagrant
+
   when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "22")
