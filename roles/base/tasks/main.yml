@@ -7,12 +7,12 @@
   - "{{ ansible_os_family }}_packages.yml"
 
 
-- name: Running generic Configurations and Commands
-  include: "{{item}}"
-  with_items:
+#- name: Running generic Configurations and Commands
+#  include: "{{item}}"
+#  with_items:
   #- "all_system.yml"
-  - font.yml
-  - base16.yml
+  #- font.yml
+  #- base16.yml
 
 
 - name: Installing required libraries for Windows connections
