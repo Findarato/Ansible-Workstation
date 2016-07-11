@@ -1,3 +1,6 @@
+echo "Ensuring no previous Setup"
+rm -rf ~/setup
+
 echo "Updating System"
 dnf update -y
 dnf install -y ansible git python-pip python-dnf python-pip python ansible
