@@ -28,28 +28,18 @@
     - nano
     - python-pycurl
 #    - phoronix-test-suite
-    - firefox
     - redshift
     - python-pip
     - evolution
-    - python-devel
+
     - krb5-devel
     - krb5-libs
     - krb5-workstation
     - yum-plugin-fastestmirror
     - nano
-    - levien-inconsolata-fonts
-    - adobe-source-code-pro-fonts
-    - mozilla-fira-mono-fonts
-    - google-droid-sans-mono-fonts
     - openssh
-    - filezilla
-    - python
+
     - inotify-tools
-    - npm
-    - which
-    - make
-    - vagrant
     - xbindkeys
     - xautomation
     - solaar
@@ -66,4 +56,12 @@
   # Purple Hangouts
     - purple-hangouts
     - pidgin-hangouts
+
+  #Keyboard Config. This will eventually be its own role.
+    - zlib-devel
+    - qt5-qtbase-devel
+    - libgudev-devel
+    - libappindicator-devel
+    - systemd-devel
+    - gcc-c++  
   when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "22")
