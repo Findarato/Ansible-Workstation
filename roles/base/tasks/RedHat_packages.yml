@@ -41,7 +41,7 @@
     - krb5-libs 
     - krb5-workstation
 
-
+    - redhat-rpm-config
     - inotify-tools
     - xbindkeys
     - xautomation

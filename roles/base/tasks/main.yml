@@ -18,11 +18,12 @@
 - name: Upgrade PIP
   pip: name=pip state=latest
 
+- name: Installing python kerberos
+  pip: name=kerberos state=latest
+
 - name: Installing required libraries for Windows connections
   pip: name=pywinrm state=latest
 
-- name: Installing python kerberos
-  pip: name=kerberos state=latest
 
 # Follow this guide locally, it is going to be a bitch to setup.
 # I will eventually fix it
