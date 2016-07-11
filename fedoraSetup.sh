@@ -11,7 +11,7 @@ cd ~/setup
 git clone https://github.com/Findarato/Ansible-Workstation.git .
 
 echo "Setting up Ansible Roles"
-ansible-galaxy install -r requirements.txt
+ansible-galaxy install -r requirements.yml
 
 echo "Running Ansible"
 ansible-playbook -i localHosts ProvisionDesktop.yml

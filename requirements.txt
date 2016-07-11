@@ -1,4 +1,0 @@
-mjanser.powerline
-vcabourdin.chrome
-mglaman.atom
-dochang.docker
