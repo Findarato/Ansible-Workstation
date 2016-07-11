@@ -27,22 +27,26 @@
     - curl
     - nano
     - python-pycurl
-#    - phoronix-test-suite
+    - glances
+#   - phoronix-test-suite
     - redshift
     - python-pip
     - evolution
-
-    - krb5-devel
-    - krb5-libs
-    - krb5-workstation
     - yum-plugin-fastestmirror
     - nano
     - openssh
+# Kerbos with ansible
+    - python-devel 
+    - krb5-devel 
+    - krb5-libs 
+    - krb5-workstation
+
 
     - inotify-tools
     - xbindkeys
     - xautomation
     - solaar
+    - tmux
     - parallel
     - vlc
     - screenfetch
@@ -53,7 +57,7 @@
     - sushi
     - seahorse-nautilus
     - gnome-terminal-nautilus
-  # Purple Hangouts
+# Purple Hangouts
     - purple-hangouts
     - pidgin-hangouts
     - libselinux-python
