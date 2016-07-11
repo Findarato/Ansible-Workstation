@@ -3,7 +3,7 @@
 - name: Install needed  {{ ansible_os_family }} -> {{ ansible_distribution }} Specific packages
   dnf: state=present name={{item}}
   with_items:
-    -binutils
+    - binutils
     - gcc
     - make
     - patch
@@ -20,7 +20,7 @@
 - name: Install needed  {{ ansible_os_family }} -> {{ ansible_distribution }} Specific packages
   yum: state=present name={{item}}
   with_items:
-    -binutils
+    - binutils
     - gcc
     - make
     - patch

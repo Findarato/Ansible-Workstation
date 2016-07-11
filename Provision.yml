@@ -16,6 +16,10 @@
       apt:     autoremove=true
       when:    (ansible_version.major == 2) and (ansible_version.minor >=1) and (ansible_os_family == "Debian")
 
+    - name: Update System Fedora
+      dnf: name=* state=latest
+      when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "22")
+
   roles:
     - base
     - developer

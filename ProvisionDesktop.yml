@@ -24,13 +24,16 @@
       apt:     autoremove=true
       when:    (ansible_version.major == 2) and (ansible_version.minor >=1) and (ansible_os_family == "Debian")
 
+    - name: Creating temp Path to write to
+      file: path=/tmp/setup/ mode=0644 state=directory
+
   roles:
     - base
     - developer
     - arduino
     - VirtualBox
     - yubikey
-    - { role:  vcabourdin.chrome }
+  #  - { role:  vcabourdin.chrome }
     - { role:  mglaman.atom }
     - { role:  mjanser.powerline }
     - { role:  dochang.docker }

@@ -1,13 +1,7 @@
 ---
-- name: Copy VirtualBox repo
-  copy: src=files/{{ ansible_distribution }}.virtualbox.repo
-    dest=/etc/yum.repos.d/virtualbox.repo
-    owner=root group=root mode=0644
-
-- name: Enable VirtualBox Repo
-  yum:  name=virtualbox
-    enablerepo=virtualbox
-    state=present
+- name: Add VirtualBox Repo
+  get_url: url=http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo dest=/etc/yum.repos.d/virtualbox.repo mode=0644
+  when: (ansible_distribution == "Fedora")
 
 - name: Copy VirtualBox fixing Service
   copy: src=files/fixVirtualBox.service

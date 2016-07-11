@@ -1,0 +1,7 @@
+---
+
+- name: Install yubikey {{ ansible_os_family }}
+  dnf: name={{item}} state=latest
+  with_items:
+  - pam_yubico
+  - yubico-piv-tool

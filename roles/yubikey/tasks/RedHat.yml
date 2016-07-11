@@ -1,11 +1,4 @@
 ---
-# Run the equivalent of "apt-get update" as a separate step
-- name: Add Yubikey {{ ansible_os_family }} Repository
-  apt_repository: repo='deb http://archive.canonical.com/ubuntu hardy partner' state=present update_cache=true
 
-- name: Install yubikey {{ ansible_os_family }}
-  apt: update_cache=yes name={{item}}
-  with_items:
-  - libpam-yubico
 
 #- include: permissions.yml

@@ -6,7 +6,7 @@
     file: external_repos
     baseurl: http://download.fedoraproject.org/pub/epel/$releasever/$basearch/
     gpgcheck: no
-    when: (ansible_distribution == "CentOS" and ansible_distribution_major_version > "6")
+  when: (ansible_distribution == "CentOS" and ansible_distribution_major_version > "6")
 
 - name: Add multiple repositories into the same file 2
   yum_repository:
@@ -16,8 +16,4 @@
     baseurl: http://apt.sw.be/redhat/el7/en/$basearch/rpmforge
     mirrorlist: http://mirrorlist.repoforge.org/el7/mirrors-rpmforge
     enabled: no
-    when: (ansible_distribution == "CentOS" and ansible_distribution_major_version > "6")
-
-- name: Add Purple Hangouts COPR Repo
-  command: /usr/bin/dnf copr endable xvitaly/purple-hangouts creates=/etc/yum.repos.d/_copr_xvitaly-purple-hangouts.repo
-  when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "23")
+  when: (ansible_distribution == "CentOS" and ansible_distribution_major_version > "6")
