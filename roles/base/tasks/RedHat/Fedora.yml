@@ -6,24 +6,15 @@
 
 - name: Add Purple Hangouts COPR Repo
   get_url: url=https://copr.fedorainfracloud.org/coprs/xvitaly/purple-hangouts/repo/fedora-24/xvitaly-purple-hangouts-fedora-24.repo dest=/etc/yum.repos.d/xvitaly-purple-hangouts-fedora-24.repo mode=0644
-  when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "23")
-
-
-- name: Download RPM Fusion Repos 1/2
-  get_url: url=http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-"{{ansible_distribution_major_version}}".noarch.rpm dest=~/setup/rpmfusion-free-release-"{{ansible_distribution_major_version}}".noarch.rpm mode=0644
-  when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "22")
-
-- name: Download RPM Fusion Repos 2/2
-  get_url: url=http://download1.rpmfusion.org/free/fedora/rpmfusion-nonfree-release-"{{ansible_distribution_major_version}}".noarch.rpm dest=~/setup/rpmfusion-nonfree-release-"{{ansible_distribution_major_version}}".noarch.rpm mode=0644
-  when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "22")
+  when: (ansible_distribution == "Fedora" and ansible_distribution_major_version == "24")
 
 - name: Install RPM Fusion Repos 1/2
-  dnf:  ~/setup/rpmfusion-free-release-"{{ansible_distribution_major_version}}".noarch.rpm state=present
-  when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "22")
+  dnf:  name=http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-24.noarch.rpm state=present
+  when: (ansible_distribution == "Fedora" and ansible_distribution_major_version == "24")
 
 - name: Install RPM Fusion Repos 2/2
-  dnf:  ~/setup/rpmfusion-nonfree-release-"{{ansible_distribution_major_version}}".noarch.rpm state=present
-  when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "22")
+  dnf:  name=http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-24.noarch.rpm state=present
+  when: (ansible_distribution == "Fedora" and ansible_distribution_major_version == "24")
 
 
 
