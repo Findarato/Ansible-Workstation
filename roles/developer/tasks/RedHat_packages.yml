@@ -1,4 +1,5 @@
 ---
+
 # Remove Files
 - name: Remove unneeded packages
   dnf: state=absent  name={{item}}
@@ -46,5 +47,7 @@
     - which
     - make
     - vagrant
+    # PHP specific files
+    - php-mbstring
 
   when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "22")

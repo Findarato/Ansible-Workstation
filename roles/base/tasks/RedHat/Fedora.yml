@@ -8,9 +8,9 @@
   get_url: url=https://copr.fedorainfracloud.org/coprs/xvitaly/purple-hangouts/repo/fedora-24/xvitaly-purple-hangouts-fedora-24.repo dest=/etc/yum.repos.d/xvitaly-purple-hangouts-fedora-24.repo mode=0644
   when: (ansible_distribution == "Fedora" and ansible_distribution_major_version == "24")
 
-
-
-
+- name: Add Chrome Gnome Shell COPR Repo
+  get_url: url=https://copr.fedorainfracloud.org/coprs/region51/chrome-gnome-shell/repo/fedora-24/region51-chrome-gnome-shell-fedora-24.repo dest=/etc/yum.repos.d/region51-chrome-gnome-shell-fedora-24.repo mode=06444
+  when: (ansible_distribution == "Fedora" and ansible_distribution_major_version == "24")
 
 - name: Download RPM Fusion Repos 1/2
   get_url:
@@ -25,11 +25,6 @@
     mode: 0644
     dest: /tmp/setup/rpmfusion-nonfree-release-24.noarch.rpm
   when: (ansible_distribution == "Fedora" and ansible_distribution_major_version == "24")
-#- name: Install RPM Fusion Repos 2/2
-#  dnf:  name=http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-24.noarch.rpm state=present
-#  when: (ansible_distribution == "Fedora" and ansible_distribution_major_version == "24")
-
-
 
 - name: Install RPM Fusion Repos 1/2
   dnf:  name=/tmp/setup/rpmfusion-free-release-24.noarch.rpm state=present

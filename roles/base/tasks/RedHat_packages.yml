@@ -36,9 +36,9 @@
     - nano
     - openssh
 # Kerbos with ansible
-    - python-devel 
-    - krb5-devel 
-    - krb5-libs 
+    - python-devel
+    - krb5-devel
+    - krb5-libs
     - krb5-workstation
 
     - redhat-rpm-config
@@ -61,12 +61,12 @@
     - purple-hangouts
     - pidgin-hangouts
     - libselinux-python
-
+    - chrome-gnome-shell
   #Keyboard Config. This will eventually be its own role.
     - zlib-devel
     - qt5-qtbase-devel
     - libgudev-devel
     - libappindicator-devel
     - systemd-devel
-    - gcc-c++  
+    - gcc-c++
   when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "22")
