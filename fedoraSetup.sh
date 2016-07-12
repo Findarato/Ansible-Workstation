@@ -3,7 +3,7 @@ rm -rf ~/setup
 
 echo "Updating System"
 dnf update -y
-dnf install -y ansible git python-pip python-dnf python-pip python ansible
+dnf install -y ansible git python-pip python-dnf python-pip python ansible ansible-lint
 
 echo "Starting Deployment"
 mkdir ~/setup

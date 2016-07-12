@@ -49,5 +49,6 @@
     - vagrant
     # PHP specific files
     - php-mbstring
-
+    - php-pdo
+    - php-mysqlnd
   when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "22")
