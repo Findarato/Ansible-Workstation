@@ -37,6 +37,7 @@
     - { role:  mglaman.atom }
     - { role:  mjanser.powerline }
     - { role:  dochang.docker }
+    - { role: tersmitten.composer }
 
   vars_files:
     - vars/firewall.yml

@@ -12,14 +12,14 @@
 
 
 
-- name: Install RPM Fusion Repos 1/2
+- name: Download RPM Fusion Repos 1/2
   get_url:
     url: http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-24.noarch.rpm
     mode: 0644
     dest: /tmp/setup/rpmfusion-free-release-24.noarch.rpm
   when: (ansible_distribution == "Fedora" and ansible_distribution_major_version == "24")
 
-- name: Install RPM Fusion Repos 2/2
+- name: Download RPM Fusion Repos 2/2
   get_url:
     url: http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-24.noarch.rpm
     mode: 0644
