@@ -34,6 +34,13 @@
   dnf:  name=/tmp/setup/rpmfusion-nonfree-release-24.noarch.rpm state=present
   when: (ansible_distribution == "Fedora" and ansible_distribution_major_version == "24")
 
+- name: Install virtualbox repo
+  get_url:
+    url: http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
+    mode: 0644
+    dest: /etc/yum.repos.d/virtualbox.repo
+  when: (ansible_distribution == "Fedora" and ansible_distribution_major_version == "24")
+
 
 
 
