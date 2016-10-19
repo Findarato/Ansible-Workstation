@@ -1,4 +1,3 @@
----
 - hosts:       all
   become:      true
   pre_tasks:
@@ -34,10 +33,11 @@
     - VirtualBox
     - yubikey
   #  - { role:  vcabourdin.chrome }
-    - { role:  mglaman.atom }
-    - { role:  mjanser.powerline }
-    - { role:  dochang.docker }
-    - { role: tersmitten.composer }
+    - { role: mglaman.atom }
+    - { role: mjanser.powerline }
+    - { role: dochang.docker }
+    - { role: geerlingguy.php }
+    - { role: geerlingguy.composer }
 
   vars_files:
     - vars/firewall.yml
