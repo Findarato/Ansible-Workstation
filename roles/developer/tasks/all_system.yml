@@ -3,5 +3,5 @@
 #- include: monospace.yml
 
 
-- name: Installing gulp
-  npm: name=gulp-cli global=yes
+# - name: Installing gulp
+#   npm: name=gulp-cli global=yes
