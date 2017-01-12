@@ -4,7 +4,6 @@
     state: absent
     name: "{{item}}"
   with_items:
-    - dell-super-key
     - thunderbird
   when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "22")
 
@@ -15,50 +14,37 @@
     name: "{{item}}"
   with_items:
    # Screensavers
-    - xscreensaver
-    - xscreensaver-base
-    - xscreensaver-extras
-    - xscreensaver-gl-base
-    - xscreensaver-gl-extras
-    - xscreensaver-gl-extras-gss
-    - xscreensaver-extras-gss
-    - xscreensaver-extras-base
-    - rss-glx-xscreensaver
     # Core Desktop Tools
     - htop
     - wget
     - curl
     - nano
     - python-pycurl
-    - glances
+#    - glances
 #   - phoronix-test-suite
-    - redshift
+#    - redshift
     - python-pip
-    - evolution
-    - yum-plugin-fastestmirror
+#    - evolution
+#    - yum-plugin-fastestmirror
     - nano
     - openssh
     - fwbackups
 # Kerbos with ansible
     - python-devel
-    - krb5-devel
-    - krb5-libs
-    - krb5-workstation
-
-    - redhat-rpm-config
+#    - redhat-rpm-config
     - inotify-tools
     - xbindkeys
-    - xautomation
-    - solaar
+#    - xautomation
+#    - solaar
     - tmux
-    - parallel
+#    - parallel
     - vlc
-    - screenfetch
+#    - screenfetch
     - fslint
     - wget
     - p7zip
-    - expect
-    - sushi
+#    - expect
+#    - sushi
     - seahorse-nautilus
     - gnome-terminal-nautilus
 # Purple Hangouts

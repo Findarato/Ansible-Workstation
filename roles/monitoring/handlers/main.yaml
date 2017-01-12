@@ -1,0 +1,11 @@
+---
+# Handlers for common notifications
+
+- name: restart firewalld
+  service: name=firewalld state=restarted
+
+- name: restart ufw
+  service: name=ufw state=restarted
+
+- name: restart snmpd
+  service: name=snmpd state=restarted

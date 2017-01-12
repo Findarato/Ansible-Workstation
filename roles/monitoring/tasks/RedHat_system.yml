@@ -1,0 +1,47 @@
+---
+- name: Start nrpe
+  systemd:
+    name: nrpe
+    state: started
+    enabled: yes
+    daemon_reload: yes
+  tags: nagios, service
+
+- name: Firewalld Allow NRPE
+  firewalld:
+    port: 5666/tcp
+    permanent: true
+    state: enabled
+  notify: restart firewalld
+
+- name: Firewalld Allow snmp
+  firewalld:
+    port: 161/udp
+    permanent: true
+    state: enabled
+  notify: restart firewalld
+
+- name: Copy snmp config
+  copy:
+    src: snmpd.conf
+    dest: /etc/snmp/snmpd.conf
+    owner: root
+    group: root
+    mode: 0600
+  notify: restart snmpd
+
+- name: Start SNMPD
+  systemd:
+    name: snmpd
+    state: started
+    enabled: yes
+    daemon_reload: yes
+  tags: snmpd, service
+
+- name: Start NRPE
+  systemd:
+    name: nagios-nrpe-service
+    state: started
+    enabled: yes
+    daemon_reload: yes
+  tags: snmpd, service

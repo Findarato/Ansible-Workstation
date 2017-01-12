@@ -1,0 +1,27 @@
+---
+
+- name: Debian Install SNMP and SNMPD
+  apt:
+    state: present
+    name: "{{ item }}"
+  with_items:
+    - net-snmp
+    - net-snmp-libs
+    - net-snmp-utils
+    - ufw
+  when: (ansible_distribution == "Ubuntu")
+
+- name: install some useful nagios plugins
+  apt:
+   state: present
+   name: "{{ item }}"
+  with_items:
+  - nagios-nrpe
+  - nagios-plugins-swap
+  - nagios-plugins-users
+  - nagios-plugins-procs
+  - nagios-plugins-load
+  - nagios-plugins-disk
+  - nagios-plugins-standard
+  - nagios-plugins-contrib
+  when: (ansible_distribution == "Ubuntu")

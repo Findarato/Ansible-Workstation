@@ -1,5 +1,0 @@
-  - name: Debian Install SNMP and SNMPD
-    apt: state=present name={{ item }}
-    with_items:
-      - snmpd
-      - snmp

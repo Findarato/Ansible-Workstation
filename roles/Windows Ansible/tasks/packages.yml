@@ -1,0 +1,11 @@
+---
+
+- name: Install needed packages
+  dnf:
+    state: present
+    name: "{{item}}"
+  with_items:
+    - python-pip
+    - krb5-devel
+    - krb5-libs
+    - krb5-workstation

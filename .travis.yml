@@ -1,0 +1,29 @@
+---
+sudo: required
+
+branches:
+  only:
+  - master
+
+services:
+  - docker
+
+before_install:
+  - sudo apt-get update
+  - sudo apt-get upgrade lxc-docker
+  - echo 'DOCKER_OPTS="-H tcp://127.0.0.1:2375 -H unix:///var/run/docker.sock -s devicemapper"' | sudo tee /etc/default/docker > /dev/null
+  - sudo service docker restart
+  - sleep 5
+  #- sudo docker pull geerlingguy/docker-fedora24-ansible
+  - sudo docker pull v0rts/docker-fedora25-ansible
+
+script:
+ # Run tests in Container
+ - docker exec --tty [container_id] env TERM=xterm ansible-playbook /path/to/ansible/playbook.yml --syntax-check
+ - sudo docker run --rm=true -v
+ `pwd`:
+ /Ansible-Workstation:rw geerlingguy/docker-fedora24-ansible /bin/bash -c
+ "/Ansible-Workstation/tests/test-in-docker.sh "
+
+notifications:
+  email: false

@@ -1,30 +1,14 @@
 - hosts:       all
   become:      true
   pre_tasks:
-    - name:    Update apt cache if needed. (Debian Only)
-      apt:     update_cache=yes cache_valid_time=3600
-      when:    ansible_os_family == "Debian"
-
-    - name:    Update System {{ansible_os_family}} -> {{ansible_distribution}} (Debian Only)
-      apt:     upgrade=dist
-      when:    ansible_os_family == "Debian"
-
     - name:    Update System {{ansible_os_family}} -> {{ansible_distribution}}
-      dnf:     name=* state=latest
+      dnf:     name=*
       when:    (ansible_distribution == "Fedora" and ansible_distribution_major_version > "23")
-
-    - name:    Update System {{ansible_os_family}} -> {{ansible_distribution}}
-      yum:     name=* state=latest
-      when:    (ansible_distribution == "CentOS" and ansible_distribution_major_version > "6")
-
-
-    # This is for Ansible 2.1
-    - name:    Cleaning up System
-      apt:     autoremove=true
-      when:    (ansible_version.major == 2) and (ansible_version.minor >=1) and (ansible_os_family == "Debian")
-
-    - name: Creating temp Path to write to
-      file: path=/tmp/setup/ mode=0644 state=directory
+    - name:    Creating temp Path to write to
+      file:
+        path: /tmp/setup/
+        mode: 0644
+        state: directory
 
   roles:
     - base
@@ -32,10 +16,7 @@
     - arduino
     - VirtualBox
     - yubikey
-  #  - { role:  vcabourdin.chrome }
     - { role: mglaman.atom }
-    - { role: mjanser.powerline }
-    - { role: dochang.docker }
     - { role: geerlingguy.php }
     - { role: geerlingguy.composer }
 
@@ -44,6 +25,3 @@
     - vars/powerline.yml
     - vars/atom.yml
     - vars/fonts.yml
-
-
-# Modules from https://github.com/JBKahn/provisioning-local.git
