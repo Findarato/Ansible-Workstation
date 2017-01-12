@@ -23,7 +23,6 @@
   with_items:
     - firefox
     - gimp
-    - gnome-boxes
     - filezilla
     - openssl-devel
     - xclip
@@ -41,12 +40,12 @@
     - mozilla-fira-mono-fonts
     - google-droid-sans-mono-fonts
     - python-devel
-    - filezilla
     - python
 #    - npm
     - which
     - make
     - vagrant
+    - gtk-murrine-engine
     # PHP specific files
     - php-mbstring
     - php-pdo
