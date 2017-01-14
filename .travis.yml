@@ -1,29 +1,45 @@
 ---
-sudo: required
+services: docker
 
-branches:
-  only:
-  - master
+env:
+  - distro: centos7
+    init: /usr/lib/systemd/systemd
+    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    playbook: test.yml
+  # - distro: ubuntu1604
+  #   init: /lib/systemd/systemd
+  #   run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  #   playbook: test.yml
+  # - distro: ubuntu1404
+  #   init: /sbin/init
+  #   run_opts: ""
+  #   playbook: test.yml
 
 services:
   - docker
 
 before_install:
-  - sudo apt-get update
-  - sudo apt-get upgrade lxc-docker
-  - echo 'DOCKER_OPTS="-H tcp://127.0.0.1:2375 -H unix:///var/run/docker.sock -s devicemapper"' | sudo tee /etc/default/docker > /dev/null
-  - sudo service docker restart
-  - sleep 5
-  #- sudo docker pull geerlingguy/docker-fedora24-ansible
-  - sudo docker pull v0rts/docker-fedora25-ansible
+  # Pull container
+  - 'docker pull geerlingguy/docker-${distro}-ansible:latest'
 
 script:
- # Run tests in Container
- - docker exec --tty [container_id] env TERM=xterm ansible-playbook /path/to/ansible/playbook.yml --syntax-check
- - sudo docker run --rm=true -v
- `pwd`:
- /Ansible-Workstation:rw geerlingguy/docker-fedora24-ansible /bin/bash -c
- "/Ansible-Workstation/tests/test-in-docker.sh "
+  - container_id=$(mktemp)
+  # Run container in detached state.
+  - 'docker run --detach --volume="${PWD}":/etc/ansible/roles/role_under_test:ro ${run_opts} geerlingguy/docker-${distro}-ansible:latest "${init}" > "${container_id}"'
+
+  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible all -m setup'
+
+  # Ansible syntax check.
+  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/role_under_test/tests/${playbook} --syntax-check'
+
+  # Test role.
+  - 'docker exec "$(cat ${container_id})" ansible-playbook /etc/ansible/roles/role_under_test/tests/${playbook}'
+
 
 notifications:
-  email: false
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
+  slack: westchesterpublib:saU5CP0lYF7mHCkvRFNBwkrX
+
+addons:
+  code_climate:
+    repo_token: d99eecc6de6e1286c324419e39d2b6cc0513ce57614d0dd4fb62e6f061125876
