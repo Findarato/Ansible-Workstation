@@ -1,13 +1,14 @@
+---
 
-# - name: Running OS specific Configurations and Commands
-#   include: "{{item}}"
+# - name:           Running OS specific Configurations and Commands
+#   include:        "{{item}}"
 #   with_items:
 #   - "{{ ansible_os_family }}/repos.yml"
 #   - "{{ ansible_os_family }}/system.yml"
 #   - "{{ ansible_os_family }}/packages.yml"
 
-#- name: Running generic Configurations and Commands
-#  include: "{{item}}"
+#- name:            Running generic Configurations and Commands
+#  include:         "{{item}}"
 #  with_items:
   #- "all_system.yml"
   #- font.yml
@@ -15,32 +16,47 @@
 
 
 # - file:
-#     src: /file/to/link/to
-#     dest: /path/to/symlink
-#     owner: foo
-#     group: foo
-#     state: link
+#     src:          /file/to/link/to
+#     dest:         /path/to/symlink
+#     owner:        foo
+#     group:        foo
+#     state:        link
 
 
-- name: Create src folder
+
+- name:             Ensure .ssh directory exists.
   file:
-    path: "/home/{{myuser}}/Documents/src/"
-    state: directory
-    mode: 0750
+    dest:           "/home/{{myuser}}/.ssh/"
+    mode:           0700
+    owner:          "{{myuser}}"
+    state:          directory
 
-- name: Clone dotfiles repos
+- name:             Add Private Keys
+  copy:
+    content:        "{{ item.key }}"
+    dest:           "/home/{{myuser}}/{{item.name}}"
+    backup:           yes
+  with_items:       "{{ private_keys }}"
+
+
+- name:             Create src folder
+  file:
+    path:           "/home/{{myuser}}/Documents/src/"
+    state:          directory
+    mode:           0750
+
+- name:             Clone dotfiles repos
   git:
-    repo: git@github.com:Findarato/dotFiles.git
-    dest: "/home/{{myuser}}/Documents/src/dotFiles"
-    # version: release-1
-    key_file: "{{ lookup('file', '/home/joe/.ssh/github.pub') }}"
-    # key_file: "{{ github_keyfile }}"
+    repo:           git@github.com:Findarato/dotFiles.git
+    dest:           "/home/{{myuser}}/Documents/src/dotFiles"
+    # version:      release-1
+    key_file:       "/home/joe/.ssh/github"
     accept_hostkey: yes
 
 
 # - file:
-#     src: /file/to/link/to
-#     dest: /path/to/symlink
-#     owner: foo
-#     group: foo
-#     state: link
+#     src:          /file/to/link/to
+#     dest:         /path/to/symlink
+#     owner:        foo
+#     group:        foo
+#     state:        link

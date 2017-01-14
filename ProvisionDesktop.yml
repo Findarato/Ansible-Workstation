@@ -6,11 +6,11 @@
     - base
     # - developer
     # - arduino
-    # - VirtualBox
+    - VirtualBox
     # - yubikey
-    # - { role:  mglaman.atom }
-    # - { role:  geerlingguy.php }
-    # - { role:  geerlingguy.composer }
+    # - { role: mglaman.atom }
+    # - { role: geerlingguy.php }
+    # - { role: geerlingguy.composer }
 
   vars_files:
     # - vars/firewall.yml
