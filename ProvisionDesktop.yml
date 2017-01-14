@@ -6,8 +6,8 @@
       when:    (ansible_distribution == "Fedora" and ansible_distribution_major_version > "23")
     - name:    Creating temp Path to write to
       file:
-        path: /tmp/setup/
-        mode: 0644
+        path:  /tmp/setup/
+        mode:  0644
         state: directory
 
   roles:
@@ -16,9 +16,9 @@
     - arduino
     - VirtualBox
     - yubikey
-    - { role: mglaman.atom }
-    - { role: geerlingguy.php }
-    - { role: geerlingguy.composer }
+    - { role:  mglaman.atom }
+    - { role:  geerlingguy.php }
+    - { role:  geerlingguy.composer }
 
   vars_files:
     - vars/firewall.yml

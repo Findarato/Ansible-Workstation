@@ -1,9 +1,8 @@
 ---
-
-- name: Install needed packages
+- name:       Install needed packages
   dnf:
-    state: present
-    name: "{{item}}"
+    state:    present
+    name:     "{{item}}"
   with_items:
     - python-pip
     - krb5-devel

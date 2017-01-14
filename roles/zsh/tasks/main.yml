@@ -1,6 +1,8 @@
 ---
 - name: Install Zsh on {{ ansible_distribution }}
-  dnf: state=present name={{item}}
+  dnf:
+    state: present
+    name: "{{item}}"
   with_items:
     - zsh
   when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "22")

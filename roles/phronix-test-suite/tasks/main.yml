@@ -1,4 +1,0 @@
----
-# Referencing the page I used to find out most of this https://raymii.org/s/tutorials/Ansible_-_Only_if_on_specific_distribution_or_distribution_version.html
- - name: Running distro specific Commands for {{ ansible_os_family }}
-   include: "{{ ansible_os_family }}.yml"
