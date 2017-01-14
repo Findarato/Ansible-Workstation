@@ -13,9 +13,9 @@
     # - { role:  geerlingguy.composer }
 
   vars_files:
-    - vars/firewall.yml
-    - vars/powerline.yml
-    - vars/atom.yml
-    - vars/fonts.yml
+    # - vars/firewall.yml
+    # - vars/powerline.yml
+    # - vars/atom.yml
+    # - vars/fonts.yml
     - vars/base.yml
     - vars/vault.yml
