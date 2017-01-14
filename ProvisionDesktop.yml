@@ -18,3 +18,4 @@
     - vars/atom.yml
     - vars/fonts.yml
     - vars/base.yml
+    - vars/vault.yml
