@@ -13,50 +13,20 @@
     state: present
     name: "{{item}}"
   with_items:
-   # Screensavers
-    # Core Desktop Tools
     - htop
     - wget
     - curl
     - nano
-    - python-pycurl
-#    - glances
-#   - phoronix-test-suite
-#    - redshift
     - python-pip
-#    - evolution
-#    - yum-plugin-fastestmirror
     - nano
     - openssh
     - fwbackups
-# Kerbos with ansible
-    - python-devel
-#    - redhat-rpm-config
-    - inotify-tools
-    - xbindkeys
-#    - xautomation
-#    - solaar
     - tmux
-#    - parallel
     - vlc
-#    - screenfetch
     - fslint
     - wget
     - p7zip
-#    - expect
-#    - sushi
     - seahorse-nautilus
     - gnome-terminal-nautilus
-# Purple Hangouts
-    - purple-hangouts
-    - pidgin-hangouts
-    - libselinux-python
-    - chrome-gnome-shell
   #Keyboard Config. This will eventually be its own role.
-    - zlib-devel
-    - qt5-qtbase-devel
-    - libgudev-devel
-    - libappindicator-devel
-    - systemd-devel
-    - gcc-c++
   when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "22")

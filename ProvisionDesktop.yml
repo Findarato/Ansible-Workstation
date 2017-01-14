@@ -1,27 +1,20 @@
-- hosts:       all
+---
+- hosts:       localhost
   become:      true
-  pre_tasks:
-    - name:    Update System {{ansible_os_family}} -> {{ansible_distribution}}
-      dnf:     name=*
-      when:    (ansible_distribution == "Fedora" and ansible_distribution_major_version > "23")
-    - name:    Creating temp Path to write to
-      file:
-        path:  /tmp/setup/
-        mode:  0644
-        state: directory
-
+  connection:  local
   roles:
     - base
-    - developer
-    - arduino
-    - VirtualBox
-    - yubikey
-    - { role:  mglaman.atom }
-    - { role:  geerlingguy.php }
-    - { role:  geerlingguy.composer }
+    # - developer
+    # - arduino
+    # - VirtualBox
+    # - yubikey
+    # - { role:  mglaman.atom }
+    # - { role:  geerlingguy.php }
+    # - { role:  geerlingguy.composer }
 
   vars_files:
     - vars/firewall.yml
     - vars/powerline.yml
     - vars/atom.yml
     - vars/fonts.yml
+    - vars/base.yml
