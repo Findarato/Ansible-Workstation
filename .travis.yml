@@ -1,6 +1,11 @@
 ---
 sudo: required
 
+env:
+  - distro: fedora24
+    init: /usr/lib/systemd/systemd
+    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+
 branches:
   only:
   - master
@@ -11,19 +16,22 @@ services:
 before_install:
   - sudo apt-get update
   - sudo apt-get upgrade lxc-docker
-  - echo 'DOCKER_OPTS="-H tcp://127.0.0.1:2375 -H unix:///var/run/docker.sock -s devicemapper"' | sudo tee /etc/default/docker > /dev/null
+  # Pull container from Docker Hub.
+  - 'docker pull geerlingguy/docker-${distro}-ansible:latest'
+
+
   - sudo service docker restart
   - sleep 5
   #- sudo docker pull geerlingguy/docker-fedora24-ansible
-  - sudo docker pull v0rts/docker-fedora25-ansible
+#  - sudo docker pull v0rts/docker-fedora25-ansible
 
 script:
- # Run tests in Container
- - docker exec --tty [container_id] env TERM=xterm ansible-playbook /path/to/ansible/playbook.yml --syntax-check
- - sudo docker run --rm=true -v
- `pwd`:
- /Ansible-Workstation:rw geerlingguy/docker-fedora24-ansible /bin/bash -c
- "/Ansible-Workstation/tests/test-in-docker.sh "
+  # Create a random file to store the container ID.
+  - container_id=$(mktemp)
+  # Run container detached, with our role mounted inside.
+  - 'docker run --detach --volume="${PWD}":/etc/ansible/roles/role_under_test:ro ${run_opts} geerlingguy/docker-${distro}-ansible:latest "${init}" > "${container_id}"'
+
+  # TODO - Test the Ansible role.
 
 notifications:
-  email: false
+  email: true
