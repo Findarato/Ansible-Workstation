@@ -1,5 +1,5 @@
 ---
-sudo: required
+services: docker
 
 env:
   - distro: fedora24
@@ -35,3 +35,7 @@ script:
 
 notifications:
   email: true
+
+addons:
+  code_climate:
+    repo_token: d99eecc6de6e1286c324419e39d2b6cc0513ce57614d0dd4fb62e6f061125876

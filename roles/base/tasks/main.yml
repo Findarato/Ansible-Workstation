@@ -1,32 +1,62 @@
+---
 
-- name: Running OS specific Configurations and Commands
-  include: "{{item}}"
-  with_items:
-  - "{{ ansible_os_family }}/repos.yml"
-  - "{{ ansible_os_family }}/system.yml"
-  - "{{ ansible_os_family }}/packages.yml"
+# - name:           Running OS specific Configurations and Commands
+#   include:        "{{item}}"
+#   with_items:
+#   - "{{ ansible_os_family }}/repos.yml"
+#   - "{{ ansible_os_family }}/system.yml"
+#   - "{{ ansible_os_family }}/packages.yml"
 
-#- name: Running generic Configurations and Commands
-#  include: "{{item}}"
+#- name:            Running generic Configurations and Commands
+#  include:         "{{item}}"
 #  with_items:
   #- "all_system.yml"
   #- font.yml
   #- base16.yml
 
 
-- name: Upgrade PIP
-  pip: name=pip state=latest
-
-- name: Installing python kerberos
-  pip: name=kerberos state=latest
-
-- name: Installing required libraries for Windows connections
-  pip: name=pywinrm state=latest
+# - file:
+#     src:          /file/to/link/to
+#     dest:         /path/to/symlink
+#     owner:        foo
+#     group:        foo
+#     state:        link
 
 
-# Follow this guide locally, it is going to be a bitch to setup.
-# I will eventually fix it
 
-# http://docs.ansible.com/ansible/intro_windows.html
+- name:             Ensure .ssh directory exists.
+  file:
+    dest:           "/home/{{myuser}}/.ssh/"
+    mode:           0700
+    owner:          "{{myuser}}"
+    state:          directory
 
-# Referencing the page I used to find out most of this https://raymii.org/s/tutorials/Ansible_-_Only_if_on_specific_distribution_or_distribution_version.html
+- name:             Add Private Keys
+  copy:
+    content:        "{{ item.key }}"
+    dest:           "/home/{{myuser}}/{{item.name}}"
+    backup:           yes
+  with_items:       "{{ private_keys }}"
+
+
+- name:             Create src folder
+  file:
+    path:           "/home/{{myuser}}/Documents/src/"
+    state:          directory
+    mode:           0750
+
+- name:             Clone dotfiles repos
+  git:
+    repo:           git@github.com:Findarato/dotFiles.git
+    dest:           "/home/{{myuser}}/Documents/src/dotFiles"
+    # version:      release-1
+    key_file:       "/home/joe/.ssh/github"
+    accept_hostkey: yes
+
+
+# - file:
+#     src:          /file/to/link/to
+#     dest:         /path/to/symlink
+#     owner:        foo
+#     group:        foo
+#     state:        link

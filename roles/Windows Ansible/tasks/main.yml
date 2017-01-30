@@ -3,17 +3,23 @@
 - include: "system.yml"
 - include: "packages.yml"
 
-- name: Upgrade PIP
-  pip: name=pip state=latest
-  tag: windows
+- name:    Upgrade PIP
+  pip:
+    name:  pip
+    state: latest
+  tag:     windows
 
-- name: Installing python kerberos
-  pip: name=kerberos state=latest
-  tag: windows
+- name:    Installing python kerberos
+  pip:
+    name:  kerberos
+    state: latest
+  tag:     windows
 
-- name: Installing required libraries for Windows connections
-  pip: name=pywinrm state=latest
-  tag: windows
+- name:    Installing required libraries for Windows connections
+  pip:
+    name:  pywinrm
+    state: latest
+  tag:     windows
 
 
 # Follow this guide locally, it is going to be a bitch to setup.

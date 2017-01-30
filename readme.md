@@ -1,3 +1,5 @@
-Deploy Script for my Fedora Workstation.
+# Ansible Fedora Workstation
 
-Also works for laptop
+- [ ] Finish resetting up the deploy
+- [ ] Setup testing
+- [X] Get Windows Ansible Working Also works for laptop
