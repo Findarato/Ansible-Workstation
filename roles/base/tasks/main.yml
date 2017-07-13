@@ -1,12 +1,5 @@
 ---
 
-# - name:           Running OS specific Configurations and Commands
-#   include:        "{{item}}"
-#   with_items:
-#   - "{{ ansible_os_family }}/repos.yml"
-#   - "{{ ansible_os_family }}/system.yml"
-#   - "{{ ansible_os_family }}/packages.yml"
-
 #- name:            Running generic Configurations and Commands
 #  include:         "{{item}}"
 #  with_items:
@@ -85,4 +78,10 @@
     - .rainbow_config.json
     - .zprofile
     - .zshrc
-    - .zsh-update
+
+- name:           Running OS specific Configurations and Commands
+  include:        "{{item}}"
+  with_items:
+  - "{{ ansible_distribution }}/repos.yml"
+  # - "{{ ansible_distribution }}/system.yml"
+  # - "{{ ansible_distribution }}/packages.yml"
