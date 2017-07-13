@@ -15,8 +15,8 @@
 #
 mkdir ~/.ssh
 mkdir ~/.ssh && chmod 700 ~/.ssh && cd ~/.ssh/
-ssh-keygen -t rsa -b 4096 -f ~/.ssh/remote
-ssh-copy-id -i ~/.ssh/remote user@host
-ssh-add ~/.ssh/remote
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/ansible
+ssh-copy-id -i ~/.ssh/ansible user@host
+ssh-add ~/.ssh/ansible
 
 dnf install python-dnf python-pip python ansible
