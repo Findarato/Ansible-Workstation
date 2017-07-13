@@ -54,3 +54,34 @@
     accept_hostkey: yes
     track_submodules: yes
     update: yes
+
+
+- name: Ensure permissions are correct
+  file:
+    path: "/home/{{myuser}}/Documents/src/dotFiles"
+    owner: {{myuser}}
+    group: {{myuser}}
+    mode: 0644
+    recurse: yes
+
+- name: Link up Home directory to dotfiles
+  file:
+    src: '/home/{{myuser}}/Documents/src/dotFiles/{{ item }}'
+    dest: '/home/{{myser}}/{{ item }}'
+    state: link
+  with_items:
+    - bin
+    - .aliases
+    - .ansible.cfg
+    - .bashrc
+    - .dircolors
+    - .functions
+    - .gitconfig
+    - .gitignore
+    - .gitmessage
+    - .gitmodules
+    - .powerlevel9k
+    - .rainbow_config.json
+    - .zprofile
+    - .zshrc
+    - .zsh-update
