@@ -11,18 +11,18 @@
         - libselinux-python  
   roles:
     - base
-    # - developer
+    - developer
+    - zsh
     # - arduino
     # - VirtualBox
     # - yubikey
     # - { role: mglaman.atom }
-    # - { role: geerlingguy.php }
-    # - { role: geerlingguy.composer }
+    - { role: geerlingguy.php }
+    - { role: geerlingguy.composer }
     # - { role: mhalano.visual-studio-code }
     
   vars_files:
     # - vars/firewall.yml
-    # - vars/powerline.yml
     # - vars/atom.yml
     # - vars/fonts.yml
     - vars/base.yml

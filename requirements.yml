@@ -1,4 +1,5 @@
 - src: vcabourdin.chrome
 - src: mglaman.atom
 - src: geerlingguy.composer
+- src: geerlingguy.php
 - src: mhalano.visual-studio-code

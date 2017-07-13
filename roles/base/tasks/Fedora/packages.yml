@@ -1,11 +1,10 @@
 # Remove Files
-- name:       Remove unneeded packages
-  dnf:
-    state:    absent
-    name:     "{{item}}"
-  with_items:
-    - thunderbird
-  when:       (ansible_distribution == "Fedora" and ansible_distribution_major_version > "22")
+# - name:       Remove unneeded packages
+#   dnf:
+#     state:    absent
+#     name:     "{{item}}"
+#   with_items:
+#     - thunderbird
 
 # Install Files
 - name:       Install needed packages
@@ -27,6 +26,6 @@
     - wget
     - p7zip
     - seahorse-nautilus
-    - gnome-terminal-nautilus
+    - tilix
+    - tilix-nautilus
   #Keyboard Config. This will eventually be its own role.
-  when:       (ansible_distribution == "Fedora" and ansible_distribution_major_version > "22")

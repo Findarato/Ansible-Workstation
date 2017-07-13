@@ -1,1 +1,32 @@
----
+# ---
+#Custom Shortcut for Tilix
+# gsettings set org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0 name "Launch Tilix"
+# gsettings set org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0 binding '<Primary><Alt>t'
+# gsettings set org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0 command "tilix"
+
+# This does not seem to work properly
+
+# - name: Setup Shortcut Key for Tilix "binding"
+#   gconftool2:
+#     state: present
+#     key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding"
+#     value_type: "string"
+#     value: "<Primary><Alt>t"
+# - name: Setup Shortcut Key for Tilix "name"
+#   gconftool2:
+#     state: present
+#     key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name"
+#     value_type: "string"
+#     value: "Launch Tilix Ansible"
+# - name: Setup Shortcut Key for Tilix "command"
+#   gconftool2:
+#     state: present
+#     key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command"
+#     value_type: "string"
+#     value: "tilix"
+# - name: Setup Shortcut Key for Tilix "Entry"
+#   gconftool2:
+#     state: present
+#     key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
+#     value_type: "string"
+#     value: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"   
