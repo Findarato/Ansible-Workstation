@@ -48,8 +48,9 @@
 - name:             Clone dotfiles repos
   git:
     repo:           git@github.com:Findarato/dotFiles.git
-    dest:           "/home/{{myuser}}/Documents/src/dotFiles"
+    dest:           "/home/{{myuser}}/Documents/src/"
     # version:      release-1
-    key_file:       "/home/joe/.ssh/github"
+    key_file:       "/home/{{myuser}}/.ssh/github"
     accept_hostkey: yes
-
+    track_submodules: yes
+    update: yes

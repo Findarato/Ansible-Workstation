@@ -18,7 +18,7 @@
     # - { role: mglaman.atom }
     # - { role: geerlingguy.php }
     # - { role: geerlingguy.composer }
-    - { role: mhalano.visual-studio-code }
+    # - { role: mhalano.visual-studio-code }
     
   vars_files:
     # - vars/firewall.yml
