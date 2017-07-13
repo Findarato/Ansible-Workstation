@@ -54,6 +54,7 @@
     accept_hostkey: yes
     track_submodules: yes
     update: yes
+    force: yes
 
 
 - name: Ensure permissions are correct
