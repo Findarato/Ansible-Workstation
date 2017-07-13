@@ -59,8 +59,13 @@
 - name: Ensure permissions are correct
   file:
     path: "/home/{{myuser}}/Documents/src/dotFiles"
+<<<<<<< HEAD
     owner: "{{myuser}}"
     group: "{{myuser}}"
+=======
+    owner: {{myuser}}
+    group: {{myuser}}
+>>>>>>> ca0087fce7fc33f5a59a8d6467f4eaedbc1302d5
     mode: 0644
     recurse: yes
 
