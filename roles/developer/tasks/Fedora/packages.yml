@@ -21,7 +21,7 @@
     - vagrant
     - which
     - make
-    - "@Development tools"
+
     - gcc-c++
     - levien-inconsolata-fonts
     - adobe-source-code-pro-fonts
