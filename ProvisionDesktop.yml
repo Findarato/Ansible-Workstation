@@ -17,7 +17,6 @@
     # - arduino
     # - VirtualBox
     # - yubikey
-    - { role: vcabourdin.chrome }
     - { role: geerlingguy.php }
     - { role: geerlingguy.composer }
     
