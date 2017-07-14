@@ -3,7 +3,7 @@
   become:      true
   connection:  local
   pre_tasks:
-    - name: Install base files
+    - name: Install Manditory base files
       dnf:
         state: present
         name: "{{item}}"
@@ -13,17 +13,14 @@
     - base
     - developer
     - zsh
+    - vs-code
     # - arduino
     # - VirtualBox
     # - yubikey
-    # - { role: mglaman.atom }
+    - { role: vcabourdin.chrome }
     - { role: geerlingguy.php }
     - { role: geerlingguy.composer }
-    # - { role: mhalano.visual-studio-code }
     
   vars_files:
-    # - vars/firewall.yml
-    # - vars/atom.yml
-    # - vars/fonts.yml
     - vars/base.yml
     - vars/vault.yml

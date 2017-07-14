@@ -10,7 +10,7 @@
 - name:       Install needed packages
   dnf:
     state:    present
-    name:     "{{item}}"
+    name:     "{{install_package}}"
   with_items:
     - htop
     - wget
@@ -28,4 +28,6 @@
     - seahorse-nautilus
     - tilix
     - tilix-nautilus
+  loop_control:
+    loop_var: install_package
   #Keyboard Config. This will eventually be its own role.

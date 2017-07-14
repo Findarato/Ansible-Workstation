@@ -1,22 +1,4 @@
 ---
-
-#- name:            Running generic Configurations and Commands
-#  include:         "{{item}}"
-#  with_items:
-  #- "all_system.yml"
-  #- font.yml
-  #- base16.yml
-
-
-# - file:
-#     src:          /file/to/link/to
-#     dest:         /path/to/symlink
-#     owner:        foo
-#     group:        foo
-#     state:        link
-
-
-
 - name:             Ensure .ssh directory exists.
   file:
     dest:           "/home/{{myuser}}/.ssh/"
@@ -39,6 +21,7 @@
     mode:           0750
 
 - name:             Clone dotfiles repos
+  become:      false
   git:
     repo:           git@github.com:Findarato/dotFiles.git
     dest:           "/home/{{myuser}}/Documents/src/dotFiles"
@@ -49,19 +32,11 @@
     update: yes
     force: yes
 
-
-- name: Ensure permissions are correct
-  file:
-    path: "/home/{{myuser}}/Documents/src/dotFiles"
-    owner: "{{myuser}}"
-    group: "{{myuser}}"
-    mode: 0755
-    recurse: yes
-
 - name: Link up Home directory to dotfiles
+  become:      false
   file:
-    src: '/home/{{myuser}}/Documents/src/dotFiles/{{ item }}'
-    dest: '/home/{{myuser}}/{{ item }}'
+    src: '/home/{{myuser}}/Documents/src/dotFiles/{{ link_file }}'
+    dest: '/home/{{myuser}}/{{ link_file }}'
     state: link
   with_items:
     - bin
@@ -78,10 +53,14 @@
     - .rainbow_config.json
     - .zprofile
     - .zshrc
+  loop_control:
+    loop_var: link_file
 
 - name:           Running OS specific Configurations and Commands
-  include:        "{{item}}"
+  include:        "{{include_file}}"
   with_items:
   - "{{ ansible_distribution }}/repos.yml"
   - "{{ ansible_distribution }}/system.yml"
   - "{{ ansible_distribution }}/packages.yml"
+  loop_control:
+    loop_var: include_file

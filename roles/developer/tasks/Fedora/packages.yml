@@ -4,16 +4,18 @@
 - name:       Remove unneeded packages
   dnf:
     state:    absent
-    name:     "{{item}}"
+    name:     "{{remove_package}}"
   with_items:
     - nodejs
     - nodejs-devel
+  loop_control:
+    loop_var: remove_package  
 
 # Install Files
 - name:       Install needed packages
   dnf:
     state:    present
-    name:     "{{item}}"
+    name:     "{{install_package}}"
   with_items:
     - filezilla
     - openssl-devel
@@ -36,3 +38,5 @@
     - php-mbstring
     - php-pdo
     - php-mysqlnd
+  loop_control:
+    loop_var: install_package
