@@ -56,6 +56,16 @@
   loop_control:
     loop_var: link_file
 
+- name: Install Tilix Themes 1
+  synchronize:
+    src: '/home/{{myuser}}/Documents/src/dotFiles/Tilix-Themes/Themes/'
+    dest: "/home/{{ myuser }}/.config/tilix/schemes/"
+
+- name: Install Tilix Themes 2
+  synchronize:
+    src: '/home/{{myuser}}/Documents/src/dotFiles/Tilix-Themes/Themes-2/'
+    dest: "/home/{{ myuser }}/.config/tilix/schemes/"
+
 - name:           Running OS specific Configurations and Commands
   include:        "{{include_file}}"
   with_items:
