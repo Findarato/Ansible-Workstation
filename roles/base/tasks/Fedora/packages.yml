@@ -34,6 +34,7 @@
     - gnome-shell-extension-topicons-plus
     - gnome-shell-extension-calc
     - gnome-tweak-tool
+    - git
   loop_control:
     loop_var: install_package
   #Keyboard Config. This will eventually be its own role.

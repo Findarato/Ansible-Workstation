@@ -1,24 +1,38 @@
-- name:    Download RPM Fusion Repos 1
+- name: Check rpmFusion Non Free Repo
+  stat:
+    path: rpmfusion-free.repo
+  register: rpmfusion_free
+
+- name:    Download RPM Fusion free Repo
   get_url:
     url:   "http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_version }}.noarch.rpm"
     mode:  0644
     dest:  "/tmp/rpmfusion-free-release-{{ ansible_distribution_version }}.noarch.rpm"
+  when: rpmfusion_free.stat is not defined
 
-- name:    Download RPM Fusion Repos 2
+- name:    Install RPM Fusion free Repo
+  dnf:
+    name:  "/tmp/rpmfusion-free-release-{{ ansible_distribution_version }}.noarch.rpm"
+    state: present
+  when: rpmfusion_free.stat is not defined
+
+- name: Check rpmFusion Non Free Repo
+  stat:
+    path: rpmfusion-nonfree.repo
+  register: rpmfusion_nonfree  
+
+- name:    Download RPM Fusion nonfree Repo
   get_url:
     url:   "http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_distribution_version }}.noarch.rpm"
     mode:  0644
     dest:  "/tmp/rpmfusion-nonfree-release-{{ ansible_distribution_version }}.noarch.rpm"
+  when: rpmfusion_nonfree.stat is not defined
   
-- name:    Install RPM Fusion Repos 1
-  dnf:
-    name:  "/tmp/rpmfusion-free-release-{{ ansible_distribution_version }}.noarch.rpm"
-    state: present
-  
-- name:    Install RPM Fusion Repos 2
+- name:    Install RPM Fusion nonfree Repo
   dnf:
     name:  "/tmp/rpmfusion-nonfree-release-{{ ansible_distribution_version }}.noarch.rpm"
     state: present
+  when: rpmfusion_nonfree.stat is not defined
   
 - name:    Install virtualbox repo
   get_url:

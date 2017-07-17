@@ -1,4 +1,18 @@
 ---
+
+- name: Install 'flatpak'
+  package: name=flatpak state=installed
+  become: yes
+
+- name:           Running OS specific Configurations and Commands
+  include:        "{{include_file}}"
+  with_items:
+  - "{{ ansible_distribution }}/repos.yml"
+  - "{{ ansible_distribution }}/system.yml"
+  - "{{ ansible_distribution }}/packages.yml"
+  loop_control:
+    loop_var: include_file
+
 - name:             Ensure .ssh directory exists.
   file:
     dest:           "/home/{{myuser}}/.ssh/"
@@ -20,7 +34,6 @@
     backup:           yes
   with_items:       "{{ private_keys }}"
 
-
 - name:             Create src folder
   file:
     path:           "/home/{{myuser}}/Documents/src/"
@@ -32,12 +45,11 @@
   git:
     repo:           git@github.com:Findarato/dotFiles.git
     dest:           "/home/{{myuser}}/Documents/src/dotFiles"
-    # version:      release-1
     key_file:       "/home/{{myuser}}/.ssh/github"
     accept_hostkey: yes
     track_submodules: yes
     update: yes
-    force: yes
+    # force: yes
 
 - name: Link up Home directory to dotfiles
   become:      false
@@ -63,34 +75,10 @@
   loop_control:
     loop_var: link_file
 
-
-
 - name:             Copy Tilix Themes
   copy:
     src:            "/home/{{myuser}}/Documents/src/dotFiles/Tilix-Themes/{{ item }}"
     dest:           "/home/{{ myuser }}/.config/tilix/schemes/"
-    backup:         yes
+    backup:          
   with_items:       
     - "{{ tilix_themes }}"
-
-
-# - name: Install Tilix Themes 1
-#   synchronize:
-#     src: '/home/{{myuser}}/Documents/src/dotFiles/Tilix-Themes/Themes/'
-#     dest: "/home/{{ myuser }}/.config/tilix/schemes/"
-
-
-
-# - name: Install Tilix Themes 2
-#   synchronize:
-#     src: '/home/{{myuser}}/Documents/src/dotFiles/Tilix-Themes/Themes-2/'
-#     dest: "/home/{{ myuser }}/.config/tilix/schemes/"
-
-- name:           Running OS specific Configurations and Commands
-  include:        "{{include_file}}"
-  with_items:
-  - "{{ ansible_distribution }}/repos.yml"
-  - "{{ ansible_distribution }}/system.yml"
-  - "{{ ansible_distribution }}/packages.yml"
-  loop_control:
-    loop_var: include_file

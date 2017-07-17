@@ -5,5 +5,21 @@
 # gsettings set org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0 command "tilix"
 
 - name: Enable flathub repo
-  command: "flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo"
+  command: "flatpak remote-add {{ item }}"
+  register: flatpak_repo
+  changed_when: "'already exists' not in flatpak_repo.stderr"
+  failed_when: "'already exists' not in flatpak_repo.stderr"
+  with_items:
+    - "gnome https://sdk.gnome.org/gnome.flatpakrepo"
+    - "flathub https://flathub.org/repo/flathub.flatpakrepo"
 
+# Flatpacks to install. Need to figure out how to do this 
+# http://baedert.org/repo/org.baedert.corebird.flatpakref
+
+
+# This will probably have to be adjusted for success
+- name: Install flatpaks
+  command: flatpak install http://baedert.org/repo/org.baedert.corebird.flatpakref
+  register: flatpak_install
+  failed_when: "'already installed' not in flatpak_install.stderr"
+  changed_when: "'already installed' not in flatpak_install.stderr"

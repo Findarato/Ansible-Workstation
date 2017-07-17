@@ -11,3 +11,7 @@ vscode_extensions:
   - sandcastle.whitespace
   - 2gua.rainbow-brackets
   - formulahendry.terminal
+  # - dhoeric.ansible-vault
+  - codeflows.vaulty
+  - haaaad.ansible
+  - shardulm94.trailing-spaces
