@@ -30,6 +30,7 @@
     - tilix
     - tilix-nautilus
     - chromium
+    - lm_sensors
     - gnome-shell-extension-topicons-plus
     - gnome-shell-extension-calc
     - gnome-tweak-tool
