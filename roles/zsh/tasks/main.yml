@@ -5,3 +5,8 @@
     name: "{{item}}"
   with_items:
     - zsh
+
+- name: use oh-my-zsh
+  git:
+    repo=https://github.com/robbyrussell/oh-my-zsh.git
+    dest="/home/{{ myuser }}/.oh-my-zsh"

@@ -22,7 +22,8 @@
     - openssh
     - fwbackups
     - tmux
-    - vlc
+#    - vlc
+#    - mpv
     - fslint
     - wget
     - p7zip
@@ -35,6 +36,11 @@
     - gnome-shell-extension-calc
     - gnome-tweak-tool
     - git
+    - remmina
+    - remmina-plugins-rdp
+    - remmina-plugins-gnome
+    - remmina-plugins-spice
+    - remmina-plugins-vnc
   loop_control:
     loop_var: install_package
   #Keyboard Config. This will eventually be its own role.
