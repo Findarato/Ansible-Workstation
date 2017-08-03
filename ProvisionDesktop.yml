@@ -8,18 +8,16 @@
         state: present
         name: "{{item}}"
       with_items:
-        - libselinux-python  
+        - libselinux-python
   roles:
     - base
     - developer
     - zsh
     - vs-code
-    # - arduino
-    # - VirtualBox
-    # - yubikey
-    - { role: geerlingguy.php }
-    - { role: geerlingguy.composer }
-    
+    - geerlingguy.php
+    - geerlingguy.composer
+
+
   vars_files:
     - vars/base.yml
     - vars/vault.yml

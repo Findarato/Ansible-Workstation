@@ -22,7 +22,8 @@
     - openssh
     - fwbackups
     - tmux
-    - vlc
+#    - vlc
+#    - mpv
     - fslint
     - wget
     - p7zip
