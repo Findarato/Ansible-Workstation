@@ -79,6 +79,5 @@
   copy:
     src:            "/home/{{myuser}}/Documents/src/dotFiles/Tilix-Themes/{{ item }}"
     dest:           "/home/{{ myuser }}/.config/tilix/schemes/"
-    backup:          
-  with_items:       
+  with_items:
     - "{{ tilix_themes }}"
