@@ -40,7 +40,7 @@ echo "Setting up Ansible Roles"
 ansible-galaxy install -r requirements.yml
 
 echo "Running Ansible"
-sudo ansible-playbook -i localHosts ProvisionDesktop.yml
+ansible-playbook -i localHosts ProvisionDesktop.yml
 
 #Clean up the Setup
 echo "Cleaning up Setup directory"
