@@ -15,7 +15,7 @@
 #    - "gnome https://sdk.gnome.org/gnome.flatpakrepo"
 #    - "flathub https://flathub.org/repo/flathub.flatpakrepo"
 
-# Flatpacks to install. Need to figure out how to do this 
+# Flatpacks to install. Need to figure out how to do this
 # http://baedert.org/repo/org.baedert.corebird.flatpakref
 
 

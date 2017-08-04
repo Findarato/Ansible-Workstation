@@ -1,17 +1,17 @@
 #Remove Packages
-- name:       Remove unneeded packages
+- name:       Remove Packages
   dnf:
     state:    absent
-    name:     "{{item}}"
+    name:     "{{ item }}"
   with_items:
     - gnome-shell-extension-background-logo
     - gnome-shell-extension-window-list
 
 # Install Packages
-- name:       Install needed packages
+- name:       Install Packages
   dnf:
     state:    present
-    name:     "{{install_package}}"
+    name:     "{{ install_package }}"
   with_items:
     - htop
     - wget
@@ -45,3 +45,27 @@
   loop_control:
     loop_var: install_package
   #Keyboard Config. This will eventually be its own role.
+
+- name: Install Extra Font Packages
+  dnf:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - adobe-source-code-pro-fonts
+    - dejavu-sans-fonts
+    - dejavu-sans-mono-fonts
+    - dejavu-serif-fonts
+    - gnu-free-fonts-common
+    - gnu-free-mono-fonts
+    - gnu-free-sans-fonts
+    - gnu-free-serif-fonts
+    - levien-inconsolata-fonts
+    - liberation-fonts-common
+    - liberation-mono-fonts
+    - liberation-sans-fonts
+    - liberation-serif-fonts
+    - mozilla-fira-mono-fonts
+    - msimonson-anonymouspro-fonts
+    - overpass-fonts
+    - terminus-fonts
+  when: install_extra_fonts
