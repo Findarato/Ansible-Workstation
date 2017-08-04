@@ -12,6 +12,7 @@ rm -rf "$HOME/setup"
 
 echo "Updating System"
 sudo dnf distro-sync -y
+sudo dnf groupinstall "Ansible node" -y
 sudo dnf install -y ansible git python-pip python-dnf python-pip python ansible ansible-lint
 
 echo "Working in the $HOME Directory"

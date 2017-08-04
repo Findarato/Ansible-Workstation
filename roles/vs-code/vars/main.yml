@@ -14,3 +14,4 @@ vscode_extensions:
   - dhoeric.ansible-vault
   - haaaad.ansible
   - shardulm94.trailing-spaces
+  - shakram02.bash-beautify

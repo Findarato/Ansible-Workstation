@@ -1,45 +1,5 @@
 ---
 
-- name: Install 'flatpak'
-  package: name=flatpak state=installed
-  become: yes
-
-- name:           Running OS specific Configurations and Commands
-  include:        "{{include_file}}"
-  with_items:
-  - "{{ ansible_distribution }}/repos.yml"
-  - "{{ ansible_distribution }}/system.yml"
-  - "{{ ansible_distribution }}/packages.yml"
-  loop_control:
-    loop_var: include_file
-
-- name:             Ensure .ssh directory exists.
-  file:
-    dest:           "/home/{{myuser}}/.ssh/"
-    mode:           0700
-    owner:          "{{myuser}}"
-    state:          directory
-
-- name:             Ensure Tilix config directory exsists
-  file:
-    dest:           "/home/{{myuser}}/.config/tilix/schemes/"
-    mode:           0700
-    owner:          "{{myuser}}"
-    state:          directory
-
-- name:             Add Private Keys
-  copy:
-    content:        "{{ item.key }}"
-    dest:           "/home/{{myuser}}/{{item.name}}"
-    backup:           yes
-  with_items:       "{{ private_keys }}"
-
-- name:             Create src folder
-  file:
-    path:           "/home/{{myuser}}/Documents/src/"
-    state:          directory
-    mode:           0750
-
 - name:             Clone dotfiles repos
   become:      false
   git:
@@ -81,3 +41,48 @@
     dest:           "/home/{{ myuser }}/.config/tilix/schemes/"
   with_items:
     - "{{ tilix_themes }}"
+
+
+- name: Install 'flatpak'
+  package: name=flatpak state=installed
+  become: yes
+
+- name:             Ensure .ssh directory exists.
+  file:
+    dest:           "/home/{{myuser}}/.ssh/"
+    mode:           0700
+    owner:          "{{myuser}}"
+    state:          directory
+
+- name:             Ensure Tilix config directory exsists
+  file:
+    dest:           "/home/{{myuser}}/.config/tilix/schemes/"
+    mode:           0700
+    owner:          "{{myuser}}"
+    state:          directory
+
+- name:             Add Private Keys
+  copy:
+    content:        "{{ item.key }}"
+    dest:           "/home/{{myuser}}/{{item.name}}"
+    backup:           yes
+  with_items:       "{{ private_keys }}"
+
+- name:             Create src folder
+  file:
+    path:           "/home/{{myuser}}/Documents/src/"
+    state:          directory
+    mode:           0750
+
+- name:           Running OS specific Configurations and Commands
+  include:        "{{include_file}}"
+  with_items:
+  - "{{ ansible_distribution }}/repos.yml"
+  - "{{ ansible_distribution }}/system.yml"
+  - "{{ ansible_distribution }}/packages.yml"
+  - "{{ ansible_distribution }}/services.yml"
+  loop_control:
+    loop_var: include_file
+
+- name: Harden OS
+  include: harden.yml

@@ -19,5 +19,5 @@
 
 
   vars_files:
-    - vars/base.yml
+    - vars/main.yml
     - vars/vault.yml
