@@ -31,6 +31,7 @@
     - tilix
     - tilix-nautilus
     - chromium
+    - chrome-gnome-shell
     - lm_sensors
     - gnome-shell-extension-topicons-plus
     - gnome-shell-extension-calc
@@ -41,6 +42,9 @@
     - remmina-plugins-gnome
     - remmina-plugins-spice
     - remmina-plugins-vnc
+# Personal
+    - rednotebook
+    - python3-yaml
   loop_control:
     loop_var: install_package
   #Keyboard Config. This will eventually be its own role.

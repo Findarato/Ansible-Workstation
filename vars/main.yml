@@ -12,7 +12,7 @@ libvirt_storage_path: /home/images
 
 # Services
 enable_sshd: true
-enable_fail2ban: true
+enable_fail2ban: false
 enable_powertop: false
 enable_vagrant_nfs: true
 enable_libvirtd: true

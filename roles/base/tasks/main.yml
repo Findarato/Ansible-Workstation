@@ -4,18 +4,19 @@
   become:      false
   git:
     repo:           git@github.com:Findarato/dotFiles.git
-    dest:           "/home/{{myuser}}/Documents/src/dotFiles"
-    key_file:       "/home/{{myuser}}/.ssh/github"
+    dest:           "/home/{{local_user}}/Documents/src/dotFiles"
+    key_file:       "/home/{{local_user}}/.ssh/github"
     accept_hostkey: yes
     track_submodules: yes
     update: yes
+    # version: 
     # force: yes
 
 - name: Link up Home directory to dotfiles
   become:      false
   file:
-    src: '/home/{{myuser}}/Documents/src/dotFiles/{{ link_file }}'
-    dest: '/home/{{myuser}}/{{ link_file }}'
+    src: '/home/{{local_user}}/Documents/src/dotFiles/{{ link_file }}'
+    dest: '/home/{{local_user}}/{{ link_file }}'
     state: link
   with_items:
     - bin
@@ -37,8 +38,8 @@
 
 - name:             Copy Tilix Themes
   copy:
-    src:            "/home/{{myuser}}/Documents/src/dotFiles/Tilix-Themes/{{ item }}"
-    dest:           "/home/{{ myuser }}/.config/tilix/schemes/"
+    src:            "/home/{{local_user}}/Documents/src/dotFiles/Tilix-Themes/{{ item }}"
+    dest:           "/home/{{ local_user }}/.config/tilix/schemes/"
   with_items:
     - "{{ tilix_themes }}"
 
@@ -49,28 +50,28 @@
 
 - name:             Ensure .ssh directory exists.
   file:
-    dest:           "/home/{{myuser}}/.ssh/"
+    dest:           "/home/{{local_user}}/.ssh/"
     mode:           0700
-    owner:          "{{myuser}}"
+    owner:          "{{local_user}}"
     state:          directory
 
 - name:             Ensure Tilix config directory exsists
   file:
-    dest:           "/home/{{myuser}}/.config/tilix/schemes/"
+    dest:           "/home/{{local_user}}/.config/tilix/schemes/"
     mode:           0700
-    owner:          "{{myuser}}"
+    owner:          "{{local_user}}"
     state:          directory
 
 - name:             Add Private Keys
   copy:
     content:        "{{ item.key }}"
-    dest:           "/home/{{myuser}}/{{item.name}}"
+    dest:           "/home/{{local_user}}/{{item.name}}"
     backup:           yes
   with_items:       "{{ private_keys }}"
 
 - name:             Create src folder
   file:
-    path:           "/home/{{myuser}}/Documents/src/"
+    path:           "/home/{{local_user}}/Documents/src/"
     state:          directory
     mode:           0750
 

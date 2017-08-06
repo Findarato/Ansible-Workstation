@@ -9,4 +9,4 @@
 - name: use oh-my-zsh
   git:
     repo=https://github.com/robbyrussell/oh-my-zsh.git
-    dest="/home/{{ myuser }}/.oh-my-zsh"
+    dest="/home/{{ local_user }}/.oh-my-zsh"
