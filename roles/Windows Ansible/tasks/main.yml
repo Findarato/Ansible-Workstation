@@ -1,3 +1,4 @@
+#!/usr/bin/env ansible-playbook
 ---
 - include: "repos.yml"
 - include: "system.yml"

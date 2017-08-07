@@ -1,3 +1,5 @@
+#!/usr/bin/env ansible-playbook
+---
 #Remove Packages
 - name:       Remove Packages
   dnf:

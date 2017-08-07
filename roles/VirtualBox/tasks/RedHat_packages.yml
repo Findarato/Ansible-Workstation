@@ -1,3 +1,4 @@
+#!/usr/bin/env ansible-playbook
 ---
 # Install Fedora Specific files.
 - name:       Install needed  {{ ansible_os_family }} -> {{ ansible_distribution }} Specific packages

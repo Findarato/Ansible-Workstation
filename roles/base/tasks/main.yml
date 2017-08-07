@@ -1,3 +1,4 @@
+#!/usr/bin/env ansible-playbook
 ---
 
 - name:             Clone dotfiles repos
@@ -47,6 +48,10 @@
 - name: Install 'flatpak'
   package: name=flatpak state=installed
   become: yes
+
+
+- name: Install Gnome MPV
+  command: flatpak install flathub io.github.GnomeMpv
 
 - name:             Ensure .ssh directory exists.
   file:

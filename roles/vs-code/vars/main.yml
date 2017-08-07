@@ -15,3 +15,6 @@ vscode_extensions:
   - haaaad.ansible
   - shardulm94.trailing-spaces
   - shakram02.bash-beautify
+# For Editing Markdown
+# - shd101wyy.markdown-preview-enhanced
+  - yzhang.markdown-all-in-one
