@@ -10,7 +10,7 @@
     accept_hostkey: yes
     track_submodules: yes
     update: yes
-    # version: 
+    # version:
     # force: yes
 
 - name: Link up Home directory to dotfiles
@@ -51,7 +51,7 @@
 
 
 - name: Install Gnome MPV
-  command: flatpak install flathub io.github.GnomeMpv
+  command: flatpak install flathub io.github.GnomeMpv -y
 
 - name:             Ensure .ssh directory exists.
   file:

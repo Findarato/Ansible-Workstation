@@ -7,7 +7,7 @@
 
 - name: change shell from bash to zsh
   user:
-    name="{{ user.name }}"
+    name="{{ local_user }}"
     shell=/bin/zsh
 
 - name: use oh-my-zsh
