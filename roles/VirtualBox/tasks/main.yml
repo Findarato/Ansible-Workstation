@@ -1,3 +1,4 @@
+#!/usr/bin/env ansible-playbook
 ---
 - name: Running OS specific Configurations and Commands
   include: "{{item}}"

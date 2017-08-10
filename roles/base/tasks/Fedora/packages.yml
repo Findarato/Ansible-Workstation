@@ -1,3 +1,5 @@
+#!/usr/bin/env ansible-playbook
+---
 #Remove Packages
 - name:       Remove Packages
   dnf:
@@ -31,6 +33,7 @@
     - tilix
     - tilix-nautilus
     - chromium
+    - chrome-gnome-shell
     - lm_sensors
     - gnome-shell-extension-topicons-plus
     - gnome-shell-extension-calc
@@ -41,7 +44,13 @@
     - remmina-plugins-gnome
     - remmina-plugins-spice
     - remmina-plugins-vnc
+<<<<<<< HEAD
+# Personal
+    - rednotebook
+    - python3-yaml
+=======
     - util-linux-user
+>>>>>>> afc1449ab4e9fcaf6e846a0623f551d7a836d341
   loop_control:
     loop_var: install_package
   #Keyboard Config. This will eventually be its own role.

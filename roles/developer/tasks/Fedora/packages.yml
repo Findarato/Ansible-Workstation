@@ -1,3 +1,4 @@
+#!/usr/bin/env ansible-playbook
 ---
 
 # Remove Files
@@ -9,7 +10,7 @@
     - nodejs
     - nodejs-devel
   loop_control:
-    loop_var: remove_package  
+    loop_var: remove_package
 
 # Install Files
 - name:       Install needed packages

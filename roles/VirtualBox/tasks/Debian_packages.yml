@@ -1,3 +1,4 @@
+#!/usr/bin/env ansible-playbook
 ---
 # Install Debian Specific files.
 - name: Install needed  {{ ansible_os_family }} Specific packages
