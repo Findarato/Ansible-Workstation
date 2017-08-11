@@ -9,6 +9,11 @@
   with_items:
     - nodejs
     - nodejs-devel
+    - docker
+    - docker-common
+    - docker-selinux
+    - docker-engine-selinux
+    - docker-engine
   loop_control:
     loop_var: remove_package
 
@@ -24,7 +29,6 @@
     - vagrant
     - which
     - make
-
     - gcc-c++
     - levien-inconsolata-fonts
     - adobe-source-code-pro-fonts
@@ -39,5 +43,19 @@
     - php-mbstring
     - php-pdo
     - php-mysqlnd
+    - python-requests
+    - nodejs
+#Docker Related Files
+
   loop_control:
     loop_var: install_package
+
+- name: Update pip
+  pip:
+    name: pip
+    state: latest
+
+- name: Install python modules with pip
+  pip:
+    name: cfscrape
+    state: present

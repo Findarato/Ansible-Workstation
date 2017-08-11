@@ -1,6 +1,4 @@
 ---
-include: base.yml
-
 # User
 local_user: joe
 local_user_email: joe@wpl.lib.in,us

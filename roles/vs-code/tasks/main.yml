@@ -1,5 +1,5 @@
 ---
-- name:           "Running {{ansible_os_family}} - {{ ansible_distribution }} specific Configurations and Commands"
+- name:    "Running {{ansible_os_family}} - {{ ansible_distribution }} specific Configurations and Commands"
   include: "{{ ansible_os_family }}.yml"
 
 - name: Install Extensions

@@ -11,12 +11,11 @@
         - libselinux-python
   roles:
     - base
-    - developer
+    # - developer
     - zsh
     - vs-code
     - geerlingguy.php
     - geerlingguy.composer
-
 
   vars_files:
     - vars/main.yml

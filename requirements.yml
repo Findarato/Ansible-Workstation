@@ -1,2 +1,5 @@
+---
+
+- src: eddyhub.gnome_shell
 - src: geerlingguy.php
 - src: geerlingguy.composer

@@ -1,0 +1,18 @@
+---
+- hosts:       localhost
+  become:      false
+  connection:  local
+  roles:
+    - {role: eddyhub.gnome_shell,
+       gnome_extension_path: "/home/{{local_user}}/.local/share/gnome-shell/extensions/",
+       gnome_extension_owner: edi,
+       gnome_shell_extensions: [442, 1005]
+      }
+    - gnome-shell
+
+
+
+
+  vars_files:
+    - vars/main.yml
+    - vars/vault.yml

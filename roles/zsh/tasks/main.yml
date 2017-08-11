@@ -3,9 +3,12 @@
 - name: Install Zsh on {{ ansible_distribution }}
   dnf:
     state: present
-    name: "{{item}}"
-  with_items:
-    - zsh
+    name: zsh
+
+- name: change shell from bash to zsh
+  user:
+    name="{{ local_user }}"
+    shell=/bin/zsh
 
 - name: use oh-my-zsh
   git:
