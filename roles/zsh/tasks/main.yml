@@ -11,6 +11,14 @@
     shell=/bin/zsh
 
 - name: use oh-my-zsh
+  become: false
   git:
     repo=https://github.com/robbyrussell/oh-my-zsh.git
     dest="/home/{{ local_user }}/.oh-my-zsh"
+
+- name: Correct the permission on oh-my-zsh
+  file:
+    path: "/home/{{ local_user }}/.oh-my-zsh"
+    owner: "{{ local_user }}"
+    group: "{{ local_user }}"
+    state: directory

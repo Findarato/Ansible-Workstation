@@ -45,11 +45,8 @@
     - remmina-plugins-spice
     - remmina-plugins-vnc
     - util-linux-user
-<<<<<<< HEAD
-=======
     - dnf-plugins-core
     - sqlite
->>>>>>> 8c4f8d3781408bd722eb99fb4972995b50eea832
   loop_control:
     loop_var: install_package
   #Keyboard Config. This will eventually be its own role.
