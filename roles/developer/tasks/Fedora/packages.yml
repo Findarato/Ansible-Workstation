@@ -55,6 +55,7 @@
   loop_control:
     loop_var: install_package
   notify: Update Font Cache  
+  
 - name: Update pip
   pip:
     name: pip
