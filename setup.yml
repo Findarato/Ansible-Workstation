@@ -1,12 +1,12 @@
 ---
-- hosts:       localhost
-  become:      true
-  connection:  local
+- hosts:          localhost
+  become:         true
+  connection:     local
   pre_tasks:
-    - name: Install Manditory base files
+    - name:       Install Manditory base files
       dnf:
-        state: present
-        name: "{{ item }}"
+        state:    present
+        name:     "{{ item }}"
       with_items:
         - libselinux-python
   roles:

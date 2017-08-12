@@ -1,33 +1,30 @@
 #!/usr/bin/env ansible-playbook
 ---
 
-- name: Create FiraCode Directory
+- name:         Create FiraCode Directory
   file:
-    path: /usr/share/fonts/FiraCode/
-    state: directory
-    mode: 0755
+    path:       /usr/share/fonts/FiraCode/
+    state:      directory
+    mode:       0755
 
-- name: Install FiraCode
+- name:         Install FiraCode
   unarchive:
-    src: https://github.com/tonsky/FiraCode/releases/download/1.204/FiraCode_1.204.zip
-    dest: /usr/share/fonts/FiraCode/
-    creates: /usr/share/fonts/FiraCode/fira_code.css
+    src:        "https://github.com/tonsky/FiraCode/releases/download/1.204/FiraCode_1.204.zip"
+    dest:       /usr/share/fonts/FiraCode/
+    creates:    /usr/share/fonts/FiraCode/fira_code.css
     remote_src: yes
-  notify: Update Font Cache  
+  notify:       Update Font Cache
 
-- name: Create Hack Directory
+- name:         Create Hack Directory
   file:
-    path: /usr/share/fonts/Hack/
-    state: directory
-    mode: 0755
+    path:       /usr/share/fonts/Hack/
+    state:      directory
+    mode:       0755
 
-- name: Install Hack
+- name:         Install Hack
   unarchive:
-    src: https://github.com/chrissimpkins/Hack/releases/download/v2.020/Hack-v2_020-ttf.zip
-    dest: /usr/share/fonts/Hack/
-    creates: /usr/share/fonts/Hack/Hack-Bold.ttf
+    src:        "https://github.com/chrissimpkins/Hack/releases/download/v2.020/Hack-v2_020-ttf.zip"
+    dest:       /usr/share/fonts/Hack/
+    creates:    /usr/share/fonts/Hack/Hack-Bold.ttf
     remote_src: yes
-  notify: Update Font Cache  
-
-
-# https://github.com/chrissimpkins/Hack/releases/download/v2.020/Hack-v2_020-ttf.zip
+  notify:       Update Font Cache

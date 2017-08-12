@@ -1,26 +1,25 @@
 #!/usr/bin/env ansible-playbook
 ---
-- name: Add repository
+- name:           Add repository
   yum_repository:
-    name: code
-    description: Visual Studio Code
-    file: vscode
-    baseurl: https://packages.microsoft.com/yumrepos/vscode
-    gpgkey: https://packages.microsoft.com/keys/microsoft.asc
-    enabled: yes
-    gpgcheck: yes
-
+    name:         code
+    description:  Visual Studio Code
+    file:         vscode
+    baseurl:      "https://packages.microsoft.com/yumrepos/vscode"
+    gpgkey:       "https://packages.microsoft.com/keys/microsoft.asc"
+    enabled:      yes
+    gpgcheck:     yes
 
 # Install Files
-- name: Install vscode Yum
+- name:           Install vscode Yum
   yum:
-    name: code
-    state: latest
+    name:         code
+    state:        latest
     update_cache: yes
-  when: ansible_pkg_mgr == "yum"
+  when:           ansible_pkg_mgr =  = "yum"
 
-- name: Install vscode dnf
+- name:           Install vscode dnf
   dnf:
-    name: code
-    state: latest
-  when: ansible_pkg_mgr == "dnf"
+    name:         code
+    state:        latest
+  when:           ansible_pkg_mgr =  = "dnf"

@@ -1,20 +1,20 @@
 #!/usr/bin/env ansible-playbook
 ---
 #Remove Packages
-- name:       Remove Packages
-  dnf:
-    state:    absent
-    name:     "{{ item }}"
-  with_items:
+- name:         Remove Packages
+  dnf:          
+    state:      absent
+    name:       "{{ item }}"
+  with_items:   
     - gnome-shell-extension-background-logo
     - gnome-shell-extension-window-list
 
 # Install Packages
-- name:       Install Packages
-  dnf:
-    state:    present
-    name:     "{{ install_package }}"
-  with_items:
+- name:         Install Packages
+  dnf:          
+    state:      present
+    name:       "{{ install_package }}"
+  with_items:   
     - htop
     - wget
     - curl
@@ -48,15 +48,15 @@
     - util-linux-user
     - dnf-plugins-core
     - sqlite
-  loop_control:
-    loop_var: install_package
+  loop_control: 
+    loop_var:   install_package
   #Keyboard Config. This will eventually be its own role.
 
-- name: Install Extra Font Packages
-  dnf:
-    name: "{{ item }}"
-    state: present
-  with_items:
+- name:         Install Extra Font Packages
+  dnf:          
+    name:       "{{ item }}"
+    state:      present
+  with_items:   
     - adobe-source-code-pro-fonts
     - dejavu-sans-fonts
     - dejavu-sans-mono-fonts
@@ -74,5 +74,5 @@
     - msimonson-anonymouspro-fonts
     - overpass-fonts
     - terminus-fonts
-  when: install_extra_fonts
-  notify: Update Font Cache  
+  when:         install_extra_fonts
+  notify:       Update Font Cache  

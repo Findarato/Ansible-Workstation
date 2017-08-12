@@ -1,16 +1,16 @@
 #!/usr/bin/env ansible-playbook
 ---
-- name:    "Running {{ansible_os_family}} - {{ ansible_distribution }} specific Configurations and Commands"
-  include: "{{ ansible_os_family }}.yml"
+- name:           "Running {{ansible_os_family}} - {{ ansible_distribution }} specific Configurations and Commands"
+  include:        "{{ ansible_os_family }}.yml"
 
 
 # This is stuck with an error 8.12.2017
-# - name: Install Extensions
-#   become: no
-#   command: "/usr/bin/code --install-extension '{{ extension }}'"
+# - name:         Install Extensions
+#   become:       no
+#   command:      "/usr/bin/code --install-extension '{{ extension }}'"
 #   with_items:
 #     - "{{ vscode_extensions }}"
-#   register: vscode_result
+#   register:     vscode_result
 #   changed_when: "'already installed' not in vscode_result.stdout"
 #   loop_control:
-#     loop_var: extension
+#     loop_var:   extension
