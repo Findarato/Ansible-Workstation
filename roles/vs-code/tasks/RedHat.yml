@@ -12,15 +12,15 @@
 
 
 # Install Files
-- name: install vscode Yum
+- name: Install vscode Yum
   yum:
     name: code
-    state: present
+    state: latest
     update_cache: yes
   when: ansible_pkg_mgr == "yum"
 
-- name: install vscode dnf
+- name: Install vscode dnf
   dnf:
     name: code
-    state: present
+    state: latest
   when: ansible_pkg_mgr == "dnf"

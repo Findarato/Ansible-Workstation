@@ -1,23 +1,84 @@
 #!/usr/bin/env ansible-playbook
 ---
 
+
+
+- name: Install 'flatpak'
+  package: name=flatpak state=installed
+  become: yes
+
+
+- name:             Ensure .ssh directory exists.
+  file:
+    dest:           "/home/{{ local_user }}/.ssh/"
+    mode:           0700
+    owner:          "{{ local_user }}"
+    state:          directory
+
+- name:             Ensure Tilix config directory exsists
+  file:
+    dest:           "/home/{{ local_user }}/.config/tilix/schemes/"
+    mode:           0700
+    owner:          "{{ local_user }}"
+    state:          directory
+
+- name:             Add Private Keys
+  copy:
+    content:        "{{ item.key }}"
+    dest:           "/home/{{local_user}}/.ssh/{{item.name}}"
+    backup:           yes
+  with_items:       "{{ private_keys }}"
+
+- name:             Create src folder
+  file:
+    path:           "/home/{{ local_user }}/Documents/src/"
+    state:          directory
+    mode:           0750
+
+
 - name:             Clone dotfiles repos
   become:      false
   git:
     repo:           git@github.com:Findarato/dotFiles.git
-    dest:           "/home/{{local_user}}/Documents/src/dotFiles"
-    key_file:       "/home/{{local_user}}/.ssh/github"
+    dest:           "/home/{{ local_user }}/Documents/src/dotFiles"
+    key_file:       "/home/{{ local_user }}/.ssh/github"
     accept_hostkey: yes
     track_submodules: yes
     update: yes
+  register: result
     # version:
     # force: yes
+
+- name: Delete exsisting files in home directory
+  become:      false
+  file:
+    src: '/home/{{ local_user }}/Documents/src/dotFiles/{{ old_file }}'
+    dest: '/home/{{ local_user }}/{{ old_file }}'
+    state: absent
+  with_items:
+    - bin
+    - .aliases
+    - .ansible.cfg
+    - .bashrc
+    - .dircolors
+    - .functions
+    - .gitconfig
+    - .gitignore
+    - .gitmessage
+    - .gitmodules
+    - .powerlevel9k
+    - .rainbow_config.json
+    - .zprofile
+    - .zshrc
+  loop_control:
+    loop_var: old_file
+  when: result|changed
 
 - name: Link up Home directory to dotfiles
   become:      false
   file:
-    src: '/home/{{local_user}}/Documents/src/dotFiles/{{ link_file }}'
-    dest: '/home/{{local_user}}/{{ link_file }}'
+    src: '/home/{{ local_user }}/Documents/src/dotFiles/{{ link_file }}'
+    dest: '/home/{{ local_user }}/{{ link_file }}'
     state: link
   with_items:
     - bin
@@ -36,52 +97,18 @@
     - .zshrc
   loop_control:
     loop_var: link_file
+  when: result|changed
 
 - name:             Copy Tilix Themes
   copy:
-    src:            "/home/{{local_user}}/Documents/src/dotFiles/Tilix-Themes/{{ item }}"
+    src:            "/home/{{ local_user }}/Documents/src/dotFiles/Tilix-Themes/{{ item }}"
     dest:           "/home/{{ local_user }}/.config/tilix/schemes/"
   with_items:
     - "{{ tilix_themes }}"
-
-
-- name: Install 'flatpak'
-  package: name=flatpak state=installed
-  become: yes
-
-
-- name: Install Gnome MPV
-  command: flatpak install flathub io.github.GnomeMpv -y
-
-- name:             Ensure .ssh directory exists.
-  file:
-    dest:           "/home/{{local_user}}/.ssh/"
-    mode:           0700
-    owner:          "{{local_user}}"
-    state:          directory
-
-- name:             Ensure Tilix config directory exsists
-  file:
-    dest:           "/home/{{local_user}}/.config/tilix/schemes/"
-    mode:           0700
-    owner:          "{{local_user}}"
-    state:          directory
-
-- name:             Add Private Keys
-  copy:
-    content:        "{{ item.key }}"
-    dest:           "/home/{{local_user}}/{{item.name}}"
-    backup:           yes
-  with_items:       "{{ private_keys }}"
-
-- name:             Create src folder
-  file:
-    path:           "/home/{{local_user}}/Documents/src/"
-    state:          directory
-    mode:           0750
+  when:  result|changed
 
 - name:           Running OS specific Configurations and Commands
-  include:        "{{include_file}}"
+  include:        "{{ include_file }}"
   with_items:
   - "{{ ansible_distribution }}/repos.yml"
   - "{{ ansible_distribution }}/system.yml"

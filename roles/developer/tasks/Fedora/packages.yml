@@ -1,11 +1,16 @@
 #!/usr/bin/env ansible-playbook
 ---
 
+- name: State of System
+  stat:
+    path: /usr/share/fonts/mozilla-fira/FiraMono-Bold.otf
+  register: mozillaFiraMonoBold
+
 # Remove Files
 - name:       Remove unneeded packages
   dnf:
     state:    absent
-    name:     "{{remove_package}}"
+    name:     "{{ remove_package }}"
   with_items:
     - nodejs
     - nodejs-devel
@@ -16,12 +21,13 @@
     - docker-engine
   loop_control:
     loop_var: remove_package
+  when: mozillaFiraMonoBold.stat.exists == False
 
 # Install Files
 - name:       Install needed packages
   dnf:
     state:    present
-    name:     "{{install_package}}"
+    name:     "{{ install_package }}"
   with_items:
     - filezilla
     - openssl-devel
@@ -38,7 +44,6 @@
     - python
     - which
     - make
-    - gtk-murrine-engine
     # PHP specific files
     - php-mbstring
     - php-pdo
@@ -49,7 +54,7 @@
 
   loop_control:
     loop_var: install_package
-
+  notify: Update Font Cache  
 - name: Update pip
   pip:
     name: pip

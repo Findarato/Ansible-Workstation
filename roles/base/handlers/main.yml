@@ -24,3 +24,6 @@
   service:
     name: fail2ban
     state: restarted
+
+- name: Update Font Cache
+  command: fc-cache -fv

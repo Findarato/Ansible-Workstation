@@ -16,6 +16,9 @@
 #    - "gnome https://sdk.gnome.org/gnome.flatpakrepo"
 #    - "flathub https://flathub.org/repo/flathub.flatpakrepo"
 
+#- name: Install Gnome MPV
+#  command: flatpak install flathub io.github.GnomeMpv -y
+
 # Flatpacks to install. Need to figure out how to do this
 # http://baedert.org/repo/org.baedert.corebird.flatpakref
 

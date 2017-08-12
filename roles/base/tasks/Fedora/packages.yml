@@ -38,6 +38,7 @@
     - gnome-shell-extension-topicons-plus
     - gnome-shell-extension-calc
     - gnome-tweak-tool
+    - gtk-murrine-engine
     - git
     - remmina
     - remmina-plugins-rdp
@@ -74,3 +75,4 @@
     - overpass-fonts
     - terminus-fonts
   when: install_extra_fonts
+  notify: Update Font Cache  

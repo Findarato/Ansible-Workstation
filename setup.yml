@@ -6,12 +6,12 @@
     - name: Install Manditory base files
       dnf:
         state: present
-        name: "{{item}}"
+        name: "{{ item }}"
       with_items:
         - libselinux-python
   roles:
     - base
-    # - developer
+    - developer
     - zsh
     - vs-code
     - geerlingguy.php
