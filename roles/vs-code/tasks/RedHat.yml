@@ -16,10 +16,10 @@
     name:         code
     state:        latest
     update_cache: yes
-  when:           ansible_pkg_mgr =  = "yum"
+  when:           ansible_pkg_mgr == "yum"
 
 - name:           Install vscode dnf
   dnf:
     name:         code
     state:        latest
-  when:           ansible_pkg_mgr =  = "dnf"
+  when:           ansible_pkg_mgr == "dnf"

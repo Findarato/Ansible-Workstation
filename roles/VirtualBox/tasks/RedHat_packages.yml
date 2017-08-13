@@ -1,8 +1,10 @@
 #!/usr/bin/env ansible-playbook
 ---
 # Install Fedora Specific files.
-- name:       Install needed  {{ ansible_os_family }} -> {{ ansible_distribution }} Specific packages
-  dnf:        state                 = present name = {{item}}
+- name:       "Install needed {{ ansible_os_family }} -> {{ ansible_distribution }} Specific packages"
+  dnf:
+    state:    present
+    name:     "{{ item }}"
   with_items:
     - binutils
     - gcc
@@ -14,12 +16,14 @@
     - kernel-headers
     - kernel-devel
     - dkms
-    - VirtualBox-5.0
-  when:       (ansible_distribution =              = "Fedora" and ansible_distribution_major_version > "23")
+    - VirtualBox-5.2
+  when:       ansible_pkg_mgr == "dnf"
 
 # Install CentOS Specific files.for 7+
 - name:       Install needed  {{ ansible_os_family }} -> {{ ansible_distribution }} Specific packages
-  yum:        state                 = present name = {{item}}
+  yum:
+    state:    present
+    name:     "{{ item }}"
   with_items:
     - binutils
     - gcc
@@ -31,5 +35,5 @@
     - kernel-headers
     - kernel-devel
     - dkms
-    - VirtualBox-5.0
-  when:       (ansible_distribution =              = "CentOS" and ansible_distribution_major_version > "6")
+    - VirtualBox-5.2
+  when:       ansible_pkg_mgr == "yum"

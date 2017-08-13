@@ -6,4 +6,4 @@
     name:     "{{item}}"
   with_items:
     - zsh
-  when:       (ansible_distribution =  = "Fedora" and ansible_distribution_major_version > "22")
+  when:       ansible_pkg_mgr == "dnf"
