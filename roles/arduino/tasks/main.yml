@@ -1,19 +1,22 @@
 ---
 # Run the equivalent of "apt-get update" as a separate step
-- name: Installing required Arduino files
-  apt: update_cache=yes name={{item}}
+- name:           Installing required Arduino files
+  apt:
+    update_cache: yes
+    name:         "{{ item }}"
   with_items:
-  - arduino
-  - arduino-core
-  when:    ansible_os_family == "Debian"
+    - arduino
+    - arduino-core
+    when:         ansible_pkg_mgr == "apt"
 
-
-- name: Installing required Arduino files Fedora
-  dnf: name={{item}} state=latest
+- name:           Installing required Arduino files Fedora
+  dnf:
+    name:         "{{ item }}"
+    state:        latest
   with_items:
-  - arduino
-  - arduino-core
-  when: (ansible_distribution == "Fedora" and ansible_distribution_major_version > "22")
+    - arduino
+    - arduino-core
+    when:         ansible_pkg_mgr == "dnf"
 
 
-- include: permissions.yml
+- include:        permissions.yml
