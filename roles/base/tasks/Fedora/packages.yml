@@ -48,6 +48,10 @@
     - util-linux-user
     - dnf-plugins-core
     - sqlite
+    - python3
+    - python3-pip
+    - ImageMagick
+    - tint2
   loop_control:
     loop_var:   install_package
   #Keyboard Config. This will eventually be its own role.
@@ -76,3 +80,9 @@
     - terminus-fonts
   when:         install_extra_fonts
   notify:       Update Font Cache
+
+- name: Unique custimzation tools
+  pip:
+    name: wpgtk
+    executable: pip3
+    extra_args: --user

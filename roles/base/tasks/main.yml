@@ -7,7 +7,6 @@
     state:            latest
   become:             yes
 
-
 - name:               Ensure .ssh directory exists.
   file:
     dest:             "/home/{{ local_user }}/.ssh/"
