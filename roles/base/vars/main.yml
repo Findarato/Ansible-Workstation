@@ -1,5 +1,3 @@
 # Themes are in a dir/theme format
 # Directories are either Themes or Themes-2
-tilix_themes:
-  - "Themes/espresso.json"
-  - "Themes/espresso-libre.json"
+

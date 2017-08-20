@@ -18,3 +18,9 @@ enable_libvirtd: true
 # Extras
 install_extra_fonts: true
 install_packager: false
+install_steam: true
+install_nvidia: true
+
+tilix_themes:
+  - "Themes/espresso.json"
+  - "Themes/espresso-libre.json"

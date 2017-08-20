@@ -3,7 +3,7 @@
 
 - name:          Check rpmFusion Non Free Repo
   stat:
-    path:        rpmfusion-free.repo
+    path:        /etc/yum.repos.d/rpmfusion-free.repo
   register:      rpmfusion_free
 
 - name:          Download RPM Fusion free Repo
@@ -21,7 +21,7 @@
 
 - name:          Check rpmFusion Non Free Repo
   stat:
-    path:        rpmfusion-nonfree.repo
+    path:        /etc/yum.repos.d/pmfusion-nonfree.repo
   register:      rpmfusion_nonfree
 
 - name:          Download RPM Fusion nonfree Repo
@@ -42,8 +42,44 @@
     url:         "http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo"
     mode:        0644
     dest:        /etc/yum.repos.d/virtualbox.repo
-# - name:        Install
 
+- name:          Check negative17 Multimedia Repo
+  stat:
+    path:        /etc/yum.repos.d/fedora-multimedia.repo
+  register:      fedora_multimedia
 
+- name:          Download negative17 Multimedia Repo
+  get_url:
+    url:         "https://negativo17.org/repos/fedora-multimedia.repo"
+    mode:        0644
+    dest:        "/etc/yum.repos.d/fedora-multimedia.repo"
+  when:          fedora_multimedia.stat is not defined
 
-# rpm -ivh http: //download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{version}}.noarch.rpm
+- name:          Check negative17 Steam Repo
+  stat:
+    path:        /etc/yum.repos.d/fedora-steam.repo
+  register:      fedora_steam
+
+- name:          Download negative17 Steam Repo
+  get_url:
+    url:         "https://negativo17.org/repos/fedora-steam.repo"
+    mode:        0644
+    dest:        "/etc/yum.repos.d/fedora-steam.repo"
+  when:
+    - fedora_steam.stat is not defined
+    - install_steam == true
+
+- name:          Check negative17 Nvidia Repo
+  stat:
+    path:        /etc/yum.repos.d/fedora-nvidia.repo
+  register:      fedora_steam
+
+- name:          Download negative17 Nvidia Repo
+  get_url:
+    url:         "https://negativo17.org/repos/fedora-nvidia.repo"
+    mode:        0644
+    dest:        "/etc/yum.repos.d/fedora-nvidia.repo"
+  when:
+    - fedora_steam.stat is not defined
+    - install_nvidia == true
+
