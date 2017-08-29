@@ -1,0 +1,47 @@
+---
+# tasks file for docker-syncthing
+
+- name: Create Docker paths
+  file:
+    path: "{{ docker_syncthing_storage }}/{{ item }}"
+    state: directory
+    mode: 0775
+  with_items:
+    - config
+    - data
+
+- name: Create Syncthing container
+  docker_container:
+    name: syncthing
+    image: linuxserver/syncthing
+    state: started
+    restart_policy: unless-stopped
+    recreate: yes
+    restart: yes
+    pull: true
+#    dns_servers: 127.0.0.1
+    exposed_ports:
+      - 8384
+      - 22000
+      - 21027/udp
+    published_ports:
+      - 8384:8384
+      - 22000:22000
+      - 21027:21027/udp
+    volumes:
+      - "{{ docker_syncthing_storage }}/data:/mnt/data"
+      - "{{ docker_syncthing_storage }}/config:/config"
+    env:
+      TZ: America/Chicago
+      PUID: 1001
+      PGID: 1001
+
+
+- name: Open Ports for PlexPY
+  firewalld:
+    port: "{{ item }}"
+    permanent: true
+    state: enabled
+  with_items:
+    - "{{ docker_ports }}"
+  notify: Restart firewalld

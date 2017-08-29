@@ -1,0 +1,12 @@
+---
+# handlers file for docker-syncthing
+
+- name: Restart firewalld
+  service:
+    name: firewalld
+    state: restarted
+
+- name: Restart UFW
+  service:
+    name: ufw
+    state: restarted
