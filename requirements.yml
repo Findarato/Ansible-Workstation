@@ -3,3 +3,5 @@
 - src: eddyhub.gnome_shell
 - src: geerlingguy.php
 - src: geerlingguy.composer
+- src: https://github.com/marklee77/ansible-role-docker
+- src: mjanser.firewalld

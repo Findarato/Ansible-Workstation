@@ -5,6 +5,8 @@
   file:
     path: "{{ docker_syncthing_storage }}/{{ item }}"
     state: directory
+    owner: "{{ local_user }}"
+    group: docker
     mode: 0775
   with_items:
     - config
@@ -29,11 +31,11 @@
       - 22000:22000
       - 21027:21027/udp
     volumes:
-      - "{{ docker_syncthing_storage }}/data:/mnt/data"
+      - "{{ docker_syncthing_storage }}/data/:/mnt/data/"
       - "{{ docker_syncthing_storage }}/config:/config"
     env:
       TZ: America/Chicago
-      PUID: 1001
+      PUID: 1000
       PGID: 1001
 
 
