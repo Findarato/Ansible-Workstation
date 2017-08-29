@@ -12,6 +12,18 @@
     - config
     - data
 
+- name: Create Docker paths
+  file:
+    path: "/home/{{ local_user }}/{{ item }}"
+    state: directory
+    owner: "{{ local_user }}"
+    group: docker
+    mode: 0775
+  with_items:
+    - Pictures
+    - tapet
+
+
 - name: Create Syncthing container
   docker_container:
     name: syncthing
@@ -33,6 +45,9 @@
     volumes:
       - "{{ docker_syncthing_storage }}/data/:/mnt/data/"
       - "{{ docker_syncthing_storage }}/config:/config"
+      - "/home/{{ local_user }}/Pictures:/mnt/pictures"
+      - "/home/{{ local_user }}/tapet:/mnt/tapet"
+
     env:
       TZ: America/Chicago
       PUID: 1000
