@@ -47,6 +47,8 @@
       - "{{ docker_syncthing_storage }}/config:/config"
       - "/home/{{ local_user }}/Pictures:/mnt/pictures"
       - "/home/{{ local_user }}/tapet:/mnt/tapet"
+      - "/home/{{ local_user }}/syncthing:/mnt/joe"
+      - "/home/{{ local_user }}/camera:/mnt/camera"
 
     env:
       TZ: America/Chicago
