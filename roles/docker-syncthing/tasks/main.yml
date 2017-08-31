@@ -22,7 +22,8 @@
   with_items:
     - Pictures
     - tapet
-
+    - syncthing
+    - camera
 
 - name: Create Syncthing container
   docker_container:
