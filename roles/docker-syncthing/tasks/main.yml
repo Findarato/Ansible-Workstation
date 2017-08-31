@@ -1,7 +1,19 @@
 ---
 # tasks file for docker-syncthing
 
-- name: Create Docker paths
+- name: Create Docker group
+  group:
+    name: docker
+    state: present
+
+- name: Add local user to Docker group
+  user:
+    name: "{{ local_user }}"
+    groups: docker
+    append: yes
+
+
+- name: Create Docker paths System
   file:
     path: "{{ docker_syncthing_storage }}/{{ item }}"
     state: directory
@@ -12,7 +24,7 @@
     - config
     - data
 
-- name: Create Docker paths
+- name: Create Docker paths Home
   file:
     path: "/home/{{ local_user }}/{{ item }}"
     state: directory
@@ -34,7 +46,6 @@
     recreate: yes
     restart: yes
     pull: true
-#    dns_servers: 127.0.0.1
     exposed_ports:
       - 8384
       - 22000
@@ -50,14 +61,20 @@
       - "/home/{{ local_user }}/tapet:/mnt/tapet"
       - "/home/{{ local_user }}/syncthing:/mnt/joe"
       - "/home/{{ local_user }}/camera:/mnt/camera"
-
     env:
       TZ: America/Chicago
       PUID: 1000
       PGID: 1001
 
+- lineinfile:
+    path: "{{ docker_syncthing_storage }}/config/config.xml"
+    regexp: '^<apikey>'
+    line: "<apikey>{{ syncthing_api_key }}</apikey>"
+    backup: true
+    backrefs: true
+  register: reloadContainer
 
-- name: Open Ports for PlexPY
+- name: Open Ports for Syncthing
   firewalld:
     port: "{{ item }}"
     permanent: true

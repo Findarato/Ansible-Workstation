@@ -29,3 +29,5 @@
 #  register:     flatpak_install
 #  failed_when:  "'already installed' not in flatpak_install.stderr"
 #  changed_when: "'already installed' not in flatpak_install.stderr"
+
+#flatpak install --from http://baedert.org/repo/org.baedert.corebird.flatpakref

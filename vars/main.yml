@@ -20,6 +20,7 @@ install_extra_fonts: true
 install_packager: false
 install_steam: true
 install_nvidia: true
+install_docker: true
 
 tilix_themes:
   - "Themes/espresso.json"
