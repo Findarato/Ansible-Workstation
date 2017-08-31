@@ -1,7 +1,19 @@
 ---
 # tasks file for docker-syncthing
 
-- name: Create Docker paths
+- name: Create Docker group
+  group:
+    name: docker
+    state: present
+
+- name: Add local user to Docker group
+  user:
+    name: "{{ local_user }}"
+    groups: docker
+    append: yes
+
+
+- name: Create Docker paths System
   file:
     path: "{{ docker_syncthing_storage }}/{{ item }}"
     state: directory
@@ -12,7 +24,7 @@
     - config
     - data
 
-- name: Create Docker paths
+- name: Create Docker paths Home
   file:
     path: "/home/{{ local_user }}/{{ item }}"
     state: directory
@@ -22,6 +34,8 @@
   with_items:
     - Pictures
     - tapet
+    - syncthing
+    - camera
 
 
 - name: Create Syncthing container

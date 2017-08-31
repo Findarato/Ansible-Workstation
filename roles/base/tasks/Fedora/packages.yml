@@ -52,7 +52,6 @@
     - python3-pip
     - ImageMagick
     - tint2
-    - mpv
     - python-firewall
   loop_control:
     loop_var:   install_package
@@ -87,4 +86,4 @@
   pip:
     name: wpgtk
     executable: pip3
-    extra_args: --user
+    extra_args: --user --upgrade
