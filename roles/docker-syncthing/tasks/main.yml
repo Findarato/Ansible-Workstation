@@ -61,6 +61,7 @@
       - "/home/{{ local_user }}/tapet:/mnt/tapet"
       - "/home/{{ local_user }}/syncthing:/mnt/joe"
       - "/home/{{ local_user }}/camera:/mnt/camera"
+      - "/home/{{ local_user }}/Documents:/mnt/documents"
     env:
       TZ: America/Chicago
       PUID: 1000
