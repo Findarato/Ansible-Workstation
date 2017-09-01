@@ -88,3 +88,10 @@
     name: wpgtk
     executable: pip3
     extra_args: --user --upgrade
+
+- name: Install Slack
+  dnf:
+    name: "https://downloads.slack-edge.com/linux_releases/slack-2.7.1-0.1.fc21.x86_64.rpm"
+    state: present
+  when:
+    - install_slack == true

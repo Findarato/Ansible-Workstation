@@ -21,6 +21,7 @@ install_packager: false
 install_steam: true
 install_nvidia: true
 install_docker: true
+install_slack: true
 
 tilix_themes:
   - "Themes/espresso.json"
