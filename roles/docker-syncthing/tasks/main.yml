@@ -1,19 +1,7 @@
 ---
 # tasks file for docker-syncthing
 
-- name: Create Docker group
-  group:
-    name: docker
-    state: present
-
-- name: Add local user to Docker group
-  user:
-    name: "{{ local_user }}"
-    groups: docker
-    append: yes
-
-
-- name: Create Docker paths System
+- name: Create Docker paths
   file:
     path: "{{ docker_syncthing_storage }}/{{ item }}"
     state: directory
@@ -24,7 +12,7 @@
     - config
     - data
 
-- name: Create Docker paths Home
+- name: Create Docker paths
   file:
     path: "/home/{{ local_user }}/{{ item }}"
     state: directory
@@ -36,6 +24,7 @@
     - tapet
     - syncthing
     - camera
+    - Documents
 
 - name: Create Syncthing container
   docker_container:
@@ -46,6 +35,7 @@
     recreate: yes
     restart: yes
     pull: true
+#    dns_servers: 127.0.0.1
     exposed_ports:
       - 8384
       - 22000
@@ -59,7 +49,7 @@
       - "{{ docker_syncthing_storage }}/config:/config"
       - "/home/{{ local_user }}/Pictures:/mnt/pictures"
       - "/home/{{ local_user }}/tapet:/mnt/tapet"
-      - "/home/{{ local_user }}/syncthing:/mnt/joe"
+      - "/home/{{ local_user }}/syncthing:/mnt/joe "
       - "/home/{{ local_user }}/camera:/mnt/camera"
       - "/home/{{ local_user }}/Documents:/mnt/documents"
     env:
@@ -67,13 +57,6 @@
       PUID: 1000
       PGID: 1001
 
-- lineinfile:
-    path: "{{ docker_syncthing_storage }}/config/config.xml"
-    regexp: '^<apikey>'
-    line: "<apikey>{{ syncthing_api_key }}</apikey>"
-    backup: true
-    backrefs: true
-  register: reloadContainer
 
 - name: Open Ports for Syncthing
   firewalld:
