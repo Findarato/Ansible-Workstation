@@ -72,7 +72,7 @@
 - name:          Check negative17 Nvidia Repo
   stat:
     path:        /etc/yum.repos.d/fedora-nvidia.repo
-  register:      fedora_steam
+  register:      fedora_nvidia
 
 - name:          Download negative17 Nvidia Repo
   get_url:
@@ -80,6 +80,6 @@
     mode:        0644
     dest:        "/etc/yum.repos.d/fedora-nvidia.repo"
   when:
-    - fedora_steam.stat is not defined
+    - fedora_nvidia.stat is not defined
     - install_nvidia == true
 

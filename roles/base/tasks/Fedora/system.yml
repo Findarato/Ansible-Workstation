@@ -31,3 +31,36 @@
 #  changed_when: "'already installed' not in flatpak_install.stderr"
 
 #flatpak install --from http://baedert.org/repo/org.baedert.corebird.flatpakref
+
+
+- name: Install Slack
+  dnf:
+    name: "https://downloads.slack-edge.com/linux_releases/slack-2.7.1-0.1.fc21.x86_64.rpm"
+    state: present
+  when:
+    - install_slack == true
+
+- name: Install Nvidia Docker
+  dnf:
+    name: "https://github.com/NVIDIA/nvidia-docker/releases/download/v1.0.1/nvidia-docker-1.0.1-1.x86_64.rpm"
+    state: present
+  when:
+    - install_docker == true
+    - install_nvidia == true
+
+- name: Install Nvidia-modprobe
+  dnf:
+    name: nvidia-modprobe
+    state: present
+  when:
+    - install_docker == true
+    - install_nvidia == true
+
+- name: Enable and start nvidia-docker service
+  service:
+    name:      nvidia-docker
+    state:     started
+    enabled:   yes
+  when:
+    - install_docker == true
+    - install_nvidia == true

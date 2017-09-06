@@ -1,13 +1,13 @@
 #!/usr/bin/env ansible-playbook
 ---
 
-- name:         Create FiraCode Directory
+- name:         Font => Create FiraCode Directory
   file:
     path:       /usr/share/fonts/FiraCode/
     state:      directory
     mode:       0755
 
-- name:         Install FiraCode
+- name:         Font => Install FiraCode
   unarchive:
     src:        "https://github.com/tonsky/FiraCode/releases/download/1.204/FiraCode_1.204.zip"
     dest:       /usr/share/fonts/FiraCode/
@@ -15,16 +15,30 @@
     remote_src: yes
   notify:       Update Font Cache
 
-- name:         Create Hack Directory
+- name:         Font => Create Hack Directory
   file:
     path:       /usr/share/fonts/Hack/
     state:      directory
     mode:       0755
 
-- name:         Install Hack
+- name:         Font => Install Hack
   unarchive:
     src:        "https://github.com/chrissimpkins/Hack/releases/download/v2.020/Hack-v2_020-ttf.zip"
     dest:       /usr/share/fonts/Hack/
     creates:    /usr/share/fonts/Hack/Hack-Bold.ttf
+    remote_src: yes
+  notify:       Update Font Cache
+
+- name:         Font => Create Overpass Directory
+  file:
+    path:       /usr/share/fonts/Overpass/
+    state:      directory
+    mode:       0755
+
+- name:         Font => Install Overpass
+  unarchive:
+    src:        "https://github.com/RedHatBrand/Overpass/releases/download/3.0.2/overpass-desktop-fonts.zip"
+    dest:       "/usr/share/fonts/Overpass/"
+    creates:    "/usr/share/fonts/Overpass/overpass/overpass-bold.otf"
     remote_src: yes
   notify:       Update Font Cache

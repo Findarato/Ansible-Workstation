@@ -80,6 +80,9 @@
     - msimonson-anonymouspro-fonts
     - overpass-fonts
     - terminus-fonts
+    - google-android-emoji-fonts
+    - google-noto-fonts-common
+    - google-android-emoji-fonts
   when:         install_extra_fonts
   notify:       Update Font Cache
 

@@ -50,6 +50,10 @@
     - php-mysqlnd
     - python-requests
     - nodejs
+    - inkscape
+    - sassc
+    - libsass
+    - glib2-devel
   loop_control:
     loop_var:   install_package
   notify:       Update Font Cache

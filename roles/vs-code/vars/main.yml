@@ -10,7 +10,7 @@ vscode_extensions:
   - joelday.docthis
   - kamikillerto.vscode-colorize
   - sandcastle.whitespace
-  - 2gua.rainbow-brackets
+  - CoenraadS.bracket-pair-colorizer
   - formulahendry.terminal
   - dhoeric.ansible-vault
   - haaaad.ansible
@@ -20,3 +20,4 @@ vscode_extensions:
 # - shd101wyy.markdown-preview-enhanced
   - yzhang.markdown-all-in-one
   - steve8708.align
+  - PeterJausovec.vscode-docker
