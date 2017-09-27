@@ -16,9 +16,6 @@
   when:
     - rpmfusion_free.stat.exists == false
 
-# - debug:
-#   msg: "{{rpmfusion_free.stat}}"
-
 - name:          Install RPM Fusion free Repo
   dnf:
     name:        "/tmp/rpmfusion-free-release-{{ ansible_distribution_version }}.noarch.rpm"
@@ -59,10 +56,6 @@
   stat:
     path:        /etc/yum.repos.d/fedora-multimedia.repo
   register:      fedora_multimedia
-
-
-- debug:
-    msg: "{{ fedora_multimedia }} "
 
 - name:          Download negative17 Multimedia Repo
   get_url:

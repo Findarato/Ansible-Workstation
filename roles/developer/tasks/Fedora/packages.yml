@@ -60,20 +60,3 @@
     loop_var:   install_package
   notify:       Update Font Cache
 
-- name:         Update pip
-  pip:
-    name:       pip
-    state:      latest
-
-- name:         Install python modules with pip
-  become:       false
-  pip:
-    name:       "{{ pip_install }}"
-    state:      latest
-    extra_args: --user --upgrade
-  with_items:
-    - cfscrape
-    - selenium
-    - google-api-python-client
-  loop_control:
-    loop_var:   pip_install
