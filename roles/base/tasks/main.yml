@@ -1,85 +1,86 @@
 #!/usr/bin/env ansible-playbook
 ---
 
-- name :               Install 'flatpak'
-  package :
-    name :             flatpak
-    state :            latest
-  become :             yes
+- name:               Install 'flatpak'
+  package:
+    name:             flatpak
+    state:            latest
+  become:             yes
 
-- name :               Ensure .ssh directory exists.
-  file :
-    dest :             "/home/{{ local_user }}/.ssh/"
-    mode :             0700
-    owner :            "{{ local_user }}"
-    state :            directory
+- name:               Ensure .ssh directory exists.
+  file:
+    dest:             "/home/{{ local_user }}/.ssh/"
+    mode:             0700
+    owner:            "{{ local_user }}"
+    state:            directory
 
-- name :               Ensure Tilix config directory exsists
-  file :
-    dest :             "/home/{{ local_user }}/.config/tilix/schemes/"
-    mode :             0700
-    owner :            "{{ local_user }}"
-    state :            directory
+- name:               Ensure Tilix config directory exsists
+  file:
+    dest:             "/home/{{ local_user }}/.config/tilix/schemes/"
+    mode:             0700
+    owner:            "{{ local_user }}"
+    state:            directory
 
-- name :               Add Private Keys
-  copy :
-    content :          "{{ item.key }}"
-    dest :             "/home/{{ local_user }}/.ssh/{{ item.name }}"
-    backup :           yes
-  with_items :         "{{ private_keys }}"
-  when :
+- name:               Add Private Keys
+  copy:
+    content:          "{{ item.key }}"
+    dest:             "/home/{{ local_user }}/.ssh/{{ item.name }}"
+    backup:           yes
+  with_items:         "{{ private_keys }}"
+  when:
     - local_user == "joe"
 
-- name :               Generate Private keys
-  user :
-    generate_ssh_key : true
-  when :
+- name:               Generate Private keys
+  user:
+    name: "{{ local_user }}"
+    generate_ssh_key: true
+  when:
     - local_user != "joe"
 
 
-- name :               Create src folder
-  file :
-    path :             "/home/{{ local_user }}/Documents/src/"
-    state :            directory
-    owner :            "{{ local_user }}"
-    mode :             0750
+- name:               Create src folder
+  file:
+    path:             "/home/{{ local_user }}/Documents/src/"
+    state:            directory
+    owner:            "{{ local_user }}"
+    mode:             0750
 
-- name :               Clone dotfiles repos
-  become :             false
-  git :
-    repo :             "https://github.com/Findarato/dotFiles.git"
-    dest :             "/home/{{ local_user }}/Documents/src/dotFiles_read_only"
-    key_file :         "/home/{{ local_user }}/.ssh/github"
-    accept_hostkey :   yes
-    track_submodules : yes
-    update :           yes
-  register :           result
-  ignore_errors :      yes
-  when :
+- name:               Clone dotfiles repos
+  become:             false
+  git:
+    repo:             "https://github.com/Findarato/dotFiles.git"
+    dest:             "/home/{{ local_user }}/Documents/src/dotFiles_read_only"
+    key_file:         "/home/{{ local_user }}/.ssh/github"
+    accept_hostkey:   yes
+    track_submodules: yes
+    update:           yes
+  register:           result
+  ignore_errors:      yes
+  when:
     - local_user != "joe"
 
-- name :               Clone dotfiles repos
-  become :             false
-  git :
-    repo :             "git@github.com:Findarato/dotFiles.git"
-    dest :             "/home/{{ local_user }}/Documents/src/dotFiles"
-    key_file :         "/home/{{ local_user }}/.ssh/github"
-    accept_hostkey :   yes
-    track_submodules : yes
-    update :           yes
-  register :           result
-  ignore_errors :      yes
-  when :
+- name:               Clone dotfiles repos
+  become:             false
+  git:
+    repo:             "git@github.com:Findarato/dotFiles.git"
+    dest:             "/home/{{ local_user }}/Documents/src/dotFiles"
+    key_file:         "/home/{{ local_user }}/.ssh/github"
+    accept_hostkey:   yes
+    track_submodules: yes
+    update:           yes
+  register:           result
+  ignore_errors:      yes
+  when:
     - local_user == "joe"
 
 
-- name :               Delete exsisting files in home directory
-  become :             false
-  file :
-    src :              "/home/{{ local_user }}/Documents/src/dotFiles/{{ old_file }}"
-    dest :             "/home/{{ local_user }}/{{ old_file }}"
-    state :            absent
-  with_items :
+- name:               Delete exsisting files in home directory
+  become:             false
+  file:
+    src:              "/home/{{ local_user }}/Documents/src/dotFiles/{{ old_file }}"
+    dest:             "/home/{{ local_user }}/{{ old_file }}"
+    state:            absent
+  with_items:
     - bin
     - .aliases
     - .ansible.cfg
@@ -94,17 +95,17 @@
     - .rainbow_config.json
     - .zprofile
     - .zshrc
-  loop_control :
-    loop_var :         old_file
-  when :               result|changed
+  loop_control:
+    loop_var:         old_file
+  when:               result|changed
 
-- name :               Link up Home directory to dotfiles
-  become :             false
-  file :
-    src :              "/home/{{ local_user }}/Documents/src/dotFiles/{{ link_file }}"
-    dest :             "/home/{{ local_user }}/{{ link_file }}"
-    state :            link
-  with_items :
+- name:               Link up Home directory to dotfiles
+  become:             false
+  file:
+    src:              "/home/{{ local_user }}/Documents/src/dotFiles/{{ link_file }}"
+    dest:             "/home/{{ local_user }}/{{ link_file }}"
+    state:            link
+  with_items:
     - bin
     - .aliases
     - .ansible.cfg
@@ -119,27 +120,27 @@
     - .rainbow_config.json
     - .zprofile
     - .zshrc
-  loop_control :
-    loop_var :         link_file
-  when :               result|changed
+  loop_control:
+    loop_var:         link_file
+  when:               result|changed
 
-- name :               Copy Tilix Themes
-  copy :
-    src :              "/home/{{ local_user }}/Documents/src/dotFiles/Tilix-Themes/{{ item }}"
-    dest :             "/home/{{ local_user }}/.config/tilix/schemes/"
-  with_items :
+- name:               Copy Tilix Themes
+  copy:
+    src:              "/home/{{ local_user }}/Documents/src/dotFiles/Tilix-Themes/{{ item }}"
+    dest:             "/home/{{ local_user }}/.config/tilix/schemes/"
+  with_items:
     - "{{ tilix_themes }}"
-  when :               result|changed
+  when:               result|changed
 
-- name :               Running OS specific Configurations and Commands
-  include :            "{{ include_file }}"
-  with_items :
+- name:               Running OS specific Configurations and Commands
+  include:            "{{ include_file }}"
+  with_items:
   - "{{ ansible_distribution }}/repos.yml"
   - "{{ ansible_distribution }}/system.yml"
   - "{{ ansible_distribution }}/packages.yml"
   - "{{ ansible_distribution }}/services.yml"
-  loop_control :
-    loop_var :         include_file
+  loop_control:
+    loop_var:         include_file
 
-- name :               Harden OS
-  include :            harden.yml
+- name:               Harden OS
+  include:            harden.yml
