@@ -4,6 +4,7 @@
 - src: geerlingguy.php
 - src: geerlingguy.composer
 - src: geerlingguy.pip
+- src: geerlingguy.git
 - src: geerlingguy.ansible
 - src: geerlingguy.docker
 - src: mjanser.firewalld
