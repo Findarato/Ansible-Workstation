@@ -27,13 +27,14 @@
     dest :             "/home/{{ local_user }}/.ssh/{{ item.name }}"
     backup :           yes
   with_items :         "{{ private_keys }}"
-  when :               - local_user == "joe"
+  when :
+    - local_user == "joe"
 
 - name :               Generate Private keys
   user :
     generate_ssh_key : true
   when :
-    - local_user !   = "joe"
+    - local_user != "joe"
 
 
 - name :               Create src folder
@@ -55,7 +56,7 @@
   register :           result
   ignore_errors :      yes
   when :
-    - local_user !   = "joe"
+    - local_user != "joe"
 
 - name :               Clone dotfiles repos
   become :             false
