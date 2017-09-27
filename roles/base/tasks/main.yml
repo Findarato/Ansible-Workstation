@@ -50,7 +50,6 @@
   ignore_errors: yes
     # version:
     # force:          yes
-  ignore_errors: yes
 
 - name:               Delete exsisting files in home directory
   become:             false
