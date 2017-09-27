@@ -46,6 +46,7 @@
     track_submodules: yes
     update:           yes
   register:           result
+  ignore_errors: yes
     # version:
     # force:          yes
   ignore_errors: yes

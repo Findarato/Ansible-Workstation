@@ -16,11 +16,11 @@
     - geerlingguy.ansible
     - geerlingguy.docker
     - geerlingguy.pip
+    - geerlingguy.php
+    - geerlingguy.composer
     - zsh
     - vs-code
     - mjanser.firewalld
-    - geerlingguy.php
-    - geerlingguy.composer
     - docker-syncthing
 
   vars_files:

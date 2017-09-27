@@ -1,24 +1,2 @@
 #!/usr/bin/env ansible-playbook
----
-- name:    Install Zsh on {{ ansible_distribution }}
-  dnf:
-    state: present
-    name:  zsh
-
-- name:    change shell from bash to zsh
-  user:
-    name:  "{{ local_user }}"
-    shell: /bin/zsh
-
-- name:    use oh-my-zsh
-  become:  false
-  git:
-    repo:  "https://github.com/robbyrussell/oh-my-zsh.git"
-    dest:  "/home/{{ local_user }}/.oh-my-zsh"
-
-- name:    Correct the permission on oh-my-zsh
-  file:
-    path:  "/home/{{ local_user }}/.oh-my-zsh"
-    owner: "{{ local_user }}"
-    group: "{{ local_user }}"
-    state: directory
+- include: "{{ansible_os_family}}/main.yml"

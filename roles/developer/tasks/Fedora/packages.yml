@@ -54,6 +54,8 @@
     - sassc
     - libsass
     - glib2-devel
+    - bison
+    - flex
   loop_control:
     loop_var:   install_package
   notify:       Update Font Cache
