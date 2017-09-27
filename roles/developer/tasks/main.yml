@@ -25,11 +25,12 @@
   pip:
     name:       "{{ pip_install }}"
     state:      latest
-    extra_args: --user --upgrade
+    # extra_args:
   with_items:
     - cfscrape
     - selenium
     - google-api-python-client
+    - docker-py
     - docker
   loop_control:
     loop_var:   pip_install
