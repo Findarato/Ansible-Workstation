@@ -34,6 +34,7 @@
   file:
     path:             "/home/{{ local_user }}/Documents/src/"
     state:            directory
+    owner:            "{{ local_user }}"
     mode:             0750
 
 - name:               Clone dotfiles repos
