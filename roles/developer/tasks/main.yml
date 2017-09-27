@@ -35,8 +35,8 @@
     loop_var:   pip_install
 
 
-- name: Add {{ local_user }} to the docker group
+- name: "Add {{ local_user }} to the docker group"
   user:
-    name: {{ local_user }}
+    name: "{{ local_user }}"
     groups: docker
     append: yes
