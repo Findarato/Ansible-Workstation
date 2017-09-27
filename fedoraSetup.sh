@@ -47,7 +47,7 @@ echo "Setting up Ansible Roles"
 ansible-galaxy install -r requirements.yml
 
 echo "Running Ansible"
-ansible-playbook -i localHosts setup.yml
+ansible-playbook -i localHosts setup.yml --extra-vars "local_user=$USER"
 
 #Clean up the Setup
 echo "Cleaning up Setup directory"

@@ -27,6 +27,8 @@
     dest:             "/home/{{ local_user }}/.ssh/{{ item.name }}"
     backup:           yes
   with_items:         "{{ private_keys }}"
+  when:
+    local_user == "joe"
 
 - name:               Create src folder
   file:
@@ -46,6 +48,7 @@
   register:           result
     # version:
     # force:          yes
+  ignore_errors: yes
 
 - name:               Delete exsisting files in home directory
   become:             false

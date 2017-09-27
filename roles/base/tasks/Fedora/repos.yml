@@ -13,6 +13,9 @@
     dest:        "/tmp/rpmfusion-free-release-{{ ansible_distribution_version }}.noarch.rpm"
   when:          rpmfusion_free.stat is not defined
 
+- debug:
+  message: rpmfusion_free.stat
+
 - name:          Install RPM Fusion free Repo
   dnf:
     name:        "/tmp/rpmfusion-free-release-{{ ansible_distribution_version }}.noarch.rpm"

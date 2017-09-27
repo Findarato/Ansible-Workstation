@@ -12,13 +12,16 @@
   roles:
     - base
     - developer
-    # - zsh
-    # - vs-code
-    # - mjanser.firewalld
-    # - geerlingguy.php
-    # - geerlingguy.composer
-    # - ansible-role-docker
-    # - docker-syncthing
+    - geerlingguy.git
+    - geerlingguy.ansible
+    - geerlingguy.docker
+    - geerlingguy.pip
+    - zsh
+    - vs-code
+    - mjanser.firewalld
+    - geerlingguy.php
+    - geerlingguy.composer
+    - docker-syncthing
 
   vars_files:
     - vars/main.yml
