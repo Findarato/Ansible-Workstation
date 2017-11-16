@@ -24,7 +24,7 @@ cd "$SETUPDIR"
 if [ ! -d "$HOME/Enpass" ]; then
     #This is needed for Enpass
     sudo dnf install -y libXScrnSaver
-    wget "https://dl.sinew.in/linux/setup/5-5-6/Enpass_Installer_5.5.6" -O EnpassInstaller
+    wget "https://dl.sinew.in/linux/setup/5-6-0/Enpass_Installer_5.6.0" -O EnpassInstaller
     chmod +x EnpassInstaller
     ./EnpassInstaller
 fi
