@@ -32,7 +32,7 @@
     image: linuxserver/syncthing
     state: started
     restart_policy: unless-stopped
-    recreate: yes
+    # recreate: yes
     restart: yes
     pull: true
 #    dns_servers: 127.0.0.1

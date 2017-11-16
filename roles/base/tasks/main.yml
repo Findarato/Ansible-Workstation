@@ -27,12 +27,37 @@
     dest:             "/home/{{ local_user }}/.ssh/{{ item.name }}"
     backup:           yes
   with_items:         "{{ private_keys }}"
+  when:
+    - local_user == "joe"
+
+- name:               Generate Private keys
+  user:
+    name: "{{ local_user }}"
+    generate_ssh_key: true
+  when:
+    - local_user != "joe"
+
 
 - name:               Create src folder
   file:
     path:             "/home/{{ local_user }}/Documents/src/"
     state:            directory
+    owner:            "{{ local_user }}"
     mode:             0750
+
+- name:               Clone dotfiles repos
+  become:             false
+  git:
+    repo:             "https://github.com/Findarato/dotFiles.git"
+    dest:             "/home/{{ local_user }}/Documents/src/dotFiles_read_only"
+    key_file:         "/home/{{ local_user }}/.ssh/github"
+    accept_hostkey:   yes
+    track_submodules: yes
+    update:           yes
+  register:           result
+  ignore_errors:      yes
+  when:
+    - local_user != "joe"
 
 - name:               Clone dotfiles repos
   become:             false
@@ -44,9 +69,10 @@
     track_submodules: yes
     update:           yes
   register:           result
-  ignore_errors: yes
-    # version:
-    # force:          yes
+  ignore_errors:      yes
+  when:
+    - local_user == "joe"
+
 
 - name:               Delete exsisting files in home directory
   become:             false

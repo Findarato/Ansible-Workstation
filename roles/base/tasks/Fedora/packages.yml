@@ -54,6 +54,7 @@
     - tint2
     - python-firewall
     - parallel
+    - brasero
   loop_control:
     loop_var:   install_package
   #Keyboard Config. This will eventually be its own role.
@@ -86,30 +87,37 @@
   when:         install_extra_fonts
   notify:       Update Font Cache
 
-- name: Unique custimzation tools
+- name:         Unique custimzation tools
   pip:
-    name: wpgtk
+    name:       wpgtk
     executable: pip3
     extra_args: --user --upgrade
 
 
-- name: Upgrade pip3
+- name:         Upgrade pip3
   pip:
-    name: pip
+    name:       pip
     executable: /usr/bin/pip3
     extra_args: --user --upgrade
 
-- name: Upgrade pip
+- name:         Upgrade pip
   pip:
-    name: pip
+    name:       pip
 #    executable: /usr/bin/pip
     extra_args: --user --upgrade
 
+- name:         Check for slack
+  stat:
+    path:       /usr/bin/slack
+  register:     slack_installed
 
+# - debug:
+#     msg:      "System {{ slack_installed }} "
 
-- name: Install Slack
+- name:         Install Slack
   dnf:
-    name: "https://downloads.slack-edge.com/linux_releases/slack-2.7.1-0.1.fc21.x86_64.rpm"
-    state: present
+    name:       "https://downloads.slack-edge.com/linux_releases/slack-2.8.0-0.1.fc21.x86_64.rpm"
+    state:      present
   when:
     - install_slack == true
+    - slack_installed.stat.exists == false
