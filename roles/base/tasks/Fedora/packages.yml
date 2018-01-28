@@ -55,6 +55,7 @@
     - python-firewall
     - parallel
     - brasero
+    - dnf-automatic
   loop_control:
     loop_var:   install_package
   #Keyboard Config. This will eventually be its own role.

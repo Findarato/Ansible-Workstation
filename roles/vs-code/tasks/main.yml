@@ -1,7 +1,7 @@
 #!/usr/bin/env ansible-playbook
 ---
 - name:           "Running {{ansible_os_family}} - {{ ansible_distribution }} specific Configurations and Commands"
-  include:        "{{ ansible_os_family }}.yml"
+  include_tasks:        "{{ ansible_os_family }}.yml"
 
 - name:         Install Extensions
   become:       no
