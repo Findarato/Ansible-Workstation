@@ -21,6 +21,7 @@
     # - zsh
     # - vs-code
     # - mjanser.firewalld
+    - VirtualBox
     - docker-syncthing
 
   vars_files:
