@@ -30,7 +30,8 @@
     name:       "{{ install_package }}"
   with_items:
     - filezilla
-    - openssl-devel
+    # - openssl-devel
+    - compat-openssl10-devel
     - xclip
     - vagrant
     - which

@@ -9,6 +9,8 @@
     gpgkey:       "https://packages.microsoft.com/keys/microsoft.asc"
     enabled:      yes
     gpgcheck:     yes
+  tags:
+    - code
 
 # Install Files
 - name:           Install vscode Yum
@@ -17,9 +19,13 @@
     state:        latest
     update_cache: yes
   when:           ansible_pkg_mgr == "yum"
+  tags:
+    - code
 
 - name:           Install vscode dnf
   dnf:
     name:         code
     state:        latest
   when:           ansible_pkg_mgr == "dnf"
+  tags:
+    - code

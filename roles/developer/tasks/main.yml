@@ -2,7 +2,7 @@
 ---
 
 - name:           Running OS specific Configurations and Commands
-  include:        "{{item}}"
+  include_tasks:        "{{item}}"
   with_items:
   # - "{{ ansible_distribution }}/repos.yml"
   - "{{ ansible_distribution }}/system.yml"
@@ -19,6 +19,15 @@
   pip:
     name:       pip
     state:      latest
+
+- name:         Remove root python package
+  pip:
+    name:       "{{ pip_install_root }}"
+    state:      absent
+  with_items:
+    - docker-py
+  loop_control:
+    loop_var:   pip_install_root
 
 - name:         Install python modules with pip
   become:       false

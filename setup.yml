@@ -10,17 +10,17 @@
       with_items:
         - libselinux-python
   roles:
-    - base
-    - developer
-    - geerlingguy.git
-    - geerlingguy.ansible
-    - geerlingguy.docker
-    - geerlingguy.pip
-    - geerlingguy.php
-    - geerlingguy.composer
-    - zsh
+    # - base
+    # - developer
+    # - geerlingguy.git
+    # - geerlingguy.ansible
+    # - geerlingguy.docker
+    # - geerlingguy.pip
+    # - geerlingguy.php
+    # - geerlingguy.composer
+    # - zsh
     - vs-code
-    - mjanser.firewalld
+    # - mjanser.firewalld
     - docker-syncthing
 
   vars_files:

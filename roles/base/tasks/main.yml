@@ -133,7 +133,7 @@
   when:               result|changed
 
 - name:               Running OS specific Configurations and Commands
-  include:            "{{ include_file }}"
+  include_tasks:            "{{ include_file }}"
   with_items:
   - "{{ ansible_distribution }}/repos.yml"
   - "{{ ansible_distribution }}/system.yml"
@@ -143,4 +143,4 @@
     loop_var:         include_file
 
 - name:               Harden OS
-  include:            harden.yml
+  import_tasks:            harden.yml
