@@ -19,4 +19,4 @@
     when:         ansible_pkg_mgr == "dnf"
 
 
-- include:        permissions.yml
+- import_tasks:   permissions.yml

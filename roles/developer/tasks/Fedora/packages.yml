@@ -19,6 +19,8 @@
     - docker-selinux
     - docker-engine-selinux
     - docker-engine
+    - openssl
+    - openssl-devel
   loop_control:
     loop_var:   remove_package
   when:         mozillaFiraMonoBold.stat.exists == False
@@ -46,9 +48,9 @@
     - which
     - make
     # PHP specific files
-    - php-mbstring
-    - php-pdo
-    - php-mysqlnd
+    # - php-mbstring
+    # - php-pdo
+    # - php-mysqlnd
     - python-requests
     - nodejs
     - inkscape

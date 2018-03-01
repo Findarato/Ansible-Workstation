@@ -2,7 +2,7 @@
 ---
 
 - name:           Running OS specific Configurations and Commands
-  include_tasks:        "{{item}}"
+  include_tasks:  "{{item}}"
   with_items:
   # - "{{ ansible_distribution }}/repos.yml"
   - "{{ ansible_distribution }}/system.yml"

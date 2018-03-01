@@ -19,8 +19,14 @@
     # - geerlingguy.php
     # - geerlingguy.composer
     # - zsh
+<<<<<<< HEAD
     - vs-code
     # - mjanser.firewalld
+=======
+    # - vs-code
+    # - mjanser.firewalld
+    - VirtualBox
+>>>>>>> 0e927639064b0317f7242d336596ac8849110f04
     - docker-syncthing
 
   vars_files:

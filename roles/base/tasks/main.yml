@@ -4,7 +4,7 @@
 - name:               Install 'flatpak'
   package:
     name:             flatpak
-    state:            latest
+    state:            present
   become:             yes
 
 - name:               Ensure .ssh directory exists.
@@ -54,6 +54,7 @@
     accept_hostkey:   yes
     track_submodules: yes
     update:           yes
+    version:          v1.0
   register:           result
   ignore_errors:      yes
   when:
@@ -68,11 +69,11 @@
     accept_hostkey:   yes
     track_submodules: yes
     update:           yes
+    version:          v1.0
   register:           result
   ignore_errors:      yes
   when:
     - local_user == "joe"
-
 
 - name:               Delete exsisting files in home directory
   become:             false
@@ -135,12 +136,12 @@
 - name:               Running OS specific Configurations and Commands
   include_tasks:            "{{ include_file }}"
   with_items:
-  - "{{ ansible_distribution }}/repos.yml"
-  - "{{ ansible_distribution }}/system.yml"
-  - "{{ ansible_distribution }}/packages.yml"
-  - "{{ ansible_distribution }}/services.yml"
+    - "{{ ansible_distribution }}/repos.yml"
+    - "{{ ansible_distribution }}/system.yml"
+    - "{{ ansible_distribution }}/packages.yml"
+    - "{{ ansible_distribution }}/services.yml"
   loop_control:
     loop_var:         include_file
 
-- name:               Harden OS
-  import_tasks:            harden.yml
+# - name:               Harden OS
+#   import_tasks:       harden.yml
