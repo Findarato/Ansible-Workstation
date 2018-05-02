@@ -18,7 +18,7 @@ vscode_extensions:
 # For Editing Markdown
 # - shd101wyy.markdown-preview-enhanced
   - yzhang.markdown-all-in-one
-  - steve8708.align
+  # - steve8708.align
   - PeterJausovec.vscode-docker
   - PKief.markdown-checkbox
 ...

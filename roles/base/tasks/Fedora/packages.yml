@@ -8,6 +8,7 @@
   with_items:
     - gnome-shell-extension-background-logo
     - gnome-shell-extension-window-list
+    - tint2
 
 # Install Packages
 - name:         Install Packages
@@ -42,7 +43,6 @@
     - git
     - remmina
     - remmina-plugins-rdp
-    - remmina-plugins-gnome
     - remmina-plugins-spice
     - remmina-plugins-vnc
     - util-linux-user
@@ -51,8 +51,7 @@
     - python3
     - python3-pip
     - ImageMagick
-    - tint2
-    - python-firewall
+    # - python-firewall
     - parallel
     - brasero
     - dnf-automatic
