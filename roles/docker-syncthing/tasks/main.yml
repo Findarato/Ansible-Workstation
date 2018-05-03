@@ -1,6 +1,15 @@
 ---
 # tasks file for docker-syncthing
 
+- name:         Install needed packages
+  pip:
+    state:      present
+    name:       "{{ install_docker_packages }}"
+  with_items:
+    - docker-py
+  loop_control:
+    loop_var:   install_docker_packages
+
 - name: Create Docker paths
   file:
     path: "{{ docker_syncthing_storage }}/{{ item }}"
