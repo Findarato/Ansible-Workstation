@@ -40,7 +40,6 @@
     - gnome-shell-extension-calc
     - gnome-tweak-tool
     - gtk-murrine-engine
-    - git
     - remmina
     - remmina-plugins-rdp
     - remmina-plugins-spice
@@ -87,24 +86,11 @@
   when:         install_extra_fonts
   notify:       Update Font Cache
 
-- name:         Unique custimzation tools
-  pip:
-    name:       wpgtk
-    executable: pip3
-    extra_args: --user --upgrade
-
-
-- name:         Upgrade pip3
-  pip:
-    name:       pip
-    executable: /usr/bin/pip3
-    extra_args: --user --upgrade
-
-- name:         Upgrade pip
-  pip:
-    name:       pip
-#    executable: /usr/bin/pip
-    extra_args: --user --upgrade
+# - name:         Upgrade pip
+#   pip:
+#     name:       pip
+# #    executable: /usr/bin/pip
+#     extra_args: --user --upgrade
 
 - name:         Check for slack
   stat:

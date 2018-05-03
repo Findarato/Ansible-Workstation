@@ -93,3 +93,7 @@
     - fedora_nvidia.stat.exists == false
     - install_nvidia == true
 
+- name:     Install 3rd Party Repos
+  package:
+    state: present
+    name: fedora-workstation-repositories

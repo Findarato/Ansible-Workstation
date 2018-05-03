@@ -69,7 +69,7 @@
     accept_hostkey:   yes
     track_submodules: yes
     update:           yes
-    version:          v1.0
+    version:          v1.5
   register:           result
   ignore_errors:      yes
   when:
@@ -98,7 +98,7 @@
     - .zshrc
   loop_control:
     loop_var:         old_file
-  when:               result|changed
+  when:               result is changed
 
 - name:               Link up Home directory to dotfiles
   become:             false
@@ -123,7 +123,7 @@
     - .zshrc
   loop_control:
     loop_var:         link_file
-  when:               result|changed
+  when:               result is changed
 
 - name:               Copy Tilix Themes
   copy:
@@ -131,7 +131,7 @@
     dest:             "/home/{{ local_user }}/.config/tilix/schemes/"
   with_items:
     - "{{ tilix_themes }}"
-  when:               result|changed
+  when:               result is changed
 
 - name:               Running OS specific Configurations and Commands
   include_tasks:            "{{ include_file }}"

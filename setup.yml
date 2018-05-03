@@ -12,19 +12,20 @@
   roles:
     - base
     # - developer
+    - arduino
     - geerlingguy.git
-    # - geerlingguy.ansible
     - geerlingguy.docker
     - geerlingguy.pip
     - geerlingguy.php
-    - geerlingguy.composer
-    - zsh
+    # - abez.zsh
     - vs-code
+    # - geerlingguy.composer
     # - mjanser.firewalld
-    # - vs-code
     # - mjanser.firewalld
     # - VirtualBox
-    - docker-syncthing
+    # - geerlingguy.ansible
+
+    # - docker-syncthing
 
   vars_files:
     - vars/main.yml
