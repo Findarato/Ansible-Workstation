@@ -23,28 +23,29 @@
 
 - name: Create Docker paths
   file:
-    path: "/home/{{ local_user }}/{{ item }}"
+    path: "/mnt/syncthing/{{ local_user }}/{{ item }}"
     state: directory
     owner: "{{ local_user }}"
     group: docker
     mode: 0775
   with_items:
-    - Pictures
+    - pictures
     - tapet
-    - syncthing
     - camera
-    - Documents
+    - documents
+    - personal
 
 - name: Create Syncthing container
+  become: False
   docker_container:
     name: syncthing
-    image: linuxserver/syncthing
+    image:  linuxserver/syncthing
     state: started
     restart_policy: unless-stopped
-    # recreate: yes
+    hostname: d-it01-syncthing
+    recreate: yes
     restart: yes
     pull: true
-#    dns_servers: 127.0.0.1
     exposed_ports:
       - 8384
       - 22000
@@ -56,11 +57,11 @@
     volumes:
       - "{{ docker_syncthing_storage }}/data/:/mnt/data/"
       - "{{ docker_syncthing_storage }}/config:/config"
-      - "/home/{{ local_user }}/Pictures:/mnt/pictures"
-      - "/home/{{ local_user }}/tapet:/mnt/tapet"
-      - "/home/{{ local_user }}/syncthing:/mnt/joe "
-      - "/home/{{ local_user }}/camera:/mnt/camera"
-      - "/home/{{ local_user }}/Documents:/mnt/documents"
+      - "/mnt/syncthing/{{ local_user }}/pictures:/mnt/pictures"
+      - "/mnt/syncthing/{{ local_user }}/tapet:/mnt/tapet"
+      - "/mnt/syncthing/{{ local_user }}/personal:/mnt/joe "
+      - "/mnt/syncthing/{{ local_user }}/camera:/mnt/camera"
+      - "/mnt/syncthing/{{ local_user }}/documents:/mnt/documents"
     env:
       TZ: America/Chicago
       PUID: 1000
@@ -75,3 +76,17 @@
   with_items:
     - "{{ docker_ports }}"
   notify: Restart firewalld
+
+# curl -XGET -H "X-API-Key: MGvekpwkjn9uUTHFyAXfPDqUAdEmD6z4" http://localhost:8384/rest/system/status
+- name: Get ID from API
+  uri:
+    url: http://localhost:8384/rest/system/status
+    method: get
+    body_format: json
+    return_content: yes
+    headers:
+      Content-Type: "application/json"
+      X-API-Key: MGvekpwkjn9uUTHFyAXfPDqUAdEmD6z4
+  register: api_result
+
+#    # body: "{{ lookup('file','mesos-consul.json') }}"

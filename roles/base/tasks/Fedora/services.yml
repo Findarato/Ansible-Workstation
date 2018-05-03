@@ -40,3 +40,9 @@
     state:   started
     enabled: yes
   when:      enable_libvirtd
+
+- name:    Enable a timer for dnf-automatic
+  systemd:
+    name: dnf-automatic.timer
+    state: started
+    enabled: True

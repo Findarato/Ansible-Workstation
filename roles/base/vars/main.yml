@@ -1,3 +1,7 @@
+---
 # Themes are in a dir/theme format
 # Directories are either Themes or Themes-2
 
+dotfiles_repo_RO: https://github.com/Findarato/dotFiles.git
+dotfiles_repo_RW: git@github.com:Findarato/dotFiles.git
+...

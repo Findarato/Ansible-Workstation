@@ -7,7 +7,7 @@
   with_items:
     - arduino
     - arduino-core
-    when:         ansible_pkg_mgr == "apt"
+  when:         ansible_pkg_mgr == "apt"
 
 - name:           Installing required Arduino files Fedora
   dnf:
@@ -16,7 +16,7 @@
   with_items:
     - arduino
     - arduino-core
-    when:         ansible_pkg_mgr == "dnf"
+  when:         ansible_pkg_mgr == "dnf"
 
 
-- include:        permissions.yml
+- import_tasks:   permissions.yml

@@ -4,7 +4,7 @@
 - name:               Install 'flatpak'
   package:
     name:             flatpak
-    state:            latest
+    state:            present
   become:             yes
 
 - name:               Ensure .ssh directory exists.
@@ -48,12 +48,13 @@
 - name:               Clone dotfiles repos
   become:             false
   git:
-    repo:             "https://github.com/Findarato/dotFiles.git"
+    repo:             "{{ dotfiles_repo_RO }}"
     dest:             "/home/{{ local_user }}/Documents/src/dotFiles_read_only"
     key_file:         "/home/{{ local_user }}/.ssh/github"
     accept_hostkey:   yes
     track_submodules: yes
     update:           yes
+    version:          v1.0
   register:           result
   ignore_errors:      yes
   when:
@@ -62,17 +63,17 @@
 - name:               Clone dotfiles repos
   become:             false
   git:
-    repo:             "git@github.com:Findarato/dotFiles.git"
+    repo:             "{{ dotfiles_repo_RW }}"
     dest:             "/home/{{ local_user }}/Documents/src/dotFiles"
     key_file:         "/home/{{ local_user }}/.ssh/github"
     accept_hostkey:   yes
     track_submodules: yes
     update:           yes
+    version:          v1.5
   register:           result
   ignore_errors:      yes
   when:
     - local_user == "joe"
-
 
 - name:               Delete exsisting files in home directory
   become:             false
@@ -97,7 +98,7 @@
     - .zshrc
   loop_control:
     loop_var:         old_file
-  when:               result|changed
+  when:               result is changed
 
 - name:               Link up Home directory to dotfiles
   become:             false
@@ -122,7 +123,7 @@
     - .zshrc
   loop_control:
     loop_var:         link_file
-  when:               result|changed
+  when:               result is changed
 
 - name:               Copy Tilix Themes
   copy:
@@ -130,17 +131,17 @@
     dest:             "/home/{{ local_user }}/.config/tilix/schemes/"
   with_items:
     - "{{ tilix_themes }}"
-  when:               result|changed
+  when:               result is changed
 
 - name:               Running OS specific Configurations and Commands
-  include:            "{{ include_file }}"
+  include_tasks:            "{{ include_file }}"
   with_items:
-  - "{{ ansible_distribution }}/repos.yml"
-  - "{{ ansible_distribution }}/system.yml"
-  - "{{ ansible_distribution }}/packages.yml"
-  - "{{ ansible_distribution }}/services.yml"
+    - "{{ ansible_distribution }}/repos.yml"
+    - "{{ ansible_distribution }}/system.yml"
+    - "{{ ansible_distribution }}/packages.yml"
+    - "{{ ansible_distribution }}/services.yml"
   loop_control:
     loop_var:         include_file
 
-- name:               Harden OS
-  include:            harden.yml
+# - name:               Harden OS
+#   import_tasks:       harden.yml

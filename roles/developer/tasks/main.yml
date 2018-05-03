@@ -20,6 +20,15 @@
     name:       pip
     state:      latest
 
+- name:         Remove root python package
+  pip:
+    name:       "{{ pip_install_root }}"
+    state:      absent
+  with_items:
+    - docker-py
+  loop_control:
+    loop_var:   pip_install_root
+
 - name:         Install python modules with pip
   become:       false
   pip:

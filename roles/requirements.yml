@@ -8,3 +8,4 @@
 - src: geerlingguy.ansible
 - src: geerlingguy.docker
 - src: mjanser.firewalld
+- src: vaulttec.zsh

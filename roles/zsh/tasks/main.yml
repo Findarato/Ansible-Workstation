@@ -1,2 +1,2 @@
 #!/usr/bin/env ansible-playbook
-- include: "{{ansible_os_family}}/main.yml"
+- include_tasks: "{{ansible_os_family}}/main.yml"

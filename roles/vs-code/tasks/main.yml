@@ -1,8 +1,10 @@
 #!/usr/bin/env ansible-playbook
 ---
 - name:           "Running {{ansible_os_family}} - {{ ansible_distribution }} specific Configurations and Commands"
-  include:        "{{ ansible_os_family }}.yml"
-
+  include_tasks:        "{{ ansible_os_family }}.yml"
+  tags:
+    - code
+    - configuration
 - name:         Install Extensions
   become:       no
   command:      "/usr/bin/code --install-extension '{{ extension }}'"
@@ -12,3 +14,7 @@
   changed_when: "'already installed' not in vscode_result.stdout"
   loop_control:
     loop_var:   extension
+  tags:
+    - code
+    - configuration
+...
