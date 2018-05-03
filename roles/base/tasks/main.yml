@@ -48,7 +48,7 @@
 - name:               Clone dotfiles repos
   become:             false
   git:
-    repo:             "https://github.com/Findarato/dotFiles.git"
+    repo:             "{{ dotfiles_repo_RO }}"
     dest:             "/home/{{ local_user }}/Documents/src/dotFiles_read_only"
     key_file:         "/home/{{ local_user }}/.ssh/github"
     accept_hostkey:   yes
@@ -63,7 +63,7 @@
 - name:               Clone dotfiles repos
   become:             false
   git:
-    repo:             "git@github.com:Findarato/dotFiles.git"
+    repo:             "{{ dotfiles_repo_RW }}"
     dest:             "/home/{{ local_user }}/Documents/src/dotFiles"
     key_file:         "/home/{{ local_user }}/.ssh/github"
     accept_hostkey:   yes
