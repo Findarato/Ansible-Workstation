@@ -26,3 +26,5 @@ install_slack: true
 tilix_themes:
   - "Themes/espresso.json"
   - "Themes/espresso-libre.json"
+
+var_files: zsh.yml

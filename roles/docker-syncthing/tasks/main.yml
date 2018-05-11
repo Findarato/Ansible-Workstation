@@ -79,25 +79,25 @@
       PGID: 1001
 
 
-- name: Open Ports for Syncthing
-  firewalld:
-    port: "{{ item }}"
-    permanent: true
-    state: enabled
-  with_items:
-    - "{{ docker_ports }}"
-  notify: Restart firewalld
+# - name: Open Ports for Syncthing
+#   firewalld:
+#     port: "{{ item }}"
+#     permanent: true
+#     state: enabled
+#   with_items:
+#     - "{{ docker_ports }}"
+#   notify: Restart firewalld
 
 # curl -XGET -H "X-API-Key: MGvekpwkjn9uUTHFyAXfPDqUAdEmD6z4" http://localhost:8384/rest/system/status
-- name: Get ID from API
-  uri:
-    url: http://localhost:8384/rest/system/status
-    method: get
-    body_format: json
-    return_content: yes
-    headers:
-      Content-Type: "application/json"
-      X-API-Key: MGvekpwkjn9uUTHFyAXfPDqUAdEmD6z4
-  register: api_result
+# - name: Get ID from API
+#   uri:
+#     url: http://localhost:8384/rest/system/status
+#     method: get
+#     body_format: json
+#     return_content: yes
+#     headers:
+#       Content-Type: "application/json"
+#       X-API-Key: MGvekpwkjn9uUTHFyAXfPDqUAdEmD6z4
+#   register: api_result
 
 #    # body: "{{ lookup('file','mesos-consul.json') }}"

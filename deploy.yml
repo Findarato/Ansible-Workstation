@@ -17,13 +17,14 @@
     # - geerlingguy.docker
     # - geerlingguy.pip
     # - geerlingguy.php
-    # - abez.zsh
+    # - geerlingguy.php
+    - vaulttec.zsh
     # - vs-code
     # - geerlingguy.composer
     # - mjanser.firewalld
     # - VirtualBox
     # - geerlingguy.ansible
-    - docker-syncthing
+    # - docker-syncthing
 
   vars_files:
     - vars/main.yml

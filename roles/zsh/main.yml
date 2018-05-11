@@ -1,9 +1,6 @@
 ---
 # Install Files
 - name:       Install Zsh
-  dnf:
+  package:
     state:    present
-    name:     "{{item}}"
-  with_items:
-    - zsh
-  when:       ansible_pkg_mgr == "dnf"
+    name:     zsh
