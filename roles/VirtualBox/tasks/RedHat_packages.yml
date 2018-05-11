@@ -2,38 +2,10 @@
 ---
 # Install Fedora Specific files.
 - name:       "Install needed {{ ansible_os_family }} -> {{ ansible_distribution }} Specific packages"
-  dnf:
+  package:
     state:    present
-    name:     "{{ item }}"
+    name:     "{{ virtualbox_package }}"
   with_items:
-    - binutils
-    - gcc
-    - make
-    - patch
-    - libgomp
-    - glibc-headers
-    - glibc-devel
-    - kernel-headers
-    - kernel-devel
-    - dkms
-    - VirtualBox-5.2
-  when:       ansible_pkg_mgr == "dnf"
-
-# Install CentOS Specific files.for 7+
-- name:       Install needed  {{ ansible_os_family }} -> {{ ansible_distribution }} Specific packages
-  yum:
-    state:    present
-    name:     "{{ item }}"
-  with_items:
-    - binutils
-    - gcc
-    - make
-    - patch
-    - libgomp
-    - glibc-headers
-    - glibc-devel
-    - kernel-headers
-    - kernel-devel
-    - dkms
-    - VirtualBox-5.2
-  when:       ansible_pkg_mgr == "yum"
+    - VirtualBox
+  loop_control:
+    loop_var:   virtualbox_package

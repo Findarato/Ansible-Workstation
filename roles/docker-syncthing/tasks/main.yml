@@ -1,6 +1,26 @@
 ---
 # tasks file for docker-syncthing
 
+- name: Ensure old docker python is missing
+  pip:
+    name: "{{ docker_syncthing_python_remove }}"
+    state:      absent
+  with_items:
+    - docker
+  loop_control:
+    loop_var:   docker_syncthing_python_remove
+
+
+- name: Ensure python libs are installed
+  pip:
+    name: "{{ docker_syncthing_python_install }}"
+    state:      latest
+  with_items:
+    - docker-py
+  loop_control:
+    loop_var:   docker_syncthing_python_install
+
+
 - name: Create Docker paths
   file:
     path: "{{ docker_syncthing_storage }}/{{ item }}"

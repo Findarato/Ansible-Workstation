@@ -5,8 +5,8 @@
   include_tasks:  "{{item}}"
   with_items:
   # - "{{ ansible_distribution }}/repos.yml"
-  - "{{ ansible_distribution }}/system.yml"
   - "{{ ansible_distribution }}/packages.yml"
+  - "{{ ansible_distribution }}/system.yml"
 
 
 # - name:       Running generic Configurations and Commands
@@ -15,19 +15,19 @@
 #     - "all_system.yml"
 # Referencing the page I used to find out most of this https://raymii.org/s/tutorials/Ansible_-_Only_if_on_specific_distribution_or_distribution_version.html
 
-- name:         Update pip
-  pip:
-    name:       pip
-    state:      latest
+# - name:         Update pip
+#   pip:
+#     name:       pip
+#     state:      latest
 
-- name:         Remove root python package
-  pip:
-    name:       "{{ pip_install_root }}"
-    state:      absent
-  with_items:
-    - docker-py
-  loop_control:
-    loop_var:   pip_install_root
+# - name:         Remove root python package
+#   pip:
+#     name:       "{{ pip_install_root }}"
+#     state:      absent
+#   with_items:
+#     - docker-py
+#   loop_control:
+#     loop_var:   pip_install_root
 
 - name:         Install python modules with pip
   become:       false

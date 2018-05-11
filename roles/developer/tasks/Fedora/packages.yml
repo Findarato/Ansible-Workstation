@@ -47,18 +47,13 @@
     - python
     - which
     - make
-    # PHP specific files
-    # - php-mbstring
-    # - php-pdo
-    # - php-mysqlnd
     - python-requests
     - nodejs
     - inkscape
     - sassc
     - libsass
     - glib2-devel
-    - bison
-    - flex
+    - clang
   loop_control:
     loop_var:   install_package
   notify:       Update Font Cache

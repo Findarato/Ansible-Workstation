@@ -44,10 +44,10 @@ echo "Chaning to Ansible directory"
 cd "$SETUPDIR/Ansible-Workstaton"
 
 echo "Setting up Ansible Roles"
-ansible-galaxy install -r requirements.yml
+ansible-galaxy install -r roles/requirements.yml
 
 echo "Running Ansible"
-ansible-playbook -i localHosts setup.yml --extra-vars "local_user=$USER"
+ansible-playbook -i localHosts deploy.yml --extra-vars "local_user=$USER"
 
 #Clean up the Setup
 echo "Cleaning up Setup directory"
