@@ -1,6 +1,0 @@
----
-# Install Files
-- name:       Install Zsh
-  package:
-    state:    present
-    name:     zsh

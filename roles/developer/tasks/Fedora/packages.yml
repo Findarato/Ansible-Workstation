@@ -19,8 +19,8 @@
     - docker-selinux
     - docker-engine-selinux
     - docker-engine
-    - openssl
-    - openssl-devel
+    # - openssl
+    # - openssl-devel
   loop_control:
     loop_var:   remove_package
   when:         mozillaFiraMonoBold.stat.exists == False
@@ -33,7 +33,7 @@
   with_items:
     - filezilla
     # - openssl-devel
-    - compat-openssl10-devel
+    # - compat-openssl10-devel
     - xclip
     - vagrant
     - which

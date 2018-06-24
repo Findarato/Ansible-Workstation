@@ -55,6 +55,7 @@
     - brasero
     - dnf-automatic
     - jq
+    - yubioath-desktop
   loop_control:
     loop_var:   install_package
   #Keyboard Config. This will eventually be its own role.
@@ -108,3 +109,11 @@
   when:
     - install_slack == true
     - slack_installed.stat.exists == false
+
+- name:         Remove Slack
+  dnf:
+    name:       "slack"
+    state:      absent
+  when:
+    - install_slack == false
+    - slack_installed.stat.exists == true

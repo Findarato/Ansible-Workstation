@@ -10,18 +10,16 @@
       with_items:
         - libselinux-python
   roles:
-    # - base
-    # - developer
-    # # - arduino
-    # - geerlingguy.git
-    # - geerlingguy.docker
-    # - geerlingguy.pip
-    # - geerlingguy.php
-    # - geerlingguy.php
     - vaulttec.zsh
-    # - vs-code
-    # - geerlingguy.composer
-    # - mjanser.firewalld
+    - base
+    - developer
+    # - arduino
+    # - geerlingguy.git
+    - geerlingguy.docker
+    - geerlingguy.pip
+    - geerlingguy.php
+    - vs-code
+    - geerlingguy.composer
     # - VirtualBox
     # - geerlingguy.ansible
     # - docker-syncthing
