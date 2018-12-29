@@ -58,11 +58,12 @@
     - yubioath-desktop
   loop_control:
     loop_var:   install_package
+
   #Keyboard Config. This will eventually be its own role.
 
 - name:         Install Extra Font Packages
   dnf:
-    name:       "{{ item }}"
+    name:       "{{ install_fonts }}"
     state:      present
   with_items:
     - adobe-source-code-pro-fonts
@@ -87,6 +88,8 @@
     - google-android-emoji-fonts
   when:         install_extra_fonts
   notify:       Update Font Cache
+  loop_control:
+    loop_var:   install_fonts
 
 # - name:         Upgrade pip
 #   pip:
@@ -98,9 +101,6 @@
   stat:
     path:       /usr/bin/slack
   register:     slack_installed
-
-# - debug:
-#     msg:      "System {{ slack_installed }} "
 
 - name:         Install Slack
   dnf:

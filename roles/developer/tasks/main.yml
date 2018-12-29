@@ -50,3 +50,4 @@
     name: "{{ local_user }}"
     groups: docker
     append: yes
+  when:               install_docker
