@@ -35,14 +35,6 @@
     name:       "{{ pip_install }}"
     state:      latest
     extra_args: --user --upgrade
-  with_items:
-    - cfscrape
-    - selenium
-    - google-api-python-client
-    - docker-py
-    - docker
-  loop_control:
-    loop_var:   pip_install
 
 
 - name: "Add {{ local_user }} to the docker group"

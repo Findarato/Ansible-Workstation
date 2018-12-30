@@ -4,89 +4,23 @@
 - name:         Remove Packages
   dnf:
     state:      absent
-    name:       [
-    gnome-shell-extension-background-logo,
-    gnome-shell-extension-window-list,
-    tint2
-    ]
+    name:       "{{ remove_packages }}"
 
 # Install Packages
 - name:         Install Packages
   dnf:
     state:      present
-    name:       [
-    'htop',
-    'wget',
-    'curl',
-    'python-pip',
-    'nano',
-    'openssh',
-    'fwbackups',
-    'tmux',
-    'vlc',
-    'mpv',
-    'fslint',
-    'wget',
-    'p7zip',
-    'seahorse-nautilus',
-    'tilix',
-    'tilix-nautilus',
-    'chromium',
-    'chrome-gnome-shell',
-    'lm_sensors',
-    'gnome-shell-extension-topicons-plus',
-    'gnome-shell-extension-calc',
-    'gnome-tweak-tool',
-    'gtk-murrine-engine',
-    'remmina',
-    'remmina-plugins-rdp',
-    'remmina-plugins-spice',
-    'remmina-plugins-vnc',
-    'util-linux-user',
-    'dnf-plugins-core',
-    'sqlite',
-    'python3',
-    'python3-pip',
-    'ImageMagick',
-    # 'python-firewall',
-    'parallel',
-    'brasero',
-    'dnf-automatic',
-    'jq',
-    'yubioath-desktop'
-    ]
+    name:       '{{ install_packages }}'
 
   #Keyboard Config. This will eventually be its own role.
 
 - name:         Install Extra Font Packages
   dnf:
-    name:       "{{ install_fonts }}"
+    name:       "{{ extra_font_files }}"
     state:      present
-  with_items:
-    - adobe-source-code-pro-fonts
-    - dejavu-sans-fonts
-    - dejavu-sans-mono-fonts
-    - dejavu-serif-fonts
-    - gnu-free-fonts-common
-    - gnu-free-mono-fonts
-    - gnu-free-sans-fonts
-    - gnu-free-serif-fonts
-    - levien-inconsolata-fonts
-    - liberation-fonts-common
-    - liberation-mono-fonts
-    - liberation-sans-fonts
-    - liberation-serif-fonts
-    - mozilla-fira-mono-fonts
-    - msimonson-anonymouspro-fonts
-    - overpass-fonts
-    - terminus-fonts
-    - google-android-emoji-fonts
-    - google-noto-fonts-common
-    - google-android-emoji-fonts
   when:         install_extra_fonts
   notify:       Update Font Cache
-  loop_control:
-    loop_var:   install_fonts
+
 
 # - name:         Upgrade pip
 #   pip:

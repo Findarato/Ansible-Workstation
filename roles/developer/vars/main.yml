@@ -1,3 +1,47 @@
 dev_temp_path:        "/tmp/developer"
 dev_default_font:     "Hack"
 composer_self_update: true
+
+pip_install:
+  - cfscrape
+  - selenium
+  - google-api-python-client
+  - docker-py
+  - docker
+
+remove_packages:
+  - nodejs
+  - nodejs-devel
+  - docker
+  - docker-common
+  - docker-selinux
+  - docker-engine-selinux
+  - docker-engine
+  # - openssl
+  # - openssl-devel
+
+add_packages:
+  - filezilla
+  # - openssl-devel
+  # - compat-openssl10-devel
+  - xclip
+  - vagrant
+  - which
+  - make
+  - gcc-c++
+  - levien-inconsolata-fonts
+  - adobe-source-code-pro-fonts
+  - mozilla-fira-mono-fonts
+  - google-droid-sans-mono-fonts
+  - python-devel
+  - python
+  - which
+  - make
+  - python-requests
+  - nodejs
+  - inkscape
+  - sassc
+  - libsass
+  - glib2-devel
+  - clang
+  - php-json # To Enable composer
