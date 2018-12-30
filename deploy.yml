@@ -16,7 +16,7 @@
     - base
     - developer
     # - arduino
-    # - geerlingguy.git
+    - geerlingguy.git
     - geerlingguy.pip
     - geerlingguy.php
     - geerlingguy.composer
@@ -26,4 +26,5 @@
 
   vars_files:
     - vars/main.yml
+    - vars/zsh.yml
     - vars/vault.yml

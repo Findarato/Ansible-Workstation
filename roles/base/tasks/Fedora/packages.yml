@@ -4,60 +4,57 @@
 - name:         Remove Packages
   dnf:
     state:      absent
-    name:       "{{ item }}"
-  with_items:
-    - gnome-shell-extension-background-logo
-    - gnome-shell-extension-window-list
-    - tint2
+    name:       [
+    gnome-shell-extension-background-logo,
+    gnome-shell-extension-window-list,
+    tint2
+    ]
 
 # Install Packages
 - name:         Install Packages
   dnf:
     state:      present
-    name:       "{{ install_package }}"
-  with_items:
-    - htop
-    - wget
-    - curl
-    - nano
-    - python-pip
-    - nano
-    - openssh
-    - fwbackups
-    - tmux
-#    - vlc
-#    - mpv
-    - fslint
-    - wget
-    - p7zip
-    - seahorse-nautilus
-    - tilix
-    - tilix-nautilus
-    - chromium
-    - chrome-gnome-shell
-    - lm_sensors
-    - gnome-shell-extension-topicons-plus
-    - gnome-shell-extension-calc
-    - gnome-tweak-tool
-    - gtk-murrine-engine
-    - remmina
-    - remmina-plugins-rdp
-    - remmina-plugins-spice
-    - remmina-plugins-vnc
-    - util-linux-user
-    - dnf-plugins-core
-    - sqlite
-    - python3
-    - python3-pip
-    - ImageMagick
-    # - python-firewall
-    - parallel
-    - brasero
-    - dnf-automatic
-    - jq
-    - yubioath-desktop
-  loop_control:
-    loop_var:   install_package
+    name:       [
+    'htop',
+    'wget',
+    'curl',
+    'python-pip',
+    'nano',
+    'openssh',
+    'fwbackups',
+    'tmux',
+    'vlc',
+    'mpv',
+    'fslint',
+    'wget',
+    'p7zip',
+    'seahorse-nautilus',
+    'tilix',
+    'tilix-nautilus',
+    'chromium',
+    'chrome-gnome-shell',
+    'lm_sensors',
+    'gnome-shell-extension-topicons-plus',
+    'gnome-shell-extension-calc',
+    'gnome-tweak-tool',
+    'gtk-murrine-engine',
+    'remmina',
+    'remmina-plugins-rdp',
+    'remmina-plugins-spice',
+    'remmina-plugins-vnc',
+    'util-linux-user',
+    'dnf-plugins-core',
+    'sqlite',
+    'python3',
+    'python3-pip',
+    'ImageMagick',
+    # 'python-firewall',
+    'parallel',
+    'brasero',
+    'dnf-automatic',
+    'jq',
+    'yubioath-desktop'
+    ]
 
   #Keyboard Config. This will eventually be its own role.
 

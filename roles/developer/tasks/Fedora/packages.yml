@@ -54,6 +54,7 @@
     - libsass
     - glib2-devel
     - clang
+    - php-json # To Enable composer
   loop_control:
     loop_var:   install_package
   notify:       Update Font Cache
