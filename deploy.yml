@@ -1,30 +1,41 @@
 ---
 - hosts:          localhost
-  become:         true
+  become:         false
   connection:     local
-  pre_tasks:
-    - name:       Install Manditory base files
-      package:
-        state:    present
-        name:     "{{ item }}"
-      with_items:
-        - libselinux-python
   roles:
-    #- geerlingguy.docker
-    - vs-code
     - vaulttec.zsh
-    - base
-    - developer
-    # - arduino
-    - geerlingguy.git
-    - geerlingguy.pip
-    - geerlingguy.php
-    - geerlingguy.composer
-    # - VirtualBox
-    # - geerlingguy.ansible
-    # - docker-syncthing
-
   vars_files:
     - vars/main.yml
     - vars/zsh.yml
     - vars/vault.yml
+
+# - hosts:          localhost
+#   become:         true
+#   connection:     local
+#   pre_tasks:
+#     - name:       Install Manditory base files
+#       package:
+#         state:    present
+#         name:     "{{ item }}"
+#       with_items:
+#         - libselinux-python
+#   roles:
+#     #- geerlingguy.docker
+#     - vs-code
+#     - vaulttec.zsh
+#     - base
+#     - developer
+#     # - arduino
+#     - geerlingguy.git
+#     - geerlingguy.pip
+#     - geerlingguy.php
+#     - geerlingguy.composer
+#     # - VirtualBox
+#     # - geerlingguy.ansible
+#     # - docker-syncthing
+#   vars_files:
+#     - vars/main.yml
+#     - vars/vault.yml
+
+
+...

@@ -21,13 +21,6 @@ echo "Working in the $SETUPDIR Directory"
 mkdir -p "$SETUPDIR"
 cd "$SETUPDIR"
 
-if [ ! -d "$HOME/Enpass" ]; then
-    #This is needed for Enpass
-    sudo dnf install -y libXScrnSaver
-    wget "https://dl.sinew.in/linux/setup/5-6-0/Enpass_Installer_5.6.0" -O EnpassInstaller
-    chmod +x EnpassInstaller
-    ./EnpassInstaller
-fi
 
 wget "https://raw.githubusercontent.com/Findarato/dotFiles/master/.bashrc" -O "$HOME/.bashrc"
 wget "https://raw.githubusercontent.com/Findarato/dotFiles/master/.ansible.cfg" -O "$HOME/.ansible.cfg"

@@ -54,7 +54,7 @@
     accept_hostkey:   yes
     track_submodules: yes
     update:           yes
-    version:          v1.0
+    version:          v1.7
   register:           result
   ignore_errors:      yes
   when:

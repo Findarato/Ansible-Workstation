@@ -9,19 +9,20 @@ thinkpad: false
 libvirt_storage_path: /home/images
 
 # Services
-enable_sshd: true
-enable_fail2ban: false
-enable_powertop: false
-enable_vagrant_nfs: true
-enable_libvirtd: false
+enable_sshd:          true
+enable_fail2ban:      false
+enable_powertop:      false
+enable_vagrant_nfs:   true
+enable_libvirtd:      false
 
 # Extras
-install_extra_fonts: true
-install_packager: false
-install_steam: true
-install_nvidia: false
-install_docker: false
-install_slack: false
+install_extra_fonts:  true
+install_packager:     false
+install_steam:        true
+install_nvidia:       false
+install_docker:       false
+install_slack:        false
+install_enpass:       true
 
 tilix_themes:
   - "Themes/espresso.json"
