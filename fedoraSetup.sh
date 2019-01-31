@@ -25,8 +25,8 @@ cd "$SETUPDIR"
 wget "https://raw.githubusercontent.com/Findarato/dotFiles/master/.bashrc" -O "$HOME/.bashrc"
 wget "https://raw.githubusercontent.com/Findarato/dotFiles/master/.ansible.cfg" -O "$HOME/.ansible.cfg"
 
-source "$HOME/.bashrc"
-export ANSIBLE_VAULT_PASSWORD_FILE=~/.vault_pass.txt
+#source "$HOME/.bashrc"
+#export ANSIBLE_VAULT_PASSWORD_FILE=~/.vault_pass.txt
 
 
 echo "Starting Deployment"

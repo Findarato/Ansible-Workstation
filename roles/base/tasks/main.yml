@@ -27,15 +27,15 @@
     dest:             "/home/{{ local_user }}/.ssh/{{ item.name }}"
     backup:           yes
   with_items:         "{{ private_keys }}"
-  when:
-    - local_user == "joe"
+  # when:
+  #   - local_user == "joe"
 
 - name:               Generate Private keys
   user:
     name: "{{ local_user }}"
     generate_ssh_key: true
-  when:
-    - local_user != "joe"
+  # when:
+  #   - local_user != "joe"
 
 
 - name:               Create src folder
@@ -45,20 +45,20 @@
     owner:            "{{ local_user }}"
     mode:             0750
 
-- name:               Clone dotfiles repos
-  become:             false
-  git:
-    repo:             "{{ dotfiles_repo_RO }}"
-    dest:             "/home/{{ local_user }}/Documents/src/dotFiles_read_only"
-    key_file:         "/home/{{ local_user }}/.ssh/github"
-    accept_hostkey:   yes
-    track_submodules: yes
-    update:           yes
-    version:          v1.7
-  register:           result
-  ignore_errors:      yes
-  when:
-    - local_user != "joe"
+# - name:               Clone dotfiles repos
+#   become:             false
+#   git:
+#     repo:             "{{ dotfiles_repo_RO }}"
+#     dest:             "/home/{{ local_user }}/Documents/src/dotFiles_read_only"
+#     key_file:         "/home/{{ local_user }}/.ssh/github"
+#     accept_hostkey:   yes
+#     track_submodules: yes
+#     update:           yes
+#     version:          v1.7
+#   register:           result
+#   ignore_errors:      yes
+#   # when:
+  #   - local_user != "joe"
 
 - name:               Clone dotfiles repos
   become:             false
@@ -69,16 +69,15 @@
     accept_hostkey:   yes
     track_submodules: yes
     update:           yes
-    version:          v1.5
+    version:          v1.7
   register:           result
   ignore_errors:      yes
-  when:
-    - local_user == "joe"
+  # when:
+  #   - local_user == "joe"
 
 - name:               Delete exsisting files in home directory
   become:             false
   file:
-    src:              "/home/{{ local_user }}/Documents/src/dotFiles/{{ old_file }}"
     dest:             "/home/{{ local_user }}/{{ old_file }}"
     state:            absent
   with_items:
