@@ -1,12 +1,6 @@
 #!/usr/bin/env ansible-playbook
 ---
 
-- name:               Install 'flatpak'
-  package:
-    name:             flatpak
-    state:            present
-  become:             yes
-
 - name:               Ensure .ssh directory exists.
   file:
     dest:             "/home/{{ local_user }}/.ssh/"
@@ -27,15 +21,12 @@
     dest:             "/home/{{ local_user }}/.ssh/{{ item.name }}"
     backup:           yes
   with_items:         "{{ private_keys }}"
-  # when:
-  #   - local_user == "joe"
 
 - name:               Generate Private keys
   user:
-    name: "{{ local_user }}"
+    name:             "{{ local_user }}"
     generate_ssh_key: true
-  # when:
-  #   - local_user != "joe"
+
 
 
 - name:               Create src folder
@@ -72,8 +63,6 @@
     version:          v1.7
   register:           result
   ignore_errors:      yes
-  # when:
-  #   - local_user == "joe"
 
 - name:               Delete exsisting files in home directory
   become:             false
@@ -81,7 +70,6 @@
     dest:             "/home/{{ local_user }}/{{ old_file }}"
     state:            absent
   with_items:
-    - bin
     - .aliases
     - .ansible.cfg
     - .bashrc
@@ -95,6 +83,7 @@
     - .rainbow_config.json
     - .zprofile
     - .zshrc
+    - bin
   loop_control:
     loop_var:         old_file
   when:               result is changed
@@ -106,7 +95,6 @@
     dest:             "/home/{{ local_user }}/{{ link_file }}"
     state:            link
   with_items:
-    - bin
     - .aliases
     - .ansible.cfg
     - .bashrc
@@ -120,6 +108,7 @@
     - .rainbow_config.json
     - .zprofile
     - .zshrc
+    - bin
   loop_control:
     loop_var:         link_file
   when:               result is changed
@@ -139,8 +128,7 @@
     - "{{ ansible_distribution }}/system.yml"
     - "{{ ansible_distribution }}/packages.yml"
     - "{{ ansible_distribution }}/services.yml"
+    - "{{ ansible_distribution }}/configuration.yml"
+    - "{{ ansible_distribution }}/flatpak.yml"
   loop_control:
     loop_var:         include_file
-
-# - name:               Harden OS
-#   import_tasks:       harden.yml

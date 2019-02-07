@@ -10,10 +10,10 @@ zsh_ohmy_custom_plugins:
     repo: "https://github.com/bhilburn/powerlevel9k.git"
 
 zsh_ohmy_plugins:
+  - dnf
+  - docker
   - git
   - git-flow
-  - docker
-  - zsh-syntax-highlighting
   - zsh-autosuggestions
-  - dnf
+  - zsh-syntax-highlighting
 zsh_ohmy_auto_update: true

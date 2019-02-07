@@ -1,3 +1,4 @@
+#!/usr/bin/env ansible-playbook
 ---
 # Themes are in a dir/theme format
 # Directories are either Themes or Themes-2
@@ -5,55 +6,57 @@
 dotfiles_repo_RO: https://github.com/Findarato/dotFiles.git
 dotfiles_repo_RW: git@github.com:Findarato/dotFiles.git
 
-install_packages: [
-    'htop',
-    'wget',
-    'curl',
-    'python-pip',
-    'nano',
-    'openssh',
-    'fwbackups',
-    'tmux',
-    'vlc',
-    'mpv',
-    'fslint',
-    'wget',
-    'p7zip',
-    'seahorse-nautilus',
-    'tilix',
-    'tilix-nautilus',
-    'chromium',
-    'chrome-gnome-shell',
-    'lm_sensors',
-    'gnome-shell-extension-topicons-plus',
-    'gnome-shell-extension-calc',
-    'gnome-tweak-tool',
-    'gtk-murrine-engine',
-    'remmina',
-    'remmina-plugins-rdp',
-    'remmina-plugins-spice',
-    'remmina-plugins-vnc',
-    'util-linux-user',
-    'dnf-plugins-core',
-    'sqlite',
-    'python3',
-    'python3-pip',
-    'ImageMagick',
-    # 'python-firewall',
-    'parallel',
-    'brasero',
-    'dnf-automatic',
-    'jq',
-    'yubioath-desktop'
-    ]
+install_packages:
+  # - python-firewall
+  - ImageMagick
+  - brasero
+  - chrome-gnome-shell
+  - chromium
+  - curl
+  - dnf-automatic
+  - dnf-plugins-core
+  - fslint
+  - fwbackups
+  - gnome-shell-extension-calc
+  - gnome-shell-extension-topicons-plus
+  - gnome-tweak-tool
+  - gtk-murrine-engine
+  - htop
+  - jq
+  - lm_sensors
+  - mpv
+  - nano
+  - openssh
+  - p7zip
+  - parallel
+  - prettyping
+  - python-pip
+  - python3
+  - python3-pip
+  - remmina
+  - remmina-plugins-rdp
+  - remmina-plugins-spice
+  - remmina-plugins-vnc
+  - seahorse-nautilus
+  - sqlite
+  - tilix
+  - tilix-nautilus
+  - tmux
+  - util-linux-user
+  - vlc
+  - wget
+  # - yubioath-desktop
 
-remove_packages: [
-  gnome-shell-extension-background-logo,
-  gnome-shell-extension-window-list,
-  tint2
-]
+install_citrix_packages:
+  - heimdal-libs
+  - libidn1.34
 
-extra_font_files: 
+remove_packages:
+  - gnome-shell-extension-background-logo
+  - gnome-shell-extension-window-list
+  - tint2
+
+extra_font_files:
   - adobe-source-code-pro-fonts
   - dejavu-sans-fonts
   - dejavu-sans-mono-fonts
@@ -62,6 +65,9 @@ extra_font_files:
   - gnu-free-mono-fonts
   - gnu-free-sans-fonts
   - gnu-free-serif-fonts
+  - google-android-emoji-fonts
+  - google-android-emoji-fonts
+  - google-noto-fonts-common
   - levien-inconsolata-fonts
   - liberation-fonts-common
   - liberation-mono-fonts
@@ -71,7 +77,13 @@ extra_font_files:
   - msimonson-anonymouspro-fonts
   - overpass-fonts
   - terminus-fonts
-  - google-android-emoji-fonts
-  - google-noto-fonts-common
-  - google-android-emoji-fonts
+
+nvidia_packages:
+  - cuda
+  - cuda-cudart
+  - nvidia-driver-cuda
+
+flatpak_packages:
+  - com.github.alecaddd.sequeler
+  - com.axosoft.GitKraken
 ...

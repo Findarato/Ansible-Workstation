@@ -1,7 +1,7 @@
 ---
 # User
-local_user: joe
-local_user_email: joe@wpl.lib.in,us
+local_user: jharry
+local_user_email: 
 local_user_passwordless_sudo: false
 
 # System
@@ -12,13 +12,13 @@ libvirt_storage_path: /home/images
 enable_sshd:          true
 enable_fail2ban:      false
 enable_powertop:      false
-enable_vagrant_nfs:   true
+enable_vagrant_nfs:   false
 enable_libvirtd:      false
 
 # Extras
 install_extra_fonts:  true
 install_packager:     false
-install_steam:        true
+install_steam:        false
 install_nvidia:       false
 install_docker:       false
 install_slack:        false
@@ -29,3 +29,7 @@ tilix_themes:
   - "Themes/espresso-libre.json"
 
 var_files: zsh.yml
+
+# Work Specific things
+work:                 true
+citrix_receiver:      true

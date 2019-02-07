@@ -2,23 +2,26 @@
 ---
 vscode_extensions:
   - AndrsDC.base16-themes
-  - wholroyd.jinja
+  - CoenraadS.bracket-pair-colorizer
+  - PKief.markdown-checkbox
+  - PeterJausovec.vscode-docker
   - Shan.code-settings-sync
-  - robertohuertasm.vscode-icons
+  - Tyriar.sort-lines
+  - dhoeric.ansible-vault
   - felixfbecker.php-intellisense
+  - formulahendry.terminal
+  - haaaad.ansible
   - joelday.docthis
   - kamikillerto.vscode-colorize
+  - redhat.vscode-yaml
+  - robertohuertasm.vscode-icons
   - sandcastle.whitespace
-  - CoenraadS.bracket-pair-colorizer
-  - formulahendry.terminal
-  - dhoeric.ansible-vault
-  - haaaad.ansible
-  - shardulm94.trailing-spaces
   - shakram02.bash-beautify
-# For Editing Markdown
-# - shd101wyy.markdown-preview-enhanced
+  - shardulm94.trailing-spaces
+  - vscoss.vscode-ansible
+  - wholroyd.jinja
   - yzhang.markdown-all-in-one
   # - steve8708.align
-  - PeterJausovec.vscode-docker
-  - PKief.markdown-checkbox
+  # - shd101wyy.markdown-preview-enhanced
+
 ...

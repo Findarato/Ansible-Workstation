@@ -28,7 +28,6 @@ wget "https://raw.githubusercontent.com/Findarato/dotFiles/master/.ansible.cfg" 
 #source "$HOME/.bashrc"
 #export ANSIBLE_VAULT_PASSWORD_FILE=~/.vault_pass.txt
 
-
 echo "Starting Deployment"
 cd "$SETUPDIR"
 git clone "https://github.com/Findarato/Ansible-Workstation.git" "$SETUPDIR/Ansible-Workstaton"
@@ -40,7 +39,7 @@ echo "Setting up Ansible Roles"
 ansible-galaxy install -r roles/requirements.yml
 
 echo "Running Ansible"
-ansible-playbook -i localHosts deploy.yml --extra-vars "local_user=$USER"
+ansible-playbook -i localHosts deploy.yml --extra-vars "local_user=$USER" --vault-id "${HOME}/bin/ansiblePass.sh"
 
 #Clean up the Setup
 echo "Cleaning up Setup directory"
