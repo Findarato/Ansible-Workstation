@@ -84,6 +84,10 @@ nvidia_packages:
   - nvidia-driver-cuda
 
 flatpak_packages:
+  - https://flathub.org/repo/appstream/com.axosoft.GitKraken.flatpakref
   - com.github.alecaddd.sequeler
-  - com.axosoft.GitKraken
+
+python_packages:
+  - psutil
+  - redis
 ...

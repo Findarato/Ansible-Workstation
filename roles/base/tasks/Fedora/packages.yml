@@ -11,8 +11,12 @@
   dnf:
     state:      present
     name:       '{{ install_packages }}'
-
   #Keyboard Config. This will eventually be its own role.
+
+- name:        Install Required Python libraries
+  pip:
+    name:     "{{ python_packages }}"
+    state:    present
 
 - name:         Install Extra Font Packages
   dnf:
@@ -21,7 +25,7 @@
   when:         install_extra_fonts
   notify:       Update Font Cache
 
-- name:         Check for slack
+- name:         Check for Slack
   stat:
     path:       /usr/bin/slack
   register:     slack_installed
@@ -61,4 +65,6 @@
 - name:         Install CIFS Utils
   dnf:
     name:       cifs-utils
-    state:      true
+    state:      present
+  when:
+    - work == true

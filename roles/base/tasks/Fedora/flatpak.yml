@@ -7,10 +7,36 @@
     state:    present
   become:     yes
 
-- name:       Install flatpak packages
+
+# This is giving me issues
+# - name: Add the flathub flatpak repository remote to the user installation
+#   become: true
+#   flatpak_remote:
+#     name: flathub
+#     state: present
+#     flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+
+
+
+- name: Install the gitKraken flatpak
   flatpak:
-    name:     "{{ flatpak_packages }}"
-    state:    present
-    method:   user
+    name:   https://flathub.org/repo/appstream/com.axosoft.GitKraken.flatpakref
+    state:  present
+    method: user
+
+
+- name: Install the gitKraken flatpak
+  flatpak:
+    name:   https://flathub.org/repo/appstream/com.axosoft.GitKraken.flatpakref
+    state:  present
+    method: user
+
+
+
+# - name:       Install flatpak packages
+#   flatpak:
+#     name:     "{{ flatpak_packages }}"
+#     state:    present
+#     # method:   user
 
 ...

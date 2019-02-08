@@ -21,13 +21,13 @@
     dest:             "/home/{{ local_user }}/.ssh/{{ item.name }}"
     backup:           yes
   with_items:         "{{ private_keys }}"
+  no_log: true
 
 - name:               Generate Private keys
   user:
     name:             "{{ local_user }}"
     generate_ssh_key: true
-
-
+  no_log: true
 
 - name:               Create src folder
   file:
@@ -128,7 +128,7 @@
     - "{{ ansible_distribution }}/system.yml"
     - "{{ ansible_distribution }}/packages.yml"
     - "{{ ansible_distribution }}/services.yml"
-    - "{{ ansible_distribution }}/configuration.yml"
+    # - "{{ ansible_distribution }}/configuration.yml"
     - "{{ ansible_distribution }}/flatpak.yml"
   loop_control:
     loop_var:         include_file

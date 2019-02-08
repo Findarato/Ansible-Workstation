@@ -98,10 +98,10 @@
     state: present
     name: fedora-workstation-repositories
 
-- name:     Download enpass Repo
+- name:     Download Enpass Repo
   get_url:
     url:    "https://yum.enpass.io/enpass-yum.repo"
     mode:   0644
-    dest:   "/etc/yum.repos.d/fedora-nvidia.repo"
+    dest:   "/etc/yum.repos.d/enpass-yum.repo"
   when:
     - install_enpass == true

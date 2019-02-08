@@ -6,8 +6,7 @@ pip_install:
   - cfscrape
   - selenium
   - google-api-python-client
-  - docker-py
-  - docker
+  - docker-py  
 
 remove_packages:
   - nodejs

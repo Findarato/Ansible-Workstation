@@ -3,22 +3,13 @@
 
 - name: Ensure old docker python is missing
   pip:
-    name: "{{ docker_syncthing_python_remove }}"
+    name:       docker
     state:      absent
-  with_items:
-    - docker
-  loop_control:
-    loop_var:   docker_syncthing_python_remove
-
 
 - name: Ensure python libs are installed
   pip:
-    name: "{{ docker_syncthing_python_install }}"
+    name:       docker-py
     state:      latest
-  with_items:
-    - docker-py
-  loop_control:
-    loop_var:   docker_syncthing_python_install
 
 
 - name: Create Docker paths
@@ -40,11 +31,7 @@
     group: docker
     mode: 0775
   with_items:
-    - pictures
-    - tapet
-    - camera
     - documents
-    - personal
 
 - name: Create Syncthing container
   become: False
@@ -53,7 +40,7 @@
     image:  linuxserver/syncthing
     state: started
     restart_policy: unless-stopped
-    hostname: d-it01-syncthing
+    hostname: syncthing
     recreate: yes
     restart: yes
     pull: true
@@ -68,11 +55,8 @@
     volumes:
       - "{{ docker_syncthing_storage }}/data/:/mnt/data/"
       - "{{ docker_syncthing_storage }}/config:/config"
-      - "/mnt/syncthing/{{ local_user }}/pictures:/mnt/pictures"
-      - "/mnt/syncthing/{{ local_user }}/tapet:/mnt/tapet"
-      - "/mnt/syncthing/{{ local_user }}/personal:/mnt/joe "
-      - "/mnt/syncthing/{{ local_user }}/camera:/mnt/camera"
-      - "/mnt/syncthing/{{ local_user }}/documents:/mnt/documents"
+      # - "/mnt/syncthing/{{ local_user }}/documents:/mnt/documents"
+      - "/home/{{ local_user }}/Documents:/mnt/documents"
     env:
       TZ: America/Chicago
       PUID: 1000
