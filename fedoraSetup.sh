@@ -25,7 +25,7 @@ cd "${SETUPDIR}"
 wget "https://raw.githubusercontent.com/Findarato/dotFiles/master/.bashrc" -O "${HOME}/.bashrc"
 wget "https://raw.githubusercontent.com/Findarato/dotFiles/master/.ansible.cfg" -O "${HOME}/.ansible.cfg"
 
-
+# Clone password storage.
 git clone git@github.com:Findarato/pass.git "${HOME}/.password-store"
 
 echo "Starting Deployment"
