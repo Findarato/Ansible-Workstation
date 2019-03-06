@@ -1,12 +1,20 @@
 #!/usr/bin/env ansible-playbook
 ---
 
-- name:               Ensure .ssh directory exists.
-  file:
-    dest:             "/home/{{ local_user }}/.ssh/"
-    mode:             0700
-    owner:            "{{ local_user }}"
-    state:            directory
+# - name:               Ensure .ssh directory exists.
+#   file:
+#     dest:             "/home/{{ local_user }}/.ssh/"
+#     mode:             0700
+#     owner:            "{{ local_user }}"
+#     state:            directory
+
+# - name:               Add Private Keys
+#   copy:
+#     content:          "{{ item.key }}"
+#     dest:             "/home/{{ local_user }}/.ssh/{{ item.name }}"
+#     backup:           yes
+#   with_items:         "{{ private_keys }}"
+#   no_log: true
 
 - name:               Ensure Tilix config directory exsists
   file:
@@ -15,13 +23,6 @@
     owner:            "{{ local_user }}"
     state:            directory
 
-- name:               Add Private Keys
-  copy:
-    content:          "{{ item.key }}"
-    dest:             "/home/{{ local_user }}/.ssh/{{ item.name }}"
-    backup:           yes
-  with_items:         "{{ private_keys }}"
-  no_log: true
 
 - name:               Generate Private keys
   user:
@@ -124,11 +125,13 @@
 - name:               Running OS specific Configurations and Commands
   include_tasks:            "{{ include_file }}"
   with_items:
-    - "{{ ansible_distribution }}/repos.yml"
-    - "{{ ansible_distribution }}/system.yml"
-    - "{{ ansible_distribution }}/packages.yml"
-    - "{{ ansible_distribution }}/services.yml"
-    # - "{{ ansible_distribution }}/configuration.yml"
-    - "{{ ansible_distribution }}/flatpak.yml"
+    # - "{{ ansible_distribution }}/repos.yml"
+    # - "{{ ansible_distribution }}/system.yml"
+    # - "{{ ansible_distribution }}/packages.yml"
+    # - "{{ ansible_distribution }}/services.yml"
+    - "{{ ansible_distribution }}/configuration.yml"
+    # - "{{ ansible_distribution }}/flatpak.yml"
   loop_control:
     loop_var:         include_file
+  tags:
+    - configuration

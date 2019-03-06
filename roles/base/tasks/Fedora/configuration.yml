@@ -1,18 +1,76 @@
 #!/usr/bin/env ansible-playbook
 ---
-- name: Enable Night Light
-  dconf:
-    key: /org/gnome/settings-daemon/plugins/color/night-light-enabled
-    value: true
-  tags:
-    - configuration
-    - dconf
 
-- name: Set Night Light Temperature
+- name: 👕 Required Packages
+  package:
+    name: python3-psutil
+    state: present
+  tags:
+    - dconf
+    - install
+
+# - name: 👕 Tilix Dark Theme
+#   dconf:
+#     key: "/com/gexperts/Tilix/Settings/theme-variant"
+#     value: "'dark'"
+#     state: present
+#   tags:
+#     - configuration
+#     - dconf
+
+- name: 👕 Gnome Theme
+  become: false
   dconf:
-    key: /org/gnome/settings-daemon/plugins/color/night-light-temperature
-    value: "uint32 5500"
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+    state: present
   tags:
     - configuration
     - dconf
+  with_items:
+    - "{{ dconf_settings_theme }}"
+
+- name: 👕 Dash to Dock
+  become: false
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+    state: present
+  tags:
+    - configuration
+    - dconf
+  with_items:
+    - "{{ dconf_dash_to_dock_theme }}"
+
+- name: 👕 Usability Improvements
+  become: false
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+    state: present
+  tags:
+    - configuration
+    - dconf
+  with_items:
+    - "{{ dconf_usability_improvements }}"
+
+
+# - name: Config => Enable Night Light
+#   become: false
+#   dconf:
+#     key: /org/gnome/settings-daemon/plugins/color/night-light-enabled/
+#     value: "true"
+#     state: present
+#   tags:
+#     - configuration
+#     - dconf
+
+# - name: Set => Night Light Temperature
+#   become: false
+#   dconf:
+#     key: /org/gnome/settings-daemon/plugins/color/night-light-temperature
+#     value: "uint32 5500"
+#   tags:
+#     - configuration
+#     - dconf
 ...
