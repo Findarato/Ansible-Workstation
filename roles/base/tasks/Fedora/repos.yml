@@ -1,7 +1,7 @@
 #!/usr/bin/env ansible-playbook
 ---
-- debug:
-    msg:    "System {{ inventory_hostname }} has uuid {{ ansible_product_uuid }}"
+# - debug:
+#     msg:    "System {{ inventory_hostname }} has uuid {{ ansible_product_uuid }}"
 
 - name:     Check rpmFusion Non Free Repo
   stat:

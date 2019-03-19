@@ -9,15 +9,6 @@
     - dconf
     - install
 
-# - name: 👕 Tilix Dark Theme
-#   dconf:
-#     key: "/com/gexperts/Tilix/Settings/theme-variant"
-#     value: "'dark'"
-#     state: present
-#   tags:
-#     - configuration
-#     - dconf
-
 - name: 👕 Gnome Theme
   become: false
   dconf:
@@ -54,23 +45,4 @@
   with_items:
     - "{{ dconf_usability_improvements }}"
 
-
-# - name: Config => Enable Night Light
-#   become: false
-#   dconf:
-#     key: /org/gnome/settings-daemon/plugins/color/night-light-enabled/
-#     value: "true"
-#     state: present
-#   tags:
-#     - configuration
-#     - dconf
-
-# - name: Set => Night Light Temperature
-#   become: false
-#   dconf:
-#     key: /org/gnome/settings-daemon/plugins/color/night-light-temperature
-#     value: "uint32 5500"
-#   tags:
-#     - configuration
-#     - dconf
 ...

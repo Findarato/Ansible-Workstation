@@ -37,21 +37,6 @@
     owner:            "{{ local_user }}"
     mode:             0750
 
-# - name:               Clone dotfiles repos
-#   become:             false
-#   git:
-#     repo:             "{{ dotfiles_repo_RO }}"
-#     dest:             "/home/{{ local_user }}/Documents/src/dotFiles_read_only"
-#     key_file:         "/home/{{ local_user }}/.ssh/github"
-#     accept_hostkey:   yes
-#     track_submodules: yes
-#     update:           yes
-#     version:          v1.7
-#   register:           result
-#   ignore_errors:      yes
-#   # when:
-  #   - local_user != "joe"
-
 - name:               Clone dotfiles repos
   become:             false
   git:
@@ -130,7 +115,7 @@
     # - "{{ ansible_distribution }}/packages.yml"
     # - "{{ ansible_distribution }}/services.yml"
     - "{{ ansible_distribution }}/configuration.yml"
-    # - "{{ ansible_distribution }}/flatpak.yml"
+    - "{{ ansible_distribution }}/flatpak.yml"
   loop_control:
     loop_var:         include_file
   tags:
