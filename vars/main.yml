@@ -1,35 +1,36 @@
 ---
 # User
-local_user: jharry
-local_user_email: 
+local_user                  : jharry
+local_user_email            : 
 local_user_passwordless_sudo: false
 
 # System
-thinkpad: false
+thinkpad            : false
 libvirt_storage_path: /home/images
 
 # Services
-enable_sshd:          true
-enable_fail2ban:      false
-enable_powertop:      false
-enable_vagrant_nfs:   false
-enable_libvirtd:      false
+enable_sshd       : true
+enable_fail2ban   : false
+enable_powertop   : false
+enable_vagrant_nfs: false
+enable_libvirtd   : false
 
 # Extras
-install_extra_fonts:  true
-install_packager:     false
-install_steam:        false
-install_nvidia:       false
-install_docker:       false
-install_slack:        false
-install_enpass:       true
+install_extra_fonts: true
+install_packager   : false
+install_steam      : false
+install_nvidia     : false
+install_docker     : false
+install_slack      : false
+install_enpass     : true
+ram_cache          : true
 
-tilix_themes:
+tilix_themes: 
   - "Themes/espresso.json"
   - "Themes/espresso-libre.json"
 
 var_files: zsh.yml
 
 # Work Specific things
-work:                 true
-citrix_receiver:      true
+work           : true
+citrix_receiver: true

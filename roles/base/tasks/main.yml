@@ -120,3 +120,14 @@
     loop_var:         include_file
   tags:
     - configuration
+
+
+- name: Setup Ram CACHE fstab
+  mount:
+    path: /mnt/cache
+    src: tmpfs
+    fstype: tmpfs
+    state: present
+    opts: nodev,nosuid,noexec,nodiratime,size=1024M
+  when:
+    - ram_cache == true

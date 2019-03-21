@@ -4,10 +4,9 @@
 # Directories are either Themes or Themes-2
 
 # dotfiles_repo_RO: https://github.com/Findarato/dotFiles.git
-# dotfiles_repo_RW: git@github.com:Findarato/dotFiles.git
+dotfiles_repo_RW: git@github.com:Findarato/dotFiles.git
 
 install_packages:
-  # - python-firewall
   - ImageMagick
   - brasero
   - chrome-gnome-shell
@@ -44,7 +43,6 @@ install_packages:
   - tilix-nautilus
   - tmux
   - util-linux-user
-  - vlc
   - gtkhash-nautilus
   - pop-icon-theme
   # - yubioath-desktop
