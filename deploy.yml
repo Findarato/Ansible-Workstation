@@ -24,7 +24,7 @@
     - developer
     # - geerlingguy.docker
     # - docker-syncthing
-    # - vs-code
+    - vs-code
     # - arduino
     - geerlingguy.git
     - geerlingguy.pip

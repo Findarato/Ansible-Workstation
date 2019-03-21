@@ -3,21 +3,21 @@
 vscode_extensions:
   - AndrsDC.base16-themes
   - CoenraadS.bracket-pair-colorizer
-  - PKief.markdown-checkbox
-  - PeterJausovec.vscode-docker
-  - Shan.code-settings-sync
-  - Tyriar.sort-lines
   - dhoeric.ansible-vault
   - felixfbecker.php-intellisense
   - formulahendry.terminal
   - haaaad.ansible
   - joelday.docthis
   - kamikillerto.vscode-colorize
+  - PeterJausovec.vscode-docker
+  - PKief.markdown-checkbox
   - redhat.vscode-yaml
-  - robertohuertasm.vscode-icons
   - sandcastle.whitespace
   - shakram02.bash-beautify
+  - Shan.code-settings-sync
   - shardulm94.trailing-spaces
+  - Tyriar.sort-lines
+  - vscode-icons-team.vscode-icons
   - vscoss.vscode-ansible
   - wholroyd.jinja
   - yzhang.markdown-all-in-one

@@ -45,6 +45,7 @@ install_packages:
   - util-linux-user
   - gtkhash-nautilus
   - pop-icon-theme
+  - podman
   # - yubioath-desktop
 
 install_citrix_packages:
