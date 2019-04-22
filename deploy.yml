@@ -20,7 +20,7 @@
       with_items:
         - libselinux-python
   roles:
-    - base
+    - 🔵 base
     - developer
     # - geerlingguy.docker
     - vs-code
