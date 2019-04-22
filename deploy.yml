@@ -23,7 +23,6 @@
     - base
     - developer
     # - geerlingguy.docker
-    # - docker-syncthing
     - vs-code
     # - arduino
     - geerlingguy.git

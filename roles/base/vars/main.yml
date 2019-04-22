@@ -8,7 +8,7 @@ dotfiles_repo_RW: git@github.com:Findarato/dotFiles.git
 
 install_packages:
   - ImageMagick
-  - brasero
+  # - brasero
   - chrome-gnome-shell
   - chromium-vaapi
   - curl
@@ -20,6 +20,7 @@ install_packages:
   - gnome-shell-extension-dash-to-dock
   - gnome-shell-extension-topicons-plus
   - gnome-shell-extension-user-theme
+  - gnome-shell-extension-auto-move-windows
   - gnome-tweak-tool
   - gtk-murrine-engine
   - htop
@@ -43,9 +44,9 @@ install_packages:
   - tilix-nautilus
   - tmux
   - util-linux-user
-  - gtkhash-nautilus
   - pop-icon-theme
   - podman
+  - httpie
   # - yubioath-desktop
 
 install_citrix_packages:
@@ -55,10 +56,14 @@ install_citrix_packages:
 remove_packages:
   - gnome-shell-extension-background-logo
   - gnome-shell-extension-window-list
+  - gnome-shell-extension-launch-new-instance
+  - gnome-shell-extension-places-menu
+  - gnome-shell-extension-apps-menu
   - tint2
   - chromium
   - totem
   - flowblade
+  - gtkhash-nautilus
 
 
 extra_font_files:

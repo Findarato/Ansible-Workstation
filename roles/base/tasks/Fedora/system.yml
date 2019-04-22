@@ -1,15 +1,5 @@
 #!/usr/bin/env ansible-playbook
 ---
-#Custom Shortcut for Tilix
-# gsettings set org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0 name "Launch Tilix"
-# gsettings set org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0 binding '<Primary><Alt>t'
-# gsettings set org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0 command "tilix"
-
-# @TODO:      ALL of this needs work. It fails when it succeeds
-
-#flatpak install --from http://baedert.org/repo/org.baedert.corebird.flatpakref
-
-
 - name:       Install Nvidia Cuda
   dnf:
     name:     "{{ nvidia_packages }}"

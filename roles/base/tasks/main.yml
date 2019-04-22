@@ -46,7 +46,7 @@
     accept_hostkey:   yes
     track_submodules: yes
     update:           yes
-    version:          v1.7
+    # version:          v1.7
   register:           result
   ignore_errors:      yes
 
@@ -128,6 +128,6 @@
     src: tmpfs
     fstype: tmpfs
     state: present
-    opts: nodev,nosuid,noexec,nodiratime,size=1024M
+    opts: nodev,nosuid,noexec,nodiratime,size=512M
   when:
     - ram_cache == true
