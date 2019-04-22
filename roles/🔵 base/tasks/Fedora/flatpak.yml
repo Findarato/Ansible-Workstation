@@ -17,7 +17,7 @@
 
 
 
-- name: 📦 Install the gitKraken
+- name: Install the gitKraken
   flatpak:
     name:   https://flathub.org/repo/appstream/com.axosoft.GitKraken.flatpakref
     state:  present
@@ -36,7 +36,7 @@
 #     - flatpak
 #     - packages
 
-- name: 📦 Install the syncthing GTK
+- name: Install the syncthing GTK
   flatpak:
     name:   https://flathub.org/repo/appstream/me.kozec.syncthingtk.flatpakref
     state:  present
@@ -45,7 +45,7 @@
     - flatpak
     - packages
 
-- name: 📦 Install the Geary
+- name: Install the Geary
   flatpak:
     name:   https://flathub.org/repo/appstream/org.gnome.Geary.flatpakref
     state:  present
@@ -54,7 +54,7 @@
     - flatpak
     - packages
 
-- name: 📦 Install the Sequeler
+- name: Install the Sequeler
   flatpak:
     name:   https://flathub.org/repo/appstream/com.github.alecaddd.sequeler.flatpakref
     state:  present

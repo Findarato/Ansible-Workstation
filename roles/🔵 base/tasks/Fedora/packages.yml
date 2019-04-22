@@ -1,24 +1,23 @@
-#!/usr/bin/env ansible-playbook
 ---
 #Remove Packages
-- name:         Remove Packages
+- name:         📦 Remove Packages
   dnf:
     state:      absent
     name:       "{{ remove_packages }}"
 
 # Install Packages
-- name:         Install Packages
+- name:         📦 Install Packages
   dnf:
     state:      present
     name:       '{{ install_packages }}'
   #Keyboard Config. This will eventually be its own role.
 
-- name:        Install Required Python libraries
+- name:        📦 Install Required Python libraries
   pip:
     name:     "{{ python_packages }}"
     state:    present
 
-- name:         Install Extra Font Packages
+- name:         📦 Install Extra Font Packages
   dnf:
     name:       "{{ extra_font_files }}"
     state:      present
@@ -30,7 +29,7 @@
     path:       /usr/bin/slack
   register:     slack_installed
 
-- name:         Install Slack
+- name:         📦 Install Slack
   dnf:
     name:       "https://downloads.slack-edge.com/linux_releases/slack-2.8.0-0.1.fc21.x86_64.rpm"
     state:      present
