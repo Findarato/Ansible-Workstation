@@ -1,46 +1,34 @@
 ---
 
-- name: 👕 Required Packages
+- name: Required Packages
   package:
     name: python3-psutil
     state: present
-  tags:
-    - dconf
-    - install
 
-- name: 👕 Gnome Theme
+- name: Gnome Theme
   become: false
   dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
     state: present
-  tags:
-    - configuration
-    - dconf
   with_items:
     - "{{ dconf_settings_theme }}"
 
-- name: 👕 Dash to Dock
+- name: Dash to Dock
   become: false
   dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
     state: present
-  tags:
-    - configuration
-    - dconf
   with_items:
     - "{{ dconf_dash_to_dock_theme }}"
 
-- name: 👕 Usability Improvements
+- name: Usability Improvements
   become: false
   dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
     state: present
-  tags:
-    - configuration
-    - dconf
   with_items:
     - "{{ dconf_usability_improvements }}"
 
