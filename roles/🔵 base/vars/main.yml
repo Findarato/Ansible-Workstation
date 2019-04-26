@@ -47,6 +47,7 @@ install_packages:
   - pop-icon-theme
   - podman
   - httpie
+  - perl-LWP-Protocol-https
   # - yubioath-desktop
 
 install_citrix_packages:
