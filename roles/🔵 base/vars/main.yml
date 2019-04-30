@@ -49,6 +49,7 @@ install_packages:
   - httpie
   - perl-LWP-Protocol-https
   # - yubioath-desktop
+  - aria2
 
 install_citrix_packages:
   - heimdal-libs
