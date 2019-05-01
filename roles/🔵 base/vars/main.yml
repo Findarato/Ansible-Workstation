@@ -7,23 +7,24 @@
 dotfiles_repo_RW: git@github.com:Findarato/dotFiles.git
 
 install_packages:
-  - ImageMagick
-  # - brasero
+  - aria2
   - chrome-gnome-shell
   - chromium-vaapi
   - curl
   - dnf-automatic
   - dnf-plugins-core
   - fslint
+  - gnome-shell-extension-auto-move-windows
   - gnome-shell-extension-calc
-  - gnome-shell-extension-topicons-plus
   - gnome-shell-extension-dash-to-dock
   - gnome-shell-extension-topicons-plus
+  - gnome-shell-extension-topicons-plus
   - gnome-shell-extension-user-theme
-  - gnome-shell-extension-auto-move-windows
   - gnome-tweak-tool
   - gtk-murrine-engine
   - htop
+  - httpie
+  - ImageMagick
   - jq
   - lm_sensors
   - mpv
@@ -31,10 +32,10 @@ install_packages:
   - openssh
   - p7zip
   - parallel
+  - perl-LWP-Protocol-https
+  - podman
+  - pop-icon-theme
   - prettyping
-  - python-pip
-  - python3
-  - python3-pip
   - remmina
   - remmina-plugins-rdp
   - remmina-plugins-spice
@@ -44,28 +45,27 @@ install_packages:
   - tilix-nautilus
   - tmux
   - util-linux-user
-  - pop-icon-theme
-  - podman
-  - httpie
-  - perl-LWP-Protocol-https
+  # - brasero
+  # - python-pip
+  # - python3
+  # - python3-pip
   # - yubioath-desktop
-  - aria2
 
 install_citrix_packages:
   - heimdal-libs
   - libidn1.34
 
 remove_packages:
+  - chromium
+  - flowblade
+  - gnome-shell-extension-apps-menu
   - gnome-shell-extension-background-logo
-  - gnome-shell-extension-window-list
   - gnome-shell-extension-launch-new-instance
   - gnome-shell-extension-places-menu
-  - gnome-shell-extension-apps-menu
-  - tint2
-  - chromium
-  - totem
-  - flowblade
+  - gnome-shell-extension-window-list
   - gtkhash-nautilus
+  - tint2
+  - totem
 
 
 extra_font_files:
