@@ -39,7 +39,7 @@
   become:             false
   git:
     repo:             "{{ dotfiles_repo_RW }}"
-    dest:             "/home/{{ local_user }}/Documents/src/dotFiles"
+    dest:             "/home/{{ local_user }}/dotFiles"
     key_file:         "/home/{{ local_user }}/.ssh/github"
     accept_hostkey:   yes
     track_submodules: yes
@@ -51,64 +51,64 @@
     - git
     - dotfiles
 
-- name:               Delete exsisting files in home directory
-  become:             false
-  file:
-    dest:             "/home/{{ local_user }}/{{ old_file }}"
-    state:            absent
-  with_items:
-    - .aliases
-    - .ansible.cfg
-    - .bashrc
-    - .dircolors
-    - .functions
-    - .gitconfig
-    - .gitignore
-    - .gitmessage
-    - .gitmodules
-    - .powerlevel9k
-    - .rainbow_config.json
-    - .zprofile
-    - .zshrc
-    - bin
-  loop_control:
-    loop_var:         old_file
-  when:               result is changed
-  tags:
-    - git
-    - dotfiles
+# - name:               Delete exsisting files in home directory
+#   become:             false
+#   file:
+#     dest:             "/home/{{ local_user }}/{{ old_file }}"
+#     state:            absent
+#   with_items:
+#     - .aliases
+#     - .ansible.cfg
+#     - .bashrc
+#     - .dircolors
+#     - .functions
+#     - .gitconfig
+#     - .gitignore
+#     - .gitmessage
+#     - .gitmodules
+#     - .powerlevel9k
+#     - .rainbow_config.json
+#     - .zprofile
+#     - .zshrc
+#     - bin
+#   loop_control:
+#     loop_var:         old_file
+#   when:               result is changed
+#   tags:
+#     - git
+#     - dotfiles
 
-- name:               Link up Home directory to dotfiles
-  become:             false
-  file:
-    src:              "/home/{{ local_user }}/Documents/src/dotFiles/{{ link_file }}"
-    dest:             "/home/{{ local_user }}/{{ link_file }}"
-    state:            link
-  with_items:
-    - .aliases
-    - .ansible.cfg
-    - .bashrc
-    - .dircolors
-    - .functions
-    - .gitconfig
-    - .gitignore
-    - .gitmessage
-    - .gitmodules
-    - .powerlevel9k
-    - .rainbow_config.json
-    - .zprofile
-    - .zshrc
-    - bin
-  loop_control:
-    loop_var:         link_file
-  when:               result is changed
-  tags:
-    - git
-    - dotfiles
+# - name:               Link up Home directory to dotfiles
+#   become:             false
+#   file:
+#     src:              "/home/{{ local_user }}/Documents/src/dotFiles/{{ link_file }}"
+#     dest:             "/home/{{ local_user }}/{{ link_file }}"
+#     state:            link
+#   with_items:
+#     - .aliases
+#     - .ansible.cfg
+#     - .bashrc
+#     - .dircolors
+#     - .functions
+#     - .gitconfig
+#     - .gitignore
+#     - .gitmessage
+#     - .gitmodules
+#     - .powerlevel9k
+#     - .rainbow_config.json
+#     - .zprofile
+#     - .zshrc
+#     - bin
+#   loop_control:
+#     loop_var:         link_file
+#   when:               result is changed
+#   tags:
+#     - git
+#     - dotfiles
 
 - name:               Copy Tilix Themes
   copy:
-    src:              "/home/{{ local_user }}/Documents/src/dotFiles/Tilix-Themes/{{ item }}"
+    src:              "/home/{{ local_user }}/dotFiles/Tilix-Themes/{{ item }}"
     dest:             "/home/{{ local_user }}/.config/tilix/schemes/"
   with_items:
     - "{{ tilix_themes }}"
@@ -118,7 +118,7 @@
   include_tasks:            "{{ include_file }}"
   with_items:
     # - "{{ ansible_distribution }}/repos.yml"
-    # - "{{ ansible_distribution }}/system.yml"
+    - "{{ ansible_distribution }}/system.yml"
     - "{{ ansible_distribution }}/packages.yml"
     # - "{{ ansible_distribution }}/services.yml"
     # - "{{ ansible_distribution }}/configuration.yml"
@@ -142,7 +142,6 @@
     - install
     - configuration
 
-
 - name: Setup Ram CACHE fstab
   mount:
     path: /mnt/cache
@@ -152,3 +151,5 @@
     opts: nodev,nosuid,noexec,nodiratime,size=512M
   when:
     - ram_cache == true
+
+...

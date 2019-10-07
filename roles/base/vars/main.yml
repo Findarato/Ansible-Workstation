@@ -1,4 +1,3 @@
-#!/usr/bin/env ansible-playbook
 ---
 # Themes are in a dir/theme format
 # Directories are either Themes or Themes-2
@@ -17,7 +16,6 @@ install_packages:
   - gnome-shell-extension-auto-move-windows
   - gnome-shell-extension-calc
   - gnome-shell-extension-dash-to-dock
-  - gnome-shell-extension-topicons-plus
   - gnome-shell-extension-topicons-plus
   - gnome-shell-extension-user-theme
   - gnome-tweak-tool
@@ -45,11 +43,6 @@ install_packages:
   - tilix-nautilus
   - tmux
   - util-linux-user
-  # - brasero
-  # - python-pip
-  # - python3
-  # - python3-pip
-  # - yubioath-desktop
 
 install_citrix_packages:
   - heimdal-libs
@@ -163,7 +156,7 @@ dconf_dash_to_dock_theme:
     value: "'SEGMENTED'"
   - name:
     key: "/org/gnome/shell/extensions/dash-to-dock/background-opacity"
-    value: 0.69999999999999996
+    value: 0.85
 
 
 dconf_usability_improvements:
@@ -186,5 +179,7 @@ dconf_usability_improvements:
     key: "/org/gnome/shell.o/errides/workspaces-only-on-primary"
     value: 0
 
-
+tilix_themes:
+  - "Themes/espresso.json"
+  - "Themes/espresso-libre.json"
 ...

@@ -25,10 +25,6 @@ install_slack      : false
 install_enpass     : true
 ram_cache          : true
 
-tilix_themes: 
-  - "Themes/espresso.json"
-  - "Themes/espresso-libre.json"
-
 var_files: zsh.yml
 
 # Work Specific things
