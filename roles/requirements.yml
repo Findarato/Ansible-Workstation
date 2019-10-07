@@ -8,3 +8,4 @@
 - src: geerlingguy.docker
 - src: mjanser.firewalld
 - src: vaulttec.zsh
+- src: https://github.com/mrlesmithjr/ansible-motd
