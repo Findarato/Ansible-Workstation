@@ -1,13 +1,4 @@
 ---
-# - hosts:          localhost
-#   become:         false
-#   connection:     local
-#   roles:
-#     - vaulttec.zsh
-#   vars_files:
-#     - vars/main.yml
-#     - vars/zsh.yml
-#     - vars/vault.yml
 
 - hosts:          localhost
   become:         true
@@ -20,7 +11,7 @@
       with_items:
         - libselinux-python
   roles:
-    - 🔵 base
+    - base
     - developer
     # - geerlingguy.docker
     - vs-code
