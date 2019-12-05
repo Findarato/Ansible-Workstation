@@ -47,13 +47,13 @@
 
 
 # Install Citrix Packages
-- name:         Install Citrix Packages
-  dnf:
-    state:      present
-    name:       '{{ install_citrix_packages }}'
-  when:
-    - work == true
-    - citrix_receiver == true
+# - name:         Install Citrix Packages
+#   dnf:
+#     state:      present
+#     name:       '{{ install_citrix_packages }}'
+#   when:
+#     - work == true
+#     - citrix_receiver == true
 
 # - name:         Install Citrix receiver
 #   debug: "https://www.citrix.com/downloads/citrix-receiver/linux/receiver-for-linux-latest.html"

@@ -4,27 +4,27 @@
   become:         true
   connection:     local
   pre_tasks:
-    - name:       Install Manditory base files
-      package:
-        state:    present
-        name:     "{{ item }}"
-      with_items:
-        - libselinux-python
+    # - name:       Install Manditory base files
+    #   package:
+    #     state:    present
+    #     name:     "{{ item }}"
+    #   with_items:
+    #     - python3-libselinux
   roles:
-    - base
-    - developer
+    # - base
+    # - developer
     # - geerlingguy.docker
     - vs-code
     # - arduino
-    - geerlingguy.git
-    - geerlingguy.pip
-    - geerlingguy.php
-    - geerlingguy.composer
+    # - geerlingguy.git
+    # - geerlingguy.pip
+    # - geerlingguy.php
+    # - geerlingguy.composer
     # - VirtualBox
     # - geerlingguy.ansible
   vars_files:
     - vars/main.yml
-    - vars/vault.yml
+    # - vars/vault.yml
 
 
 ...

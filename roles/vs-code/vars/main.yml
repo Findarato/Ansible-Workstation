@@ -1,27 +1,43 @@
 #!/usr/bin/env ansible-playbook
 ---
 vscode_extensions:
-  - AndrsDC.base16-themes
-  - CoenraadS.bracket-pair-colorizer
+  - aaron-bond.better-comments
+  - bierner.color-info
+  - bierner.markdown-emoji
+  - bierner.markdown-mermaid
+  - bmewburn.vscode-intelephense-client
+  - calebporzio.better-phpunit
+  - coenraads.bracket-pair-colorizer
+  - davidanson.vscode-markdownlint
   - dhoeric.ansible-vault
-  - felixfbecker.php-intellisense
+  - dracula-theme.theme-dracula
+  - felixfbecker.php-debug
   - formulahendry.terminal
-  - haaaad.ansible
   - joelday.docthis
   - kamikillerto.vscode-colorize
-  - PeterJausovec.vscode-docker
-  - PKief.markdown-checkbox
+  - kokororin.vscode-phpfmt
+  - mrmlnc.vscode-apache
+  - ms-python.python
+  - naumovs.color-highlight
+  - neilbrayfield.php-docblocker
+  - nikitakunevich.snippet-creator
+  - patbenatar.advanced-new-file
+  - pkief.markdown-checkbox
   - redhat.vscode-yaml
+  - ryannaddy.laravel-artisan
+  - samuelcolvin.jinjahtml
   - sandcastle.whitespace
   - shakram02.bash-beautify
-  - Shan.code-settings-sync
+  - shan.code-settings-sync
   - shardulm94.trailing-spaces
-  - Tyriar.sort-lines
+  - smlombardi.slime
+  - tyriar.sort-lines
   - vscode-icons-team.vscode-icons
   - vscoss.vscode-ansible
   - wholroyd.jinja
+  - wwm.better-align
+  - yzane.markdown-pdf
   - yzhang.markdown-all-in-one
-  # - steve8708.align
-  # - shd101wyy.markdown-preview-enhanced
+
 
 ...

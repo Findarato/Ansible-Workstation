@@ -23,7 +23,7 @@
 
 - name:         Font => Install Hack
   unarchive:
-    src:        "https://github.com/chrissimpkins/Hack/releases/download/v2.020/Hack-v2_020-ttf.zip"
+    src:        "https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip"
     dest:       /usr/share/fonts/Hack/
     creates:    /usr/share/fonts/Hack/Hack-Bold.ttf
     remote_src: yes
