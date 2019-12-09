@@ -11,8 +11,8 @@
     #   with_items:
     #     - python3-libselinux
   roles:
-    # - base
-    # - developer
+    - base
+    - developer
     # - geerlingguy.docker
     - vs-code
     # - arduino

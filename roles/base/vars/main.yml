@@ -14,7 +14,6 @@ install_packages:
   - dnf-plugins-core
   - fslint
   - gnome-shell-extension-auto-move-windows
-  - gnome-shell-extension-dash-to-dock
   - gnome-shell-extension-user-theme
   - gnome-tweak-tool
   - gtk-murrine-engine
@@ -30,7 +29,6 @@ install_packages:
   - parallel
   - perl-LWP-Protocol-https
   - podman
-  - pop-icon-theme
   - prettyping
   - remmina
   - remmina-plugins-rdp
@@ -41,6 +39,9 @@ install_packages:
   - tilix-nautilus
   - tmux
   - util-linux-user
+  - pidgin
+  - purple-hangouts
+  - pidgin-hangouts
 
 install_citrix_packages:
   # - heimdal-libs
@@ -54,6 +55,7 @@ remove_packages:
   - gnome-shell-extension-launch-new-instance
   - gnome-shell-extension-places-menu
   - gnome-shell-extension-window-list
+  - gnome-shell-extension-dash-to-dock
   - gtkhash-nautilus
   - tint2
   - totem
@@ -95,66 +97,66 @@ python_packages:
 
 
 dconf_settings_theme:
-  - name: Icon Theme
-    key: "/org/gnome/desktop/interface/icon-theme"
-    value: "'POP'"
-  - name: GTK Theme
-    key: "/org/gnome/desktop/interface/gtk-theme"
-    value: "'Arc-Dark'"
-  - name: Shell Theme
-    key: "/org/gnome/desktop/interface/user-theme"
-    value: "'Arc-Dark-solid'"
+  # - name: Icon Theme
+  #   key: "/org/gnome/desktop/interface/icon-theme"
+  #   value: "'POP'"
+  # - name: GTK Theme
+  #   key: "/org/gnome/desktop/interface/gtk-theme"
+  #   value: "'Arc-Dark'"
+  # - name: Shell Theme
+  #   key: "/org/gnome/desktop/interface/user-theme"
+  #   value: "'Arc-Dark-solid'"
 
 
-dconf_dash_to_dock_theme:
-  - name: No Custom Theme
-    key: "/org/gnome/shell/extensions/dash-to-dock/apply-custom-theme"
-    value: 0
-  - name: Remove Background Color
-    key: "/org/gnome/shell/extensions/dash-to-dock/custom-background-color"
-    value: 0
-  - name: Turn on Running Dots
-    key: "/org/gnome/shell/extensions/dash-to-dock/custom-theme-customize-running-dots"
-    value: 1
-  - name:
-    key: "/org/gnome/shell/extensions/dash-to-dock/custom-theme-running-dots-color"
-    value: "'#729fcf'"
-  - name:
-    key: "/org/gnome/shell/extensions/dash-to-dock/custom-theme-shrink"
-    value: 1
-  - name:
-    key: "/org/gnome/shell/extensions/dash-to-dock/dock-fixed"
-    value: 0
-  - name:
-    key: "/org/gnome/shell/extensions/dash-to-dock/extend-height"
-    value: 1
-  - name:
-    key: "/org/gnome/shell/extensions/dash-to-dock/force-straight-corner"
-    value: 0
-  - name:
-    key: "/org/gnome/shell/extensions/dash-to-dock/icon-size-fixed"
-    value: 1
-  - name:
-    key: "/org/gnome/shell/extensions/dash-to-dock/intellihide-mode"
-    value: "'ALL_WINDOWS'"
-  - name:
-    key: "/org/gnome/shell/extensions/dash-to-dock/isolate-workspaces"
-    value: 1
-  - name:
-    key: "/org/gnome/shell/extensions/dash-to-dock/show-apps-at-top"
-    value: 1
-  - name:
-    key: "/org/gnome/shell/extensions/dash-to-dock/unity-backlit-items"
-    value: 0
-  - name:
-    key: "/org/gnome/shell/extensions/dash-to-dock/transparency-mode"
-    value: "'FIXED'"
-  - name:
-    key: "/org/gnome/shell/extensions/dash-to-dock/running-indicator-style"
-    value: "'SEGMENTED'"
-  - name:
-    key: "/org/gnome/shell/extensions/dash-to-dock/background-opacity"
-    value: 0.85
+# dconf_dash_to_dock_theme:
+#   - name: No Custom Theme
+#     key: "/org/gnome/shell/extensions/dash-to-dock/apply-custom-theme"
+#     value: 0
+#   - name: Remove Background Color
+#     key: "/org/gnome/shell/extensions/dash-to-dock/custom-background-color"
+#     value: 0
+#   - name: Turn on Running Dots
+#     key: "/org/gnome/shell/extensions/dash-to-dock/custom-theme-customize-running-dots"
+#     value: 1
+#   - name:
+#     key: "/org/gnome/shell/extensions/dash-to-dock/custom-theme-running-dots-color"
+#     value: "'#729fcf'"
+#   - name:
+#     key: "/org/gnome/shell/extensions/dash-to-dock/custom-theme-shrink"
+#     value: 1
+#   - name:
+#     key: "/org/gnome/shell/extensions/dash-to-dock/dock-fixed"
+#     value: 0
+#   - name:
+#     key: "/org/gnome/shell/extensions/dash-to-dock/extend-height"
+#     value: 1
+#   - name:
+#     key: "/org/gnome/shell/extensions/dash-to-dock/force-straight-corner"
+#     value: 0
+#   - name:
+#     key: "/org/gnome/shell/extensions/dash-to-dock/icon-size-fixed"
+#     value: 1
+#   - name:
+#     key: "/org/gnome/shell/extensions/dash-to-dock/intellihide-mode"
+#     value: "'ALL_WINDOWS'"
+#   - name:
+#     key: "/org/gnome/shell/extensions/dash-to-dock/isolate-workspaces"
+#     value: 1
+#   - name:
+#     key: "/org/gnome/shell/extensions/dash-to-dock/show-apps-at-top"
+#     value: 1
+#   - name:
+#     key: "/org/gnome/shell/extensions/dash-to-dock/unity-backlit-items"
+#     value: 0
+#   - name:
+#     key: "/org/gnome/shell/extensions/dash-to-dock/transparency-mode"
+#     value: "'FIXED'"
+#   - name:
+#     key: "/org/gnome/shell/extensions/dash-to-dock/running-indicator-style"
+#     value: "'SEGMENTED'"
+#   - name:
+#     key: "/org/gnome/shell/extensions/dash-to-dock/background-opacity"
+#     value: 0.85
 
 
 dconf_usability_improvements:
