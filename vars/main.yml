@@ -7,6 +7,7 @@ local_user_passwordless_sudo: false
 # System
 thinkpad            : false
 libvirt_storage_path: /home/images
+scratch_dir         : "/home/{{local_user}}/setup/scratch"
 
 # Services
 enable_sshd       : true
@@ -24,6 +25,9 @@ install_docker     : false
 install_slack      : false
 install_enpass     : true
 ram_cache          : true
+
+#Install and Setup i3 Variables
+install_i3: true
 
 var_files: zsh.yml
 

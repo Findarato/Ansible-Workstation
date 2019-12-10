@@ -7,6 +7,14 @@
 #     owner:            "{{ local_user }}"
 #     state:            directory
 
+
+- name:               Ensure Scratch Dir exsists
+  file:
+    dest:             "{{ scratch_dir }}"
+    mode:             0770
+    owner:            "{{ local_user }}"
+    state:            directory
+
 # - name:               Add Private Keys
 #   copy:
 #     content:          "{{ item.key }}"
@@ -21,12 +29,6 @@
     mode:             0700
     owner:            "{{ local_user }}"
     state:            directory
-
-- name:               Generate Private keys
-  user:
-    name:             "{{ local_user }}"
-    generate_ssh_key: true
-  no_log: true
 
 - name:               Create src folder
   file:
@@ -113,6 +115,15 @@
   with_items:
     - "{{ tilix_themes }}"
   when:               result is changed
+
+
+- name: Setup and Install i3
+  include_tasks: "{{ ansible_distribution }}/i3.yml"
+  tags:
+    - i3
+    - install
+  when:
+    - install_i3 == true
 
 - name:               Running OS specific Configurations and Commands
   include_tasks:            "{{ include_file }}"

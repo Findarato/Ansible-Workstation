@@ -1,0 +1,80 @@
+---
+# Setup and install I3-gaps on the computer
+
+
+# - name:     Download Enpass Repo
+#   get_url:
+#     url:    "https://yum.enpass.io/enpass-yum.repo"
+#     mode:   0644
+#     dest:   "/etc/yum.repos.d/enpass-yum.repo"
+
+- name: i3 -> i3-gaps Copr
+  yum_repository:
+    name       : nforro-i3-gaps
+    description: Copr repo for i3-gaps owned by nforro
+    baseurl    : "https://copr-be.cloud.fedoraproject.org/results/nforro/i3-gaps/fedora-$releasever-$basearch/"
+    file       : copr_repos
+    gpgcheck   : yes
+
+- name: i3 -> Required Packages
+  package:
+    name: i3-gaps
+    state: present
+  tags:
+    - i3
+
+- name:               Get i3 Blocks
+  become:             false
+  git:
+    repo            : "https://github.com/vivien/i3blocks"
+    dest            : "{{ scratch_dir }}/i3Blocks"
+    accept_hostkey  : yes
+    track_submodules: yes
+    update          : yes
+  register:           result
+  ignore_errors:      yes
+  tags:
+    - i3
+    - git
+
+- name: i3Blocks -> Setup Autogen
+  shell: "./autogen.sh"
+  args:
+    chdir: "{{ scratch_dir }}/i3Blocks/"
+    creates: "{{ scratch_dir }}/i3Blocks/autom4te.cache/requests"
+  tags:
+    - i3
+
+- name: i3Blocks -> Configure
+  shell: "./configure"
+  args:
+    chdir: "{{ scratch_dir }}/i3Blocks/"
+    creates: "{{ scratch_dir }}/i3Blocks/Makefile"
+  tags:
+    - i3
+
+- name: i3Blocks -> Build
+  shell: "make"
+  args:
+    chdir: "{{ scratch_dir }}/i3Blocks/"
+    creates: "{{ scratch_dir }}/i3Blocks/i3blocks"
+  tags:
+    - i3
+
+- name: i3Blocks -> Install
+  shell: "make install"
+  args:
+    chdir: "{{ scratch_dir }}/i3Blocks/"
+    creates: "/usr/local/bin/i3blocks"
+  tags:
+    - i3
+
+# git clone https://github.com/vivien/i3blocks
+# cd i3blocks
+# ./autogen.sh
+# ./configure
+# make
+# make install
+
+
+...
