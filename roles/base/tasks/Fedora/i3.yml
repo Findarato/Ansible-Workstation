@@ -1,13 +1,6 @@
 ---
 # Setup and install I3-gaps on the computer
 
-
-# - name:     Download Enpass Repo
-#   get_url:
-#     url:    "https://yum.enpass.io/enpass-yum.repo"
-#     mode:   0644
-#     dest:   "/etc/yum.repos.d/enpass-yum.repo"
-
 - name: i3 -> i3-gaps Copr
   yum_repository:
     name       : nforro-i3-gaps
@@ -18,7 +11,7 @@
 
 - name: i3 -> Required Packages
   package:
-    name: i3-gaps
+    name: ['i3-gaps','rofi']
     state: present
   tags:
     - i3
@@ -68,13 +61,5 @@
     creates: "/usr/local/bin/i3blocks"
   tags:
     - i3
-
-# git clone https://github.com/vivien/i3blocks
-# cd i3blocks
-# ./autogen.sh
-# ./configure
-# make
-# make install
-
 
 ...
