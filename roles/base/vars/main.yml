@@ -12,6 +12,7 @@ install_packages:
   - curl
   - dnf-automatic
   - dnf-plugins-core
+  - flameshot
   - fslint
   - gnome-shell-extension-auto-move-windows
   - gnome-shell-extension-user-theme
@@ -28,8 +29,11 @@ install_packages:
   - p7zip
   - parallel
   - perl-LWP-Protocol-https
+  - pidgin
+  - pidgin-hangouts
   - podman
   - prettyping
+  - purple-hangouts
   - remmina
   - remmina-plugins-rdp
   - remmina-plugins-spice
@@ -39,9 +43,7 @@ install_packages:
   - tilix-nautilus
   - tmux
   - util-linux-user
-  - pidgin
-  - purple-hangouts
-  - pidgin-hangouts
+  - variety
 
 install_citrix_packages:
   # - heimdal-libs

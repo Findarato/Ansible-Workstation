@@ -11,7 +11,14 @@
 
 - name: i3 -> Required Packages
   package:
-    name: ['i3-gaps','rofi']
+    name: [
+      'i3-gaps',
+      'rofi',
+      'i3lock-color',
+      'dunst',
+      'compton',
+      'feh'
+    ]
     state: present
   tags:
     - i3
