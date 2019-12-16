@@ -15,7 +15,14 @@
     state: present
     flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
 
-
+- name: Install Flatkak -> Evolution
+  flatpak:
+    name:   https://flathub.org/repo/appstream/org.gnome.Evolution.flatpakref
+    state:  present
+    method: user
+  tags:
+    - flatpak
+    - packages
 
 - name: Install Flatkak -> gitKraken
   flatpak:
@@ -43,24 +50,6 @@
   tags:
     - flatpak
     - packages
-
-# - name: Install Flatkak -> Geary
-#   flatpak:
-#     name:   https://flathub.org/repo/appstream/org.gnome.Geary.flatpakref
-#     state:  present
-#     method: user
-#   tags:
-#     - flatpak
-#     - packages
-
-# - name: Install Flatkak -> Sequeler
-#   flatpak:
-#     name:   https://flathub.org/repo/appstream/com.github.alecaddd.sequeler.flatpakref
-#     state:  present
-#     method: user
-#   tags:
-#     - flatpak
-#     - packages
 
 - name: Install Flatkak -> GIMP
   flatpak:

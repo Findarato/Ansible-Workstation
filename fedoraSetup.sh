@@ -9,11 +9,11 @@ fi
 SETUPDIR="${HOME}/setup/"
 
 echo "Ensuring no previous Setup"
-rm -rf "$SETUPDIR"
+#rm -rf "$SETUPDIR"
 
 echo "Updating System"
 sudo dnf distro-sync -y
-sudo dnf groupinstall "Ansible node" -y
+# sudo dnf groupinstall "Ansible node" -y
 sudo dnf install -y ansible git python-pip python-dnf python-pip python ansible ansible-lint pass
 
 echo "Working in the ${SETUPDIR} Directory"
@@ -22,8 +22,8 @@ mkdir -p "${SETUPDIR}"
 cd "${SETUPDIR}"
 
 echo "Starting Deployment"
-cd "${SETUPDIR}"
-git clone "https://github.com/Findarato/Ansible-Workstation.git" "${SETUPDIR}/Ansible-Workstaton"
+#cd "${SETUPDIR}"
+#git clone "https://github.com/Findarato/Ansible-Workstation.git" "${SETUPDIR}/Ansible-Workstaton"
 
 echo "Chaning to Ansible directory"
 cd "${SETUPDIR}/Ansible-Workstaton"

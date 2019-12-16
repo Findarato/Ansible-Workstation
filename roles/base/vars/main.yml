@@ -8,7 +8,6 @@ dotfiles_repo_RW: git@github.com:Findarato/dotFiles.git
 install_packages:
   - aria2
   - chrome-gnome-shell
-  - chromium-vaapi
   - curl
   - dnf-automatic
   - dnf-plugins-core
@@ -23,7 +22,7 @@ install_packages:
   - ImageMagick
   - jq
   - lm_sensors
-  - mpv
+#  - mpv
   - nano
   - openssh
   - p7zip
@@ -44,6 +43,8 @@ install_packages:
   - tmux
   - util-linux-user
   - variety
+  - stow
+  - p7zip
 
 install_citrix_packages:
   # - heimdal-libs
@@ -96,6 +97,7 @@ flatpak_packages:
 
 python_packages:
   - redis
+  - tuir
 
 
 dconf_settings_theme:

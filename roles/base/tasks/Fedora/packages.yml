@@ -12,10 +12,18 @@
     name:       '{{ install_packages }}'
   #Keyboard Config. This will eventually be its own role.
 
-- name:        Install Required Python libraries
+- name:        Upgrade PIP
+  pip:
+    name:     pip
+    state:    latest
+    extra_args: --user
+
+- name:       Install Required Python libraries
+  become:     false
   pip:
     name:     "{{ python_packages }}"
-    state:    present
+    state:    latest
+    extra_args: --user --upgrade
 
 - name:         Install Extra Font Packages
   dnf:

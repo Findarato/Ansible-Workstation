@@ -15,15 +15,16 @@
     - developer
     # - geerlingguy.docker
     - vs-code
+    - vaulttec.zsh
     # - arduino
     # - geerlingguy.git
     # - geerlingguy.pip
     # - geerlingguy.php
     # - geerlingguy.composer
-    # - VirtualBox
     # - geerlingguy.ansible
   vars_files:
     - vars/main.yml
+    - vars/zsh.yml
     # - vars/vault.yml
 
 
