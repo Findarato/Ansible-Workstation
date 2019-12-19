@@ -22,7 +22,7 @@ install_packages:
   - ImageMagick
   - jq
   - lm_sensors
-#  - mpv
+  - mpv
   - nano
   - openssh
   - p7zip
@@ -45,6 +45,7 @@ install_packages:
   - variety
   - stow
   - p7zip
+  - restic
 
 install_citrix_packages:
   # - heimdal-libs
