@@ -17,7 +17,8 @@
       'i3lock-color',
       'dunst',
       'compton',
-      'feh'
+      'feh',
+      'lxappearance'
     ]
     state: present
   tags:
