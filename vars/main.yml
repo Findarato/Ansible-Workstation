@@ -38,3 +38,4 @@ citrix_receiver: true
 zerotier_network_id: "{{ vault_zerotier_network_id }}"
 zerotier_accesstoken: "{{ vault_zerotier_accesstoken }}"
 zerotier_register_short_hostname: true
+zerotier_member_register_short_hostname: "{{ansible_hostname}}"
