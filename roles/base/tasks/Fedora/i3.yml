@@ -18,7 +18,8 @@
       'dunst',
       'compton',
       'feh',
-      'lxappearance'
+      'lxappearance',
+      'sysstat'
     ]
     state: present
   tags:
