@@ -40,5 +40,5 @@ zerotier_accesstoken: "{{ vault_zerotier_accesstoken }}"
 # zerotier_register_short_hostname: true
 # zerotier_member_register_short_hostname: "{{ ansible_hostname }}"
 # zerotier_member_register_short_hostname: true
-# zerotier_member_description: "{{ ansible_hostname }}"
+zerotier_member_description: "{{ ansible_distribution }} {{ ansible_distribution_version }}"
 inventory_hostname: "{{ ansible_hostname }}"
