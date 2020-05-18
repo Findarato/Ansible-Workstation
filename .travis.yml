@@ -1,4 +1,5 @@
 ---
+
 services: docker
 
 env:
@@ -13,17 +14,17 @@ branches:
 services:
   - docker
 
-before_install:
-  - sudo apt-get update
-  - sudo apt-get upgrade lxc-docker
-  # Pull container from Docker Hub.
-  - 'docker pull geerlingguy/docker-${distro}-ansible:latest'
+# before_install:
+#   - sudo apt-get update
+#   - sudo apt-get upgrade lxc-docker
+#   # Pull container from Docker Hub.
+#   - 'docker pull geerlingguy/docker-${distro}-ansible:latest'
 
 
-  - sudo service docker restart
-  - sleep 5
-  #- sudo docker pull geerlingguy/docker-fedora24-ansible
-#  - sudo docker pull v0rts/docker-fedora25-ansible
+#   - sudo service docker restart
+#   - sleep 5
+#   #- sudo docker pull geerlingguy/docker-fedora24-ansible
+# #  - sudo docker pull v0rts/docker-fedora25-ansible
 
 script:
   # Create a random file to store the container ID.
