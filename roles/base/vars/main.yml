@@ -8,6 +8,7 @@ dotfiles_repo_RW: git@github.com:Findarato/dotFiles.git
 install_packages:
   - aria2
   - chrome-gnome-shell
+  - chromium-freeworld
   - curl
   - dnf-automatic
   - dnf-plugins-core
@@ -25,6 +26,7 @@ install_packages:
   - nano
   - openssh
   - p7zip
+  - p7zip
   - parallel
   - perl-LWP-Protocol-https
   - pidgin
@@ -36,15 +38,14 @@ install_packages:
   - remmina-plugins-rdp
   - remmina-plugins-spice
   - remmina-plugins-vnc
+  - restic
   - sqlite
+  - stow
   - tilix
   - tilix-nautilus
   - tmux
   - util-linux-user
   - variety
-  - stow
-  - p7zip
-  - restic
 
 i3_packages:
   - i3-gaps
