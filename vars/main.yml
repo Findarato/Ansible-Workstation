@@ -35,6 +35,7 @@ work           : true
 citrix_receiver: true
 
 # ZeroTier
+install_zerotier: true
 zerotier_network_id: "{{ vault_zerotier_network_id }}"
 zerotier_accesstoken: "{{ vault_zerotier_accesstoken }}"
 # zerotier_register_short_hostname: true

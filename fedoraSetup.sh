@@ -35,4 +35,4 @@ ansible-playbook -i localHosts deploy.yml --extra-vars "local_user=${USER}" --as
 
 #Clean up the Setup
 echo "Cleaning up Setup directory"
-#rm -rf ${HOME}/setup
+#rm -rf ${SETUPDIR}
