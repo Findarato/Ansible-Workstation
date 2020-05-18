@@ -11,10 +11,10 @@
     #   with_items:
     #     - python3-libselinux
   roles:
-    # - base
-    # - developer
+    - base
+    - developer
     # - geerlingguy.docker
-    # - vs-code
+    - vs-code
     # - vaulttec.zsh
     # - arduino
     - ansible-role-zerotier

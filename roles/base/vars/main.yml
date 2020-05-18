@@ -12,7 +12,6 @@ install_packages:
   - dnf-automatic
   - dnf-plugins-core
   - flameshot
-  - fslint
   - gnome-shell-extension-auto-move-windows
   - gnome-shell-extension-user-theme
   - gnome-tweak-tool

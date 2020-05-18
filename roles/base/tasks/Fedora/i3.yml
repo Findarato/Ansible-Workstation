@@ -1,25 +1,29 @@
 ---
 # Setup and install I3-gaps on the computer
 
-- name: i3 -> i3-gaps Copr
-  yum_repository:
-    name       : nforro-i3-gaps
-    description: Copr repo for i3-gaps owned by nforro
-    baseurl    : "https://copr-be.cloud.fedoraproject.org/results/nforro/i3-gaps/fedora-$releasever-$basearch/"
-    file       : copr_repos
-    gpgcheck   : yes
+# - name: i3 -> i3-gaps Copr
+#   yum_repository:
+#     name       : nforro-i3-gaps
+#     description: Copr repo for i3-gaps owned by nforro
+#     baseurl    : "https://copr-be.cloud.fedoraproject.org/results/nforro/i3-gaps/fedora-$releasever-$basearch/"
+#     file       : copr_repos
+#     gpgcheck   : yes
 
 - name: i3 -> Required Packages
   package:
     name: [
       'i3-gaps',
       'rofi',
-      'i3lock-color',
+      # 'i3lock-color',
+      'i3lock',
       'dunst',
       'compton',
       'feh',
       'lxappearance',
-      'sysstat'
+      'sysstat',
+      'rofi',
+      'rofi-themes',
+      'automake'
     ]
     state: present
   tags:
