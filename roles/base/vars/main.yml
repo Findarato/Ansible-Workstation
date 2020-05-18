@@ -49,7 +49,7 @@ install_packages:
 i3_packages:
   - i3-gaps
   - rofi
-  -  i3lock-color
+  - i3lock-color
   - dunst
   - compton
   - feh
