@@ -32,28 +32,6 @@
   when:         install_extra_fonts
   notify:       Update Font Cache
 
-- name:         Check for Slack
-  stat:
-    path:       /usr/bin/slack
-  register:     slack_installed
-
-- name:         Install Slack
-  dnf:
-    name:       "https://downloads.slack-edge.com/linux_releases/slack-2.8.0-0.1.fc21.x86_64.rpm"
-    state:      present
-  when:
-    - install_slack == true
-    - slack_installed.stat.exists == false
-
-- name:         Remove Slack
-  dnf:
-    name:       "slack"
-    state:      absent
-  when:
-    - install_slack == false
-    - slack_installed.stat.exists == true
-
-
 # Install Citrix Packages
 # - name:         Install Citrix Packages
 #   dnf:

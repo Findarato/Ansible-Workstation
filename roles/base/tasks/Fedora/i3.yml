@@ -11,20 +11,7 @@
 
 - name: i3 -> Required Packages
   package:
-    name: [
-      'i3-gaps',
-      'rofi',
-      # 'i3lock-color',
-      'i3lock',
-      'dunst',
-      'compton',
-      'feh',
-      'lxappearance',
-      'sysstat',
-      'rofi',
-      'rofi-themes',
-      'automake'
-    ]
+    name: "{{ i3_packages }}"
     state: present
   tags:
     - i3

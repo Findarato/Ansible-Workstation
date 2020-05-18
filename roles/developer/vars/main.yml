@@ -6,7 +6,7 @@ pip_install:
   - cfscrape
   - selenium
   - google-api-python-client
-  - docker-py  
+  - docker-py
 
 remove_packages:
   - nodejs
@@ -16,15 +16,13 @@ remove_packages:
   - docker-selinux
   - docker-engine-selinux
   - docker-engine
+  - vagrant
   # - openssl
   # - openssl-devel
 
 add_packages:
   - filezilla
-  # - openssl-devel
-  # - compat-openssl10-devel
   - xclip
-  - vagrant
   - which
   - make
   - gcc-c++
