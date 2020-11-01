@@ -15,11 +15,12 @@
     - developer
     # - geerlingguy.docker
     - vs-code
-    # - vaulttec.zsh
+    - vaulttec.zsh
     # - arduino
+    - 0x022b.rpmfusion
     - ansible-role-zerotier
     # - geerlingguy.git
-    # - geerlingguy.pip
+    - geerlingguy.pip
     # - geerlingguy.php
     # - geerlingguy.composer
     # - geerlingguy.ansible

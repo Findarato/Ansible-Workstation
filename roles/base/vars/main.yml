@@ -115,6 +115,8 @@ python_packages:
   - redis
   - tuir
 
+rpmfusion_free_package_state: present
+rpmfusion_nonfree_package_state: present
 
 dconf_settings_theme:
   - name: Icon Theme

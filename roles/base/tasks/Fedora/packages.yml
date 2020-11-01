@@ -32,21 +32,6 @@
   when:         install_extra_fonts
   notify:       Update Font Cache
 
-# Install Citrix Packages
-# - name:         Install Citrix Packages
-#   dnf:
-#     state:      present
-#     name:       '{{ install_citrix_packages }}'
-#   when:
-#     - work == true
-#     - citrix_receiver == true
-
-# - name:         Install Citrix receiver
-#   debug: "https://www.citrix.com/downloads/citrix-receiver/linux/receiver-for-linux-latest.html"
-#   when:
-#     - work == true
-#     - citrix_receiver == true
-
 - name:         Install CIFS Utils
   dnf:
     name:       cifs-utils

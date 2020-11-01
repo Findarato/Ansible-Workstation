@@ -1,3 +1,0 @@
-virtualbox_users:
-  - joe
-  - "{{myUser}}"
