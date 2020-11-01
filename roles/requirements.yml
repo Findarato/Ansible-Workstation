@@ -10,4 +10,4 @@
 - src: vaulttec.zsh
 - src: https://github.com/mrlesmithjr/ansible-motd
 - src: https://github.com/flathub/ansible-role-zerotier
-- src: 0x022b.rpmfusion
+- src: robertdebock.rpmfusion

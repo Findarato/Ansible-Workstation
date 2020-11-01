@@ -11,7 +11,8 @@
     #   with_items:
     #     - python3-libselinux
   roles:
-    - 0x022b.rpmfusion
+    # - 0x022b.rpmfusion
+    # - robertdebock.rpmfusion
     - base
     - developer
     # - geerlingguy.docker

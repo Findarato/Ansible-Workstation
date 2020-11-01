@@ -26,7 +26,7 @@ install_enpass     : true
 ram_cache          : true
 
 #Install and Setup i3 Variables
-install_i3: true
+install_i3: false
 
 var_files: zsh.yml
 

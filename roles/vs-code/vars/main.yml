@@ -13,7 +13,6 @@ vscode_extensions:
   - dracula-theme.theme-dracula
   - felixfbecker.php-debug
   - formulahendry.terminal
-  - joelday.docthis
   - kamikillerto.vscode-colorize
   - kokororin.vscode-phpfmt
   - mrmlnc.vscode-apache
