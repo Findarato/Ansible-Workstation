@@ -45,6 +45,8 @@ install_packages:
   - tmux
   - util-linux-user
   - variety
+  - exa
+  - cargo
 
 i3_packages:
   - i3-gaps
