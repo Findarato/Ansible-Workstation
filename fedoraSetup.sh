@@ -21,8 +21,8 @@ mkdir -p "${SETUPDIR}"
 cd "${SETUPDIR}"
 
 echo "Starting Deployment"
-#cd "${SETUPDIR}"
-#git clone "https://github.com/Findarato/Ansible-Workstation.git" "${SETUPDIR}/Ansible-Workstation"
+cd "${SETUPDIR}"
+git clone "https://github.com/Findarato/Ansible-Workstation.git" "${SETUPDIR}/Ansible-Workstation"
 
 echo "Chaning to Ansible directory"
 cd "${SETUPDIR}/Ansible-Workstation"
