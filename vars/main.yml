@@ -31,7 +31,7 @@ install_i3: true
 var_files: zsh.yml
 
 # Work Specific things
-work           : true
+work           : false
 citrix_receiver: true
 
 # ZeroTier

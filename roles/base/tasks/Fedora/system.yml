@@ -6,8 +6,3 @@
   when:
     - install_nvidia == true
     - install_cuda == true
-
-- name:         Install Packages
-  dnf:
-    state:      present
-    name:       '{{ install_packages }}'
