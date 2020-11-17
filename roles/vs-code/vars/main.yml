@@ -37,6 +37,6 @@ vscode_extensions:
   - wwm.better-align
   - yzane.markdown-pdf
   - yzhang.markdown-all-in-one
-
+  - calebporzio.better-phpunit
 
 ...
