@@ -60,19 +60,6 @@
     - flatpak
     - packages
 
-# - name: Install Flatkak -> GROUP!
-#   flatpak:
-#     name:   "{{ item }}"
-#     state:  present
-#     remote: flathub
-#   tags:
-#     - flatpak
-#     - packages
-#   loop:
-#     - "{{ flatpak_packages }}"
-#   loop_control:
-#     label: "{{ item }}"
-
 - name: Install Flatpak -> Dbeaver
   flatpak:
     name:   io.dbeaver.DBeaverCommunity

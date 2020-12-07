@@ -6,12 +6,15 @@
 dotfiles_repo_RW: git@github.com:Findarato/dotFiles.git
 
 install_packages:
+  - alacritty
   - aria2
+  - cargo
   - chrome-gnome-shell
   - chromium-freeworld
   - curl
   - dnf-automatic
   - dnf-plugins-core
+  - exa
   - flameshot
   - gnome-shell-extension-auto-move-windows
   - gnome-shell-extension-user-theme
@@ -45,22 +48,19 @@ install_packages:
   - tmux
   - util-linux-user
   - variety
-  - exa
-  - cargo
 
 i3_packages:
-  - i3-gaps
-  - rofi
-  - i3lock-color
-  - dunst
+  - automake
   - compton
+  - dunst
   - feh
+  - i3-gaps
+  - i3lock-color
   - lxappearance
-  - sysstat
+  - rofi
   - rofi
   - rofi-themes
-  - automake
-
+  - sysstat
 install_citrix_packages:
   # - heimdal-libs
   # - libidn1.34
@@ -70,10 +70,10 @@ remove_packages:
   - flowblade
   - gnome-shell-extension-apps-menu
   - gnome-shell-extension-background-logo
+  - gnome-shell-extension-dash-to-dock
   - gnome-shell-extension-launch-new-instance
   - gnome-shell-extension-places-menu
   - gnome-shell-extension-window-list
-  - gnome-shell-extension-dash-to-dock
   - gtkhash-nautilus
   - tint2
   - totem
@@ -200,6 +200,13 @@ dconf_usability_improvements:
     value: "'appmenu:minimize,maximize,close'"
   - name: Workspaces on all monitors
     key: "/org/gnome/shell.o/errides/workspaces-only-on-primary"
+    value: 0
+    # A few tweeks for i3 like interactions
+  - name: Resize with Right Click
+    key: "/org/gnome/desktop/wm/preferences/resize-with-right-button"
+    value: 1
+  - name: Allow screen locking
+    key: "/org/gnome/desktop/lockdown/disable-lock-screen"
     value: 0
 
 tilix_themes:

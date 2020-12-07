@@ -36,3 +36,6 @@ ansible-playbook -i localHosts deploy.yml --extra-var local_user=${USER} --ask-b
 #Clean up the Setup
 echo "Cleaning up Setup directory"
 #rm -rf ${SETUPDIR}
+
+
+# Things to add into gsettings
