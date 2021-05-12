@@ -77,4 +77,14 @@
   tags:
     - flatpak
     - packages
+
+- name: Install Flatpak -> franz
+  flatpak:
+    # name:   com.meetfranz.Franz
+    name:   com.getferdi.Ferdi
+    state:  present
+    remote: flathub
+  tags:
+    - flatpak
+    - packages
 ...

@@ -77,6 +77,7 @@ remove_packages:
   - gtkhash-nautilus
   - tint2
   - totem
+  - virtualbox-guest-additions
 
 
 extra_font_files:

@@ -1,42 +1,6 @@
 #!/usr/bin/env ansible-playbook
 ---
-vscode_extensions:
-  - aaron-bond.better-comments
-  - bierner.color-info
-  - bierner.markdown-emoji
-  - bierner.markdown-mermaid
-  - bmewburn.vscode-intelephense-client
-  - calebporzio.better-phpunit
-  - coenraads.bracket-pair-colorizer
-  - davidanson.vscode-markdownlint
-  - dhoeric.ansible-vault
-  - dracula-theme.theme-dracula
-  - felixfbecker.php-debug
-  - formulahendry.terminal
-  - kamikillerto.vscode-colorize
-  - kokororin.vscode-phpfmt
-  - mrmlnc.vscode-apache
-  - ms-python.python
-  - naumovs.color-highlight
-  - neilbrayfield.php-docblocker
-  - nikitakunevich.snippet-creator
-  - patbenatar.advanced-new-file
-  - pkief.markdown-checkbox
-  - redhat.vscode-yaml
-  - ryannaddy.laravel-artisan
-  - samuelcolvin.jinjahtml
-  - sandcastle.whitespace
-  - shakram02.bash-beautify
-  - shan.code-settings-sync
-  - shardulm94.trailing-spaces
-  - smlombardi.slime
-  - tyriar.sort-lines
-  - vscode-icons-team.vscode-icons
-  - vscoss.vscode-ansible
-  - wholroyd.jinja
-  - wwm.better-align
-  - yzane.markdown-pdf
-  - yzhang.markdown-all-in-one
-  - calebporzio.better-phpunit
+vscode_extensions: []
+
 
 ...

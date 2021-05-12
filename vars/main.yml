@@ -1,7 +1,7 @@
 ---
 # User
 # local_user                  : jharry
-local_user_email            : 
+# local_user_email              : 
 local_user_passwordless_sudo: false
 
 # System
@@ -36,10 +36,70 @@ citrix_receiver: true
 
 # ZeroTier
 install_zerotier: true
-zerotier_network_id: "{{ vault_zerotier_network_id }}"
-zerotier_accesstoken: "{{ vault_zerotier_accesstoken }}"
+# zerotier_network_id: "{{ vault_zerotier_network_id }}"
+# zerotier_accesstoken: "{{ vault_zerotier_accesstoken }}"
 # zerotier_register_short_hostname: true
 # zerotier_member_register_short_hostname: "{{ ansible_hostname }}"
 # zerotier_member_register_short_hostname: true
-zerotier_member_description: "{{ ansible_distribution }} {{ ansible_distribution_version }}"
+# zerotier_member_description: "{{ ansible_distribution }} {{ ansible_distribution_version }}"
 inventory_hostname: "{{ ansible_hostname }}"
+
+vscode_extensions:
+  - 2gua.rainbow-brackets
+  - aaron-bond.better-comments
+  - amiralizadeh9480.laravel-extra-intellisense
+  - AndrsDC.base16-themes
+  - apility.beautify-blade
+  - azemoh.one-monokai
+  - bierner.color-info
+  - bierner.markdown-emoji
+  - bierner.markdown-mermaid
+  - bmewburn.vscode-intelephense-client
+  - bradlc.vscode-tailwindcss
+  - calebporzio.better-phpunit
+  - codingyu.laravel-goto-view
+  - CoenraadS.bracket-pair-colorizer
+  - DavidAnson.vscode-markdownlint
+  - DavidWang.ini-for-vscode
+  - dhoeric.ansible-vault
+  - dracula-theme.theme-dracula
+  - EditorConfig.EditorConfig
+  - equinusocio.vsc-material-theme-icons
+  - felixfbecker.php-debug
+  - felixfbecker.php-intellisense
+  - formulahendry.code-runner
+  - formulahendry.terminal
+  - kamikillerto.vscode-colorize
+  - kokororin.vscode-phpfmt
+  - MehediDracula.php-namespace-resolver
+  - mikestead.dotenv
+  - mrmlnc.vscode-apache
+  - ms-azuretools.vscode-docker
+  - ms-python.python
+  - ms-python.vscode-pylance
+  - ms-toolsai.jupyter
+  - ms-vscode.cpptools
+  - naumovs.color-highlight
+  - neilbrayfield.php-docblocker
+  - nikitaKunevich.snippet-creator
+  - oderwat.indent-rainbow
+  - onecentlin.laravel-blade
+  - onecentlin.laravel-extension-pack
+  - onecentlin.laravel5-snippets
+  - PKief.markdown-checkbox
+  - platformio.platformio-ide
+  - redhat.vscode-yaml
+  - ryannaddy.laravel-artisan
+  - samuelcolvin.jinjahtml
+  - sandcastle.whitespace
+  - shakram02.bash-beautify
+  - shardulm94.trailing-spaces
+  - shufo.vscode-blade-formatter
+  - stef-k.laravel-goto-controller
+  - steve8708.Align
+  - Tyriar.sort-lines
+  - vscode-icons-team.vscode-icons
+  - wholroyd.jinja
+  - wwm.better-align
+  - yzane.markdown-pdf
+  - yzhang.markdown-all-in-one
