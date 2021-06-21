@@ -26,3 +26,8 @@
 
 - name:     Update Font Cache
   command:  fc-cache -fv
+
+
+- name: restart Systemd
+  ansible.builtin.systemd:
+    daemon_reload: yes

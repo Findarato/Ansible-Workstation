@@ -2,47 +2,47 @@
 # - debug:
 #     msg:    "System {{ inventory_hostname }} has uuid {{ ansible_product_uuid }}"
 
-- name:     Check rpmFusion Non Free Repo
-  stat:
-    path:   /etc/yum.repos.d/rpmfusion-free.repo
-  register: rpmfusion_free
+#- name:     Check rpmFusion Non Free Repo
+#  stat:
+#    path:   /etc/yum.repos.d/rpmfusion-free.repo
+#  register: rpmfusion_free
 
-- name:     Download RPM Fusion free Repo
-  get_url:
-    url:    "http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_version }}.noarch.rpm"
-    mode:   0644
-    dest:   "/tmp/rpmfusion-free-release-{{ ansible_distribution_version }}.noarch.rpm"
-  when:
-    - rpmfusion_free.stat.exists == false
+#- name:     Download RPM Fusion free Repo
+#  get_url:
+#    url:    "http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_version }}.noarch.rpm"
+#    mode:   0644
+#    dest:   "/tmp/rpmfusion-free-release-{{ ansible_distribution_version }}.noarch.rpm"
+#  when:
+#    - rpmfusion_free.stat.exists == false
 
-- name:     Install RPM Fusion free Repo
-  dnf:
-    name:   "/tmp/rpmfusion-free-release-{{ ansible_distribution_version }}.noarch.rpm"
-    state:  present
-  when:
-    - rpmfusion_free.stat.exists == false
-
-
-- name:     Check rpmFusion Non Free Repo
-  stat:
-    path:   /etc/yum.repos.d/pmfusion-nonfree.repo
-  register: rpmfusion_nonfree
-
-- name:     Download RPM Fusion nonfree Repo
-  get_url:
-    url:    "http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_distribution_version }}.noarch.rpm"
-    mode:   0644
-    dest:   "/tmp/rpmfusion-nonfree-release-{{ ansible_distribution_version }}.noarch.rpm"
-  when:
-    - rpmfusion_nonfree.stat.exists == false
+#- name:     Install RPM Fusion free Repo
+#  dnf:
+#    name:   "/tmp/rpmfusion-free-release-{{ ansible_distribution_version }}.noarch.rpm"
+#    state:  present
+#  when:
+#    - rpmfusion_free.stat.exists == false
 
 
-- name:     Install RPM Fusion nonfree Repo
-  dnf:
-    name:   "/tmp/rpmfusion-nonfree-release-{{ ansible_distribution_version }}.noarch.rpm"
-    state:  present
-  when:
-    - rpmfusion_nonfree.stat.exists == false
+#- name:     Check rpmFusion Non Free Repo
+#  stat:
+#    path:   /etc/yum.repos.d/pmfusion-nonfree.repo
+#  register: rpmfusion_nonfree
+
+#- name:     Download RPM Fusion nonfree Repo
+#  get_url:
+#    url:    "http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_distribution_version }}.noarch.rpm"
+#    mode:   0644
+#    dest:   "/tmp/rpmfusion-nonfree-release-{{ ansible_distribution_version }}.noarch.rpm"
+#  when:
+#    - rpmfusion_nonfree.stat.exists == false
+
+
+#- name:     Install RPM Fusion nonfree Repo
+#  dnf:
+#    name:   "/tmp/rpmfusion-nonfree-release-{{ ansible_distribution_version }}.noarch.rpm"
+#    state:  present
+#  when:
+#    - rpmfusion_nonfree.stat.exists == false
 
 - name:     Install 3rd Party Repos
   package:

@@ -24,6 +24,7 @@ install_docker     : false
 install_slack      : false
 install_enpass     : true
 ram_cache          : true
+ram_cache_size     : 2048M
 
 #Install and Setup i3 Variables
 install_i3: false
@@ -34,8 +35,10 @@ var_files: zsh.yml
 work           : false
 citrix_receiver: true
 
+
+
 # ZeroTier
-install_zerotier: true
+install_zerotier: false
 # zerotier_network_id: "{{ vault_zerotier_network_id }}"
 # zerotier_accesstoken: "{{ vault_zerotier_accesstoken }}"
 # zerotier_register_short_hostname: true
@@ -43,6 +46,82 @@ install_zerotier: true
 # zerotier_member_register_short_hostname: true
 # zerotier_member_description: "{{ ansible_distribution }} {{ ansible_distribution_version }}"
 inventory_hostname: "{{ ansible_hostname }}"
+
+automounts:
+  - name: mnt-stats
+    mount:
+      what: 10.1.1.33:/docker/containers/transmission
+      where: /mnt/stats
+      type: nfs
+      options: rw,soft,rsize=8192,wsize=8192,timeo=14
+  - name: mnt-whitetower-storage
+    mount:
+      what: whitetower:/volume1/storage
+      where: /mnt/whitetower/storage
+      type: nfs
+      options: rw,soft,rsize=8192,wsize=8192,timeo=14
+  - name: mnt-whitetower-joe
+    mount:
+      what: whitetower:/volume1/Joe
+      where: /mnt/whitetower/joe
+      type: nfs
+      options: rw,soft,rsize=8192,wsize=8192,timeo=14
+  - name: mnt-blacktower-storage
+    mount:
+      what: blacktower:/mnt/Dedicated/Storage
+      where: /mnt/blacktower/storage
+      type: nfs
+      options: rw,soft,rsize=8192,wsize=8192,timeo=14
+  - name: mnt-blacktower-backup
+    mount:
+      what: blacktower:/mnt/Dedicated/backup
+      where: /mnt/blacktower/backup
+      type: nfs
+      options: rw,soft,rsize=8192,wsize=8192,timeo=14
+  - name: mnt-blacktower-ISO
+    mount:
+      what: blacktower:/mnt/Dedicated/ISO
+      where: /mnt/blacktower/ISO
+      type: nfs
+      options: rw,soft,rsize=8192,wsize=8192,timeo=14
+
+dconf_settings_theme: []
+  # - name: Icon Theme
+  #   key: "/org/gnome/desktop/interface/icon-theme"
+  #   value: "'Papirus-Dark'"
+  # - name: GTK Theme
+  #   key: "/org/gnome/desktop/interface/gtk-theme"
+  #   value: "'Arc-Dark'"
+  # - name: Shell Theme
+  #   key: "/org/gnome/desktop/interface/user-theme"
+  #   value: "'Arc-Dark-solid'"
+
+dconf_usability_improvements:
+  - name: Make the mouse better
+    key: "/org/gnome/desktop/peripherals/mouse/accel-profile"
+    value: "'adaptive'"
+  - name:
+    key: "/org/gnome/desktop/sound/allow-volume-above-100-percent"
+    value:  1
+  - name: Show Weekdate
+    key: "/org/gnome/desktop/calendar/show-weekdate"
+    value:  1
+  - name:
+    key: "/org/gnome/desktop/wm/preferences/resize-with-right-button"
+    value:  1
+  - name: Fix Buttons
+    key: "/org/gnome/desktop/wm/preferences/button-layout"
+    value: "'appmenu:minimize,maximize,close'"
+  - name: Workspaces on all monitors
+    key: "/org/gnome/shell.o/errides/workspaces-only-on-primary"
+    value: 0
+    # A few tweeks for i3 like interactions
+  - name: Resize with Right Click
+    key: "/org/gnome/desktop/wm/preferences/resize-with-right-button"
+    value: 1
+  - name: Allow screen locking
+    key: "/org/gnome/desktop/lockdown/disable-lock-screen"
+    value: 0
 
 vscode_extensions:
   - 2gua.rainbow-brackets

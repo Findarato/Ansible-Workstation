@@ -1,8 +1,7 @@
 ---
-
-- hosts:          localhost
-  become:         true
-  connection:     local
+- hosts: localhost
+  become: true
+  connection: local
   pre_tasks:
     # - name:       Install Manditory base files
     #   package:
@@ -11,26 +10,22 @@
     #   with_items:
     #     - python3-libselinux
   roles:
-    # - 0x022b.rpmfusion
-    # - robertdebock.rpmfusion
     - base
-    - developer
+    # - developer
     # - geerlingguy.docker
-    - vs-code
-    - vaulttec.zsh
+    # - vs-code
+    # - vaulttec.zsh
     # - arduino
-    - ansible-role-zerotier
+    # - ansible-role-zerotier
     # - geerlingguy.git
-    - geerlingguy.pip
+    # - geerlingguy.pip
     # - geerlingguy.php
     # - geerlingguy.composer
     # - geerlingguy.ansible
   vars_files:
+    - vars/vault
     - vars/main.yml
     - vars/zsh.yml
-    - vars/vault.yml
   vars:
     - ansible_python_interpreter: /usr/bin/python3
-
-
-...
+    - ansible_become_pass: "{{ vault_ansible_become_pass }}"
