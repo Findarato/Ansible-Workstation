@@ -12,16 +12,14 @@
   roles:
     - base
     # - developer
-    # - geerlingguy.docker
-    # - vs-code
+    - vs-code
     # - vaulttec.zsh
-    # - arduino
     # - ansible-role-zerotier
-    # - geerlingguy.git
+    - geerlingguy.git
     # - geerlingguy.pip
     # - geerlingguy.php
     # - geerlingguy.composer
-    # - geerlingguy.ansible
+    - geerlingguy.ansible
   vars_files:
     - vars/vault
     - vars/main.yml
