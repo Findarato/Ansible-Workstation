@@ -47,61 +47,14 @@ install_zerotier: false
 # zerotier_member_description: "{{ ansible_distribution }} {{ ansible_distribution_version }}"
 inventory_hostname: "{{ ansible_hostname }}"
 
-automounts:
-  - name: mnt-stats
-    mount:
-      what: 10.1.1.33:/docker/containers/transmission
-      where: /mnt/stats
-      type: nfs
-      options: rw,soft,timeo=14,proto=tcp,vers=3
-  # - name: mnt-whitetower-storage
+automounts: "{{ vault_automounts }}"
+  # - name: path-with-dashes
   #   mount:
-  #     what: 10.1.1.5:/volume1/storage
-  #     where: /mnt/whitetower/storage
-  #     type: nfs
-  #     options: rw,soft,timeo=14,proto=tcp
-  # - name: mnt-whitetower-joe
-  #   mount:
-  #     what: 10.1.1.5:/volume1/Joe
-  #     where: /mnt/whitetower/joe
-  #     type: nfs
-  #     options: rw,soft,timeo=14,proto=tcp
-  - name: mnt-blacktower-joe
-    mount:
-      what: 10.1.1.7:/mnt/Dedicated/home/joe
-      where: /mnt/blacktower/joe
-      type: nfs
-      options: rw,soft,timeo=14,proto=tcp,vers=3
-  - name: mnt-blacktower-storage
-    mount:
-      what: 10.1.1.7:/mnt/Dedicated/Storage
-      where: /mnt/blacktower/storage
-      type: nfs
-      options: rw,soft,timeo=14,proto=tcp,vers=3
-  - name: mnt-blacktower-backup
-    mount:
-      what: 10.1.1.7:/mnt/Dedicated/backup
-      where: /mnt/blacktower/backup
-      type: nfs
-      options: rw,soft,timeo=14,proto=tcp,vers=3
-  - name: mnt-blacktower-ISO
-    mount:
-      what: 10.1.1.7:/mnt/Dedicated/ISO
-      where: /mnt/blacktower/ISO
-      type: nfs
-      options: rw,soft,timeo=14,proto=tcp,vers=3
-  - name: mnt-laraplex
-    mount:
-      what: joetop:/var/www/laraplex8.test
-      where: /mnt/laraplex
-      type: nfs
-      options: rw,soft,timeo=14,proto=tcp,vers=3
-  - name: mnt-interplex
-    mount:
-      what: joetop:/var/www/interplex.methnet.org
-      where: /mnt/interplex
-      type: nfs
-      options: rw,soft,timeo=14,proto=tcp,vers=3
+  #     what: mount target
+  #     where: mount point
+  #     type: type
+  #     options: paramaters
+
 
 dconf_settings_theme: []
   # - name: Icon Theme
@@ -142,16 +95,16 @@ dconf_usability_improvements:
     value: 0
   - name: Gnome 40 no up key switch
     key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-up"
-    value: "'disabled'"
+    value: ['disabled']
   - name: Gnome 40 no up key move
     key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-up"
-    value: "'disabled'"
+    value: ['disabled']
   - name: Gnome 40 no down key move
     key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-down"
-    value: "'disabled'"
+    value: ['disabled']
   - name: Gnome 40 no down key switch
     key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-down"
-    value: "'disabled'"
+    value: ['disabled']
 
 vscode_extensions:
   - 2gua.rainbow-brackets
