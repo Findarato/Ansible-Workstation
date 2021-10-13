@@ -22,7 +22,7 @@ install_steam      : false
 install_nvidia     : false
 install_docker     : false
 install_slack      : false
-install_enpass     : true
+install_enpass     : false
 ram_cache          : true
 ram_cache_size     : 2048M
 
@@ -36,15 +36,9 @@ work           : false
 citrix_receiver: true
 
 
-
 # ZeroTier
 install_zerotier: false
-# zerotier_network_id: "{{ vault_zerotier_network_id }}"
-# zerotier_accesstoken: "{{ vault_zerotier_accesstoken }}"
-# zerotier_register_short_hostname: true
-# zerotier_member_register_short_hostname: "{{ ansible_hostname }}"
-# zerotier_member_register_short_hostname: true
-# zerotier_member_description: "{{ ansible_distribution }} {{ ansible_distribution_version }}"
+
 inventory_hostname: "{{ ansible_hostname }}"
 
 automounts: "{{ vault_automounts }}"

@@ -24,14 +24,14 @@
     - flatpak
     - packages
 
-- name: Install Flatkak -> gitKraken
-  flatpak:
-    name:   https://flathub.org/repo/appstream/com.axosoft.GitKraken.flatpakref
-    state:  present
-    remote: flathub
-  tags:
-    - flatpak
-    - packages
+# - name: Install Flatkak -> gitKraken
+#   flatpak:
+#     name:   https://flathub.org/repo/appstream/com.axosoft.GitKraken.flatpakref
+#     state:  present
+#     remote: flathub
+#   tags:
+#     - flatpak
+#     - packages
 
 - name: Install Flatkak -> fileZilla
   flatpak:
