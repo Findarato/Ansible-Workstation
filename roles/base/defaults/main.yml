@@ -5,49 +5,7 @@
 # dotfiles_repo_RO: https://github.com/Findarato/dotFiles.git
 dotfiles_repo_RW: git@github.com:Findarato/dotFiles.git
 
-install_packages:
-  - alacritty
-  - aria2
-  - cargo
-  - chrome-gnome-shell
-  - chromium-freeworld
-  - curl
-  - dnf-automatic
-  - dnf-plugins-core
-  - exa
-  - flameshot
-  - gnome-shell-extension-auto-move-windows
-  - gnome-shell-extension-user-theme
-  - gnome-tweak-tool
-  - gtk-murrine-engine
-  - htop
-  - httpie
-  - ImageMagick
-  - jq
-  - lm_sensors
-  - mpv
-  - nano
-  - openssh
-  - p7zip
-  - parallel
-  - perl-LWP-Protocol-https
-  - pidgin
-  - pidgin-hangouts
-  - podman
-  - prettyping
-  - purple-hangouts
-  - remmina
-  - remmina-plugins-rdp
-  - remmina-plugins-spice
-  - remmina-plugins-vnc
-  - restic
-  - sqlite
-  - stow
-  - tilix
-  - tilix-nautilus
-  - tmux
-  - util-linux-user
-  - variety
+install_packages: []
 
 i3_packages:
   - automake
@@ -62,20 +20,7 @@ i3_packages:
   - rofi-themes
   - sysstat
 
-remove_packages:
-  - chromium
-  - flowblade
-  - gnome-shell-extension-apps-menu
-  - gnome-shell-extension-background-logo
-  - gnome-shell-extension-dash-to-dock
-  - gnome-shell-extension-launch-new-instance
-  - gnome-shell-extension-places-menu
-  - gnome-shell-extension-window-list
-  - gtkhash-nautilus
-  - tint2
-  - totem
-  - virtualbox-guest-additions
-
+remove_packages: []
 extra_font_files:
   - adobe-source-code-pro-fonts
   - dejavu-sans-fonts

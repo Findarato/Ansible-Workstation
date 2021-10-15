@@ -159,3 +159,66 @@ vscode_extensions:
   - wwm.better-align
   - yzane.markdown-pdf
   - yzhang.markdown-all-in-one
+
+
+install_packages:
+  - alacritty
+  - aria2
+  - autojump-zsh
+  - cargo
+  - chrome-gnome-shell
+  - chromium-freeworld
+  - curl
+  - dnf-automatic
+  - dnf-plugins-core
+  - exa
+  - flameshot
+  - gnome-shell-extension-auto-move-windows
+  - gnome-shell-extension-user-theme
+  - gnome-tweak-tool
+  - gtk-murrine-engine
+  - htop
+  - httpie
+  - ImageMagick
+  - jq
+  - lm_sensors
+  - mpv
+  - nano
+  - openssh
+  - p7zip
+  - parallel
+  - perl-LWP-Protocol-https
+  - pidgin
+  - pidgin-hangouts
+  - podman
+  - prettyping
+  - purple-hangouts
+  - remmina
+  - remmina-plugins-rdp
+  - remmina-plugins-spice
+  - remmina-plugins-vnc
+  - restic
+  - sqlite
+  - stow
+  - tilix
+  - tilix-nautilus
+  - tmux
+  - util-linux-user
+  - variety
+  - zsh
+  - zsh-autosuggestions
+  - zsh-syntax-highlighting
+
+remove_packages:
+  - chromium
+  - flowblade
+  - gnome-shell-extension-apps-menu
+  - gnome-shell-extension-background-logo
+  - gnome-shell-extension-dash-to-dock
+  - gnome-shell-extension-launch-new-instance
+  - gnome-shell-extension-places-menu
+  - gnome-shell-extension-window-list
+  - gtkhash-nautilus
+  - tint2
+  - totem
+  - virtualbox-guest-additions
