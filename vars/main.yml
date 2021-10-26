@@ -14,6 +14,7 @@ enable_fail2ban   : false
 enable_powertop   : false
 enable_vagrant_nfs: false
 enable_libvirtd   : false
+enable_automounts : false
 
 # Extras
 install_extra_fonts: true
@@ -45,15 +46,6 @@ inventory_hostname: "{{ ansible_hostname }}"
 automounts: "{{ vault_automounts }}"
 
 dconf_settings_theme: []
-  # - name: Icon Theme
-  #   key: "/org/gnome/desktop/interface/icon-theme"
-  #   value: "'Papirus-Dark'"
-  # - name: GTK Theme
-  #   key: "/org/gnome/desktop/interface/gtk-theme"
-  #   value: "'Arc-Dark'"
-  # - name: Shell Theme
-  #   key: "/org/gnome/desktop/interface/user-theme"
-  #   value: "'Arc-Dark-solid'"
 
 dconf_usability_improvements:
   - name: Make the mouse better
@@ -216,3 +208,22 @@ remove_packages:
   - tint2
   - totem
   - virtualbox-guest-additions
+  - libreoffice-calc
+  - libreoffice-core
+  - libreoffice-data
+  - libreoffice-emailmerge
+  - libreoffice-filters
+  - libreoffice-graphicfilter
+  - libreoffice-gtk3
+  - libreoffice-help-en
+  - libreoffice-impress
+  - libreoffice-langpack-en
+  - libreoffice-ogltrans
+  - libreoffice-opensymbol-fonts
+  - libreoffice-pdfimport
+  - libreoffice-pyuno
+  - libreoffice-ure
+  - libreoffice-ure-common
+  - libreoffice-writer
+  - libreoffice-x11
+  - libreoffice-xsltfilter

@@ -6,6 +6,8 @@
     dest: "/etc/systemd/system/{{ item.name }}.mount"
   with_items:
     - "{{ automounts }}"
+  when:
+    - enable_automounts
 
 - name: Make systemd Automounts
   ansible.builtin.template:
@@ -14,6 +16,8 @@
     dest: "/etc/systemd/system/{{ item.name }}.automount"
   with_items:
     - "{{ automounts }}"
+  when:
+    - enable_automounts
 
 - name: Setup mounts
   ansible.builtin.systemd:
@@ -22,7 +26,8 @@
     name: "{{ item.name }}.automount"
   with_items:
     - "{{ automounts }}"
-
+  when:
+    - enable_automounts
 
 - name:               Ensure Scratch Dir exsists
   file:
@@ -30,7 +35,6 @@
     mode:             0770
     owner:            "{{ local_user }}"
     state:            directory
-
 
 - name:               Ensure Tilix config directory exsists
   file:
@@ -61,61 +65,6 @@
   tags:
     - git
     - dotfiles
-
-# - name:               Delete exsisting files in home directory
-#   become:             false
-#   file:
-#     dest:             "/home/{{ local_user }}/{{ old_file }}"
-#     state:            absent
-#   with_items:
-#     - .aliases
-#     - .ansible.cfg
-#     - .bashrc
-#     - .dircolors
-#     - .functions
-#     - .gitconfig
-#     - .gitignore
-#     - .gitmessage
-#     - .gitmodules
-#     - .powerlevel9k
-#     - .rainbow_config.json
-#     - .zprofile
-#     - .zshrc
-#     - bin
-#   loop_control:
-#     loop_var:         old_file
-#   when:               result is changed
-#   tags:
-#     - git
-#     - dotfiles
-
-# - name:               Link up Home directory to dotfiles
-#   become:             false
-#   file:
-#     src:              "/home/{{ local_user }}/Documents/src/dotFiles/{{ link_file }}"
-#     dest:             "/home/{{ local_user }}/{{ link_file }}"
-#     state:            link
-#   with_items:
-#     - .aliases
-#     - .ansible.cfg
-#     - .bashrc
-#     - .dircolors
-#     - .functions
-#     - .gitconfig
-#     - .gitignore
-#     - .gitmessage
-#     - .gitmodules
-#     - .powerlevel9k
-#     - .rainbow_config.json
-#     - .zprofile
-#     - .zshrc
-#     - bin
-#   loop_control:
-#     loop_var:         link_file
-#   when:               result is changed
-#   tags:
-#     - git
-#     - dotfiles
 
 - name:               Copy Tilix Themes
   copy:
