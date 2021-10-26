@@ -37,6 +37,11 @@ var_files: zsh.yml
 work           : false
 citrix_receiver: true
 
+# Allow installation of the "free" package?
+rpmfusion_free: yes
+
+# Allow installation of the "nonfree" package?
+rpmfusion_nonfree: yes
 
 # ZeroTier
 install_zerotier: false

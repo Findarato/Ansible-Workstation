@@ -4,10 +4,10 @@
   connection: local
   pre_tasks:
   roles:
-    - robertdebock.rpmfusion
     - geerlingguy.ansible
     - vs-code
     - geerlingguy.git
+    - robertdebock.rpmfusion
     - base
     # - developer
     # - vaulttec.zsh
