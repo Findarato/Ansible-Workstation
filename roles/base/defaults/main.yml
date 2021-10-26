@@ -48,10 +48,7 @@ nvidia_packages:
   - cuda-cudart
   - nvidia-driver-cuda
 
-flatpak_packages:
-  - https://flathub.org/repo/appstream/com.axosoft.GitKraken.flatpakref
-  - org.gnome.Lollypop
-  - io.dbeaver.DBeaverCommunity
+flatpak_packages: []
 
 python_packages:
   - redis

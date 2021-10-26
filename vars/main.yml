@@ -21,8 +21,9 @@ install_packager   : false
 install_steam      : false
 install_nvidia     : false
 install_docker     : false
-install_slack      : false
+install_slack      : true
 install_enpass     : false
+install_bitwarden  : true
 ram_cache          : true
 ram_cache_size     : 2048M
 
@@ -42,13 +43,6 @@ install_zerotier: false
 inventory_hostname: "{{ ansible_hostname }}"
 
 automounts: "{{ vault_automounts }}"
-  # - name: path-with-dashes
-  #   mount:
-  #     what: mount target
-  #     where: mount point
-  #     type: type
-  #     options: paramaters
-
 
 dconf_settings_theme: []
   # - name: Icon Theme
@@ -171,10 +165,14 @@ install_packages:
   - curl
   - dnf-automatic
   - dnf-plugins-core
+  - tilix
+  - tilix-nautilus
   - exa
   - flameshot
   - gnome-shell-extension-auto-move-windows
   - gnome-shell-extension-user-theme
+  - gnome-shell-extension-appindicator
+  - gnome-shell-extension-dash-to-dock
   - gnome-tweak-tool
   - gtk-murrine-engine
   - htop
@@ -192,7 +190,6 @@ install_packages:
   - pidgin-hangouts
   - podman
   - prettyping
-  - purple-hangouts
   - remmina
   - remmina-plugins-rdp
   - remmina-plugins-spice
@@ -200,8 +197,6 @@ install_packages:
   - restic
   - sqlite
   - stow
-  - tilix
-  - tilix-nautilus
   - tmux
   - util-linux-user
   - variety
@@ -214,7 +209,6 @@ remove_packages:
   - flowblade
   - gnome-shell-extension-apps-menu
   - gnome-shell-extension-background-logo
-  - gnome-shell-extension-dash-to-dock
   - gnome-shell-extension-launch-new-instance
   - gnome-shell-extension-places-menu
   - gnome-shell-extension-window-list

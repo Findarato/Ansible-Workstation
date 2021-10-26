@@ -80,11 +80,45 @@
 
 - name: Install Flatpak -> franz
   flatpak:
-    # name:   com.meetfranz.Franz
     name:   com.getferdi.Ferdi
     state:  present
     remote: flathub
   tags:
     - flatpak
     - packages
+
+- name: Install Flatpak -> Postman
+  flatpak:
+    name:   com.getpostman.Postman
+    state:  present
+    remote: flathub
+  tags:
+    - flatpak
+    - packages
+
+- name: Install Flatpak -> Slack
+  flatpak:
+    name:   com.slack.Slack
+    state:  present
+    remote: flathub
+  tags:
+    - flatpak
+    - packages
+  when:
+    - install_slack is true
+
+- name: Install Flatpak -> Bitwarden
+  flatpak:
+    name:   com.bitwarden.desktop
+    state:  present
+    remote: flathub
+  tags:
+    - flatpak
+    - packages
+  when:
+    - install_bitwarden is true
+
+
+
+
 ...
