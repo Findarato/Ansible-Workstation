@@ -10,16 +10,16 @@
     #   with_items:
     #     - python3-libselinux
   roles:
+    - robertdebock.rpmfusion
+    - geerlingguy.ansible
+    - vs-code
+    - geerlingguy.git
     - base
     # - developer
-    - vs-code
     # - vaulttec.zsh
-    # - ansible-role-zerotier
-    - geerlingguy.git
     # - geerlingguy.pip
     # - geerlingguy.php
     # - geerlingguy.composer
-    - geerlingguy.ansible
   vars_files:
     - vars/vault
     - vars/main.yml
