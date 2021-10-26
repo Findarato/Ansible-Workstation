@@ -3,12 +3,6 @@
   become: true
   connection: local
   pre_tasks:
-    # - name:       Install Manditory base files
-    #   package:
-    #     state:    present
-    #     name:     "{{ item }}"
-    #   with_items:
-    #     - python3-libselinux
   roles:
     - robertdebock.rpmfusion
     - geerlingguy.ansible

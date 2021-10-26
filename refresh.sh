@@ -21,4 +21,4 @@ echo "${green}Updating Git ${reset}"
 git pull
 
 echo "${red}Ansible ${reset}"
-ansible-playbook -i localHosts setup_computer.yml --extra-var local_user=${USER}
+ansible-playbook -i localHosts setup_computer.yml --extra-var local_user=${USER} --ask-become
