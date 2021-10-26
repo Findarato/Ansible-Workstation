@@ -7,10 +7,9 @@
     - geerlingguy.ansible
     - vs-code
     - geerlingguy.git
-    - robertdebock.rpmfusion
     - base
     # - developer
-    # - vaulttec.zsh
+    - vaulttec.zsh
     # - geerlingguy.pip
     # - geerlingguy.php
     # - geerlingguy.composer
