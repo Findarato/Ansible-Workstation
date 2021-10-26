@@ -5,7 +5,7 @@ red=`tput setaf 1`
 green=`tput setaf 2`
 reset=`tput sgr0`
 
-echo "${red}Ansible ${reset}"
+
 
 # ANSIBLE<<InputComesFromHERE
 #      _              _ _     _
@@ -16,4 +16,9 @@ echo "${red}Ansible ${reset}"
 # InputComesFromHERE
 
 # echo ${ANSIBLE}
+
+echo "${green}Updating Git ${reset}"
+git pull
+
+echo "${red}Ansible ${reset}"
 ansible-playbook -i localHosts setup_computer.yml --extra-var local_user=${USER}
