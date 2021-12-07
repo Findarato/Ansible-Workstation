@@ -9,24 +9,25 @@ libvirt_storage_path: /home/images
 scratch_dir         : "/home/{{local_user}}/setup/scratch"
 
 # Services
-enable_sshd       : true
-enable_fail2ban   : false
-enable_powertop   : false
+enable_sshd:        true
+enable_fail2ban:    false
+enable_powertop:    false
 enable_vagrant_nfs: false
-enable_libvirtd   : false
-enable_automounts : false
+enable_libvirtd:    false
+enable_automounts:  false
 
 # Extras
+install_bitwarden:   true
+install_docker:      false
+install_enpass:      false
+install_evolution:   false
 install_extra_fonts: true
-install_packager   : false
-install_steam      : false
-install_nvidia     : false
-install_docker     : false
-install_slack      : true
-install_enpass     : false
-install_bitwarden  : true
-ram_cache          : true
-ram_cache_size     : 2048M
+install_nvidia:      false
+install_packager:    false
+install_slack:       true
+install_steam:       false
+ram_cache:           true
+ram_cache_size:      2048M
 
 #Install and Setup i3 Variables
 install_i3: false
@@ -151,40 +152,37 @@ vscode_extensions:
   - yzane.markdown-pdf
   - yzhang.markdown-all-in-one
 
-
 install_packages:
   - alacritty
   - aria2
   - autojump-zsh
+  - bitstream-vera-fonts-all
   - cargo
   - chrome-gnome-shell
   - chromium-freeworld
   - curl
   - dnf-automatic
   - dnf-plugins-core
-  - tilix
-  - tilix-nautilus
   - exa
   - flameshot
-  - gnome-shell-extension-auto-move-windows
-  - gnome-shell-extension-user-theme
   - gnome-shell-extension-appindicator
+  - gnome-shell-extension-auto-move-windows
   - gnome-shell-extension-dash-to-dock
+  - gnome-shell-extension-user-theme
   - gnome-tweak-tool
   - gtk-murrine-engine
   - htop
-  - httpie
   - ImageMagick
   - jq
   - lm_sensors
-  - mpv
+  # - mpv
   - nano
   - openssh
   - p7zip
   - parallel
   - perl-LWP-Protocol-https
-  - pidgin
-  - pidgin-hangouts
+  # - pidgin
+  # - pidgin-hangouts
   - podman
   - prettyping
   - remmina
@@ -194,12 +192,16 @@ install_packages:
   - restic
   - sqlite
   - stow
+  - tilix
+  - tilix-nautilus
   - tmux
+  - ulauncher
   - util-linux-user
   - variety
   - zsh
   - zsh-autosuggestions
   - zsh-syntax-highlighting
+
 
 remove_packages:
   - chromium

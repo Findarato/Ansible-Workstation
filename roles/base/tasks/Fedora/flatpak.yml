@@ -23,15 +23,8 @@
   tags:
     - flatpak
     - packages
-
-# - name: Install Flatkak -> gitKraken
-#   flatpak:
-#     name:   https://flathub.org/repo/appstream/com.axosoft.GitKraken.flatpakref
-#     state:  present
-#     remote: flathub
-#   tags:
-#     - flatpak
-#     - packages
+  when:
+    - install_evolution is true
 
 - name: Install Flatkak -> fileZilla
   flatpak:
@@ -118,7 +111,14 @@
   when:
     - install_bitwarden is true
 
-
+- name: Install Flatpak -> Celluloid
+  flatpak:
+    name:   io.github.celluloid_player.Celluloid
+    state:  present
+    remote: flathub
+  tags:
+    - flatpak
+    - packages
 
 
 ...

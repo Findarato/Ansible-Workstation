@@ -21,24 +21,25 @@ remove_packages:
   # - openssl-devel
 
 add_packages:
-  - filezilla
-  - xclip
-  - which
-  - make
-  - gcc-c++
-  - levien-inconsolata-fonts
   - adobe-source-code-pro-fonts
-  - mozilla-fira-mono-fonts
-  - google-droid-sans-mono-fonts
-  - python-devel
-  - python
-  - which
-  - make
-  - python-requests
-  - nodejs
-  - inkscape
-  - sassc
-  - libsass
-  - glib2-devel
   - clang
+  - filezilla
+  - gcc-c++
+  - glib2-devel
+  - google-droid-sans-mono-fonts
+  - httpie
+  - inkscape
+  - levien-inconsolata-fonts
+  - libsass
+  - make
+  - make
+  - mozilla-fira-mono-fonts
+  - nodejs
   - php-json # To Enable composer
+  - python
+  - python-devel
+  - python-requests
+  - sassc
+  - which
+  - which
+  - xclip
