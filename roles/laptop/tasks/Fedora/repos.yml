@@ -22,4 +22,6 @@
     state: enabled
     name: szydell/system76
   when:
-    - "{{ ansible_board_vendor }} ==  System76"
+    - ansible_board_vendor  ==  'System76'
+
+

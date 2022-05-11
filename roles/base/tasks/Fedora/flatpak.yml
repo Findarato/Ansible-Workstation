@@ -15,26 +15,6 @@
     state: present
     flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
 
-- name: Install Flatkak -> Evolution
-  flatpak:
-    name:   https://flathub.org/repo/appstream/org.gnome.Evolution.flatpakref
-    state:  present
-    remote: flathub
-  tags:
-    - flatpak
-    - packages
-  when:
-    - install_evolution is true
-
-- name: Install Flatkak -> fileZilla
-  flatpak:
-    name:   https://flathub.org/repo/appstream/org.filezillaproject.Filezilla.flatpakref
-    state:  present
-    remote: flathub
-  tags:
-    - flatpak
-    - packages
-
 - name: Install Flatkak -> syncthing GTK
   flatpak:
     name:   https://flathub.org/repo/appstream/me.kozec.syncthingtk.flatpakref
@@ -47,15 +27,6 @@
 - name: Install Flatkak -> GIMP
   flatpak:
     name:   https://flathub.org/repo/appstream/org.gimp.GIMP.flatpakref
-    state:  present
-    remote: flathub
-  tags:
-    - flatpak
-    - packages
-
-- name: Install Flatpak -> Dbeaver
-  flatpak:
-    name:   io.dbeaver.DBeaverCommunity
     state:  present
     remote: flathub
   tags:
@@ -79,16 +50,6 @@
   tags:
     - flatpak
     - packages
-
-- name: Remove Flatpak -> Postman
-  flatpak:
-    name:   com.getpostman.Postman
-    state:  absent
-    remote: flathub
-  tags:
-    - flatpak
-    - packages
-
 
 - name: Install Flatpak -> Bitwarden
   flatpak:

@@ -53,8 +53,8 @@
 - name:               Clone dotfiles repos
   become:             false
   git:
-    repo:             "{{ dotfiles_repo_RW }}"
-    dest:             "/home/{{ local_user }}/dotFiles"
+    repo:             "{{ dotfiles_repo_rw }}"
+    dest:             "/home/{{ local_user }}/dotfiles"
     key_file:         "/home/{{ local_user }}/.ssh/github"
     accept_hostkey:   yes
     track_submodules: yes
@@ -65,15 +65,6 @@
   tags:
     - git
     - dotfiles
-
-- name:               Copy Tilix Themes
-  copy:
-    src:              "/home/{{ local_user }}/dotFiles/Tilix-Themes/{{ item }}"
-    dest:             "/home/{{ local_user }}/.config/tilix/schemes/"
-  with_items:
-    - "{{ tilix_themes }}"
-  when:               result is changed
-
 
 - name: Setup and Install i3
   include_tasks: "{{ ansible_distribution }}/i3.yml"

@@ -1,4 +1,8 @@
 ---
+
+- name: Show me the board vendor
+  debug:
+    msg:    "System {{ inventory_hostname }} has board vendor of {{ ansible_board_vendor }}"
 # - name: Make systemd mounts
 #   ansible.builtin.template:
 #     owner: root
@@ -53,6 +57,10 @@
   include_tasks:            "{{ include_file }}"
   with_items:
     - "{{ ansible_distribution }}/repos.yml"
+  loop_control:
+    loop_var:         include_file
+  tags:
+    - configuration
 
 - name: Setup Ram CACHE fstab
   mount:

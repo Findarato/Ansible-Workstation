@@ -23,7 +23,6 @@ remove_packages:
 add_packages:
   - adobe-source-code-pro-fonts
   - clang
-  - filezilla
   - gcc-c++
   - glib2-devel
   - google-droid-sans-mono-fonts
@@ -40,6 +39,5 @@ add_packages:
   - python-devel
   - python-requests
   - sassc
-  - which
   - which
   - xclip

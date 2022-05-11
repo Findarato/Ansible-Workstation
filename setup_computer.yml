@@ -5,17 +5,17 @@
   pre_tasks:
   roles:
     # - geerlingguy.ansible
-    # - vs-code
     # - geerlingguy.git
     # - base
     # - vaulttec.zsh
     # - geerlingguy.pip
     # - geerlingguy.php
     # - geerlingguy.composer
-    - role: developer
-      when: enable_developer_mode is true
+    # - vs-code
+    # - role: developer
+    #   when: enable_developer_mode is true
     - role: laptop
-      when: laptop is true
+      # when: enable_laptop_mode is true
   vars_files:
     - vars/vault
     - vars/main.yml
@@ -23,7 +23,7 @@
   vars:
     - ansible_python_interpreter: /usr/bin/python3
   vars_prompt:
-    - name: laptop
+    - name: enable_laptop_mode
       prompt: Is this a laptop?
       private: no
       default: false
@@ -34,8 +34,10 @@
     - name: enable_gaming
       prompt: Should I enable gaming?
       private: no
-      default: False
+      default: false
     - name: enable_developer_mode
       prompt: Should I enable Developer Mode??
       private: no
-      default: False
+      default: false
+
+
