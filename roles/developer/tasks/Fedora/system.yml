@@ -2,42 +2,42 @@
 
 - name:         Font => Create FiraCode Directory
   file:
-    path:       /usr/share/fonts/FiraCode/
+    path:       "{{ local_user }}/.local/share/fonts/FiraCode/"
     state:      directory
     mode:       0755
 
 - name:         Font => Install FiraCode
   unarchive:
     src:        "https://github.com/tonsky/FiraCode/releases/download/6.2/Fira_Code_v6.2.zip"
-    dest:       /usr/share/fonts/FiraCode/
-    creates:    /usr/share/fonts/FiraCode/fira_code.css
+    dest:       "{{ local_user }}/.local/share/fonts/FiraCode/"
+    creates:    "{{ local_user }}/.local/share/fonts/FiraCode/fira_code.css"
     remote_src: yes
   notify:       Update Font Cache
 
 - name:         Font => Create Hack Directory
   file:
-    path:       /usr/share/fonts/Hack/
+    path:       "{{ local_user }}/.local/share/fonts/Hack/"
     state:      directory
     mode:       0755
 
 - name:         Font => Install Hack
   unarchive:
     src:        "https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip"
-    dest:       /usr/share/fonts/Hack/
-    creates:    /usr/share/fonts/Hack/Hack-Bold.ttf
+    dest:       "{{ local_user }}/.local/share/fonts/Hack/"
+    creates:    "{{ local_user }}/.local/share/fonts/Hack/Hack-Bold.ttf"
     remote_src: yes
   notify:       Update Font Cache
 
 - name:         Font => Create Overpass Directory
   file:
-    path:       /usr/share/fonts/Overpass/
+    path:       "{{ local_user }}/.local/share/fonts/Overpass/"
     state:      directory
     mode:       0755
 
 - name:         Font => Install Overpass
   unarchive:
     src:        "https://github.com/RedHatOfficial/Overpass/releases/download/v3.0.5/overpass-3.0.5.zip"
-    dest:       "/usr/share/fonts/Overpass/"
-    creates:    "/usr/share/fonts/Overpass/overpass/overpass-bold.otf"
+    dest:       "{{ local_user }}/.local/share/fonts/Overpass/"
+    creates:    "{{ local_user }}/.local/share/fonts/Overpass/overpass/overpass-bold.otf"
     remote_src: yes
   notify:       Update Font Cache
