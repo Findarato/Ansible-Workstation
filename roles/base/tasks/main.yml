@@ -61,7 +61,7 @@
     update:           yes
     # version:          v1.7
   register:           result
-  ignore_errors:      yes
+  ignore_errors:      true
   tags:
     - git
     - dotfiles

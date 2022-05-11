@@ -26,3 +26,15 @@
     state:   started
     enabled: yes
   when:      enable_powertop
+
+- name: Enable System76 Packages
+  ansible.builtin.systemd:
+    name: "{{ item }}"
+    state:  started
+    enabled: yes
+  with_items:
+    - system76-power
+    - system76-power-wake
+    - system76-firmware-daemon
+  when:
+    - "{{ ansible_board_vendor }} ==  System76"

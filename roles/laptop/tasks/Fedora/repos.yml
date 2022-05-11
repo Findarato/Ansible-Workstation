@@ -15,3 +15,11 @@
     dest:   "/etc/yum.repos.d/enpass-yum.repo"
   when:
     - install_enpass == true
+
+- name: Enable System76 tweeks
+  community.general.copr:
+    host: copr.fedorainfracloud.org
+    state: enabled
+    name: szydell/system76
+  when:
+    - "{{ ansible_board_vendor }} ==  System76"

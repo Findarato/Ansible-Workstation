@@ -49,6 +49,10 @@
 #     - flatpak
 #     - install
 #     - configuration
+- name:               Running OS specific Configurations and Commands
+  include_tasks:            "{{ include_file }}"
+  with_items:
+    - "{{ ansible_distribution }}/repos.yml"
 
 - name: Setup Ram CACHE fstab
   mount:
@@ -58,7 +62,7 @@
     state: present
     opts: "nodev,nosuid,noexec,nodiratime,size={{ ram_cache_size }}"
   when:
-    - ram_cache == true
+    - ram_cache is true
 
 
 ...
