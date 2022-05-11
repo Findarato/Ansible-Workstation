@@ -3,14 +3,14 @@
 - name:         State of System
   stat:
     path:       /usr/share/fonts/mozilla-fira/FiraMono-Bold.otf
-  register:     mozillaFiraMonoBold
+  register:     mozilla_fira_mono_bold
 
 # Remove Files
 - name:         Remove unneeded packages
   dnf:
     state:      absent
     name:       "{{ remove_packages }}"
-  when:         mozillaFiraMonoBold.stat.exists == False
+  when:         mozilla_fira_mono_bold.stat.exists is False
 
 # Install Files
 - name:         Install needed packages

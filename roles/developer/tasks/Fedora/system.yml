@@ -8,7 +8,7 @@
 
 - name:         Font => Install FiraCode
   unarchive:
-    src:        "https://github.com/tonsky/FiraCode/releases/download/1.204/FiraCode_1.204.zip"
+    src:        "https://github.com/tonsky/FiraCode/releases/download/6.2/Fira_Code_v6.2.zip"
     dest:       /usr/share/fonts/FiraCode/
     creates:    /usr/share/fonts/FiraCode/fira_code.css
     remote_src: yes
@@ -36,7 +36,7 @@
 
 - name:         Font => Install Overpass
   unarchive:
-    src:        "https://github.com/RedHatBrand/Overpass/releases/download/3.0.2/overpass-desktop-fonts.zip"
+    src:        "https://github.com/RedHatOfficial/Overpass/releases/download/v3.0.5/overpass-3.0.5.zip"
     dest:       "/usr/share/fonts/Overpass/"
     creates:    "/usr/share/fonts/Overpass/overpass/overpass-bold.otf"
     remote_src: yes
