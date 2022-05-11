@@ -29,6 +29,8 @@ install_steam:       false
 ram_cache:           true
 ram_cache_size:      2048M
 
+enable_gaming:       true
+
 #Install and Setup i3 Variables
 install_i3: false
 
@@ -151,86 +153,3 @@ vscode_extensions:
   - wwm.better-align
   - yzane.markdown-pdf
   - yzhang.markdown-all-in-one
-
-install_packages:
-  - alacritty
-  - aria2
-  - autojump-zsh
-  - bitstream-vera-fonts-all
-  - cargo
-  - chrome-gnome-shell
-  - chromium-freeworld
-  - curl
-  - dnf-automatic
-  - dnf-plugins-core
-  - exa
-  - flameshot
-  - gnome-shell-extension-appindicator
-  - gnome-shell-extension-auto-move-windows
-  - gnome-shell-extension-dash-to-dock
-  - gnome-shell-extension-user-theme
-  - gnome-tweak-tool
-  - gtk-murrine-engine
-  - htop
-  - ImageMagick
-  - jq
-  - lm_sensors
-  # - mpv
-  - nano
-  - openssh
-  - p7zip
-  - parallel
-  - perl-LWP-Protocol-https
-  # - pidgin
-  # - pidgin-hangouts
-  - podman
-  - prettyping
-  - remmina
-  - remmina-plugins-rdp
-  - remmina-plugins-spice
-  - remmina-plugins-vnc
-  - restic
-  - sqlite
-  - stow
-  - tilix
-  - tilix-nautilus
-  - tmux
-  - ulauncher
-  - util-linux-user
-  - variety
-  - zsh
-  - zsh-autosuggestions
-  - zsh-syntax-highlighting
-
-
-remove_packages:
-  - chromium
-  - flowblade
-  - gnome-shell-extension-apps-menu
-  - gnome-shell-extension-background-logo
-  - gnome-shell-extension-launch-new-instance
-  - gnome-shell-extension-places-menu
-  - gnome-shell-extension-window-list
-  - gtkhash-nautilus
-  - tint2
-  - totem
-  - virtualbox-guest-additions
-  - libreoffice-calc
-  - libreoffice-core
-  - libreoffice-data
-  - libreoffice-emailmerge
-  - libreoffice-filters
-  - libreoffice-graphicfilter
-  - libreoffice-gtk3
-  - libreoffice-help-en
-  - libreoffice-impress
-  - libreoffice-langpack-en
-  - libreoffice-ogltrans
-  - libreoffice-opensymbol-fonts
-  - libreoffice-pdfimport
-  - libreoffice-pyuno
-  - libreoffice-ure
-  - libreoffice-ure-common
-  - libreoffice-writer
-  - libreoffice-x11
-  - libreoffice-xsltfilter

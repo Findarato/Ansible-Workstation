@@ -74,7 +74,7 @@
 - name: Install Flatpak -> franz
   flatpak:
     name:   com.getferdi.Ferdi
-    state:  present
+    state:  absent
     remote: flathub
   tags:
     - flatpak
@@ -89,26 +89,15 @@
     - flatpak
     - packages
 
-
-- name: Install Flatpak -> Bitwarden
+- name: Install Flatpak -> Slack
   flatpak:
-    name:   com.bitwarden.desktop
+    name:   com.slack.Slack
     state:  present
     remote: flathub
   tags:
     - flatpak
     - packages
   when:
-    - install_bitwarden is true
-
-- name: Install Flatpak -> Celluloid
-  flatpak:
-    name:   io.github.celluloid_player.Celluloid
-    state:  present
-    remote: flathub
-  tags:
-    - flatpak
-    - packages
-
+    - install_slack is true
 
 ...

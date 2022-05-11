@@ -1,0 +1,73 @@
+---
+# Themes are in a dir/theme format
+# Directories are either Themes or Themes-2
+
+# dotfiles_repo_RO: https://github.com/Findarato/dotFiles.git
+dotfiles_repo_RW: git@github.com:Findarato/dotFiles.git
+
+install_packages: []
+
+i3_packages:
+  - automake
+  - compton
+  - dunst
+  - feh
+  - i3-gaps
+  - i3lock-color
+  - lxappearance
+  # - rofi
+  # - rofi
+  # - rofi-themes
+  - ulauncher
+  - sysstat
+
+remove_packages: []
+extra_font_files:
+  - adobe-source-code-pro-fonts
+  - dejavu-sans-fonts
+  - dejavu-sans-mono-fonts
+  - dejavu-serif-fonts
+  - gnu-free-fonts-common
+  - gnu-free-mono-fonts
+  - gnu-free-sans-fonts
+  - gnu-free-serif-fonts
+  - google-android-emoji-fonts
+  - google-android-emoji-fonts
+  - google-noto-fonts-common
+  - levien-inconsolata-fonts
+  - liberation-fonts-common
+  - liberation-mono-fonts
+  - liberation-sans-fonts
+  - liberation-serif-fonts
+  - mozilla-fira-mono-fonts
+  - msimonson-anonymouspro-fonts
+  - overpass-fonts
+  - terminus-fonts
+
+nvidia_packages:
+  - cuda
+  - cuda-cudart
+  - nvidia-driver-cuda
+
+flatpak_packages: []
+
+python_packages:
+  - redis
+  - tuir
+
+rpmfusion_free_package_state: present
+rpmfusion_nonfree_package_state: present
+
+dconf_settings_theme: []
+
+dconf_usability_improvements: []
+
+automounts: []
+
+tilix_themes:
+  - "Themes/espresso.json"
+  - "Themes/espresso-libre.json"
+
+
+install_evolution: false
+...

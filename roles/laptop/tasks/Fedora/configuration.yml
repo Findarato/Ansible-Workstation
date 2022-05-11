@@ -1,0 +1,28 @@
+---
+
+- name: Required Packages
+  package:
+    name: python3-psutil
+    state: present
+
+- name: Gnome Theme
+  become: false
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+    state: present
+  with_items:
+    - "{{ dconf_settings_theme }}"
+  when:
+    - install_i3 == false
+
+- name: Usability Improvements
+  become: false
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+    state: present
+  with_items:
+    - "{{ dconf_usability_improvements }}"
+
+...

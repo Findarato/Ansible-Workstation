@@ -1,0 +1,22 @@
+---
+# Setup some gaming specific things
+
+- name: Install Gaming Packages
+  dnf:
+    state: present
+    name: '{{ install_gaming_packages}}'
+  when:
+    - enable_gaming == true
+
+- name: Install Flatpak -> Discord
+  flatpak:
+    name:   com.discordapp.Discord
+    state:  present
+    remote: flathub
+  when:
+    - enable_gaming == true
+  tags:
+    - flatpak
+    - packages
+
+...
