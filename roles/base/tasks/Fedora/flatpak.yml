@@ -15,6 +15,20 @@
     state: present
     flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
 
+
+- name: Install Flatpak -> Extension Manger
+  flatpak:
+    name:   "{{ flatpak_install }}"
+    state:  present
+    remote: flathub
+  with_items:
+    - com.mattjakeman.ExtensionManager
+  loop_control:
+    loop_var:         flatpak_install
+  tags:
+    - flatpak
+    - packages
+
 - name: Install Flatkak -> syncthing GTK
   flatpak:
     name:   https://flathub.org/repo/appstream/me.kozec.syncthingtk.flatpakref
@@ -70,6 +84,16 @@
   tags:
     - flatpak
     - packages
+
+- name: Install Flatpak -> Extension Manger
+  flatpak:
+    name:   com.mattjakeman.ExtensionManager
+    state:  present
+    remote: flathub
+  tags:
+    - flatpak
+    - packages
+
 
 
 ...
