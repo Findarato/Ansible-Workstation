@@ -6,7 +6,7 @@
   roles:
     # - geerlingguy.ansible
     # - geerlingguy.git
-    # - base
+    - base
     # - vaulttec.zsh
     # - geerlingguy.pip
     # - geerlingguy.php
@@ -15,7 +15,7 @@
     # - role: developer
     #   when: enable_developer_mode is true
     - role: laptop
-      # when: enable_laptop_mode is true
+      when: enable_laptop_mode is true
   vars_files:
     - vars/vault
     - vars/main.yml

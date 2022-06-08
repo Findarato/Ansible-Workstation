@@ -8,14 +8,6 @@
     state: present
     name: fedora-workstation-repositories
 
-- name:     Download Enpass Repo
-  get_url:
-    url:    "https://yum.enpass.io/enpass-yum.repo"
-    mode:   0644
-    dest:   "/etc/yum.repos.d/enpass-yum.repo"
-  when:
-    - install_enpass == true
-
 - name: Enable System76 tweeks
   community.general.copr:
     host: copr.fedorainfracloud.org

@@ -15,10 +15,6 @@ i3_packages:
   - i3-gaps
   - i3lock-color
   - lxappearance
-  # - rofi
-  # - rofi
-  # - rofi-themes
-  - ulauncher
   - sysstat
 
 remove_packages: []

@@ -5,6 +5,7 @@ This playbook is how I setup my fedora deployments.
 
 The only linting errors are below, and I do not really care to fix them
 ```bash
+
 ANSIBLE0010 Package installs should not use latest
 /home/jharry/setup/Ansible-Workstaton/roles/developer/tasks/main.yml:32
 Task/Handler: Install python modules with pip

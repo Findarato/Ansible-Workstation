@@ -1,6 +1,6 @@
 ---
 # Install Flatpak to ensure that it works
-- name:       Install 'flatpak'
+- name:       Install 📦 Flatpak
   package:
     name:     flatpak
     state:    present
@@ -16,56 +16,24 @@
     flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
 
 
-- name: Install Flatpak -> Extension Manger
+- name: Install 📦 Flatpak Packages 
   flatpak:
     name:   "{{ flatpak_install }}"
     state:  present
     remote: flathub
   with_items:
     - com.mattjakeman.ExtensionManager
+    - me.kozec.syncthingtk
+    - org.gimp.GIMP
+    - com.getferdi.Ferd
+    - io.github.celluloid_player.Celluloid
   loop_control:
     loop_var:         flatpak_install
   tags:
     - flatpak
     - packages
 
-- name: Install Flatkak -> syncthing GTK
-  flatpak:
-    name:   https://flathub.org/repo/appstream/me.kozec.syncthingtk.flatpakref
-    state:  present
-    remote: flathub
-  tags:
-    - flatpak
-    - packages
-
-- name: Install Flatkak -> GIMP
-  flatpak:
-    name:   https://flathub.org/repo/appstream/org.gimp.GIMP.flatpakref
-    state:  present
-    remote: flathub
-  tags:
-    - flatpak
-    - packages
-
-- name: Install Flatpak -> lollypop
-  flatpak:
-    name:   org.gnome.Lollypop
-    state:  present
-    remote: flathub
-  tags:
-    - flatpak
-    - packages
-
-- name: Install Flatpak -> franz
-  flatpak:
-    name:   com.getferdi.Ferdi
-    state:  present
-    remote: flathub
-  tags:
-    - flatpak
-    - packages
-
-- name: Install Flatpak -> Bitwarden
+- name: Install 📦 Flatpak -> Bitwarden
   flatpak:
     name:   com.bitwarden.desktop
     state:  present
@@ -75,25 +43,6 @@
     - packages
   when:
     - install_bitwarden is true
-
-- name: Install Flatpak -> Celluloid
-  flatpak:
-    name:   io.github.celluloid_player.Celluloid
-    state:  present
-    remote: flathub
-  tags:
-    - flatpak
-    - packages
-
-- name: Install Flatpak -> Extension Manger
-  flatpak:
-    name:   com.mattjakeman.ExtensionManager
-    state:  present
-    remote: flathub
-  tags:
-    - flatpak
-    - packages
-
 
 
 ...

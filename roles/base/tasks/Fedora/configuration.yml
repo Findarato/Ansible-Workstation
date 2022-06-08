@@ -16,17 +16,6 @@
   when:
     - install_i3 == false
 
-# - name: Dash to Dock
-#   become: false
-#   dconf:
-#     key: "{{ item.key }}"
-#     value: "{{ item.value }}"
-#     state: present
-#   with_items:
-#     - "{{ dconf_dash_to_dock_theme }}"
-#   when:
-#     - install_i3 == false
-
 - name: Usability Improvements
   become: false
   dconf:
