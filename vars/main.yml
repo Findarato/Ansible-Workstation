@@ -153,3 +153,10 @@ vscode_extensions:
   - wwm.better-align
   - yzane.markdown-pdf
   - yzhang.markdown-all-in-one
+
+# Yubikey
+
+yubikey_enable: true
+yubikey_gdm_login: false
+yubikey_sudo_login: false
+yubikey_ssh_login: false
