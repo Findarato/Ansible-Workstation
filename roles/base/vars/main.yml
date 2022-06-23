@@ -38,7 +38,7 @@ install_packages:
   - zsh
   - zsh-autosuggestions
   - zsh-syntax-highlighting
-  # - mpv
+    # - mpv
 
 remove_packages:
   - chrome-gnome-shell
@@ -73,6 +73,7 @@ remove_packages:
   - libreoffice-x11
   - libreoffice-xsltfilter
   - parallel
+  - power-profiles-daemon
   - remmina
   - remmina-plugins-rdp
   - remmina-plugins-spice
