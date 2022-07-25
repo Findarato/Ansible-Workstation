@@ -16,7 +16,7 @@
     flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
 
 
-- name: Install 📦 Flatpak Packages 
+- name: Install Flathub 📦 Flatpak Packages 
   flatpak:
     name:   "{{ flatpak_install }}"
     state:  present
@@ -27,6 +27,7 @@
     - org.gimp.GIMP
     - com.getferdi.Ferd
     - io.github.celluloid_player.Celluloid
+    - io.github.peazip.PeaZip
   loop_control:
     loop_var:         flatpak_install
   tags:
