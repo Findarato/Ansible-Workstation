@@ -28,6 +28,7 @@
     - com.getferdi.Ferd
     - io.github.celluloid_player.Celluloid
     - io.github.peazip.PeaZip
+    - re.sonny.Commit 
   loop_control:
     loop_var:         flatpak_install
   tags:
