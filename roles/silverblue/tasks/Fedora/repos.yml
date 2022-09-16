@@ -1,0 +1,19 @@
+---
+# - debug:
+#     msg:    "System {{ inventory_hostname }} has uuid {{ ansible_product_uuid }}"
+
+
+- name:     Install 3rd Party Repos
+  package:
+    state: present
+    name: fedora-workstation-repositories
+
+- name: Enable System76 tweeks
+  community.general.copr:
+    host: copr.fedorainfracloud.org
+    state: enabled
+    name: szydell/system76
+  when:
+    - ansible_board_vendor  ==  'System76'
+
+

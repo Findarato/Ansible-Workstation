@@ -1,0 +1,28 @@
+---
+- hosts: localhost
+  become: true
+  connection: local
+  # pre_tasks:
+  #   - name: testing
+  #     debug:
+  #       msg: "{{ yubikey[:12] }}"
+  roles:
+    - silverblue
+    - role: yubikey
+      when: yubikey_enable is true
+  vars_files:
+    - vars/vault
+    - vars/main.yml
+    - vars/zsh.yml
+  vars:
+    - ansible_python_interpreter: /usr/bin/python3
+  vars_prompt:
+    - name: yubikey
+      prompt: Please enter yubikey
+      private: true
+      default: "{{ vault_yubikey }}"
+
+    # - name: yubikey_ssh_login
+    #   prompt: Enable login to SSH
+    #   private: no
+    #   default: false

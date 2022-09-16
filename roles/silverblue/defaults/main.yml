@@ -1,0 +1,18 @@
+---
+# Themes are in a dir/theme format
+# Directories are either Themes or Themes-2
+
+install_packages: []
+
+remove_packages: []
+extra_font_files: []
+
+python_packages: []
+
+dconf_settings_theme: []
+
+dconf_usability_improvements: []
+
+automounts: []
+
+...
