@@ -1,14 +1,23 @@
 ---
-- name: Install yubikey {{ ansible_os_family }}
+- name: Install yubikey cli {{ ansible_os_family }}
   package:
     name: "{{item}}"
     state: latest
   with_items:
     - pam_yubico
-    - yubikey-manager
-    - yubikey-manager-qt
   tags:
     - yubikey
+
+- name: Install yubikey GUI {{ ansible_os_family }}
+  package:
+    name: "{{item}}"
+    state: latest
+  with_items:
+    - pam_yubico
+  tags:
+    - yubikey
+  when:
+    - gui is true
 
 - name: Remove yubikey {{ ansible_os_family }}
   package:
