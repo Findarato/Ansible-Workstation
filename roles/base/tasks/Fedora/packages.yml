@@ -38,3 +38,8 @@
     state:      present
   when:
     - work == true
+
+- name:         Install Bibata Cursors
+  dnf:
+    name:       bibata-cursor-themes
+    state:      present

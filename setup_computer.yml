@@ -2,10 +2,6 @@
 - hosts: localhost
   become: true
   connection: local
-  # pre_tasks:
-  #   - name: testing
-  #     debug:
-  #       msg: "{{ yubikey[:12] }}"
   roles:
     # - geerlingguy.ansible
     # - geerlingguy.git
@@ -14,11 +10,11 @@
     # - geerlingguy.pip
     # - geerlingguy.php
     # - geerlingguy.composer
-    - vs-code
+    # - vs-code
     - role: developer
       when: enable_developer_mode is true
-    # - role: laptop
-    #   when: enable_laptop_mode is true
+    - role: laptop
+      when: enable_laptop_mode is true
     - role: yubikey
       when: yubikey_enable is true
   vars_files:
@@ -40,14 +36,14 @@
       prompt: Should I enable gaming?
       private: no
       default: false
-    - name: enable_developer_mode
-      prompt: Should I enable Developer Mode??
-      private: no
-      default: false
-    - name: yubikey
-      prompt: Please enter yubikey
-      private: true
-      default: "{{ vault_yubikey }}"
+  #   - name: enable_developer_mode
+  #     prompt: Should I enable Developer Mode??
+  #     private: no
+  #     default: false
+  #   - name: yubikey
+  #     prompt: Please enter yubikey
+  #     private: true
+  #     default: "{{ vault_yubikey }}"
 
     # - name: yubikey_ssh_login
     #   prompt: Enable login to SSH

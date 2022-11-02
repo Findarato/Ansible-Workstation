@@ -67,3 +67,13 @@ org.gnome.desktop.peripherals.touchpad disable-while-typing true
 
 gsettings set org.gnome.shell. enabled-extensions ['background-logo@fedorahosted.org', 'nvidiatemp@baco', 'TopIcons@phocean.net', 'user-theme@gnome-shell-extensions.gcampax.github.com','calc@patapon.info']
 gsettings set org.gnome.shell enabled-extensions ['TopIcons@phocean.net', 'user-theme@gnome-shell-extensions.gcampax.github.com','calc@patapon.info']
+
+
+
+# SETTINGS FROM ublue
+# https://github.com/castrojo/ublue/
+
+dconf write /org/gnome/desktop/thumbnail-cache/maximum-age "180"
+dconf write /org/gnome/desktop/thumbnail-cache/maximum-size "512"
+dconf write /org/gnome/desktop/thumbnailers/disable "@as []"
+dconf write /org/gnome/desktop/thumbnailers/disable-all "false"

@@ -49,4 +49,4 @@ echo "██║  ██║███████╗██║     ██║  █�
 echo "╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝ ╚═════╝ "
 
 echo "${reset}"
-ansible-playbook -i localHosts setup_computer.yml --extra-var local_user=${USER} --ask-become
+ansible-playbook -i localHosts setup_computer.yml -K --extra-var local_user=${USER}

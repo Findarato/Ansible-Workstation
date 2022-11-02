@@ -1,6 +1,6 @@
 ---
 # Install Flatpak to ensure that it works
-- name:       Install 📦 Flatpak
+- name:       📦 Install Flatpak
   package:
     name:     flatpak
     state:    present
@@ -16,7 +16,7 @@
     flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
 
 
-- name: Install Flathub 📦 Flatpak Packages 
+- name: 📦 Install Flathub Flatpak Packages
   flatpak:
     name:   "{{ flatpak_install }}"
     state:  present
@@ -28,14 +28,14 @@
     - com.getferdi.Ferd
     - io.github.celluloid_player.Celluloid
     - io.github.peazip.PeaZip
-    - re.sonny.Commit 
+    - re.sonny.Commit
   loop_control:
     loop_var:         flatpak_install
   tags:
     - flatpak
     - packages
 
-- name: Install 📦 Flatpak -> Bitwarden
+- name: 📦 Install Flatpak -> Bitwarden
   flatpak:
     name:   com.bitwarden.desktop
     state:  present

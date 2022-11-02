@@ -1,4 +1,23 @@
 ---
+- name: Create temporary build directory
+  ansible.builtin.tempfile:
+    state: directory
+    suffix: ".build"
+  register: scratch_dir
+
+- name: scratch_dir
+  debug:
+    msg: "{{ scratch_dir }}"
+
+- name: Create Automount Directories
+  file:
+    path: "{{ item.mount.where }}"
+    state: directory
+  with_items:
+    - "{{ automounts }}"
+  when:
+    - enable_automounts
+
 - name: Make systemd mounts
   ansible.builtin.template:
     owner: root
@@ -29,32 +48,25 @@
   when:
     - enable_automounts
 
-- name:               Ensure Scratch Dir exsists
+- name: Create src folder
   file:
-    dest:             "{{ scratch_dir }}"
-    mode:             0770
-    owner:            "{{ local_user }}"
-    state:            directory
+    path: "/home/{{ local_user }}/Documents/src/"
+    state: directory
+    owner: "{{ local_user }}"
+    mode: 0750
 
-- name:               Create src folder
-  file:
-    path:             "/home/{{ local_user }}/Documents/src/"
-    state:            directory
-    owner:            "{{ local_user }}"
-    mode:             0750
-
-- name:               Clone dotfiles repos
-  become:             false
+- name: Clone dotfiles repos
+  become: false
   git:
-    repo:             "{{ dotfiles_repo_rw }}"
-    dest:             "/home/{{ local_user }}/dotfiles"
-    key_file:         "/home/{{ local_user }}/.ssh/github"
-    accept_hostkey:   yes
+    repo: "{{ dotfiles_repo_rw }}"
+    dest: "/home/{{ local_user }}/dotfiles"
+    key_file: "/home/{{ local_user }}/.ssh/github"
+    accept_hostkey: yes
     track_submodules: yes
-    update:           yes
+    update: yes
     # version:          v1.7
-  register:           result
-  ignore_errors:      true
+  register: result
+  ignore_errors: true
   tags:
     - git
     - dotfiles
@@ -67,8 +79,8 @@
   when:
     - install_i3 == true
 
-- name:               Running OS specific Configurations and Commands
-  include_tasks:            "{{ include_file }}"
+- name: Running OS specific Configurations and Commands
+  include_tasks: "{{ include_file }}"
   with_items:
     - "{{ ansible_distribution }}/repos.yml"
     # - "{{ ansible_distribution }}/system.yml"
@@ -77,7 +89,7 @@
     # - "{{ ansible_distribution }}/services.yml"
     # - "{{ ansible_distribution }}/configuration.yml"
   loop_control:
-    loop_var:         include_file
+    loop_var: include_file
   tags:
     - configuration
 
@@ -104,6 +116,3 @@
     opts: "nodev,nosuid,noexec,nodiratime,size={{ ram_cache_size }}"
   when:
     - ram_cache == true
-
-
-...

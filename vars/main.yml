@@ -6,7 +6,6 @@ local_user_passwordless_sudo: false
 
 # System
 libvirt_storage_path: /home/images
-scratch_dir         : "/home/{{local_user}}/setup/scratch"
 
 # Services
 enable_sshd:        true
@@ -14,7 +13,7 @@ enable_fail2ban:    false
 enable_powertop:    false
 enable_vagrant_nfs: false
 enable_libvirtd:    false
-enable_automounts:  false
+enable_automounts:  true
 
 # Extras
 install_bitwarden:   true
@@ -93,6 +92,18 @@ dconf_usability_improvements:
   - name: Gnome 40 no down key switch
     key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-down"
     value: ['disabled']
+
+# Tweeks from fbuntu
+  - name: Thumbnail adjustments
+    key: "/org/gnome/desktop/thumbnail-cache/maximum-size"
+    value: 512
+  - name: Thumbnail adjustments
+    key: "/org/gnome/desktop/thumbnailers/disable"
+    value: '@as []'
+  - name: Thumbnail adjustments
+    key: "/org/gnome/desktop/thumbnailers/disable-all"
+    value: 'false'
+
 
 vscode_extensions:
   - 2gua.rainbow-brackets
