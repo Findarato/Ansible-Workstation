@@ -28,21 +28,21 @@
   when:
     - enable_automounts
 
-- name: Make systemd Automounts
-  ansible.builtin.template:
-    owner: root
-    src: "mount-systemd.automount.j2"
-    dest: "/etc/systemd/system/{{ item.name }}.automount"
-  with_items:
-    - "{{ automounts }}"
-  when:
-    - enable_automounts
+# - name: Make systemd Automounts
+#   ansible.builtin.template:
+#     owner: root
+#     src: "mount-systemd.automount.j2"
+#     dest: "/etc/systemd/system/{{ item.name }}.automount"
+#   with_items:
+#     - "{{ automounts }}"
+#   when:
+#     - enable_automounts
 
 - name: Setup mounts
   ansible.builtin.systemd:
     daemon_reload: yes
     state: started
-    name: "{{ item.name }}.automount"
+    name: "{{ item.name }}.mount"
   with_items:
     - "{{ automounts }}"
   when:
@@ -99,13 +99,6 @@
 #     - dconf
 #     - install
 #     - configuration
-
-- name: Setup and install Flatpak
-  include_tasks: "{{ ansible_distribution }}/flatpak.yml"
-  tags:
-    - configuration
-    - flatpak
-    - install
 
 - name: Setup Ram CACHE fstab
   mount:

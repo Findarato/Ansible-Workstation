@@ -6,6 +6,7 @@
     # - geerlingguy.ansible
     # - geerlingguy.git
     - base
+    - flatpak
     # - vaulttec.zsh
     # - geerlingguy.pip
     # - geerlingguy.php
@@ -40,10 +41,10 @@
   #     prompt: Should I enable Developer Mode??
   #     private: no
   #     default: false
-  #   - name: yubikey
-  #     prompt: Please enter yubikey
-  #     private: true
-  #     default: "{{ vault_yubikey }}"
+    - name: yubikey
+      prompt: Please enter yubikey
+      private: true
+      default: "{{ vault_yubikey }}"
 
     # - name: yubikey_ssh_login
     #   prompt: Enable login to SSH
