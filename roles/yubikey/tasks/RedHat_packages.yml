@@ -1,71 +1,94 @@
 ---
-- name: Install yubikey cli {{ ansible_os_family }}
+
+# Sources and notes
+# https://www.ha-obsession.net/2017/05/u2f-sudo-fedora-25.html?m=1
+# https://blog.slowb.ro/password-less-sudo-and-login-with-yubikey/
+
+
+- name: Install u2f {{ ansible_os_family }}
   package:
-    name: "{{item}}"
+    name: "{{ item }}"
     state: latest
   with_items:
-    - pam_yubico
+    - pamu2fcfg
+    - pam-u2f
   tags:
     - yubikey
 
-- name: Install yubikey GUI {{ ansible_os_family }}
-  package:
-    name: "{{item}}"
-    state: latest
-  with_items:
-    - pam_yubico
-  tags:
-    - yubikey
-  when:
-    - gui is true
+- name: Create 2uf pam file
+  copy:
+    src: u2f
+    dest: /etc/pam.d/u2f
 
-- name: Remove yubikey {{ ansible_os_family }}
-  package:
-    name: "{{item}}"
-    state: absent
-  with_items:
-    - yubico-piv-tool
-  tags:
-    - yubikey
 
-- name: Enable Yubikey in pam
+- name: Enable Yubikey globally
   lineinfile:
-    path: /etc/pam.d/login
-    line: auth sufficient pam_yubico.so debug id=1
-    insertbefore: auth substack system-auth
-    state: present
-    backup: true
-
-- name: Enable Yubikey in GDM
-  lineinfile:
-    path: /etc/pam.d/gdm-password
-    line: auth sufficient pam_yubico.so debug id=1
-    insertbefore: auth substack system-auth
-    state: present
-    backup: true
-  when: yubikey_gdm_login is true
-
-- name: Enable Yubikey in sudo
-  lineinfile:
-    path: /etc/pam.d/sudo
-    line: auth sufficient pam_yubico.so debug id=1
+    path: /etc/pam.d/system-auth
+    line: auth            include         u2f
     insertbefore: "^auth"
     firstmatch: yes
     state: present
     backup: true
   when: yubikey_sudo_login is true
 
-- name: Make paths
-  file:
-    dest: "/home/{{ local_user }}/.yubico"
-    mode: 0700
-    owner: "{{ local_user }}"
-    group: "{{ local_user }}"
-    state: directory
+# - name: Install yubikey GUI {{ ansible_os_family }}
+#   package:
+#     name: "{{ item }}"
+#     state: latest
+#   with_items:
+#     - pam_yubico
+#   tags:
+#     - yubikey
+#   when:
+#     - gui is true
 
-- name: Allow logins
-  ansible.builtin.template:
-    owner: "{{ local_user }}"
-    group: "{{ local_user }}"
-    src: "authorized_yubikeys.j2"
-    dest: "/home/{{ local_user }}/.yubico/authorized_yubikeys"
+# - name: Remove yubikey {{ ansible_os_family }}
+#   package:
+#     name: "{{ item }}"
+#     state: absent
+#   with_items:
+#     - yubico-piv-tool
+#   tags:
+#     - yubikey
+
+# - name: Enable Yubikey in pam
+#   lineinfile:
+#     path: /etc/pam.d/login
+#     line: auth sufficient pam_yubico.so debug id=1
+#     insertbefore: auth substack system-auth
+#     state: present
+#     backup: true
+
+# - name: Enable Yubikey in GDM
+#   lineinfile:
+#     path: /etc/pam.d/gdm-password
+#     line: auth sufficient pam_yubico.so debug id=1
+#     insertbefore: auth substack system-auth
+#     state: present
+#     backup: true
+#   when: yubikey_gdm_login is true
+
+# - name: Enable Yubikey in sudo
+#   lineinfile:
+#     path: /etc/pam.d/sudo
+#     line: auth sufficient pam_yubico.so debug id=1
+#     insertbefore: "^auth"
+#     firstmatch: yes
+#     state: present
+#     backup: true
+#   when: yubikey_sudo_login is true
+
+# - name: Make paths
+#   file:
+#     dest: "/home/{{ local_user }}/.yubico"
+#     mode: 0700
+#     owner: "{{ local_user }}"
+#     group: "{{ local_user }}"
+#     state: directory
+
+# - name: Allow logins
+#   ansible.builtin.template:
+#     owner: "{{ local_user }}"
+#     group: "{{ local_user }}"
+#     src: "authorized_yubikeys.j2"
+#     dest: "/home/{{ local_user }}/.yubico/authorized_yubikeys"

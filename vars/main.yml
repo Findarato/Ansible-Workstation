@@ -26,7 +26,7 @@ install_packager:    false
 install_slack:       true
 install_steam:       false
 ram_cache:           true
-ram_cache_size:      2048M
+ram_cache_size:      "{{ 1024 * 8 }}M"
 
 enable_gaming:       true
 
@@ -171,3 +171,36 @@ yubikey_enable: true
 yubikey_gdm_login: false
 yubikey_sudo_login: false
 yubikey_ssh_login: false
+
+## Flatpak Setups
+
+flatpak_packages_flathub:
+  - com.getferdi.Ferd
+  - com.github.GradienceTeam.Gradience
+  - com.makemkv.MakeMKV
+  - com.mattjakeman.ExtensionManager
+  - fr.handbrake.ghb
+  - io.github.celluloid_player.Celluloid
+  - io.github.peazip.PeaZip
+  - io.mpv.Mpv
+  - me.kozec.syncthingtk
+  - org.gimp.GIMP
+  - org.raspberrypi.rpi-imager
+  - re.sonny.Commit
+  - social.whalebird.WhalebirdDesktop
+  - tv.plex.PlexDesktop
+  - com.discordapp.Discord
+  - com.github.debauchee.barrier
+  - com.github.tchx84.Flatseal
+  - com.sweethome3d.Sweethome3d
+  - com.usebottles.bottles
+  - im.riot.Riot
+  - info.beyondallreason.bar
+  - org.mozilla.firefox
+
+
+
+flatpak_packages_gnome_nightly:
+  - org.gnome.Calendar.Devel
+
+...
