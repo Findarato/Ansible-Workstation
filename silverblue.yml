@@ -11,7 +11,7 @@
     - role: yubikey
       when: yubikey_enable is true
   vars_files:
-    - vars/vault
+    - vars/vault.yml
     - vars/main.yml
     - vars/zsh.yml
   vars:
