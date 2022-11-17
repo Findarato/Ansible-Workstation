@@ -202,3 +202,5 @@ flatpak_packages_flathub:
 
 flatpak_packages_gnome_nightly:
   - org.gnome.Calendar.Devel
+
+...
