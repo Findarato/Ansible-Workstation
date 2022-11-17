@@ -1,0 +1,2 @@
+## U2F enable
+auth       sufficient   pam_u2f.so authfile=/etc/u2f_mappings cue [cue_prompt="Tap the Yubikey to Sudo"] id=1
