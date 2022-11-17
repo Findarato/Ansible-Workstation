@@ -1,1 +1,6 @@
 ---
+u2f_users: "{{ vault_u2f_users }}"
+
+# vault_u2f_users:
+#  username: "u2f key"
+#
