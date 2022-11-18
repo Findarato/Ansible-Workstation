@@ -175,29 +175,29 @@ yubikey_ssh_login: false
 ## Flatpak Setups
 
 flatpak_packages_flathub:
+  - com.discordapp.Discord
   - com.getferdi.Ferd
+  - com.github.debauchee.barrier
   - com.github.GradienceTeam.Gradience
+  - com.github.tchx84.Flatseal
   - com.makemkv.MakeMKV
   - com.mattjakeman.ExtensionManager
+  - com.sweethome3d.Sweethome3d
+  - com.usebottles.bottles
   - fr.handbrake.ghb
+  - im.riot.Riot
+  - info.beyondallreason.bar
   - io.github.celluloid_player.Celluloid
   - io.github.peazip.PeaZip
   - io.mpv.Mpv
+  - io.podman_desktop.PodmanDesktop
   - me.kozec.syncthingtk
   - org.gimp.GIMP
+  - org.mozilla.firefox
   - org.raspberrypi.rpi-imager
   - re.sonny.Commit
   - social.whalebird.WhalebirdDesktop
   - tv.plex.PlexDesktop
-  - com.discordapp.Discord
-  - com.github.debauchee.barrier
-  - com.github.tchx84.Flatseal
-  - com.sweethome3d.Sweethome3d
-  - com.usebottles.bottles
-  - im.riot.Riot
-  - info.beyondallreason.bar
-  - org.mozilla.firefox
-
 
 
 flatpak_packages_gnome_nightly:
