@@ -176,7 +176,6 @@ yubikey_ssh_login: false
 
 flatpak_packages_flathub:
   - com.discordapp.Discord
-  - com.getferdi.Ferd
   - com.github.debauchee.barrier
   - com.github.GradienceTeam.Gradience
   - com.github.tchx84.Flatseal

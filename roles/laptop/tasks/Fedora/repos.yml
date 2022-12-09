@@ -8,6 +8,9 @@
     state: present
     name: fedora-workstation-repositories
 
+
+# https://copr.fedorainfracloud.org/coprs/sentry/kernel-fsync/
+
 - name: Enable System76 tweeks
   community.general.copr:
     host: copr.fedorainfracloud.org

@@ -41,10 +41,9 @@
   #     prompt: Should I enable Developer Mode??
   #     private: no
   #     default: false
-    - name: yubikey
-      prompt: Please enter yubikey
-      private: true
-      default: "{{ vault_yubikey }}"
+    # - name: yubikey
+    #   prompt: Please enter yubikey
+    #   private: true
 
     # - name: yubikey_ssh_login
     #   prompt: Enable login to SSH
