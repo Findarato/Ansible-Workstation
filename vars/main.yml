@@ -50,7 +50,9 @@ install_zerotier: false
 
 inventory_hostname: "{{ ansible_hostname }}"
 
-automounts: "{{ vault_automounts }}"
+# Mounts
+network_automounts: "{{ vault_network_automounts }}"
+local_automounts: "{{ vault_local_automounts }}"
 
 dconf_settings_theme: []
 

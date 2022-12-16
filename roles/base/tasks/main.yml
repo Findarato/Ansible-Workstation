@@ -14,17 +14,28 @@
     path: "{{ item.mount.where }}"
     state: directory
   with_items:
-    - "{{ automounts }}"
+    - "{{ network_automounts }}"
+    - "{{ local_automounts }}"
   when:
     - enable_automounts
 
-- name: Make systemd mounts
+- name: Make Local systemd mounts
   ansible.builtin.template:
     owner: root
-    src: "mount-systemd.mount.j2"
+    src: "mount-systemd-local.mount.j2"
     dest: "/etc/systemd/system/{{ item.name }}.mount"
   with_items:
-    - "{{ automounts }}"
+    - "{{ local_automounts }}"
+  when:
+    - enable_automounts
+
+- name: Make Network systemd mounts
+  ansible.builtin.template:
+    owner: root
+    src: "mount-systemd-network.mount.j2"
+    dest: "/etc/systemd/system/{{ item.name }}.mount"
+  with_items:
+    - "{{ network_automounts }}"
   when:
     - enable_automounts
 
@@ -38,13 +49,23 @@
 #   when:
 #     - enable_automounts
 
-- name: Setup mounts
+- name: Setup Network mounts
   ansible.builtin.systemd:
     daemon_reload: yes
     state: started
     name: "{{ item.name }}.mount"
   with_items:
-    - "{{ automounts }}"
+    - "{{ network_automounts }}"
+  when:
+    - enable_automounts
+
+- name: Setup Local mounts
+  ansible.builtin.systemd:
+    daemon_reload: yes
+    state: started
+    name: "{{ item.name }}.mount"
+  with_items:
+    - "{{ local_automounts }}"
   when:
     - enable_automounts
 

@@ -1,0 +1,12 @@
+[Unit]
+Description={{ item.name }}
+
+[Mount]
+What={{ item.mount.what }}
+Where={{ item.mount.where }}
+Type={{ item.mount.type }}
+Options={{ item.mount.options }}
+TimeoutSec=20
+
+[Install]
+WantedBy=multi-user.target
