@@ -39,35 +39,52 @@
   when:
     - enable_automounts
 
-# - name: Make systemd Automounts
-#   ansible.builtin.template:
-#     owner: root
-#     src: "mount-systemd.automount.j2"
-#     dest: "/etc/systemd/system/{{ item.name }}.automount"
+# - name: Remove Setup Network mounts
+#   ansible.builtin.systemd:
+#     daemon_reload: yes
+#     state: stopped
+#     enabled: true
+#     name: "{{ item.name }}.mount"
 #   with_items:
-#     - "{{ automounts }}"
+#     - "{{ network_automounts }}"
 #   when:
 #     - enable_automounts
-
-- name: Setup Network mounts
-  ansible.builtin.systemd:
-    daemon_reload: yes
-    state: started
-    name: "{{ item.name }}.mount"
-  with_items:
-    - "{{ network_automounts }}"
-  when:
-    - enable_automounts
 
 - name: Setup Local mounts
   ansible.builtin.systemd:
     daemon_reload: yes
-    state: started
+    state: stopped
+    enabled: false
     name: "{{ item.name }}.mount"
   with_items:
     - "{{ local_automounts }}"
   when:
     - enable_automounts
+
+- name: Make systemd Automounts
+  ansible.builtin.template:
+    owner: root
+    enabled: true
+    src: "mount-systemd.automount.j2"
+    dest: "/etc/systemd/system/{{ item.name }}.automount"
+  with_items:
+    - "{{ network_automounts }}"
+    - "{{ local_automounts }}"
+  when:
+    - enable_automounts
+
+- name: Enable Automounts
+  ansible.builtin.systemd:
+    daemon_reload: yes
+    state: started
+    enabled: true
+    name: "{{ item.name }}.automount"
+  with_items:
+    - "{{ network_automounts }}"
+    - "{{ local_automounts }}"
+  when:
+    - enable_automounts
+
 
 - name: Create src folder
   file:

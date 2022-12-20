@@ -6,7 +6,7 @@
     # - geerlingguy.ansible
     # - geerlingguy.git
     - base
-    - flatpak
+    # - flatpak
     # - vaulttec.zsh
     # - geerlingguy.pip
     # - geerlingguy.php
@@ -25,18 +25,18 @@
   vars:
     - ansible_python_interpreter: /usr/bin/python3
   vars_prompt:
-    - name: enable_laptop_mode
-      prompt: Is this a laptop?
-      private: no
-      default: false
-    - name: local_user
-      prompt: What is your local user account?
-      private: no
-      default: joe
-    - name: enable_gaming
-      prompt: Should I enable gaming?
-      private: no
-      default: false
+    # - name: enable_laptop_mode
+    #   prompt: Is this a laptop?
+    #   private: no
+    #   default: false
+    # - name: local_user
+    #   prompt: What is your local user account?
+    #   private: no
+    #   default: joe
+    # - name: enable_gaming
+    #   prompt: Should I enable gaming?
+    #   private: no
+    #   default: false
   #   - name: enable_developer_mode
   #     prompt: Should I enable Developer Mode??
   #     private: no
