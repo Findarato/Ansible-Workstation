@@ -33,18 +33,6 @@
   when:
     - work == true
 
-- name:         Remove System76 packages
-  dnf:
-    state:      absent
-    name:       [system76-dkms, system76-power, system76-driver, system76-firmware, firmware-manager, system76-io-dkms, system76-acpi-dkms]
-  when:
-    - "ansible_board_vendor  ==  System76"
 
-- name:         Install System76 packages
-  dnf:
-    state:      latest
-    name:       [system76-dkms, system76-power, system76-driver, system76-firmware, firmware-manager, system76-io-dkms, system76-acpi-dkms]
-  when:
-    - "ansible_board_vendor  ==  System76"
 
 

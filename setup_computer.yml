@@ -6,7 +6,8 @@
     # - geerlingguy.ansible
     # - geerlingguy.git
     - base
-    # - flatpak
+    - gnome
+    - flatpak
     # - vaulttec.zsh
     # - geerlingguy.pip
     # - geerlingguy.php

@@ -5,7 +5,9 @@
   gather_facts: true
   # connection: local
   roles:
-    # - silverblue
+    - base
+    - gnome
+    - silverblue
     - flatpak
     # - role: yubikey
     #   when: yubikey_enable is true
