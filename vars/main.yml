@@ -29,6 +29,7 @@ ram_cache:           true
 ram_cache_size:      "{{ 1024 * 8 }}M"
 
 enable_gaming:       true
+work_computer:       true
 
 #Install and Setup i3 Variables
 install_i3: false
@@ -48,7 +49,7 @@ rpmfusion_nonfree: yes
 # ZeroTier
 install_zerotier: false
 
-inventory_hostname: "{{ ansible_hostname }}"
+# inventory_hostname: "{{ ansible_hostname }}"
 
 # Mounts
 network_automounts: "{{ vault_network_automounts }}"
@@ -69,9 +70,6 @@ dconf_usability_improvements:
   - name:
     key: "/org/gnome/desktop/wm/preferences/resize-with-right-button"
     value:  1
-  - name: Fix Buttons
-    key: "/org/gnome/desktop/wm/preferences/button-layout"
-    value: "'appmenu:minimize,maximize,close'"
   - name: Workspaces on all monitors
     key: "/org/gnome/shell.o/errides/workspaces-only-on-primary"
     value: 0
@@ -106,13 +104,21 @@ dconf_usability_improvements:
     key: "/org/gnome/desktop/thumbnailers/disable-all"
     value: 'false'
 
+vscode_webdev_extensions:
+  - amiralizadeh9480.laravel-extra-intellisense
+  - apility.beautify-blade
+  - onecentlin.laravel-blade
+  - onecentlin.laravel-extension-pack
+  - onecentlin.laravel5-snippets
+  - ryannaddy.laravel-artisan
+  - shufo.vscode-blade-formatter
+  - stef-k.laravel-goto-controller
+  - neilbrayfield.php-docblocker
 
 vscode_extensions:
   - 2gua.rainbow-brackets
   - aaron-bond.better-comments
-  - amiralizadeh9480.laravel-extra-intellisense
   - AndrsDC.base16-themes
-  - apility.beautify-blade
   - azemoh.one-monokai
   - bierner.color-info
   - bierner.markdown-emoji
@@ -143,22 +149,15 @@ vscode_extensions:
   - ms-toolsai.jupyter
   - ms-vscode.cpptools
   - naumovs.color-highlight
-  - neilbrayfield.php-docblocker
   - nikitaKunevich.snippet-creator
   - oderwat.indent-rainbow
-  - onecentlin.laravel-blade
-  - onecentlin.laravel-extension-pack
-  - onecentlin.laravel5-snippets
   - PKief.markdown-checkbox
   - platformio.platformio-ide
   - redhat.vscode-yaml
-  - ryannaddy.laravel-artisan
   - samuelcolvin.jinjahtml
   - sandcastle.whitespace
   - shakram02.bash-beautify
   - shardulm94.trailing-spaces
-  - shufo.vscode-blade-formatter
-  - stef-k.laravel-goto-controller
   - steve8708.Align
   - Tyriar.sort-lines
   - vscode-icons-team.vscode-icons
@@ -177,17 +176,15 @@ yubikey_ssh_login: false
 ## Flatpak Setups
 
 flatpak_packages_flathub:
-  - com.discordapp.Discord
+  - com.bitwarden.desktop
   - com.github.debauchee.barrier
   - com.github.GradienceTeam.Gradience
   - com.github.tchx84.Flatseal
-  - com.makemkv.MakeMKV
   - com.mattjakeman.ExtensionManager
-  - com.sweethome3d.Sweethome3d
+  - com.raggesilver.BlackBox
   - com.usebottles.bottles
   - fr.handbrake.ghb
   - im.riot.Riot
-  - info.beyondallreason.bar
   - io.github.celluloid_player.Celluloid
   - io.github.peazip.PeaZip
   - io.mpv.Mpv
@@ -195,11 +192,17 @@ flatpak_packages_flathub:
   - me.kozec.syncthingtk
   - org.gimp.GIMP
   - org.mozilla.firefox
+  - org.remmina.Remmina
+  - re.sonny.Commit
+
+flatpak_packages_flathub_home:
   - org.raspberrypi.rpi-imager
   - re.sonny.Commit
   - social.whalebird.WhalebirdDesktop
   - tv.plex.PlexDesktop
 
+flatpak_packages_flathub_work:
+  - us.zoom.Zoom
 
 flatpak_packages_gnome_nightly:
   - org.gnome.Calendar.Devel

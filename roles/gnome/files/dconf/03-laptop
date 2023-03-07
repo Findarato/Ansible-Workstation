@@ -1,0 +1,32 @@
+
+[org/gnome/desktop/peripherals/touchpad]
+send-events='enabled'
+natural-scroll=true
+tap-to-click=true
+two-finger-scrolling-enabled=true
+left-handed='mouse'
+click-method='default'
+speed=0.0
+tap-and-drag=true
+edge-scrolling-enabled=false
+
+[org/gnome/settings-daemon/plugin/color]
+night-light-schedule-automatic=true
+night-light-last-coordinates=(41.616199999999999, -87.048900000000003)
+night-light-enabled=true
+night-light-schedule-from=20.0
+night-light-schedule-to=6.0
+night-light-temperature=uint32 4000
+
+
+[org/gnome/shell]
+had-bluetooth-devices-setup=true
+
+
+
+
+
+
+
+
+org.gnome.desktop.peripherals.touchpad disable-while-typing true

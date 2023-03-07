@@ -1,14 +1,14 @@
 ---
-- name:       📦 Install Flatpak
-  package:
-    name:     flatpak
-    state:    present
-  become:     True
-
-
 # This is giving me issues
 - name: Add the flathub flatpak repository remote to the user installation
   become: true
+  community.general.flatpak_remote:
+    name: flathub
+    state: absent
+
+- name: Add the flathub flatpak repository remote to the user installation
+  become: true
+  become_user: "{{ local_user }}"
   community.general.flatpak_remote:
     name: flathub
     state: present
@@ -17,6 +17,7 @@
 
 - name: Add the gnome nightly flatpak repository remote to the user installation
   become: true
+  become_user: "{{ local_user }}"
   community.general.flatpak_remote:
     name: gnome-nightly
     state: present
@@ -25,6 +26,8 @@
 
 
 - name: 📦 Install Flathub Flatpak Packages
+  become: true
+  become_user: "{{ local_user }}"
   community.general.flatpak:
     name:   "{{ flatpak_install }}"
     state:  present
@@ -38,7 +41,27 @@
     - flatpak
     - packages
 
+- name: 📦 Home Install Flathub Flatpak Packages
+  become: true
+  become_user: "{{ local_user }}"
+  community.general.flatpak:
+    name:   "{{ flatpak_install_home }}"
+    state:  present
+    remote: flathub
+    method: user
+  with_items:
+    - "{{ flatpak_packages_flathub_home }}"
+  loop_control:
+    loop_var:         flatpak_install_home
+  when:
+    - work_computer is false
+  tags:
+    - flatpak
+    - packages
+
 - name: 📦 Install gnome nightly Flatpak Packages
+  become: true
+  become_user: "{{ local_user }}"
   community.general.flatpak:
     name:   "{{ flatpak_install }}"
     state:  present
@@ -52,14 +75,16 @@
     - flatpak
     - packages
 
-- name: 📦 Install Flatpak -> Bitwarden
-  community.general.flatpak:
-    name:   com.bitwarden.desktop
-    state:  present
-    remote: flathub
-  tags:
-    - flatpak
-    - packages
-  when:
-    - install_bitwarden is true
+# - name: 📦 Install Flatpak -> Bitwarden
+#   become: true
+#   become_user: "{{ local_user }}"
+#   community.general.flatpak:
+#     name:   com.bitwarden.desktop
+#     state:  present
+#     remote: flathub
+#   tags:
+#     - flatpak
+#     - packages
+#   when:
+#     - install_bitwarden is true
 ...

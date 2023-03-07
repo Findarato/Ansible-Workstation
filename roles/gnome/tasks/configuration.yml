@@ -1,0 +1,14 @@
+---
+
+- name: Required Packages
+  package:
+    name: python3-psutil
+    state: present
+
+- name: Copy Deconf settings
+  become: true
+  ansible.builtin.copy:
+    src: dconf/
+    dest: /etc/dconf/db/local.d/
+
+...

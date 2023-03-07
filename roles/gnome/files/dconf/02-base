@@ -1,0 +1,50 @@
+[org/gnome/desktop/interface]
+enable-hot-corners=false
+cursor-theme='Yaru'
+icon-theme='Yaru'
+gtk-theme='Yaru'
+font-antialiasing='rgba'
+
+[org/gnome/desktop/wm/preferences]
+button-layout=':minimize,maximize,close'
+num-workspaces='8'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
+binding='<super><enter>'
+command='gnome-terminal'
+name='gnome-terminal'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1]
+binding='<Control><Alt>u'
+command='blackbox'
+name='blackbox'
+
+[/org/gnome/desktop/thumbnail-cache/]
+maximum-age="180"
+maximum-size="512"
+disable="@as []"
+disable-all="false"
+
+[/org/gnome/desktop/peripherals/mouse/]
+accel-profile="adaptive"
+
+[/org/gnome/desktop/sound/]
+allow-volume-above-100-percent=1
+
+[/org/gnome/desktop/calendar/]
+show-weekdate=1
+
+[/org/gnome/shell.o/errides/]
+workspaces-only-on-primary=0
+
+[/org/gnome/settings-daemon/plugins/color/]
+night-light-enabled=true
+
+[/org/gnome/desktop/privacy/]
+remember-recent-file=true
+remove-old-trash-files=true
+remove-old-temp-files=true
+old-files-age='uint32 14'
+
+; - { key: '/org/gnome/desktop/session/idle-delay', value: 'uint32 480' }
+; - { key: '/org/gnome/desktop/screensaver/lock-delay', value: 'uint32 1800' }

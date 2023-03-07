@@ -1,0 +1,7 @@
+---
+
+install_gnome_packages: []
+
+remove_gnome_packages: []
+
+...

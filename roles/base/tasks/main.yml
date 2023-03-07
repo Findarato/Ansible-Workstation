@@ -24,6 +24,7 @@
     owner: root
     src: "mount-systemd-local.mount.j2"
     dest: "/etc/systemd/system/{{ item.name }}.mount"
+    setype : systemd_unit_file_t
   with_items:
     - "{{ local_automounts }}"
   when:
@@ -34,6 +35,7 @@
     owner: root
     src: "mount-systemd-network.mount.j2"
     dest: "/etc/systemd/system/{{ item.name }}.mount"
+    setype : systemd_unit_file_t
   with_items:
     - "{{ network_automounts }}"
   when:
@@ -50,16 +52,16 @@
 #   when:
 #     - enable_automounts
 
-- name: Setup Local mounts
-  ansible.builtin.systemd:
-    daemon_reload: yes
-    state: stopped
-    enabled: false
-    name: "{{ item.name }}.mount"
-  with_items:
-    - "{{ local_automounts }}"
-  when:
-    - enable_automounts
+# - name: Setup Local mounts
+#   ansible.builtin.systemd:
+#     daemon_reload: yes
+#     state: stopped
+#     enabled: false
+#     name: "{{ item.name }}.mount"
+#   with_items:
+#     - "{{ local_automounts }}"
+#   when:
+#     - enable_automounts
 
 - name: Make systemd Automounts
   ansible.builtin.template:
@@ -67,11 +69,27 @@
     enabled: true
     src: "mount-systemd.automount.j2"
     dest: "/etc/systemd/system/{{ item.name }}.automount"
+    setype : systemd_unit_file_t
   with_items:
     - "{{ network_automounts }}"
     - "{{ local_automounts }}"
   when:
     - enable_automounts
+
+# - name: Fix SELINUX on automounts
+#   community.general.sefcontext:
+#     target: '/etc/systemd/system/{{ item.name }}(/.*)?'
+#     setype: systemd_unit_file_t
+#     state: present
+#   with_items:
+#     - "{{ network_automounts }}"
+#     - "{{ local_automounts }}"
+#   when:
+#     - enable_automounts
+
+# - name: Apply new SELinux file context to filesystem
+#   ansible.builtin.command: restorecon -irv /etc/systemd/system/
+
 
 - name: Enable Automounts
   ansible.builtin.systemd:

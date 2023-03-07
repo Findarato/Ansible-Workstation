@@ -1,0 +1,8 @@
+---
+all:
+  children:
+    silverblue:
+      hosts:
+        10.1.1.69: #
+        10.1.1.110: 
+        ites03l:

@@ -1,12 +1,14 @@
 ---
-- hosts: localhost
+- hosts: ites03l
   become: true
-  connection: local
+  remote_user: jharry
+  gather_facts: true
+  # connection: local
   roles:
-    - silverblue
+    # - silverblue
     - flatpak
-    - role: yubikey
-      when: yubikey_enable is true
+    # - role: yubikey
+    #   when: yubikey_enable is true
   vars_files:
     - vars/main.vault.yml
     - vars/main.yml

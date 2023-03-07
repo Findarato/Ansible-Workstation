@@ -4,9 +4,10 @@
   tags:
     - code
     - configuration
+
 - name:         Install Extensions
-  become:       no
-  command:      "/usr/bin/code --install-extension '{{ extension }}'"
+  become:       false
+  command:      "code --install-extension '{{ extension }}'"
   with_items:
     - "{{ vscode_extensions }}"
   register:     vscode_result
@@ -15,5 +16,23 @@
     loop_var:   extension
   tags:
     - code
-    - configuration
+    - extension
+
+
+- name:         InstallWeb Development Extensions
+  become:       false
+  command:      "code --install-extension '{{ webdev_extensions }}'"
+  with_items:
+    - "{{ vscode_webdev_extensions }}"
+  register:     vscode_result
+  changed_when: "'already installed' not in vscode_result.stdout"
+  loop_control:
+    loop_var:   webdev_extensions
+  tags:
+    - code
+    - extension
+  when:
+    - vs_code_web_dev is true
+
+
 ...

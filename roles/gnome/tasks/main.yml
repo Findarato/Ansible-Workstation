@@ -1,0 +1,23 @@
+---
+- name: Create temporary build directory
+  ansible.builtin.tempfile:
+    state: directory
+    suffix: ".build"
+  register: scratch_dir
+
+- name: scratch_dir
+  debug:
+    msg: "{{ scratch_dir }}"
+
+- name: Running OS specific Configurations and Commands
+  include_tasks: "{{ include_file }}"
+  with_items:
+    - "repos.yml"
+    - "packages.yml"
+    - "configuration.yml"
+  loop_control:
+    loop_var: include_file
+  tags:
+    - configuration
+    - gnome
+

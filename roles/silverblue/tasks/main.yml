@@ -1,58 +1,12 @@
 ---
 
-# - name: Show me the board vendor
-#   debug:
-#     msg:    "System {{ inventory_hostname }} has board vendor of {{ ansible_board_vendor }}"
-# - name: Make systemd mounts
-#   ansible.builtin.template:
-#     owner: root
-#     src: "mount-systemd.mount.j2"
-#     dest: "/etc/systemd/system/{{ item.name }}.mount"
-#   with_items:
-#     - "{{ automounts }}"
-#   when:
-#     - enable_automounts
+- name:               Create src folder
+  file:
+    path:             "/home/{{ local_user }}/Documents/src/"
+    state:            directory
+    owner:            "{{ local_user }}"
+    mode:             0750
 
-# - name: Make systemd Automounts
-#   ansible.builtin.template:
-#     owner: root
-#     src: "mount-systemd.automount.j2"
-#     dest: "/etc/systemd/system/{{ item.name }}.automount"
-#   with_items:
-#     - "{{ automounts }}"
-#   when:
-#     - enable_automounts
-
-# - name: Setup mounts
-#   ansible.builtin.systemd:
-#     daemon_reload: yes
-#     state: started
-#     name: "{{ item.name }}.automount"
-#   with_items:
-#     - "{{ automounts }}"
-#   when:
-#     - enable_automounts
-
-# - name:               Ensure Scratch Dir exsists
-#   file:
-#     dest:             "{{ scratch_dir }}"
-#     mode:             0770
-#     owner:            "{{ local_user }}"
-#     state:            directory
-
-# - name:               Create src folder
-#   file:
-#     path:             "/home/{{ local_user }}/Documents/src/"
-#     state:            directory
-#     owner:            "{{ local_user }}"
-#     mode:             0750
-
-# - name: Setup and install Flatpak
-#   include_tasks: "{{ ansible_distribution }}/flatpak.yml"
-#   tags:
-#     - flatpak
-#     - install
-#     - configuration
 - name:               Running OS specific Configurations and Commands
   include_tasks:            "{{ include_file }}"
   with_items:
@@ -63,15 +17,15 @@
   tags:
     - configuration
 
-# - name: Setup Ram CACHE fstab
-#   mount:
-#     path: /mnt/cache
-#     src: tmpfs
-#     fstype: tmpfs
-#     state: present
-#     opts: "nodev,nosuid,noexec,nodiratime,size={{ ram_cache_size }}"
-#   when:
-#     - ram_cache is true
+- name: Setup Ram CACHE fstab
+  mount:
+    path: /mnt/cache
+    src: tmpfs
+    fstype: tmpfs
+    state: present
+    opts: "nodev,nosuid,noexec,nodiratime,size={{ ram_cache_size }}"
+  when:
+    - ram_cache is true
 
 
 ...

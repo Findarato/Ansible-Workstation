@@ -13,6 +13,21 @@
     enabled: yes
   when:      enable_sshd
 
+- name: Enable Autoupdates
+  service:
+    name: rpm-ostreed-automatic.timer
+    state: started
+    enabled: yes
+  when:
+    - silverblue_autoupdates == true
+
+- name: Install donf update service
+  ansible.builtin.copy:
+    src: systemd/system/dconf-update.service
+    dest: /etc/systemd/system/
+  notify: restart Systemd
+
+
 - name: Enable System76 Packages
   ansible.builtin.systemd:
     name: "{{ item }}"

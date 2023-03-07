@@ -19,4 +19,25 @@
     - flatpak
     - packages
 
+
+- name: Create temporary directory
+  ansible.builtin.tempfile:
+    state: directory
+    suffix: gaming
+  register: gaming_temp
+
+- name: Clone Game Udev rules
+  ansible.builtin.git:
+    repo: https://gitlab.com/jntesteves/game-devices-udev.git
+    dest: "{{ gaming_temp.path }}"
+
+- name: Install gaming Udev rules
+  ansible.builtin.copy:
+    dest: /etc/ude/rules.d/
+    src: "{{ gaming_temp.path }}/game-devices-udev/"
+
+- name: enable uinput
+  ansible.builtin.copy:
+    dest: uinput.conf
+    src: "/etc/modules-load.d/uinput.conf"
 ...

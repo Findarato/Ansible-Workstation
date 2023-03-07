@@ -1,0 +1,15 @@
+---
+# - debug:
+#     msg:    "System {{ inventory_hostname }} has uuid {{ ansible_product_uuid }}"
+
+
+- name:     Install 3rd Party Repos
+  package:
+    state: present
+    name: fedora-workstation-repositories
+
+- name: Enable bibata-cursor-themes CPOR
+  community.general.copr:
+    host: copr.fedorainfracloud.org
+    state: enabled
+    name: peterwu/rendezvous

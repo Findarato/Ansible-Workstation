@@ -15,4 +15,6 @@ dconf_usability_improvements: []
 
 automounts: []
 
+silverblue_autoupdates: true
+
 ...
