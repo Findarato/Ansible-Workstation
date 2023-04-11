@@ -9,7 +9,7 @@ zsh_users:
 #   - name: powerlevel9k
 #     repo: "https://github.com/bhilburn/powerlevel9k.git"
 
-# zsh_ohmy_plugins:
+zsh_ohmy_plugins: []
 #   - dnf
 #   - docker
 #   - git

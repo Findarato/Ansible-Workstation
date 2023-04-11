@@ -1,0 +1,34 @@
+---
+#Remove Packages
+- name: Remove Packages
+  dnf:
+    state: absent
+    name: "{{ remove_packages }}"
+
+# Install Packages
+- name: Install Packages
+  dnf:
+    state: present
+    name: "{{ install_packages }}"
+  #Keyboard Config. This will eventually be its own role.
+
+- name: Install Required Python libraries
+  become: false
+  pip:
+    name: "{{ python_packages }}"
+    state: latest
+    extra_args: --user --upgrade
+
+- name: Install Extra Font Packages
+  dnf:
+    name: "{{ extra_font_files }}"
+    state: present
+  when: install_extra_fonts
+  notify: Update Font Cache
+
+- name: Install CIFS Utils
+  dnf:
+    name: cifs-utils
+    state: present
+  when:
+    - work == true

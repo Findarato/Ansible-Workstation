@@ -4,21 +4,20 @@
 - name: Install Gaming Packages
   dnf:
     state: present
-    name: '{{ install_gaming_packages}}'
+    name: "{{ install_gaming_packages}}"
   when:
     - enable_gaming == true
 
 - name: Install Flatpak -> Discord
   flatpak:
-    name:   com.discordapp.Discord
-    state:  present
+    name: com.discordapp.Discord
+    state: present
     remote: flathub
   when:
     - enable_gaming == true
   tags:
     - flatpak
     - packages
-
 
 - name: Create temporary directory
   ansible.builtin.tempfile:
@@ -33,11 +32,10 @@
 
 - name: Install gaming Udev rules
   ansible.builtin.copy:
-    dest: /etc/ude/rules.d/
-    src: "{{ gaming_temp.path }}/game-devices-udev/"
+    src: "{{ gaming_temp.path }}/"
+    dest: /etc/udev/rules.d/
 
 - name: enable uinput
   ansible.builtin.copy:
-    dest: uinput.conf
-    src: "/etc/modules-load.d/uinput.conf"
-...
+    src: uinput.conf
+    dest: "/etc/modules-load.d/uinput.conf"

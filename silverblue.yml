@@ -1,9 +1,8 @@
 ---
-- hosts: ites03l
+- hosts: localhost
   become: true
-  remote_user: jharry
   gather_facts: true
-  # connection: local
+  connection: local
   roles:
     - base
     - gnome

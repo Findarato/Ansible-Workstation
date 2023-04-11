@@ -32,7 +32,12 @@
   when:         install_extra_fonts
   notify:       Update Font Cache
 
+
 - name:         Install Bibata Cursors
   dnf:
     name:       bibata-cursor-themes
     state:      present
+  ignore_errors: true
+
+#https://github.com/ful1e5/Bibata_Cursor/releases/latest
+#https://github.com/ful1e5/Bibata_Cursor/releases/download/latest/Bibata-Modern-Ice.tar.gz

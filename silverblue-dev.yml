@@ -1,0 +1,28 @@
+---
+# This is used for development inside a virtual machine
+
+- hosts: silverblue-test
+  become: true
+  remote_user: jharry
+  gather_facts: true
+  connection: ssh
+  pre_tasks:
+    - name: Ping pong
+      ansible.builtin.ping:
+  roles:
+    - base
+    # - gnome
+    # - silverblue
+    # - flatpak
+    # - role: yubikey
+    #   when: yubikey_enable is true
+  vars_files:
+    - vars/silverbluetest.vault.yml
+    - vars/main.vault.yml
+    - vars/main.yml
+    - vars/zsh.yml
+  vars:
+    - ansible_python_interpreter: /usr/bin/python3
+    - ram_cache_size: "{{ 1024 * .25 }}M"
+    - enable_automounts: false
+  vars_prompt: []

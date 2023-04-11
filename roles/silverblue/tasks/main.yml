@@ -1,31 +1,27 @@
 ---
-
-- name:               Create src folder
+- name: Create src folder
   file:
-    path:             "/home/{{ local_user }}/Documents/src/"
-    state:            directory
-    owner:            "{{ local_user }}"
-    mode:             0750
+    path: "/home/{{ local_user }}/Documents/src/"
+    state: directory
+    owner: "{{ local_user }}"
+    mode: 0750
 
-- name:               Running OS specific Configurations and Commands
-  include_tasks:            "{{ include_file }}"
+- name: Running OS specific Configurations and Commands
+  include_tasks: "{{ include_file }}"
   with_items:
-    - "{{ ansible_distribution }}/repos.yml"
-    - "{{ ansible_distribution }}/packages.yml"
+    - "repos.yml"
+    - "packages.yml"
   loop_control:
-    loop_var:         include_file
+    loop_var: include_file
   tags:
     - configuration
 
-- name: Setup Ram CACHE fstab
-  mount:
-    path: /mnt/cache
-    src: tmpfs
-    fstype: tmpfs
-    state: present
-    opts: "nodev,nosuid,noexec,nodiratime,size={{ ram_cache_size }}"
-  when:
-    - ram_cache is true
-
-
-...
+# - name: Setup Ram CACHE fstab
+#   mount:
+#     path: /mnt/cache
+#     src: tmpfs
+#     fstype: tmpfs
+#     state: present
+#     opts: "nodev,nosuid,noexec,nodiratime,size={{ ram_cache_size }}"
+#   when:
+#     - ram_cache is true

@@ -1,9 +1,8 @@
 ---
-# - debug:
-#     msg:    "System {{ inventory_hostname }} has uuid {{ ansible_product_uuid }}"
+- debug:
+    msg:    "System {{ inventory_hostname }} has uuid {{ ansible_product_uuid }}"
 
-
-- name:     Install 3rd Party Repos
+- name: Install 3rd Party Repos
   package:
     state: present
     name: fedora-workstation-repositories
@@ -15,5 +14,3 @@
     name: szydell/system76
   when:
     - ansible_board_vendor  ==  'System76'
-
-

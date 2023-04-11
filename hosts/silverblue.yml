@@ -4,5 +4,9 @@ all:
     silverblue:
       hosts:
         10.1.1.69: #
-        10.1.1.110: 
+        10.1.1.110:
+        192.168.122.8:
         ites03l:
+    silverblue-test:
+      hosts:
+        192.168.122.8:

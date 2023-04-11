@@ -2,30 +2,20 @@
 # - debug:
 #     msg:    "System {{ inventory_hostname }} has uuid {{ ansible_product_uuid }}"
 
-
-- name:     Install 3rd Party Repos
-  package:
+- name: Install 3rd Party Repos
+  ansible.builtin.package:
     state: present
     name: fedora-workstation-repositories
 
-# - name:     Download Enpass Repo
-#   get_url:
-#     url:    "https://yum.enpass.io/enpass-yum.repo"
-#     mode:   0644
-#     dest:   "/etc/yum.repos.d/enpass-yum.repo"
-#   when:
-#     - install_enpass == true
-
 - name: Install RPM Fusion "Free"
-  dnf:
+  ansible.builtin.package:
     name: "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_major_version}}.noarch.rpm"
     state: present
 
 - name: Install RPM Fusion "nonFree"
-  dnf:
+  ansible.builtin.package:
     name: "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ansible_distribution_major_version}}.noarch.rpm"
     state: present
-
 
 - name: Enable bibata-cursor-themes CPOR
   community.general.copr:

@@ -1,32 +1,30 @@
 ---
+- name: Create systemd-tmpfiles
+  ansible.builtin.command: /usr/bin/systemd-tmpfiles --prefix = /sys --create
 
-- name:     Create systemd-tmpfiles
-  command:  /usr/bin/systemd-tmpfiles --prefix = /sys --create
-
-- name:     Unload iwlmvm
+- name: Unload iwlmvm
   modprobe:
-    name:   iwlmvm
-    state:  absent
-  notify:   Load iwlmvm
+    name: iwlmvm
+    state: absent
+  notify: Load iwlmvm
 
-- name:     Load iwlmvm
+- name: Load iwlmvm
   modprobe:
-    name:   iwlmvm
-    state:  present
+    name: iwlmvm
+    state: present
 
-- name:     Restart sshd
+- name: Restart sshd
   service:
-    name:   sshd
-    state:  restarted
+    name: sshd
+    state: restarted
 
-- name:     Restart fail2ban
+- name: Restart fail2ban
   service:
-    name:   fail2ban
-    state:  restarted
+    name: fail2ban
+    state: restarted
 
-- name:     Update Font Cache
-  command:  fc-cache -fv
-
+- name: Update Font Cache
+  command: fc-cache -fv
 
 - name: restart Systemd
   ansible.builtin.systemd:

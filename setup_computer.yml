@@ -4,16 +4,19 @@
   connection: local
   roles:
     # - geerlingguy.ansible
-    # - geerlingguy.git
+    - geerlingguy.git
     - base
     - gnome
     - flatpak
     # - vaulttec.zsh
     # - geerlingguy.pip
-    # - geerlingguy.php
-    # - geerlingguy.composer
-    # - vs-code
+
+    - vs-code
     - role: developer
+      when: enable_developer_mode is true
+    - role: geerlingguy.php
+      when: enable_developer_mode is true
+    - role: geerlingguy.composer
       when: enable_developer_mode is true
     - role: laptop
       when: enable_laptop_mode is true

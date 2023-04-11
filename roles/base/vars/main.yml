@@ -8,10 +8,11 @@ install_packages:
   - autojump-zsh
   - bitstream-vera-fonts-all
   - cargo
-  - chromium-freeworld
+  - chromium
   - curl
   - dnf-automatic
   - dnf-plugins-core
+  - fuse-sshfs
   - exa
   - gnome-shell-extension-appindicator
   - gnome-shell-extension-auto-move-windows
@@ -42,7 +43,6 @@ install_packages:
 
 remove_packages:
   - chrome-gnome-shell
-  - chromium
   - flameshot
   - flowblade
   - gnome-shell-extension-apps-menu

@@ -1,9 +1,0 @@
----
-
-- name: Required Packages
-  package:
-    name: python3-psutil
-    state: present
-
-
-...

@@ -1,5 +1,5 @@
 ---
-- name: Create temporary build directory
+- name: 📁 Create temporary build directory
   ansible.builtin.tempfile:
     state: directory
     suffix: ".build"
@@ -9,7 +9,7 @@
   debug:
     msg: "{{ scratch_dir }}"
 
-- name: Create Automount Directories
+- name: 📁 Create Automount Directories
   file:
     path: "{{ item.mount.where }}"
     state: directory
@@ -17,92 +17,53 @@
     - "{{ network_automounts }}"
     - "{{ local_automounts }}"
   when:
-    - enable_automounts
+    - enable_automounts is true
 
-- name: Make Local systemd mounts
+- name: 🖹 Make Local systemd mounts
   ansible.builtin.template:
     owner: root
     src: "mount-systemd-local.mount.j2"
     dest: "/etc/systemd/system/{{ item.name }}.mount"
-    setype : systemd_unit_file_t
+    setype: systemd_unit_file_t
   with_items:
     - "{{ local_automounts }}"
   when:
-    - enable_automounts
+    - enable_automounts is true
 
-- name: Make Network systemd mounts
+- name: 🖹 Make Network systemd mounts
   ansible.builtin.template:
     owner: root
     src: "mount-systemd-network.mount.j2"
     dest: "/etc/systemd/system/{{ item.name }}.mount"
-    setype : systemd_unit_file_t
+    setype: systemd_unit_file_t
   with_items:
     - "{{ network_automounts }}"
   when:
-    - enable_automounts
+    - enable_automounts is true
 
-# - name: Remove Setup Network mounts
-#   ansible.builtin.systemd:
-#     daemon_reload: yes
-#     state: stopped
-#     enabled: true
-#     name: "{{ item.name }}.mount"
-#   with_items:
-#     - "{{ network_automounts }}"
-#   when:
-#     - enable_automounts
-
-# - name: Setup Local mounts
-#   ansible.builtin.systemd:
-#     daemon_reload: yes
-#     state: stopped
-#     enabled: false
-#     name: "{{ item.name }}.mount"
-#   with_items:
-#     - "{{ local_automounts }}"
-#   when:
-#     - enable_automounts
-
-- name: Make systemd Automounts
+- name: 🖹 Install systemd Automounts files
   ansible.builtin.template:
     owner: root
-    enabled: true
     src: "mount-systemd.automount.j2"
     dest: "/etc/systemd/system/{{ item.name }}.automount"
-    setype : systemd_unit_file_t
+    setype: systemd_unit_file_t
   with_items:
     - "{{ network_automounts }}"
     - "{{ local_automounts }}"
   when:
-    - enable_automounts
-
-# - name: Fix SELINUX on automounts
-#   community.general.sefcontext:
-#     target: '/etc/systemd/system/{{ item.name }}(/.*)?'
-#     setype: systemd_unit_file_t
-#     state: present
-#   with_items:
-#     - "{{ network_automounts }}"
-#     - "{{ local_automounts }}"
-#   when:
-#     - enable_automounts
-
-# - name: Apply new SELinux file context to filesystem
-#   ansible.builtin.command: restorecon -irv /etc/systemd/system/
-
+    - enable_automounts is true
 
 - name: Enable Automounts
   ansible.builtin.systemd:
     daemon_reload: yes
-    state: started
+    #state: started
     enabled: true
     name: "{{ item.name }}.automount"
   with_items:
     - "{{ network_automounts }}"
     - "{{ local_automounts }}"
   when:
-    - enable_automounts
-
+    - enable_automounts is true
 
 - name: Create src folder
   file:
@@ -129,32 +90,25 @@
 
 - name: Setup and Install i3
   include_tasks: "{{ ansible_distribution }}/i3.yml"
+  when:
+    - install_i3 == true
   tags:
     - i3
     - install
-  when:
-    - install_i3 == true
 
 - name: Running OS specific Configurations and Commands
   include_tasks: "{{ include_file }}"
   with_items:
-    - "{{ ansible_distribution }}/repos.yml"
-    # - "{{ ansible_distribution }}/system.yml"
-    - "{{ ansible_distribution }}/packages.yml"
-    - "{{ ansible_distribution }}/gaming.yml"
-    # - "{{ ansible_distribution }}/services.yml"
-    # - "{{ ansible_distribution }}/configuration.yml"
+    - "repos.yml"
+    # - "system.yml"
+    - "packages.yml"
+    - "gaming.yml"
+    # - "services.yml"
+    # - "configuration.yml"
   loop_control:
     loop_var: include_file
   tags:
     - configuration
-
-# - name: Configure the system
-#   include_tasks: "{{ ansible_distribution }}/configuration.yml"
-#   tags:
-#     - dconf
-#     - install
-#     - configuration
 
 - name: Setup Ram CACHE fstab
   mount:

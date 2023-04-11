@@ -10,28 +10,28 @@
 #     gpgcheck   : yes
 
 - name: i3 -> Required Packages
-  package:
+  ansible.builtin.package:
     name: "{{ i3_packages }}"
     state: present
   tags:
     - i3
 
-- name:               Get i3 Blocks
-  become:             false
+- name: Get i3 Blocks
+  become: false
   git:
-    repo            : "https://github.com/vivien/i3blocks"
-    dest            : "{{ scratch_dir }}/i3Blocks"
-    accept_hostkey  : yes
-    track_submodules: yes
-    update          : yes
-  register:           result
-  ignore_errors:      yes
+    repo: "https://github.com/vivien/i3blocks"
+    dest: "{{ scratch_dir }}/i3Blocks"
+    accept_hostkey: true
+    track_submodules: true
+    update: true
+  register: result
+  ignore_errors: true
   tags:
     - i3
     - git
 
 - name: i3Blocks -> Setup Autogen
-  shell: "./autogen.sh"
+  ansible.builtin.shell: "./autogen.sh"
   args:
     chdir: "{{ scratch_dir }}/i3Blocks/"
     creates: "{{ scratch_dir }}/i3Blocks/autom4te.cache/requests"
@@ -39,7 +39,7 @@
     - i3
 
 - name: i3Blocks -> Configure
-  shell: "./configure"
+  ansible.builtin.shell: "./configure"
   args:
     chdir: "{{ scratch_dir }}/i3Blocks/"
     creates: "{{ scratch_dir }}/i3Blocks/Makefile"
@@ -47,7 +47,7 @@
     - i3
 
 - name: i3Blocks -> Build
-  shell: "make"
+  ansible.builtin.shell: "make"
   args:
     chdir: "{{ scratch_dir }}/i3Blocks/"
     creates: "{{ scratch_dir }}/i3Blocks/i3blocks"
@@ -55,11 +55,9 @@
     - i3
 
 - name: i3Blocks -> Install
-  shell: "make install"
+  ansible.builtin.shell: "make install"
   args:
     chdir: "{{ scratch_dir }}/i3Blocks/"
     creates: "/usr/local/bin/i3blocks"
   tags:
     - i3
-
-...
