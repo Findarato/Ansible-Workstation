@@ -1,7 +1,7 @@
 ---
 
-install_gnome_packages: []
+gnome_install_packages: []
 
-remove_gnome_packages: []
+gnome_remove_packages: []
 
 ...

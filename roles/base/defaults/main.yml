@@ -66,4 +66,7 @@ tilix_themes:
 
 
 install_evolution: false
+
+zsh_enable: false
+zsh_users: []
 ...

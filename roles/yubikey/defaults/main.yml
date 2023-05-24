@@ -1,0 +1,9 @@
+
+# Defaults just to be save
+
+vault_yubico_client_id: 666
+vault_yubico_secret_key: CHANGE.ME.PLEASE
+
+#These values NEED to be in the vault
+yubico_client_id: "{{ vault_yubico_client_id }}"
+yubico_secret_key: "{{ vault_yubico_secret_key }}"

@@ -14,6 +14,7 @@ enable_powertop: false
 enable_vagrant_nfs: false
 enable_libvirtd: false
 enable_automounts: true
+enable_tailscale: true
 
 # Extras
 install_bitwarden: true
@@ -34,6 +35,8 @@ work_computer: true
 #Install and Setup i3 Variables
 install_i3: false
 
+
+zsh_enable: true
 var_files: zsh.yml
 
 # Work Specific things
@@ -203,3 +206,6 @@ flatpak_packages_flathub_work:
 
 flatpak_packages_gnome_nightly:
   - org.gnome.Calendar.Devel
+
+include_vars:
+  - packages.yml

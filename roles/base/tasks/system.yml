@@ -1,8 +1,0 @@
----
-- name: Install Nvidia Cuda
-  dnf:
-    name: "{{ nvidia_packages }}"
-    state: present
-  when:
-    - install_nvidia == true
-    - install_cuda == true

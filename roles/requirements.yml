@@ -14,7 +14,5 @@
   version: 2.7.0
 - src: mjanser.firewalld
   version: v1.4
-- src: vaulttec.zsh
-  version: master
 - src: artis3n.tailscale
   version: v1.13.3

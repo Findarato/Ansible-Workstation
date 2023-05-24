@@ -1,13 +1,13 @@
 ---
-- name: 📁 Create temporary build directory
-  ansible.builtin.tempfile:
-    state: directory
-    suffix: ".build"
-  register: scratch_dir
+# - name: 📁 Create temporary build directory
+#   ansible.builtin.tempfile:
+#     state: directory
+#     suffix: ".build"
+#   register: scratch_dir
 
-- name: scratch_dir
-  debug:
-    msg: "{{ scratch_dir }}"
+# - name: scratch_dir
+#   debug:
+#     msg: "{{ scratch_dir }}"
 
 - name: 📁 Create Automount Directories
   file:
@@ -72,21 +72,31 @@
     owner: "{{ local_user }}"
     mode: 0750
 
-- name: Clone dotfiles repos
-  become: false
-  git:
-    repo: "{{ dotfiles_repo_rw }}"
-    dest: "/home/{{ local_user }}/dotfiles"
-    key_file: "/home/{{ local_user }}/.ssh/github"
-    accept_hostkey: yes
-    track_submodules: yes
-    update: yes
-    # version:          v1.7
-  register: result
-  ignore_errors: true
-  tags:
-    - git
-    - dotfiles
+- name: change user shell to zsh
+  user:
+    name: "{{ local_user }}"
+    shell: /bin/zsh
+  when:
+    - zsh_enable is true
+  with_items:
+    - "{{ zsh_users }}"
+
+
+# - name: Clone dotfiles repos
+#   become: false
+#   git:
+#     repo: "{{ dotfiles_repo_rw }}"
+#     dest: "/home/{{ local_user }}/dotfiles"
+#     key_file: "/home/{{ local_user }}/.ssh/github"
+#     accept_hostkey: yes
+#     track_submodules: yes
+#     update: yes
+#     # version:          v1.7
+#   register: result
+#   ignore_errors: true
+#   tags:
+#     - git
+#     - dotfiles
 
 - name: Setup and Install i3
   include_tasks: "{{ ansible_distribution }}/i3.yml"
@@ -100,7 +110,6 @@
   include_tasks: "{{ include_file }}"
   with_items:
     - "repos.yml"
-    # - "system.yml"
     - "packages.yml"
     - "gaming.yml"
     # - "services.yml"

@@ -1,0 +1,91 @@
+---
+
+## Variables for roles/base
+
+install_packages:
+  - alacritty
+  - aria2
+  - autojump-zsh
+  - bitstream-vera-fonts-all
+  - cargo
+  - chromium
+  - curl
+  - dnf-automatic
+  - dnf-plugins-core
+  - fuse-sshfs
+  - exa
+  - htop
+  - ImageMagick
+  - jq
+  - lm_sensors
+  - nano
+  - openssh
+  - p7zip
+  - perl-LWP-Protocol-https
+  - podman
+  - prettyping
+  - restic
+  - sqlite
+  - stow
+  - tmux
+  - ulauncher
+  - util-linux-user
+  - variety
+  - zsh
+  - zsh-autosuggestions
+  - zsh-syntax-highlighting
+
+remove_packages:
+  - chrome-gnome-shell
+  - flameshot
+  - flowblade
+  - libreoffice-calc
+  - libreoffice-core
+  - libreoffice-data
+  - libreoffice-emailmerge
+  - libreoffice-filters
+  - libreoffice-graphicfilter
+  - libreoffice-gtk3
+  - libreoffice-help-en
+  - libreoffice-impress
+  - libreoffice-langpack-en
+  - libreoffice-ogltrans
+  - libreoffice-opensymbol-fonts
+  - libreoffice-pdfimport
+  - libreoffice-pyuno
+  - libreoffice-ure
+  - libreoffice-ure-common
+  - libreoffice-writer
+  - libreoffice-x11
+  - libreoffice-xsltfilter
+  - parallel
+  - power-profiles-daemon
+  - remmina
+  - remmina-plugins-rdp
+  - remmina-plugins-spice
+  - remmina-plugins-vnc
+  - tilix
+  - tilix-nautilus
+  - tint2
+  - totem
+  - virtualbox-guest-additions
+
+## Variables for roles/gnome
+
+gnome_install_packages:
+  - gnome-shell-extension-appindicator
+  - gnome-shell-extension-auto-move-windows
+  - gnome-shell-extension-dash-to-dock
+  - gnome-tweak-tool
+
+gnome_remove_packages:
+  - gnome-shell-extension-apps-menu
+  - gnome-shell-extension-background-logo
+  - gnome-shell-extension-launch-new-instance
+  - gnome-shell-extension-places-menu
+  - gnome-shell-extension-user-theme
+  - gnome-shell-extension-window-list
+  - gtk-murrine-engine
+  - gtkhash-nautilus
+
+...

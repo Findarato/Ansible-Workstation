@@ -8,8 +8,8 @@
     state: present
     name: fedora-workstation-repositories
 
-- name: Enable bibata-cursor-themes CPOR
-  community.general.copr:
-    host: copr.fedorainfracloud.org
-    state: enabled
-    name: peterwu/rendezvous
+# - name: Enable bibata-cursor-themes CPOR
+#   community.general.copr:
+#     host: copr.fedorainfracloud.org
+#     state: enabled
+#     name: peterwu/rendezvous
