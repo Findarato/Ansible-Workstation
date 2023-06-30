@@ -19,7 +19,7 @@
     - extension
 
 
-- name:         InstallWeb Development Extensions
+- name:         Install Web Development Extensions
   become:       false
   command:      "code --install-extension '{{ webdev_extensions }}'"
   with_items:

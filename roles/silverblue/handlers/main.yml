@@ -5,14 +5,8 @@
     name:   sshd
     state:  restarted
 
-- name:     Restart fail2ban
-  service:
-    name:   fail2ban
-    state:  restarted
-
 - name:     Update Font Cache
   command:  fc-cache -fv
-
 
 - name: restart Systemd
   ansible.builtin.systemd:

@@ -15,16 +15,16 @@
     state: present
     flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
 
-- name: Install Flatkak -> Evolution
-  flatpak:
-    name:   https://flathub.org/repo/appstream/org.gnome.Evolution.flatpakref
-    state:  present
-    remote: flathub
-  tags:
-    - flatpak
-    - packages
-  when:
-    - install_evolution is true
+# - name: Install Flatkak -> Evolution
+#   flatpak:
+#     name:   https://flathub.org/repo/appstream/org.gnome.Evolution.flatpakref
+#     state:  present
+#     remote: flathub
+#   tags:
+#     - flatpak
+#     - packages
+#   when:
+#     - install_evolution is true
 
 - name: Install Flatpak -> lollypop
   flatpak:

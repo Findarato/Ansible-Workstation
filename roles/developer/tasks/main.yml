@@ -3,9 +3,10 @@
 - name:           Running OS specific Configurations and Commands
   include_tasks:  "{{ item }}"
   with_items:
-  - "{{ ansible_distribution }}/packages.yml"
-  - "{{ ansible_distribution }}/flatpak.yml"
-  - "{{ ansible_distribution }}/system.yml"
+  # - "{{ ansible_distribution }}/packages.yml"
+  # - "{{ ansible_distribution }}/flatpak.yml"
+  # - "{{ ansible_distribution }}/system.yml"
+  - "{{ ansible_distribution }}/fonts.yml"
 
 - name:         Install python modules with pip
   become:       false
@@ -21,3 +22,9 @@
     groups: docker
     append: yes
   when:               install_docker
+
+
+# - name: Install Custom Fonts
+#   copy:
+#     src: usr/share/fonts/
+#     dest: /usr/share/fonts/

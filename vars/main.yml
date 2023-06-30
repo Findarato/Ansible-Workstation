@@ -14,7 +14,11 @@ enable_powertop: false
 enable_vagrant_nfs: false
 enable_libvirtd: false
 enable_automounts: true
+
+# Enable and connect node to tailscale
 enable_tailscale: true
+tailscale_authkey: "{{ vault_tailscale_authkey }}"
+
 
 # Extras
 install_bitwarden: true
@@ -209,3 +213,4 @@ flatpak_packages_gnome_nightly:
 
 include_vars:
   - packages.yml
+

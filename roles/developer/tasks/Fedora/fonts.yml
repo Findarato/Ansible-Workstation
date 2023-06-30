@@ -1,0 +1,57 @@
+---
+
+- name:         Font => Create FiraCode Directory
+  file:
+    path:       "/home/{{ local_user }}/.local/share/fonts/FiraCode/"
+    state:      directory
+    mode:       0755
+
+- name:         Font => Install FiraCode
+  unarchive:
+    src:        "https://github.com/tonsky/FiraCode/releases/download/6.2/Fira_Code_v6.2.zip"
+    dest:       "/home/{{ local_user }}/.local/share/fonts/FiraCode/"
+    creates:    "/home/{{ local_user }}/.local/share/fonts/FiraCode/fira_code.css"
+    remote_src: yes
+  notify:       Update Font Cache
+
+- name:         Font => Create Hack Directory
+  file:
+    path:       "/home/{{ local_user }}/.local/share/fonts/Hack/"
+    state:      directory
+    mode:       0755
+
+- name:         Font => Install Hack
+  unarchive:
+    src:        "https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip"
+    dest:       "/home/{{ local_user }}/.local/share/fonts/Hack/"
+    creates:    "/home/{{ local_user }}/.local/share/fonts/Hack/Hack-Bold.ttf"
+    remote_src: yes
+  notify:       Update Font Cache
+
+- name:         Font => Create Overpass Directory
+  file:
+    path:       "/home/{{ local_user }}/.local/share/fonts/Overpass/"
+    state:      directory
+    mode:       0755
+
+- name:         Font => Install Overpass
+  unarchive:
+    src:        "https://github.com/RedHatOfficial/Overpass/releases/download/v3.0.5/overpass-3.0.5.zip"
+    dest:       "/home/{{ local_user }}/.local/share/fonts/Overpass/"
+    creates:    "/home/{{ local_user }}/.local/share/fonts/Overpass/overpass/overpass-bold.otf"
+    remote_src: yes
+  notify:       Update Font Cache
+
+- name:         Font => Create Intel One Mono
+  file:
+    path:       "/home/{{ local_user }}/.local/share/fonts/IntelOneMono/"
+    state:      directory
+    mode:       0755
+
+- name:         Font => Install Intel One Mono
+  unarchive:
+    src:        "https://github.com/intel/intel-one-mono/releases/download/V1.2.1/ttf.zip"
+    dest:       "/home/{{ local_user }}/.local/share/fonts/IntelOneMono/"
+    creates:    "/home/{{ local_user }}/.local/share/fonts/IntelOneMono/ttf/intelone-mono-font-family-bold"
+    remote_src: yes
+  notify:       Update Font Cache

@@ -24,19 +24,18 @@
     method: user
     flatpakrepo_url: https://nightly.gnome.org/gnome-nightly.flatpakrepo
 
-
 - name: 📦 Install Flathub Flatpak Packages
   become: true
   become_user: "{{ local_user }}"
   community.general.flatpak:
-    name:   "{{ flatpak_install }}"
-    state:  present
+    name: "{{ flatpak_install }}"
+    state: present
     remote: flathub
     method: user
   with_items:
     - "{{ flatpak_packages_flathub }}"
   loop_control:
-    loop_var:         flatpak_install
+    loop_var: flatpak_install
   tags:
     - flatpak
     - packages
@@ -45,14 +44,14 @@
   become: true
   become_user: "{{ local_user }}"
   community.general.flatpak:
-    name:   "{{ flatpak_install_home }}"
-    state:  present
+    name: "{{ flatpak_install_home }}"
+    state: present
     remote: flathub
     method: user
   with_items:
     - "{{ flatpak_packages_flathub_home }}"
   loop_control:
-    loop_var:         flatpak_install_home
+    loop_var: flatpak_install_home
   when:
     - work_computer is false
   tags:
@@ -63,28 +62,35 @@
   become: true
   become_user: "{{ local_user }}"
   community.general.flatpak:
-    name:   "{{ flatpak_install }}"
-    state:  present
+    name: "{{ flatpak_install }}"
+    state: present
     remote: gnome-nightly
     method: user
   with_items:
     - "{{ flatpak_packages_gnome_nightly }}"
   loop_control:
-    loop_var:         flatpak_install
+    loop_var: flatpak_install
   tags:
     - flatpak
     - packages
 
-# - name: 📦 Install Flatpak -> Bitwarden
-#   become: true
-#   become_user: "{{ local_user }}"
-#   community.general.flatpak:
-#     name:   com.bitwarden.desktop
-#     state:  present
-#     remote: flathub
-#   tags:
-#     - flatpak
-#     - packages
-#   when:
-#     - install_bitwarden is true
-...
+- name: 📦 Copy auto update files
+  copy:
+    src: etc/
+    dest: /etc
+
+- name: 📦 Enable User Auto update timers
+  ansible.builtin.systemd:
+    name: update-user-flatpaks.timer
+    daemon_reload: true
+    enabled: true
+    state: started
+    scope: user
+
+- name: 📦 Enable System Auto update timers
+  ansible.builtin.systemd:
+    name: update-system-flatpaks.timer
+    daemon_reload: true
+    enabled: true
+    state: started
+

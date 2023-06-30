@@ -34,6 +34,7 @@ install_packages:
   - zsh
   - zsh-autosuggestions
   - zsh-syntax-highlighting
+  - distrobox
 
 remove_packages:
   - chrome-gnome-shell
@@ -69,6 +70,11 @@ remove_packages:
   - tint2
   - totem
   - virtualbox-guest-additions
+
+zsh_packages:
+  - zsh
+  - zsh-autosuggestions
+  - zsh-syntax-highlighting
 
 ## Variables for roles/gnome
 

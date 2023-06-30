@@ -3,18 +3,11 @@
   become: true
   connection: local
   roles:
-    # - geerlingguy.ansible
-    # - geerlingguy.git
-    - base
-    - gnome
+    # - base
+    # - gnome
     - flatpak
-
-    - vs-code
+    # - vs-code
     - role: developer
-      when: enable_developer_mode is true
-    - role: geerlingguy.php
-      when: enable_developer_mode is true
-    - role: geerlingguy.composer
       when: enable_developer_mode is true
     - role: laptop
       when: enable_laptop_mode is true
@@ -28,6 +21,7 @@
     - vars/zsh.yml
   vars:
     - ansible_python_interpreter: /usr/bin/python3
+    - enable_developer_mode: true
   vars_prompt:
     # - name: enable_laptop_mode
     #   prompt: Is this a laptop?
