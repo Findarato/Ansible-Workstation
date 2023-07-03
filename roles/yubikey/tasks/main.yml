@@ -7,4 +7,14 @@
   - "{{ ansible_os_family }}_packages.yml"
 #  - "{{ ansible_os_family }}_system.yml"
 
+
+- name: Install Udev rules from ublue
+  ansible.builtin.get_url:
+  become: true
+  url: "{{ item }}"
+  dest: /etc/udev/rules.d/
+  loop:
+    - https://raw.githubusercontent.com/ublue-os/config/main/files/etc/udev/rules.d/70-u2f.rules
+  notify: Restart Udev
+
 ...

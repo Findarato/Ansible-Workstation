@@ -1,0 +1,3 @@
+# Stolen from https://blog.christophersmart.com/2020/04/18/accessing-usb-serial-devices-in-fedora-silverblue/
+
+SUBSYSTEM=="tty", SUBSYSTEMS=="usb-serial", OWNER="${USER}"

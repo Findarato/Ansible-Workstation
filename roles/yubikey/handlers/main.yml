@@ -1,0 +1,7 @@
+---
+
+- name: Restart Udev
+  become: true
+  command: sudo udevadm control --reload-rules;sudo udevadm trigger
+
+...

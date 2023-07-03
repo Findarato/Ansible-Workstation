@@ -50,4 +50,5 @@ echo "╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝  ╚�
 
 echo "${reset}"
 # ansible-playbook -i hosts/silverblue.yml silverblue.yml -K --extra-var local_user=${USER}
-ansible-playbook -i hosts/silverblue.yml silverblue.yml -K --extra-var local_user=jharry
+
+ansible-playbook -i hosts/silverblue.yml silverblue.yml -K --extra-var local_user=${USER}

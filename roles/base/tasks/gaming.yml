@@ -34,8 +34,10 @@
   ansible.builtin.copy:
     src: "{{ gaming_temp.path }}/"
     dest: /etc/udev/rules.d/
+  notify: Restart Udev
 
 - name: enable uinput
   ansible.builtin.copy:
     src: uinput.conf
     dest: "/etc/modules-load.d/uinput.conf"
+  notify: Restart Udev
