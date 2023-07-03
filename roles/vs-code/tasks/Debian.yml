@@ -1,24 +1,25 @@
-#!/usr/bin/env ansible-playbook
 ---
-- name:           set gpg key
-  apt_key:
-    url:          "https://packages.microsoft.com/keys/microsoft.asc"
-    state:        present
+- name: set gpg key
+  ansible.builtin.apt_key:
+    url: "https://packages.microsoft.com/keys/microsoft.asc"
+    state: present
   tags:
     - code
 
-- name:           add repository
-  apt_repository:
-    repo:         "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
-    filename:     vscode
-    state:        present
+- name: add repository
+  ansible.builtin.apt_repository:
+    repo: "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+    filename: vscode
+    state: present
     update_cache: yes
   tags:
     - code
 
-- name:           install vscode
-  apt:
-    name:         code
+- name: install vscode
+  ansible.builtin.apt:
+    name: code
     update_cache: true
   tags:
     - code
+
+...

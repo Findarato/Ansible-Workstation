@@ -1,13 +1,13 @@
 ---
 #Remove Packages
 - name:         Remove Packages
-  dnf:
+  ansible.builtin.dnf:
     state:      absent
     name:       "{{ gnome_remove_packages }}"
 
 # Install Packages
 - name:         Install Packages
-  dnf:
+  ansible.builtin.dnf:
     state:      present
     name:       '{{ gnome_install_packages }}'
   #Keyboard Config. This will eventually be its own role.

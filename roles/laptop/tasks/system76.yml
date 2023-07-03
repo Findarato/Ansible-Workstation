@@ -1,5 +1,5 @@
 - name: Remove System76 packages
-  dnf:
+  ansible.builtin.dnf:
     state: absent
     name:
       [
@@ -15,8 +15,7 @@
     - "ansible_board_vendor  ==  System76"
 
 - name: Install System76 packages
-  dnf:
-    state: latest
+  ansible.builtin.dnf:
     name:
       [
         system76-dkms,
@@ -34,7 +33,7 @@
   ansible.builtin.systemd:
     name: "{{ item }}"
     state: started
-    enabled: yes
+    enabled: true
   with_items:
     - system76-power
     - system76-power-wake

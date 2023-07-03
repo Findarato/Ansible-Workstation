@@ -1,38 +1,36 @@
 ---
-- name:           "Running {{ansible_os_family}} - {{ ansible_distribution }} specific Configurations and Commands"
-  include_tasks:        "{{ ansible_os_family }}.yml"
+- name: "Running {{ansible_os_family}} - {{ ansible_distribution }} specific Configurations and Commands"
+  ansible.builtin.include_tasks: "{{ ansible_os_family }}.yml"
   tags:
     - code
     - configuration
 
-- name:         Install Extensions
-  become:       false
-  command:      "code --install-extension '{{ extension }}'"
+- name: Install Extensions
+  become: false
+  ansible.builtin.command: "code --install-extension '{{ extension }}'"
   with_items:
     - "{{ vscode_extensions }}"
-  register:     vscode_result
+  register: vscode_result
   changed_when: "'already installed' not in vscode_result.stdout"
   loop_control:
-    loop_var:   extension
+    loop_var: extension
   tags:
     - code
     - extension
 
-
-- name:         Install Web Development Extensions
-  become:       false
-  command:      "code --install-extension '{{ webdev_extensions }}'"
+- name: Install Web Development Extensions
+  become: false
+  ansible.builtin.command: "code --install-extension '{{ webdev_extensions }}'"
   with_items:
     - "{{ vscode_webdev_extensions }}"
-  register:     vscode_result
+  register: vscode_result
   changed_when: "'already installed' not in vscode_result.stdout"
   loop_control:
-    loop_var:   webdev_extensions
+    loop_var: webdev_extensions
   tags:
     - code
     - extension
   when:
     - vs_code_web_dev is true
-
 
 ...

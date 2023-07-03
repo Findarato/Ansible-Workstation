@@ -1,7 +1,6 @@
-#!/usr/bin/env ansible-playbook
 ---
 - name:           Add repository
-  yum_repository:
+  ansible.builtin.yum_repository:
     name:         code
     description:  Visual Studio Code
     file:         vscode
@@ -14,18 +13,9 @@
 
 # Install Files
 - name:           Install vscode Yum
-  yum:
+  ansible.builtin.package:
     name:         code
-    state:        latest
-    update_cache: yes
-  when:           ansible_pkg_mgr == "yum"
   tags:
     - code
 
-- name:           Install vscode dnf
-  dnf:
-    name:         code
-    state:        latest
-  when:           ansible_pkg_mgr == "dnf"
-  tags:
-    - code
+...

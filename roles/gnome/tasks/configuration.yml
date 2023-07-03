@@ -1,7 +1,7 @@
 ---
 
 - name: Required Packages
-  package:
+  ansible.builtin.package:
     name: python3-psutil
     state: present
 

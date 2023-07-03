@@ -75,9 +75,12 @@
     - packages
 
 - name: 📦 Copy auto update files
-  copy:
+  ansible.builtin.copy:
     src: etc/
     dest: /etc
+    owner: root
+    group: root
+    mode: '0644'
 
 - name: 📦 Enable User Auto update timers
   ansible.builtin.systemd:
@@ -94,3 +97,4 @@
     enabled: true
     state: started
 
+...

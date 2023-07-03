@@ -1,14 +1,14 @@
 ---
 - name: Create src folder
-  file:
+  ansible.builtin.file:
     path: "/home/{{ local_user }}/Documents/src/"
     state: directory
     owner: "{{ local_user }}"
-    mode: 0750
+    mode: '0750'
 
 - name: Running OS specific Configurations and Commands
   include_tasks: "{{ include_file }}"
-  with_items:
+  ansible.builtin.with_items:
     - "repos.yml"
     - "packages.yml"
   loop_control:

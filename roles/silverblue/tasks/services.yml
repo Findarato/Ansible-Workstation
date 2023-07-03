@@ -1,14 +1,14 @@
 ---
 
 - name: Start and enable sshd
-  service:
+  ansible.builtin.service:
     name: sshd
     state: started
     enabled: yes
   when: enable_sshd
 
 - name: Enable Autoupdates
-  service:
+  ansible.builtin.service:
     name: rpm-ostreed-automatic.timer
     state: started
     enabled: yes
@@ -20,3 +20,5 @@
     src: systemd/system/dconf-update.service
     dest: /etc/systemd/system/
   notify: restart Systemd
+
+...

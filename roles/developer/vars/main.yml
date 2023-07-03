@@ -2,11 +2,11 @@ dev_temp_path:        "/tmp/developer"
 dev_default_font:     "Hack"
 composer_self_update: true
 
-pip_install:
-  - cfscrape
-  - selenium
-  - google-api-python-client
-  - docker-py
+# pip_install:
+#   - cfscrape
+#   - selenium
+#   - google-api-python-client
+#   - docker-py
 
 remove_packages:
   - nodejs

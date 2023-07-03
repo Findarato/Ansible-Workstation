@@ -1,6 +1,6 @@
 ---
 - name: Running OS specific Configurations and Commands
-  include_tasks: "{{ include_file }}"
+  ansible.builtin.include_tasks: "{{ include_file }}"
   with_items:
     - "repos.yml"
     - "packages.yml"
@@ -10,7 +10,7 @@
     - configuration
 
 - name: Run system76 configuration
-  include_tasks: system76.yml
+  ansible.builtin.include_tasks: system76.yml
   when:
     - "ansible_board_vendor  ==  System76"
   tags:
