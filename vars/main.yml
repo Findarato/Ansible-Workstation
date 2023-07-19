@@ -193,6 +193,7 @@ flatpak_packages_flathub:
   - io.github.peazip.PeaZip
   - io.mpv.Mpv
   - io.podman_desktop.PodmanDesktop
+  - md.obsidian.Obsidian
   - me.kozec.syncthingtk
   - org.gimp.GIMP
   - org.mozilla.firefox
