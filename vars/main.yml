@@ -211,7 +211,7 @@ flatpak_packages_flathub_work:
 
 flatpak_packages_gnome_nightly:
   - org.gnome.Calendar.Devel
-
+  - org.gnome.Loupe.Devel
 include_vars:
   - packages.yml
 

@@ -12,3 +12,11 @@
 #    host: copr.fedorainfracloud.org
 #    state: enabled
 #    name: peterwu/rendezvous
+
+
+- name: Install tailscale repo
+  ansible.builtin.copy:
+    owner: root
+    group: root
+    src: etc/yum.repos.d/tailscale.repo
+    dest: /etc/yum.repos.d/tailscale.repo
