@@ -30,6 +30,6 @@
   ansible.builtin.systemd:
     daemon_reload: yes
 
-- name: restar_udev
+- name: Restart Udev
   become: true
   command: sudo udevadm control --reload-rules;sudo udevadm trigger

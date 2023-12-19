@@ -9,12 +9,18 @@
 
 
 - name: Install Udev rules from ublue
-  ansible.builtin.get_url:
   become: true
-  url: "{{ item }}"
-  dest: /etc/udev/rules.d/
-  loop:
-    - https://raw.githubusercontent.com/ublue-os/config/main/files/etc/udev/rules.d/70-u2f.rules
+  ansible.builtin.get_url:
+    url: "{{ item }}"
+    dest: /etc/udev/rules.d/
+    loop:
+      - https://raw.githubusercontent.com/ublue-os/config/main/files/etc/udev/rules.d/70-u2f.rules
   notify: Restart Udev
+
+
+- name: Install Packages
+  package:
+    state: installed
+    name: ["pam_yubico"]
 
 ...
