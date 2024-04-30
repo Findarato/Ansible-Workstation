@@ -8,30 +8,27 @@
 
 - name: Add the flathub flatpak repository remote to the user installation
   become: true
-  become_user: "{{ local_user }}"
   community.general.flatpak_remote:
     name: flathub
     state: present
-    method: user
+    method: system
     flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
 
 - name: Add the gnome nightly flatpak repository remote to the user installation
   become: true
-  become_user: "{{ local_user }}"
   community.general.flatpak_remote:
     name: gnome-nightly
     state: present
-    method: user
+    method: system
     flatpakrepo_url: https://nightly.gnome.org/gnome-nightly.flatpakrepo
 
 - name: 📦 Install Flathub Flatpak Packages
   become: true
-  become_user: "{{ local_user }}"
   community.general.flatpak:
     name: "{{ flatpak_install }}"
     state: present
     remote: flathub
-    method: user
+    method: system
   with_items:
     - "{{ flatpak_packages_flathub }}"
   loop_control:
@@ -42,12 +39,11 @@
 
 - name: 📦 Home Install Flathub Flatpak Packages
   become: true
-  become_user: "{{ local_user }}"
   community.general.flatpak:
     name: "{{ flatpak_install_home }}"
     state: present
     remote: flathub
-    method: user
+    method: system
   with_items:
     - "{{ flatpak_packages_flathub_home }}"
   loop_control:
@@ -60,12 +56,11 @@
 
 - name: 📦 Install gnome nightly Flatpak Packages
   become: true
-  become_user: "{{ local_user }}"
   community.general.flatpak:
     name: "{{ flatpak_install }}"
     state: present
     remote: gnome-nightly
-    method: user
+    method: system
   with_items:
     - "{{ flatpak_packages_gnome_nightly }}"
   loop_control:
@@ -89,6 +84,13 @@
     enabled: true
     state: started
     scope: user
+
+- name: 📦 Enable system Auto update timers
+  ansible.builtin.systemd:
+    name: update-system-flatpaks.timer
+    daemon_reload: true
+    enabled: true
+    state: started
 
 - name: 📦 Enable System Auto update timers
   ansible.builtin.systemd:

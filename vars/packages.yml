@@ -3,7 +3,6 @@
 ## Variables for roles/base
 
 install_packages:
-  - alacritty
   - aria2
   - autojump-zsh
   - bitstream-vera-fonts-all
@@ -37,6 +36,7 @@ install_packages:
   - distrobox
 
 remove_packages:
+  - alacritty
   - chrome-gnome-shell
   - flameshot
   - flowblade
