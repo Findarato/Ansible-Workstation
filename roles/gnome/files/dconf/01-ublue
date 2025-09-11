@@ -65,14 +65,3 @@ home='<Super>e'
 allow-updates=false
 download-updates=false
 download-updates-notify=false
-
-[com/raggesilver/BlackBox]
-command-as-login-shell=true
-use-custom-command=true
-custom-shell-command='distrobox enter ubuntu'
-theme-light='Solarized Light'
-theme-dark='Yaru'
-style-preference=0
-font='Ubuntu Mono 18'
-window-width=975
-window-height=650

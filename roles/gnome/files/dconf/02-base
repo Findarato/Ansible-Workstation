@@ -1,18 +1,11 @@
-[org/gnome/desktop/interface]
-enable-hot-corners=false
-cursor-theme='Yaru'
-icon-theme='Yaru'
-gtk-theme='Yaru'
-font-antialiasing='rgba'
-
 [org/gnome/desktop/wm/preferences]
 button-layout=':minimize,maximize,close'
 num-workspaces='8'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
 binding='<super><enter>'
-command='gnome-terminal'
-name='gnome-terminal'
+command='flatpak run org.gnome.Ptyxis.Devel'
+name='Terminal'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1]
 binding='<Control><Alt>u'

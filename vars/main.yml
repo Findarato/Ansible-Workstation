@@ -189,7 +189,7 @@ flatpak_packages_flathub:
   - fr.handbrake.ghb
   - im.riot.Riot
   - io.github.celluloid_player.Celluloid
-  - io.mpv.Mpv
+  # - io.mpv.Mpv
   - io.podman_desktop.PodmanDesktop
   - md.obsidian.Obsidian
   - me.kozec.syncthingtk
@@ -198,7 +198,7 @@ flatpak_packages_flathub:
   - org.remmina.Remmina
   - one.ablaze.floorp
   - app.devsuite.Ptyxis
-
+  - com.github.rafostar.Clapper
 
 flatpak_packages_flathub_home:
   - org.raspberrypi.rpi-imager
