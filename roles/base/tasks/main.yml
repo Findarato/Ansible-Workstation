@@ -1,13 +1,7 @@
 ---
-# - name: 📁 Create temporary build directory
-#   ansible.builtin.tempfile:
-#     state: directory
-#     suffix: ".build"
-#   register: scratch_dir
 
-# - name: scratch_dir
-#   debug:
-#     msg: "{{ scratch_dir }}"
+# This all should be done though fstab. Why? Because it is easier to troubleshoot and you do 
+# not end up with a TON of extra unit files.
 
 - name: 📁 Create Automount Directories
   file:
@@ -71,40 +65,6 @@
     state: directory
     owner: "{{ local_user }}"
     mode: 0750
-
-- name: change user shell to zsh
-  user:
-    name: "{{ local_user }}"
-    shell: /bin/zsh
-  when:
-    - zsh_enable is true
-  with_items:
-    - "{{ zsh_users }}"
-
-
-# - name: Clone dotfiles repos
-#   become: false
-#   git:
-#     repo: "{{ dotfiles_repo_rw }}"
-#     dest: "/home/{{ local_user }}/dotfiles"
-#     key_file: "/home/{{ local_user }}/.ssh/github"
-#     accept_hostkey: yes
-#     track_submodules: yes
-#     update: yes
-#     # version:          v1.7
-#   register: result
-#   ignore_errors: true
-#   tags:
-#     - git
-#     - dotfiles
-
-- name: Setup and Install i3
-  include_tasks: "{{ ansible_distribution }}/i3.yml"
-  when:
-    - install_i3 == true
-  tags:
-    - i3
-    - install
 
 - name: Running OS specific Configurations and Commands
   include_tasks: "{{ include_file }}"

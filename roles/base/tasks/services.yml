@@ -1,26 +1,7 @@
 ---
-- name: Start and enable sshd
-  service:
-    name: sshd
-    state: started
-    enabled: yes
-  when: enable_sshd
 
-- name: Start and enable fail2ban
-  service:
-    name: fail2ban
-    state: started
-    enabled: yes
-  when: enable_fail2ban
+## Title: services.yml
+## Description: Enable and disable services
+## Author: Joseph Harry <findarato@gmail.com>
+## Date: 2025-09-11 09:09:02
 
-- name: Enable nfs-server
-  service:
-    name: nfs-server
-    enabled: yes
-  when: enable_vagrant_nfs
-
-- name: Enable a timer for dnf-automatic
-  systemd:
-    name: dnf-automatic.timer
-    state: started
-    enabled: True
